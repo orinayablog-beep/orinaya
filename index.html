@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080611">
+<title>ORINAYA</title>
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;width:100%;height:100%;background:#080611}
+  body{overflow-x:hidden}
+  .hero{
+    position:relative;
+    width:100%;
+    height:100svh;
+    min-height:560px;
+    background:#080611 url("./hero.png") center center / cover no-repeat;
+  }
+  .hit{
+    position:absolute;
+    display:block;
+    z-index:3;
+    background:transparent;
+    border:0;
+  }
+  /* Klikací oblasti podle dodaného návrhu */
+  .blog{left:83.3%;top:6.4%;width:7.6%;height:5.2%}
+  .about{left:90.2%;top:6.4%;width:6.5%;height:5.2%}
+  .btn-blog{left:28.7%;top:57.1%;width:20.6%;height:6.8%}
+  .btn-story{left:50.7%;top:57.1%;width:21.1%;height:6.8%}
+  .instagram{left:2.7%;bottom:5.7%;width:10.8%;height:5%}
+  .facebook{left:13.4%;bottom:5.7%;width:10.6%;height:5%}
+  .contact{left:23.3%;bottom:5.7%;width:10.2%;height:5%}
+
+  /* Na úzkém mobilu zobraz celý návrh, ne useknutý cover */
+  @media (max-aspect-ratio: 3/4){
+    .hero{
+      height:auto;
+      min-height:100svh;
+      aspect-ratio:3/2;
+      background-size:contain;
+      background-position:center top;
+      background-repeat:no-repeat;
+    }
+  }
+</style>
+</head>
+<body>
+<section class="hero" aria-label="ORINAYA">
+  <a class="hit blog" href="https://www.orinaya.blog/" target="_blank" rel="noopener" aria-label="Blog"></a>
+  <a class="hit about" href="#omne" aria-label="O mně"></a>
+  <a class="hit btn-blog" href="https://www.orinaya.blog/" target="_blank" rel="noopener" aria-label="Začíst se do blogu"></a>
+  <a class="hit btn-story" href="#omne" aria-label="Poznat můj příběh"></a>
+  <a class="hit instagram" href="#" aria-label="Instagram"></a>
+  <a class="hit facebook" href="#" aria-label="Facebook"></a>
+  <a class="hit contact" href="#" aria-label="Kontakt"></a>
+</section>
+
+<!-- Další sekce doplníme až potom -->
+<section id="omne" style="min-height:1px;background:#080611"></section>
+</body>
+</html>

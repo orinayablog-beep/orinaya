@@ -1,4 +1,4 @@
-<!doctype html>
+    <!doctype html>
 <html lang="cs">
 <head>
 <meta charset="utf-8">
@@ -28,40 +28,31 @@
     overflow:hidden;
   }
 
+  .parallax{
+    position:absolute;
+    inset:-2%;
+    pointer-events:none;
+    z-index:1;
+    transition:transform .2s ease-out;
+    will-change:transform;
+  }
+
   .wave-glow{
     position:absolute;
     left:-18%;
     right:-18%;
     bottom:11%;
     height:34%;
-    opacity:.22;
-    filter:blur(10px);
+    opacity:.18;
+    filter:blur(12px);
     background:
-      radial-gradient(ellipse at 16% 48%, rgba(255,219,132,.38) 0 2%, transparent 12%),
-      radial-gradient(ellipse at 35% 56%, rgba(229,179,83,.24) 0 3%, transparent 13%),
-      radial-gradient(ellipse at 54% 48%, rgba(255,231,166,.34) 0 2%, transparent 13%),
-      radial-gradient(ellipse at 74% 42%, rgba(230,176,78,.22) 0 2%, transparent 12%),
-      radial-gradient(ellipse at 88% 32%, rgba(255,226,151,.26) 0 2%, transparent 12%);
+      radial-gradient(ellipse at 16% 48%, rgba(255,219,132,.26) 0 2%, transparent 12%),
+      radial-gradient(ellipse at 35% 56%, rgba(229,179,83,.16) 0 3%, transparent 13%),
+      radial-gradient(ellipse at 54% 48%, rgba(255,231,166,.22) 0 2%, transparent 13%),
+      radial-gradient(ellipse at 74% 42%, rgba(230,176,78,.14) 0 2%, transparent 12%),
+      radial-gradient(ellipse at 88% 32%, rgba(255,226,151,.18) 0 2%, transparent 12%);
     animation:waveDrift 12s ease-in-out infinite alternate;
     transform:translate3d(0,0,0);
-  }
-
-  .wave-sheen{
-    position:absolute;
-    left:-30%;
-    bottom:8%;
-    width:45%;
-    height:34%;
-    opacity:.16;
-    background:linear-gradient(
-      100deg,
-      transparent 5%,
-      rgba(255,231,170,.5) 48%,
-      transparent 88%
-    );
-    filter:blur(14px);
-    transform:rotate(-7deg);
-    animation:sheen 11s linear infinite;
   }
 
   @keyframes waveDrift{
@@ -69,9 +60,79 @@
     to{transform:translate3d(1.4%,-.4%,0) scale(1.025)}
   }
 
-  @keyframes sheen{
-    from{transform:translateX(-8vw) rotate(-7deg)}
-    to{transform:translateX(128vw) rotate(-7deg)}
+  .wave-path-wrap{
+    position:absolute;
+    inset:0;
+    z-index:2;
+    pointer-events:none;
+    mix-blend-mode:screen;
+  }
+
+  .wave-svg{
+    width:100%;
+    height:100%;
+    display:block;
+    overflow:visible;
+  }
+
+  .wave-base{
+    fill:none;
+    stroke:rgba(248,204,121,.10);
+    stroke-width:3;
+    stroke-linecap:round;
+    filter:drop-shadow(0 0 4px rgba(242,186,84,.16));
+  }
+
+  .wave-flow{
+    fill:none;
+    stroke:url(#flowGradient);
+    stroke-width:5.2;
+    stroke-linecap:round;
+    stroke-dasharray:190 1700;
+    animation:flowAlong 8.5s linear infinite;
+    filter:
+      drop-shadow(0 0 8px rgba(255,224,142,.70))
+      drop-shadow(0 0 20px rgba(240,182,72,.42));
+    opacity:.95;
+  }
+
+  .wave-flow-2{
+    fill:none;
+    stroke:url(#flowGradientSoft);
+    stroke-width:3.2;
+    stroke-linecap:round;
+    stroke-dasharray:110 1900;
+    animation:flowAlong2 12.5s linear infinite;
+    filter:
+      drop-shadow(0 0 6px rgba(255,220,135,.42))
+      drop-shadow(0 0 16px rgba(227,168,63,.24));
+    opacity:.55;
+  }
+
+  @keyframes flowAlong{
+    from{stroke-dashoffset:0}
+    to{stroke-dashoffset:-1890}
+  }
+
+  @keyframes flowAlong2{
+    from{stroke-dashoffset:560}
+    to{stroke-dashoffset:-1450}
+  }
+
+  .travel-dot{
+    fill:#ffe7ad;
+    opacity:.96;
+    filter:
+      drop-shadow(0 0 8px rgba(255,235,173,.95))
+      drop-shadow(0 0 18px rgba(240,183,72,.75));
+  }
+
+  .travel-dot-soft{
+    fill:#ffd789;
+    opacity:.55;
+    filter:
+      drop-shadow(0 0 6px rgba(255,228,159,.6))
+      drop-shadow(0 0 14px rgba(230,168,52,.45));
   }
 
   .breath{
@@ -142,15 +203,6 @@
   .sp4{left:63%;top:58%;--dur:11s;--delay:3.1s;--dx:-8px}
   .sp5{left:78%;top:31%;--dur:9s;--delay:.2s;--dx:6px}
   .sp6{left:86%;top:53%;--dur:10.8s;--delay:2.7s;--dx:-7px}
-
-  .parallax{
-    position:absolute;
-    inset:-2%;
-    pointer-events:none;
-    z-index:1;
-    transition:transform .2s ease-out;
-    will-change:transform;
-  }
 
   .hit{
     position:absolute;
@@ -224,21 +276,12 @@
       width:11vw;
       height:11vw;
     }
-
-    .wave-glow{
-      bottom:10%;
-      height:36%;
-    }
-
-    .wave-sheen{
-      bottom:8%;
-      height:35%;
-    }
   }
 
   @media (prefers-reduced-motion: reduce){
     .wave-glow,
-    .wave-sheen,
+    .wave-flow,
+    .wave-flow-2,
     .breath,
     .spark{
       animation:none!important;
@@ -259,7 +302,49 @@
     <div class="parallax" id="parallax">
 
       <div class="wave-glow"></div>
-      <div class="wave-sheen"></div>
+
+      <div class="wave-path-wrap">
+        <svg class="wave-svg" viewBox="0 0 1500 1000" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="rgba(255,221,145,0)"/>
+              <stop offset="20%" stop-color="rgba(255,231,178,.15)"/>
+              <stop offset="50%" stop-color="rgba(255,236,186,1)"/>
+              <stop offset="80%" stop-color="rgba(240,189,86,.35)"/>
+              <stop offset="100%" stop-color="rgba(255,221,145,0)"/>
+            </linearGradient>
+
+            <linearGradient id="flowGradientSoft" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="rgba(255,221,145,0)"/>
+              <stop offset="50%" stop-color="rgba(255,221,145,.55)"/>
+              <stop offset="100%" stop-color="rgba(255,221,145,0)"/>
+            </linearGradient>
+
+            <path id="wavePath" d="M -60 690
+              C 90 620, 240 760, 410 710
+              C 560 668, 675 700, 760 790
+              C 850 690, 995 662, 1115 705
+              C 1280 765, 1420 650, 1560 610" />
+          </defs>
+
+          <use href="#wavePath" class="wave-base"></use>
+          <use href="#wavePath" class="wave-flow"></use>
+          <use href="#wavePath" class="wave-flow-2"></use>
+
+          <circle class="travel-dot" r="4.8">
+            <animateMotion dur="8.5s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#wavePath"/>
+            </animateMotion>
+          </circle>
+
+          <circle class="travel-dot-soft" r="2.8">
+            <animateMotion dur="12.5s" begin="1.8s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#wavePath"/>
+            </animateMotion>
+          </circle>
+        </svg>
+      </div>
+
       <div class="breath"></div>
 
       <span class="spark sp1"></span>
@@ -320,14 +405,10 @@
 
 </section>
 
-<section
-  id="omne"
-  style="min-height:1px;background:#080611">
-</section>
+<section id="omne" style="min-height:1px;background:#080611"></section>
 
 <script>
 (() => {
-
   const p = document.getElementById('parallax');
 
   if (
@@ -338,30 +419,21 @@
   let ticking = false;
 
   const update = () => {
-
     const y = Math.min(window.scrollY, 280);
-
-    p.style.transform =
-      `translate3d(0, ${y * 0.035}px, 0)`;
-
+    p.style.transform = `translate3d(0, ${y * 0.035}px, 0)`;
     ticking = false;
   };
 
   addEventListener(
     'scroll',
     () => {
-
       if (!ticking) {
-
         requestAnimationFrame(update);
-
         ticking = true;
       }
-
     },
     {passive:true}
   );
-
 })();
 </script>
 

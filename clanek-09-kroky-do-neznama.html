@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="cs"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080611">
+<title>Kroky do neznáma | ORINAYA</title>
+<meta name="description" content="Víra není o tom vidět cestu, ale udělat první krok i tehdy, když ji nevidíš...">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500&family=Italianno&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --bg:#080611;--gold:#d7aa57;--gold2:#f1d79b;--text:#f3ebf2;
+  --muted:#d8ced7;--muted2:#a99dad;--line:rgba(224,183,99,.16)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{
+  margin:0;color:var(--text);font-family:"Montserrat",Arial,sans-serif;font-weight:300;
+  background:
+    radial-gradient(circle at 50% 5%,rgba(96,43,127,.18),transparent 34rem),
+    radial-gradient(circle at 12% 45%,rgba(57,31,99,.10),transparent 38rem),
+    linear-gradient(180deg,#080611 0%,#0b0715 48%,#090711 100%);
+  overflow-x:hidden
+}
+a{color:inherit;text-decoration:none}
+header{
+  position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:24px;
+  padding:20px clamp(20px,5vw,72px);background:rgba(8,6,17,.82);backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(224,183,99,.08)
+}
+.brand{font-family:"Cormorant Garamond",Georgia,serif;letter-spacing:.18em;font-size:24px;color:#e8d5ad}
+nav{display:flex;gap:26px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+nav a{position:relative;color:#c9bdc9;font-size:9px;letter-spacing:.15em;text-transform:uppercase;padding-bottom:6px}
+nav a:after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--gold);transition:width .25s ease}
+nav a:hover:after,nav a.active:after{width:100%}
+nav a.active{color:#ead9b8}
+footer{border-top:1px solid var(--line);padding:50px 22px 40px;text-align:center}
+.footer-logo{font-family:"Cormorant Garamond",Georgia,serif;font-size:34px;letter-spacing:.17em;color:#e7d3aa}
+.copy{margin-top:25px;color:#96899e;font-size:9px;letter-spacing:.17em}
+.whisper{padding:92px 22px 100px;text-align:center;border-top:1px solid rgba(224,183,99,.08)}
+.whisper .line{width:80px;height:1px;margin:0 auto 32px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.whisper p{margin:0 auto;max-width:920px;font-family:"Italianno",cursive;font-size:clamp(38px,5.3vw,58px);line-height:1.14;color:#e7d9c5;text-shadow:0 0 8px rgba(215,170,87,.08)}
+@media(max-width:760px){
+  header{padding:18px;gap:15px}.brand{font-size:21px}nav{gap:13px}nav a{font-size:8px}
+}
+
+.article-hero{width:min(930px,88vw);margin:0 auto;padding:86px 0 48px}
+.article-meta{color:var(--gold);font-size:9px;letter-spacing:.17em;text-transform:uppercase;margin-bottom:20px}
+h1{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(48px,7vw,82px);font-weight:400;line-height:1.01;color:#ead9b6;margin:0;max-width:900px}
+.article-quote{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-size:clamp(22px,2.7vw,31px);line-height:1.45;color:#cfc1cb;max-width:760px;margin:30px 0 0}
+.article-line{width:88px;height:1px;margin-top:32px;background:linear-gradient(90deg,var(--gold),transparent)}
+.article{width:min(820px,88vw);margin:0 auto;padding:14px 0 95px}
+.article-image{margin:20px 0 54px;width:min(100%,620px)}
+.article-image img{display:block;max-width:100%;width:auto;height:auto;max-height:700px;object-fit:contain;border:1px solid rgba(224,183,99,.10);box-shadow:0 20px 60px rgba(0,0,0,.30)}
+.article-body{max-width:700px;text-align:left}
+.article-body p{margin:0 0 25px;color:var(--muted);font-size:16px;line-height:1.84}
+.article-body .source-italic{font-family:"Cormorant Garamond",Georgia,serif;font-size:20px;color:#d7cad5}
+.article-body h3{font-family:"Cormorant Garamond",Georgia,serif;font-size:29px;line-height:1.18;font-weight:500;color:#ead8b3;margin:48px 0 19px}
+.article-nav{width:min(930px,88vw);margin:0 auto;padding:30px 0 70px;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:center}
+.article-nav a{color:#bfb1c1;font-size:9px;letter-spacing:.11em;text-transform:uppercase;line-height:1.5}
+.article-nav a:last-child{text-align:right}
+.article-nav .back-blog{color:#ead9b8;text-align:center}
+@media(max-width:760px){
+ .article-hero{padding:60px 0 38px}.article{padding-bottom:70px}
+ .article-image{margin-bottom:40px}.article-body p{font-size:15px;line-height:1.8}
+ .article-nav{grid-template-columns:1fr;gap:18px}.article-nav a,.article-nav a:last-child,.article-nav .back-blog{text-align:left}
+}
+</style></head>
+<body>
+<header><a class="brand" href="index.html">ORINAYA</a><nav><a href="index.html">Domů</a><a href="omne.html">O mně</a><a href="promena.html">Proměna</a><a class="active" href="blog.html">Blog</a></nav></header>
+<main>
+<section class="article-hero">
+ <div class="article-meta">09 · 3 min čtení</div>
+ <h1>Kroky do neznáma</h1>
+ <p class="article-quote">„Víra není o tom vidět cestu, ale udělat první krok i tehdy, když ji nevidíš...“</p>
+ <div class="article-line"></div>
+</section>
+<article class="article">
+ <figure class="article-image"><img src="blog-09.png" alt="Kroky do neznáma"></figure>
+ <div class="article-body"><p>Tuhle kartu jsem si vytáhla před pár dny. Dnes vím, že přesně vystihuje to, o čem píšu… integrace poznání. To, co k nám přichází, nemá zůstat jen jako myšlenka. Má se stát součástí našeho života.</p>
+<p>Někdo by ani nevěřil, že tyhle texty píšu já. A někdy tomu nevěřím ani já sama. Protože nevím, odkud přicházejí. Jen vím, že musím psát – a to stačí.</p>
+<p>Nepřichází to v ruchu a chaosu každodenního života. Přichází to v tichu. Nejčastěji v noci. V okamžicích, kdy svět ztichne a moje duše může konečně šeptat.</p>
+<p>Tak vlastně vznikl i můj blog. Nevěděla jsem nic o tom, jak se tvoří stránky. A přesto jsem to zvládla – po nocích, podle návodů z internetu. Protože inspirace byla silnější než spánek. Není to dokonalé, ale je to moje.</p>
+<p>Psaní není plán, ale proud. Slova přijdou sama – v koupelně, když si sednu na zem, nebo v okamžiku, kdy děti usnou a užívám si ticha. Někdy je článek hotový během pár minut, jako by ho někdo diktoval a já byla jen prostředníkem.</p>
+<p>A stejně tak je to i se životem. Není to o kontrole, ale o důvěře. O tom, že i když nevidím cestu celou, udělám krok do neznáma. A pak další. A další.</p>
+<p>Dlouho jsem slyšela, že „stačí věřit“. Ale až když jsem se ocitla v chaosu vlastní reality, pochopila jsem, co to znamená. Už to nebyla jen teorie, ale přímá praxe a test.</p>
+<p>Víra není jen pozitivní myšlení. Je to rozhodnutí, že se nevzdám své cesty, i když okolní realita křičí opak. Že se nenechám vtáhnout do pochybností. Že se pokaždé znovu vrátím k tomu, co cítím uvnitř.</p>
+<p>Je to trpělivost a vytrvalost. Není to ze dne na den. Ale když vydržíš, realita se začne měnit.</p>
+<p>A já už to zažila – vím, že to funguje.</p>
+<p>Všechno je jen nastavení mysli. Přijmout i své strachy, zranění a vše, co na sobě nesnášíme, podívat se tomu do očí a obejmout. A pak pustit. Nechat proudit život tak, jak má. Přijmout se a nestydět se za nic, protože to utváří naši jedinečnost.</p>
+<p>Stačí jen pochopit, že není třeba bojovat a odmítat, protože tím bychom odmítali i část sebe. Je třeba vše obejmout v lásce, která vše rozpustí. Přijmout se kompletně takoví, jací jsme – i s těmi nedokonalostmi. Protože právě o tom to celé je. O nedokonalosti a přesto radikálním přijetí sama sebe. ✨</p>
+<p>A když se kolem sebe díváš a vidíš „zlo“, nespravedlnost nebo bolest, zkus se na to podívat jiným pohledem. Často ten, kdo působí „zlým“ dojmem, je jen hluboce zraněný člověk. Nese v sobě neuzdravený vnitřní svět a jeho utrpení se odráží na okolí. Tvoří takovou realitu, protože jinou zatím nezná.</p>
+<p>Ty ale nemusíš být tím případem. Nemusíš opakovat jeho vzorec. Stačí se rozhodnout a začít hledat pravdu v sobě – ne venku. 🌿</p>
+<p>Protože všechno, co se nám děje, je jen odrazem našeho vnitřního nastavení.</p>
+<p>Možná i ty právě procházíš něčím těžkým a nevíš, kudy dál. Věř mi, není to proto, aby tě to potopilo, ale aby ti to dodalo sílu jít dál.</p>
+<p>Jak se říká – pokud chceme sílu, život nám pošle do cesty těžkosti. Protože když je překonáme, stáváme se silnějšími.</p>
+<p>Každý okamžik má svůj důvod. I to, že se právě teď necítíš dobře. Já sama jsem to prožila – když se mi srdce lámalo na kusy, myslela jsem, že už není cesta ven. Ale byla. A dnes můžu vyprávět svůj příběh dál.</p>
+<p>A třeba právě tenhle můj příběh dodá naději někomu, kdo to teď potřebuje slyšet. Protože i když jsi dole, není to konec. Je to start. Start k tomu, aby ses odrazil a zamířil ke hvězdám. ✨</p>
+<p>Ať tě tvé kroky přivedou zpět k sobě.</p>
+<p>S láskou</p>
+<p>Orinaya</p></div>
+</article>
+<section class="whisper"><div class="line"></div><p>Tady končí slova... a začíná šepot duše.</p></section>
+<nav class="article-nav"><a href="clanek-08-sen-ktery-se-rozpadl.html">← Sen, který se rozpadl...</a><a class="back-blog" href="blog.html">Zpět na blog</a><a href="clanek-10-manifestace-v-praxi-jak-se-bali-stalo-mym-dukazem.html">Manifestace v praxi: Jak se Bali stalo mým důkazem →</a></nav>
+</main>
+<footer><div class="footer-logo">ORINAYA</div><div class="copy">© 2026 ORINAYA</div></footer>
+</body></html>

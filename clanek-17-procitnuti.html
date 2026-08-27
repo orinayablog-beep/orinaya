@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="cs"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080611">
+<title>Procitnutí | ORINAYA</title>
+<meta name="description" content="„Není okamžik, kdy víme všechno. Je to chvíle, kdy už nedokážeme dál předstírat, že nevidíme.“">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500&family=Italianno&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --bg:#080611;--gold:#d7aa57;--gold2:#f1d79b;--text:#f3ebf2;
+  --muted:#d8ced7;--muted2:#a99dad;--line:rgba(224,183,99,.16)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{
+  margin:0;color:var(--text);font-family:"Montserrat",Arial,sans-serif;font-weight:300;
+  background:
+    radial-gradient(circle at 50% 5%,rgba(96,43,127,.18),transparent 34rem),
+    radial-gradient(circle at 12% 45%,rgba(57,31,99,.10),transparent 38rem),
+    linear-gradient(180deg,#080611 0%,#0b0715 48%,#090711 100%);
+  overflow-x:hidden
+}
+a{color:inherit;text-decoration:none}
+header{
+  position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:24px;
+  padding:20px clamp(20px,5vw,72px);background:rgba(8,6,17,.82);backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(224,183,99,.08)
+}
+.brand{font-family:"Cormorant Garamond",Georgia,serif;letter-spacing:.18em;font-size:24px;color:#e8d5ad}
+nav{display:flex;gap:26px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+nav a{position:relative;color:#c9bdc9;font-size:9px;letter-spacing:.15em;text-transform:uppercase;padding-bottom:6px}
+nav a:after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--gold);transition:width .25s ease}
+nav a:hover:after,nav a.active:after{width:100%}
+nav a.active{color:#ead9b8}
+footer{border-top:1px solid var(--line);padding:50px 22px 40px;text-align:center}
+.footer-logo{font-family:"Cormorant Garamond",Georgia,serif;font-size:34px;letter-spacing:.17em;color:#e7d3aa}
+.copy{margin-top:25px;color:#96899e;font-size:9px;letter-spacing:.17em}
+.whisper{padding:92px 22px 100px;text-align:center;border-top:1px solid rgba(224,183,99,.08)}
+.whisper .line{width:80px;height:1px;margin:0 auto 32px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.whisper p{margin:0 auto;max-width:920px;font-family:"Italianno",cursive;font-size:clamp(38px,5.3vw,58px);line-height:1.14;color:#e7d9c5;text-shadow:0 0 8px rgba(215,170,87,.08)}
+@media(max-width:760px){
+  header{padding:18px;gap:15px}.brand{font-size:21px}nav{gap:13px}nav a{font-size:8px}
+}
+
+.article-hero{width:min(930px,88vw);margin:0 auto;padding:86px 0 48px}
+.article-meta{color:var(--gold);font-size:9px;letter-spacing:.17em;text-transform:uppercase;margin-bottom:20px}
+h1{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(48px,7vw,82px);font-weight:400;line-height:1.01;color:#ead9b6;margin:0;max-width:900px}
+.article-quote{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-size:clamp(22px,2.7vw,31px);line-height:1.45;color:#cfc1cb;max-width:760px;margin:30px 0 0}
+.article-line{width:88px;height:1px;margin-top:32px;background:linear-gradient(90deg,var(--gold),transparent)}
+.article{width:min(820px,88vw);margin:0 auto;padding:14px 0 95px}
+.article-image{margin:20px 0 54px;width:min(100%,620px)}
+.article-image img{display:block;max-width:100%;width:auto;height:auto;max-height:700px;object-fit:contain;border:1px solid rgba(224,183,99,.10);box-shadow:0 20px 60px rgba(0,0,0,.30)}
+.article-body{max-width:700px;text-align:left}
+.article-body p{margin:0 0 25px;color:var(--muted);font-size:16px;line-height:1.84}
+.article-body .source-italic{font-family:"Cormorant Garamond",Georgia,serif;font-size:20px;color:#d7cad5}
+.article-body h3{font-family:"Cormorant Garamond",Georgia,serif;font-size:29px;line-height:1.18;font-weight:500;color:#ead8b3;margin:48px 0 19px}
+.article-nav{width:min(930px,88vw);margin:0 auto;padding:30px 0 70px;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:center}
+.article-nav a{color:#bfb1c1;font-size:9px;letter-spacing:.11em;text-transform:uppercase;line-height:1.5}
+.article-nav a:last-child{text-align:right}
+.article-nav .back-blog{color:#ead9b8;text-align:center}
+@media(max-width:760px){
+ .article-hero{padding:60px 0 38px}.article{padding-bottom:70px}
+ .article-image{margin-bottom:40px}.article-body p{font-size:15px;line-height:1.8}
+ .article-nav{grid-template-columns:1fr;gap:18px}.article-nav a,.article-nav a:last-child,.article-nav .back-blog{text-align:left}
+}
+</style></head>
+<body>
+<header><a class="brand" href="index.html">ORINAYA</a><nav><a href="index.html">Domů</a><a href="omne.html">O mně</a><a href="promena.html">Proměna</a><a class="active" href="blog.html">Blog</a></nav></header>
+<main>
+<section class="article-hero">
+ <div class="article-meta">17 · 9 min čtení</div>
+ <h1>Procitnutí</h1>
+ <p class="article-quote">„Není okamžik, kdy víme všechno. Je to chvíle, kdy už nedokážeme dál předstírat, že nevidíme.““</p>
+ <div class="article-line"></div>
+</section>
+<article class="article">
+ <figure class="article-image"><img src="blog-17.png" alt="Procitnutí"></figure>
+ <div class="article-body"><p>Prázdno, které nebylo prázdné Když jsem vydala článek Mezi světy, myslela jsem si, že jsem popsala přechod. Až později mi došlo, že jsem ho teprve začala žít.</p>
+<p>Možná jsem si myslela, že se tím něco uzavře. Že po tom všem přijde jasnější směr, další inspirace, další krok.</p>
+<p>Ale místo toho pokračovalo ticho a prázdno. A zvláštní klid, ve kterém jsem se teprve učila žít.</p>
+<p>Dřív bych se možná bála, že když nepřichází inspirace, znamená to konec. Že už nemám co říct. Že se něco zastavilo.</p>
+<p>Jenže tentokrát jsem začala chápat, že prázdno není prázdné. Že právě v něm se může rodit něco nového. Nemusíme být pořád něčím zaplnění. Nemusíme pořád vědět. Nemusíme mít plán, aby se uvnitř něco dělo.</p>
+<p>Někdy se toho uvnitř mění tolik, že slova prostě nepřijdou hned. Možná musí člověk nejdřív chvíli jen být. V tom tichu. V prostoru, kde staré už odešlo, ale nové ještě nemá jasný tvar.</p>
+<p>Byly dny, kdy mi bylo dobře. A byly dny, kdy jsem brečela a nevěděla přesně proč.</p>
+<p>Jen jsem cítila, že se ve mně něco hýbe. Něco se přeskupuje. A přesto tam byla jistota.</p>
+<p>Že jsem vedená, i když tomu nerozumím, někam mě to nese.</p>
+<p>A právě tahle důvěra mě držela. Ne plán. Ne výkon ani tlak na to, že hned musím to prázdno zaplnit, hlavně ať to necítím. Důvěra.</p>
+<p>Pak jsem jednoho večera usnula v obýváku.</p>
+<p>Probudila jsem se uprostřed noci — a najednou to bylo tam. Přišel proud myšlenek a já už nemohla spát. Usnula jsem až po páté ráno. Seděla jsem nad slovy, která se ve mně skládala už dávno. Jen jsem o tom nevěděla.</p>
+<p>Tehdy mi došlo, že ten text nezmizel. On celou dobu byl ve mně.</p>
+<p>Když odchází to, co bylo V jednu chvíli jsem si uvědomila, že mám strach.</p>
+<p>Ne z nového života, ale z toho, že když to staré opravdu pustím, odejde s tím i část mě.</p>
+<p>Část, kterou už nikdy neuvidím. Část, která mě dlouho držela pohromadě. Část, která možná trpěla, ale byla známá.</p>
+<p>Možná právě proto někdy tolik lpíme na věcech, které už nám nedělají dobře. Ne proto, že bychom je chtěli dál žít. Ale proto, že je známe.</p>
+<p>Známe staré role. Známe staré reakce. Známe prostředí, kde jsme se naučili mlčet. Známe způsoby, jak přežít.</p>
+<p>Bojíme se pustit i to, co nás už dávno svírá, protože máme strach, že s tím odejdeme i my.</p>
+<p>Ale pak mi došlo, že to byla iluze.</p>
+<p>Nepouštím sebe. Pouštím jen verzi, která se kdysi naučila přežívat. A to je něco úplně jiného.</p>
+<p>Návrat tam, kde už nemůžu dýchat Velikonoce mě vrátily do prostředí, které jsem znala.</p>
+<p>A právě proto mě překvapilo, jak cizí jsem si v něm najednou připadala.</p>
+<p>Ne proto, že by se všechno kolem změnilo.</p>
+<p>Ale protože jsem se změnila já.</p>
+<p>Najednou mnohem víc cítím, kde už nemůžu dýchat. Kde už nemůžu být sama sebou. Kde se po mně pořád tak nějak neviditelně chce, abych byla potichu. Abych moc necítila, moc neříkala, moc neviděla. Abych se zase vešla do starého obrazu.</p>
+<p>Jenže tou už nejsem.</p>
+<p>A čím víc se člověk vrací k sobě, tím víc ho některá prostředí začnou bolet. Ne proto, že by ti lidé museli být špatní. Ne proto, že by člověk neměl soucit. Ale proto, že už tělo ví. Tudy ne.</p>
+<p>Došlo mi tam také něco důležitého.</p>
+<p>Že mým úkolem není nikoho zachránit. Ani přesvědčit. Ani mu dát svoje pochopení dřív, než k němu dojde sám.</p>
+<p>Někdy je největší pomoc jen být. Naslouchat. Držet prostor. A nechat druhého člověka, aby si na své pravdy přišel sám — pokud vůbec chce. Nemůžeme žít život za někoho jiného.</p>
+<p>A já už nechci být člověk, který se kvůli druhým zmenšuje, mlčí a zadržuje dech. V takovém prostoru už nemůžu existovat.</p>
+<h3>Když se život postará A pak přišla ta známá obyčejná cesta.</h3>
+<p>Jedna z těch, u kterých si člověk myslí, že ví, kam jede. Že ví, co bude následovat. Že všechno je tak nějak „pod kontrolou“.</p>
+<p>Pustila jsem si film Tajemství.</p>
+<p>Chtěla jsem při řízení vnímat slova o tom, jak funguje naše mysl, realita a to, co si do života pouštíme. A pak, uprostřed té cesty, přišel okamžik, který mě vrátil z myšlenek a klidné jízdy do reality.</p>
+<p>Jeli jsme po dálnici. Rychlostí, ve které nemáte čas dlouho přemýšlet. Před námi auto.</p>
+<p>A najednou jsem viděla, jak od jeho kola odlétají šrouby.</p>
+<p>V tu chvíli se všechno zastavilo.</p>
+<p>Ne navenek. Ale uvnitř mě. A pak jsem zastavila i auto a jen řekla: „Bože, děkuju.“ A nechápala jsem.</p>
+<p>Mohla jsem to vnímat jako komplikaci. Jako zdržení. Jako problém.</p>
+<p>Ale já jsem v tom cítila požehnání.</p>
+<p>Šlo o pár sekund. O pár metrů. O tu tenkou hranici mezi tím, že se „jen něco stalo“, a tím, že se mohlo stát všechno.</p>
+<p>Nechtěla jsem si ani představovat, co by se stalo, kdyby to auto před námi nezastavilo. Co by se stalo, kdyby se kolo uvolnilo úplně. Co by se stalo s ním i s námi.</p>
+<p>Někdy člověk až v takové chvíli pochopí, jak křehký život je. Jak rychle se může obyčejná cesta změnit v něco, co vůbec nečekáte. A jak obrovský dar je, když se nestane to, co se stát mohlo.</p>
+<p>Ten den jsem si znovu uvědomila, že ne každé zdržení znamená, že jdeme špatně. Někdy je zdržení i zastavení ochrana. Život se postará způsobem, který pochopíme až ve chvíli, kdy nám dojde, co všechno se vlastně nestalo.</p>
+<p>A možná právě proto už nechci trávit svůj čas v prostředích, kde nemůžu dýchat. Ve vztazích, kde nemůžu být sama sebou. Na cestách, které mi moje tělo dávno označilo jako nepravdivé.</p>
+<p>Protože život není samozřejmost.</p>
+<p>A když to člověk opravdu ucítí, začne se ptát jinak: Ne: „Co se ode mě čeká?“ Ale: „Kde a s kým se opravdu cítím naživu?“</p>
+<p>Tělo ví dřív než hlava Pár dnů poté ke mně přišly dvě úplně rozdílné situace.</p>
+<p>Jedna mi ukázala, jaké to je být v souladu. Cítila jsem, že je to ono. Příval nekončící energie. Žádný tlak. Prostě jsem věděla.</p>
+<p>Hned vzápětí přišla druhá situace.</p>
+<p>Na první pohled logická. Praktická. Možná taková, u které by hlava řekla: „Tohle dává smysl. Tohle by mohla být cesta. Tady je možnost. Tady je výsledek.“</p>
+<p>Jenže moje tělo říkalo něco jiného. Ne.</p>
+<p>Cestou domů jsem se v metru rozbrečela. Nešlo to zastavit. Nebrečela jsem jen kvůli tomu jednomu dni. Brečela jsem, protože jsem najednou viděla všechny ty chvíle, kdy jsem šla přes sebe.</p>
+<p>Kdy jsem si vybírala to, co se mělo. Co se muselo. Co se hodilo. Co dávalo smysl pro druhé, ale ne pro mě. Co bylo rozumné. Co mohlo přinést jistotu. A přitom moje tělo dávno vědělo, že tudy ne.</p>
+<p>Tohle bylo jedno z největších prozření posledních dní.</p>
+<p>Že nesoulad nemusí vypadat dramaticky. Někdy vypadá velmi rozumně. A právě proto je tak těžké ho rozpoznat.</p>
+<p>Stačí jen začít vnímat sám sebe.</p>
+<p>Domov jinak Přišlo období, kdy jsem začala měnit svůj byt.</p>
+<p>Ne jen uklízet, ale vyhazovat staré věci. Přeskládávat prostor. Měnit obrazy, fotky, vůně, každý detail.</p>
+<p>Všechno, co neslo starou energii, která už se mnou neladila, muselo pryč.</p>
+<p>Protože domov není jen místo, kde spíme.</p>
+<p>Domov je pole. Prostor, který nás buď drží, nebo vysává. Prostor, který buď podporuje naši novou verzi, nebo nás pořád vrací do té staré. S každou věcí, která odešla, jako by se mi v těle udělalo víc místa a já se znova nadechla.</p>
+<p>Někdy si myslíme, že změna začíná velkým rozhodnutím.</p>
+<p>Ale někdy začne tím, že vyhodíme něco, na co jsme se už roky nemohli dívat, a dovolíme si koupit něco nového.</p>
+<p>Že vyměníme fotky. Že uklidíme kout, který jsme dlouho přehlíželi. Že si dovolíme udělat prostor krásný ne pro návštěvy, ale pro sebe.</p>
+<p>Protože i tím si říkáme: Tady žiju já. Tahle verze mě. Tahle energie.</p>
+<p>Prostor, kde stačí jen být Pak přišel víkend se ženami, na který jsem se tak těšila. Na spánek a odpočinek.</p>
+<p>Prostor, kde jsem nemusela nic vysvětlovat. Nemusela jsem se obhajovat. Nemusela jsem tlumit sebe ani své pocity.</p>
+<p>Byla tam energie, která mě držela. Ticho. Smích. Slzy. Klid. Příroda. Vědomí, že člověk nemusí být na všechno sám.</p>
+<p>A právě tam jsem si znovu uvědomila, jak moc záleží na tom, v jakém prostředí se pohybujeme.</p>
+<p>Jsou místa, kde se stáhneme. A jsou místa, kde se vracíme k sobě.</p>
+<p>Jsou lidé, po kterých jsme unavení. A jsou lidé, u kterých se dobíjíme.</p>
+<p>Vedle kterých se cítíme milovaní a vzpomeneme si, že nemusíme bojovat o prostor. Že stačí jen být — a najednou cítíme klid a přijetí.</p>
+<p>Začínám si vzpomínat Už víc než rok ke mně chodila slova, že si začnu vzpomínat. Nevěděla jsem přesně na co. Nevěděla jsem, co to znamená, jen se to pořád vracelo.</p>
+<p>A teď, když o tom píšu, brečím. Protože mám pocit, že si opravdu vzpomínám, jen ne hlavou. Tělem a prožitkem. A je to větší než já. Tak moc větší, že cítím jen pokoru a respekt před tou neskutečnou silou.</p>
+<p>Protože některé pravdy člověk neunese najednou. Musí dýchat. Plakat. A nechat je pomalu vejít do těla a projít skrz.</p>
+<p>Dlouho jsem si nechtěla připustit, že to, co se ve mně probouzí, je skutečné.</p>
+<p>Že nejsem divná. Že nejsem moc. Že nejsem mimo. Že jen začínám vidět život jinýma očima.</p>
+<p>Nedávno jsem si večer pustila film Celestinské proroctví.</p>
+<p>A kdo ho ještě neviděl, tomu ho vřele doporučuji. Ne proto, že by člověku dal jednu hotovou odpověď. Ale protože v sobě nese tolik vrstev, že ho pokaždé vidíme jinak podle toho, kde zrovna jsme.</p>
+<p>Když jsem ho viděla minulý rok, vnímala jsem ho z úrovně, na které jsem tehdy byla. Teď jsem ho viděla znovu. A najednou se mi tam spojily věci, které jsem dřív neviděla tak jasně.</p>
+<p>Že celý život je vlastně o energii. O tom, komu ji dáváme. Kde ji ztrácíme. Kde si o ni říkáme pozorností. Kde se ji snažíme získat přes kontrolu, závislost, očekávání nebo bolest. A jak moc se to promítá do vztahů, do rodiny, do práce, do každého prostoru, kde se potkáváme s druhými lidmi.</p>
+<p>Najednou jsem viděla, že mnoho věcí, které jsem dřív neuměla pojmenovat, byl právě boj o energii.</p>
+<p>O pozornost. O napojení. O potvrzení.</p>
+<p>A zároveň jsem pochopila, že skutečná cesta není v tom, abychom energii brali druhým. Ale abychom se znovu napojili na sebe. Na své tělo. Na své srdce. Na vnitřní vedení. Protože jen tehdy člověk přestává žít z nedostatku a začíná tvořit z prostoru, kde už nemusí bojovat.</p>
+<p>Jen důvěřuje. Naslouchá. A jde.</p>
+<p>Možná právě tehdy začínáme zažívat to, čemu říkám nebe na zemi.</p>
+<p>Ne jako dokonalý život bez bolesti. Ale jako stav, kdy jsme v souladu se sebou. A přestaneme popírat hlas, který nás celou dobu vedl domů.</p>
+<p>Od léta jsem před tou pravdou utíkala.</p>
+<p>Snažila jsem se ji zlehčit. Zaškatulkovat. Vysvětlit si ji tak, aby se vešla do běžného života. Přesvědčit sama sebe, že to není ono. Že to přejde. Že se to dá odložit. Ale některé pravdy nezmizí jen proto, že před nimi zavřeme oči.</p>
+<p>Vracejí se. Zesilují. Volají nás zpátky k sobě. A po deseti měsících mi došlo, že už to nemůžu dál odsouvat.</p>
+<p>To, co jsem v sobě objevila, není chyba. Není výmysl. Není únik. Je to součást toho, kým jsem.</p>
+<h3>Proč píšu S tím se mi taky postupně poskládala další část skládačky.</h3>
+<p>Dlouho jsem nechápala, proč píšu.</p>
+<p>Proč ze mě vycházejí slova, která jsou někdy větší než já sama.</p>
+<p>Proč mám potřebu sdílet něco, co se nedá úplně vysvětlit. Proč píšu věci, které jsou někdy až moc mimo běžné vnímání. Až teď mi dochází, že to nepíšu jen tak, ale ukotvuju svou cestu tady.</p>
+<p>Pro sebe i pro ty, kteří procházejí něčím podobným a zatím pro to nemají slova.</p>
+<p>Protože v tom nejsme sami. Je nás víc. Mnohem víc, než si myslíme.</p>
+<p>Lidé, kteří se najednou probouzejí ze starých vzorců. Lidé, kterým přestává dávat smysl život postavený jen na výkonu, kontrole a přizpůsobení. Lidé, kteří už nemůžou dýchat tam, kde dřív fungovali. Lidé, kteří se učí důvěřovat tělu víc než hluku okolo. Lidé, kteří si začínají vzpomínat.</p>
+<p>A právě proto píšu.</p>
+<p>Ne proto, že mám všechno pochopené. Ale protože cesta je cíl.</p>
+<p>A jak se říká — nejkrásnější je den, kdy jste se narodili, a pak ten další, kdy jste zjistili proč.</p>
+<h3>Procitnutí není ohňostroj A pak přišel další aha moment.</h3>
+<p>Dřív jsem si myslela, že procitnutí bude vypadat jako jasný okamžik.</p>
+<p>Jako velké světlo. Jako jistota. Jako odpověď.</p>
+<p>Ale čím víc tím procházím, tím víc vidím, že procitnutí je často mnohem obyčejnější.</p>
+<p>Je to chvíle, kdy zjistíte, že už nedokážete mlčet tam, kde jste mlčeli roky. Je to pláč v metru, protože tělo konečně řekne pravdu. Je to cesta po dálnici, která vám připomene, že život je dar. Je to úklid bytu, při kterém pochopíte, že stará energie už nemá kam patřit. Je to návrat do známého prostředí, kde najednou zjistíte, že už tam nemůžete dýchat. Je to prázdno po článku, po vztahu, po staré identitě, po všem, co shořelo.</p>
+<p>A pak tichý hlas uvnitř: Tudy už ne.</p>
+<p>A zároveň: Jdi dál.</p>
+<p>Procitnutí není o tom, že najednou máte všechno vyřešené.</p>
+<p>Je to chvíle, kdy už nedokážete dál předstírat, že nevidíte.</p>
+<p>A jakmile jednou začnete vidět život jinýma očima, už to nejde odvidět.</p>
+<p>Starý způsob života přestane fungovat.</p>
+<p>Ne proto, že byste se rozhodli všechno zničit. Ale protože to, co nebylo pravdivé, prostě shoří.</p>
+<p>A najednou zjistíte, že být jiní není trest, ale že je to ta největší výhra.</p>
+<p>Protože právě to, co jsme na sobě celý život nechápali, nás nakonec přivede domů.</p>
+<p>Některé věci se nedají vysvětlit tak, aby jim rozuměl každý. Ale každý, kdo je připravený, pochopí.</p>
+<p>Některé cesty se nedají obhájit před těmi, kdo je nikdy nešli. A některé pravdy se nedají odložit jen proto, že je neumíme zařadit.</p>
+<p>Jednoho dne je prostě přestaneme popírat a uvědomíme si, že i tohle jsme my.</p>
+<p>Děkuju, že čteš.</p></div>
+</article>
+<section class="whisper"><div class="line"></div><p>Tady končí slova... a začíná šepot duše.</p></section>
+<nav class="article-nav"><a href="clanek-16-mezi-svety-a-mozna-o-kousek-dal.html">← Mezi světy a možná o kousek dál</a><a class="back-blog" href="blog.html">Zpět na blog</a><a href="clanek-18-nova-identita.html">Nová identita →</a></nav>
+</main>
+<footer><div class="footer-logo">ORINAYA</div><div class="copy">© 2026 ORINAYA</div></footer>
+</body></html>

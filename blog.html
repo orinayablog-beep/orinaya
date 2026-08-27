@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080611">
+<title>Blog | ORINAYA</title>
+<meta name="description" content="Osobní texty, příběhy a inspirace na cestě zpět k sobě.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500&family=Italianno&family=Allura&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --bg:#080611;--gold:#d7aa57;--gold2:#f1d79b;--text:#f3ebf2;
+  --muted:#d8ced7;--muted2:#a99dad;--line:rgba(224,183,99,.16)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{
+  margin:0;color:var(--text);font-family:"Montserrat",Arial,sans-serif;font-weight:300;
+  background:
+    radial-gradient(circle at 50% 5%,rgba(96,43,127,.18),transparent 34rem),
+    radial-gradient(circle at 12% 45%,rgba(57,31,99,.10),transparent 38rem),
+    linear-gradient(180deg,#080611 0%,#0b0715 48%,#090711 100%);
+  overflow-x:hidden
+}
+a{color:inherit;text-decoration:none}
+header{
+  position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:24px;
+  padding:20px clamp(20px,5vw,72px);background:rgba(8,6,17,.82);backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(224,183,99,.08)
+}
+.brand{font-family:"Cormorant Garamond",Georgia,serif;letter-spacing:.18em;font-size:24px;color:#e8d5ad}
+nav{display:flex;gap:26px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+nav a{position:relative;color:#c9bdc9;font-size:9px;letter-spacing:.15em;text-transform:uppercase;padding-bottom:6px}
+nav a:after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--gold);transition:width .25s ease}
+nav a:hover:after,nav a.active:after{width:100%}
+nav a.active{color:#ead9b8}
+footer{border-top:1px solid var(--line);padding:50px 22px 40px;text-align:center}
+.footer-logo{font-family:"Cormorant Garamond",Georgia,serif;font-size:34px;letter-spacing:.17em;color:#e7d3aa}
+.copy{margin-top:25px;color:#96899e;font-size:9px;letter-spacing:.17em}
+.whisper{padding:92px 22px 100px;text-align:center;border-top:1px solid rgba(224,183,99,.08)}
+.whisper .line{width:80px;height:1px;margin:0 auto 32px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.whisper p{margin:0 auto;max-width:920px;font-family:"Italianno",cursive;font-size:clamp(38px,5.3vw,58px);line-height:1.14;color:#e7d9c5;text-shadow:0 0 8px rgba(215,170,87,.08)}
+@media(max-width:760px){
+  header{padding:18px;gap:15px}.brand{font-size:21px}nav{gap:13px}nav a{font-size:8px}
+}
+
+
+
+
+.hero{
+  min-height:650px;
+  display:grid;
+  grid-template-columns:minmax(0,1.03fr) minmax(430px,.97fr);
+  align-items:stretch;
+  border-bottom:1px solid var(--line);
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 64% 45%,rgba(110,52,143,.16),transparent 38%),
+    linear-gradient(180deg,#080611 0%,#0a0713 100%);
+}
+.hero-copy{
+  position:relative;z-index:3;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:72px 4.2vw 76px max(5vw,34px);
+  background:linear-gradient(90deg,rgba(8,6,17,1) 0%,rgba(8,6,17,.985) 76%,rgba(8,6,17,.90) 100%);
+}
+.hero-brand{
+  display:inline-flex;flex-direction:column;align-items:flex-start;
+  width:max-content;margin-bottom:42px
+}
+.hero-brand-star{
+  width:100%;text-align:center;color:var(--gold2);
+  font-size:30px;line-height:1;margin-bottom:5px;
+  text-shadow:0 0 16px rgba(215,170,87,.5)
+}
+.hero-brand-name{
+  font-family:"Cormorant Garamond",Georgia,serif;
+  color:#e6c787;font-size:clamp(24px,2.1vw,31px);
+  letter-spacing:.22em;line-height:1;text-transform:uppercase
+}
+.kicker{
+  color:var(--gold);font-size:10px;letter-spacing:.34em;text-transform:uppercase;
+  margin-bottom:18px;font-weight:500
+}
+h1{
+  font-family:"Cormorant Garamond",Georgia,serif;
+  font-size:clamp(76px,8.8vw,124px);font-weight:400;line-height:.86;
+  margin:0;color:#ead9b6;letter-spacing:-.025em;text-transform:uppercase
+}
+.hero-script{
+  margin:30px 0 0;
+  max-width:720px;
+  font-family:"Allura","Italianno",cursive;
+  font-size:clamp(35px,4.15vw,50px);
+  line-height:1.06;
+  color:#f0e8e2;
+  font-weight:400
+}
+.hero-script span{display:block}
+.hero-script .gold-word{color:#d9af68}
+.hero-divider{
+  display:flex;align-items:center;gap:14px;
+  width:min(100%,560px);
+  margin:26px 0 0
+}
+.hero-divider:before,.hero-divider:after{
+  content:"";height:1px;flex:1;
+  background:linear-gradient(90deg,transparent,rgba(215,170,87,.78))
+}
+.hero-divider:after{background:linear-gradient(90deg,rgba(215,170,87,.78),transparent)}
+.hero-star{
+  color:var(--gold2);
+  font-size:24px;line-height:1;
+  text-shadow:0 0 12px rgba(215,170,87,.45)
+}
+.hero-bridge{
+  margin:15px 0 0;
+  font-family:"Allura","Italianno",cursive;
+  font-size:clamp(36px,4.4vw,51px);
+  line-height:1;
+  color:#d9af68
+}
+.hero-art{
+  position:relative;z-index:1;min-height:650px;
+  background:
+    linear-gradient(90deg,rgba(8,6,17,.86) 0%,rgba(8,6,17,.18) 24%,rgba(8,6,17,.02) 60%),
+    url("kolibrik-blog-FIX.png") center/cover no-repeat;
+}
+.hero-art:after{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 43% 47%,rgba(243,194,102,.10),transparent 24%),
+    linear-gradient(180deg,rgba(8,6,17,.03),rgba(8,6,17,.16));
+  pointer-events:none
+}
+.scroll-note{
+  display:inline-block;margin-top:28px;
+  color:#b7a9b9;font-size:9px;letter-spacing:.17em;text-transform:uppercase
+}
+.posts-wrap{width:min(1080px,90vw);margin:0 auto;padding:95px 0 110px}
+.posts-head{display:flex;justify-content:space-between;gap:28px;align-items:end;padding-bottom:24px;border-bottom:1px solid var(--line)}
+.posts-head h2{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(40px,5vw,62px);font-weight:400;color:#ead8b3;margin:0}
+.posts-head p{margin:0;color:#9f91a2;font-size:10px;letter-spacing:.15em;text-transform:uppercase}
+.posts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:56px}
+.post{padding:44px 0 48px;border-bottom:1px solid var(--line)}
+.post-meta{color:var(--gold);font-size:9px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:15px}
+.post h2{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(30px,3.3vw,43px);font-weight:400;line-height:1.06;color:#eadde5;margin:0}
+.post .quote{font-family:"Cormorant Garamond",Georgia,serif;font-size:19px;font-style:italic;line-height:1.5;color:#cbbfca;margin:19px 0 0;max-width:510px}
+.read{position:relative;display:inline-block;margin-top:23px;padding-bottom:7px;color:#ead9b8;font-size:10px;letter-spacing:.15em;text-transform:uppercase}
+.read:after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:linear-gradient(90deg,var(--gold),rgba(215,170,87,.35))}
+@media(max-width:760px){
+  .hero{min-height:620px;padding:86px 18px 68px;background:linear-gradient(180deg,rgba(8,6,17,.92) 0%,rgba(8,6,17,.74) 48%,rgba(8,6,17,.42) 100%),url("kolibrik-blog.png") 72% center/auto 100% no-repeat}.hero-inner{max-width:94vw}.hero-script{font-size:clamp(31px,9vw,42px);max-width:94vw}.hero-bridge{font-size:clamp(31px,9vw,42px)}
+  .posts-wrap{padding:70px 0 85px}.posts-head{display:block}.posts-head p{margin-top:12px}
+  .posts{grid-template-columns:1fr}.post{padding:36px 0 40px}
+}
+
+  .hero-copy{
+    min-height:520px;
+    padding:70px 7vw 58px;
+    background:
+      linear-gradient(180deg,rgba(8,6,17,.98) 0%,rgba(8,6,17,.92) 100%)
+  }
+  .hero-art{
+    min-height:390px;
+    background:
+      linear-gradient(180deg,rgba(8,6,17,.48) 0%,rgba(8,6,17,.04) 35%,rgba(8,6,17,.18) 100%),
+      url("kolibrik-blog-FIX.png") center 42%/cover no-repeat
+  }
+  .hero-script{font-size:clamp(34px,8vw,46px);max-width:92vw}
+  .hero-bridge{font-size:clamp(38px,9vw,50px)}
+  .hero-divider{width:min(100%,500px)}
+}
+
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-copy{min-height:560px;padding:58px 7vw 58px}
+  .hero-brand{margin-bottom:34px}
+  .hero-art{
+    min-height:390px;
+    background:
+      linear-gradient(180deg,rgba(8,6,17,.48) 0%,rgba(8,6,17,.04) 35%,rgba(8,6,17,.18) 100%),
+      url("kolibrik-blog-FIX.png") center 42%/cover no-repeat
+  }
+  .hero-script{font-size:clamp(34px,8vw,46px);max-width:92vw}
+  .hero-bridge{font-size:clamp(36px,9vw,48px)}
+  .hero-divider{width:min(100%,500px)}
+}
+
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="index.html">ORINAYA</a>
+  <nav><a href="index.html">Domů</a><a href="omne.html">O mně</a><a href="promena.html">Proměna</a><a class="active" href="blog.html">Blog</a></nav>
+</header>
+<main>
+
+
+
+<section class="hero">
+  <div class="hero-copy">
+    <div class="hero-brand" aria-label="ORINAYA">
+      <div class="hero-brand-star">✦</div>
+      <div class="hero-brand-name">ORINAYA</div>
+    </div>
+
+    <div class="kicker">Příběhy · vhledy · inspirace</div>
+    <h1>Blog</h1>
+
+    <div class="hero-script">
+      <span>Někdy stačí pár řádků a všechno se uvnitř změní.</span>
+      <span>Začti se do textů, které nejsou psané hlavou, ale <span class="gold-word">srdcem...</span></span>
+    </div>
+
+    <div class="hero-divider" aria-hidden="true">
+      <span class="hero-star">✦</span>
+    </div>
+
+    <div class="hero-bridge">Cesta, která nás spojuje.</div>
+    <a class="scroll-note" href="#clanky">Začít číst</a>
+  </div>
+
+  <div class="hero-art" aria-hidden="true"></div>
+</section>
+<section class="posts-wrap" id="clanky">
+ <div class="posts-head"><h2>Texty</h2><p>19 příběhů a zastavení</p></div>
+ <div class="posts">
+<article class="post">
+  <div class="post-meta">19 · 3 min čtení</div>
+  <h2><a href="clanek-19-ticho-v-hlave.html">Ticho v hlavě</a></h2>
+  <p class="quote">„Když mysl ztichne, život začne být konečně slyšet..“</p>
+  <a class="read" href="clanek-19-ticho-v-hlave.html">Číst dál</a>
+</article>
+<article class="post">
+  <div class="post-meta">18 · 5 min čtení</div>
+  <h2><a href="clanek-18-nova-identita.html">Nová identita</a></h2>
+  <p class="quote">„Nová identita nevzniká tím, že se staneme někým jiným, ale tím, že přestaneme opouštět to, kým už dávno jsme.“</p>
+  <a class="read" href="clanek-18-nova-identita.html">Číst dál</a>
+</article>
+<article class="post">
+  <div class="post-meta">17 · 9 min čtení</div>
+  <h2><a href="clanek-17-procitnuti.html">Procitnutí</a></h2>
+  <p class="quote">„Není okamžik, kdy víme všechno. Je to chvíle, kdy už nedokážeme dál předstírat, že nevidíme.“</p>
+  <a class="read" href="clanek-17-procitnuti.html">Číst dál</a>
+</article>
+<article class="post">
+  <div class="post-meta">16 · 4 min čtení</div>
+  <h2><a href="clanek-16-mezi-svety-a-mozna-o-kousek-dal.html">Mezi světy a možná o kousek dál</a></h2>
+  <p class="quote">„Nejtěžší krok není něco získat, ale pustit to, co už nejsem.“</p>
+  <a class="read" href="clanek-16-mezi-svety-a-mozna-o-kousek-dal.html">Číst dál</a>
+</article>
+<article class="post">
+  <div class="post-meta">15 · 5 min čtení</div>
+  <h2><a href="clanek-15-kdyz-uz-neni-cesta-zpet.html">Když už není cesta zpět</a></h2>
+  <p class="quote">„Když přijde čas, duše už ví.“</p>
+  <a class="read" href="clanek-15-kdyz-uz-neni-cesta-zpet.html">Číst dál</a>
+</article>
+<article class="post">
+  <div class="post-meta">14 · 4 min čtení</div>
+  <h2><a href="clanek-14-odevzdani-kdyz-telo-prestane-bojovat.html">Odevzdání: Když tělo přestane bojovat</a></h2>
+  <p class="quote">„Odevzdání není kapitulace. Je to důvěra, že život ví víc než tvůj strach.“</p>
+  <a class="read" href="clanek-14-odevzdani-kdyz-telo-prestane-bojovat.html">Číst dál</a>
+</article>
+<article class="post">
+  <div class="post-meta">13 · 4 min čtení</div>
+  <h2><a href="clanek-13-ne-soulad-mysli-tela-a-duse.html">Ne-soulad mysli, těla a duše</a></h2>
+  <p class="quote">„Integrace nezačíná dalším léčením. Začíná ve chvíli, kdy tělo konečně ucítí bezpečí.“</p>
+  <a class="read" href="clanek-13-ne-soulad-mysli-tela-a-duse.html">Číst dál</a>
+</article>
+<article class="post">
+  <div class="post-meta">12 · 4 min čtení</div>
+  <h2><a href="clanek-12-rok-ktery-me-prepsal.html">Rok, který mě přepsal…</a></h2>
+  <p class="quote">„Když se rozpadne všechno, co nejsi… začne se rodit to, kým opravdu jsi.“</p>
+  <a class="read" href="clanek-12-rok-ktery-me-prepsal.html">Číst dál</a>
+</article>
+<article class="post">
+  <div class="post-meta">11 · 3 min čtení</div>
+  <h2><a href="clanek-11-kdo-jsem-kdyz-se-nikdo-nediva.html">Kdo jsem, když se nikdo nedívá?</a></h2>
+  <p class="quote">„Nehledáš odpověď. Hledáš odvahu vidět to, co je v Tobě dávno napsáno.“</p>
+  <a class="read" href="clanek-11-kdo-jsem-kdyz-se-nikdo-nediva.html">Číst dál</a>
+</article>
+<article class="post">
+  <div class="post-meta">10 · 4 min čtení</div>
+  <h2><a href="clanek-10-manifestace-v-praxi-jak-se-bali-stalo-mym-dukazem.html">Manifestace v praxi: Jak se Bali stalo mým důkazem</a></h2>
+  <p class="quote">„Manifestace není jen sen na vision boardu. Je to proces, který mě skrze slzy a transformaci dovedl k vnitřnímu klidu, lásce a návratu domů.“</p>
+  <a class="read" href="clanek-10-manifestace-v-praxi-jak-se-bali-stalo-mym-dukazem.html">Číst dál</a>
+</article>
+<article class="post">
+  <div class="post-meta">09 · 3 min čtení</div>
+  <h2><a href="clanek-09-kroky-do-neznama.html">Kroky do neznáma</a></h2>
+  <p class="quote">„Víra není o tom vidět cestu, ale udělat první krok i tehdy, když ji nevidíš...“</p>
+  <a class="read" href="clanek-09-kroky-do-neznama.html">Číst dál</a>
+</article>
+<article class="post">
+  <div class="post-meta">08 · 5 min čtení</div>
+  <h2><a href="clanek-08-sen-ktery-se-rozpadl.html">Sen, který se rozpadl...</a></h2>
+  <p class="quote">„Tehdy jsem věřila v dokonalý sen. Dnes vím, že opravdová síla je věřit sama v sebe.“</p>
+  <a class="read" href="clanek-08-sen-ktery-se-rozpadl.html">Číst dál</a>
+</article>
+<article class="post">
+  <div class="post-meta">07 · 4 min čtení</div>
+  <h2><a href="clanek-07-volno-neni-luxus-je-to-navrat-k-sobe.html">Volno není luxus. Je to návrat k sobě.</a></h2>
+  <p class="quote">„Když si dovolíš čas pro sebe, dáváš tím světu tu nejlepší verzi sebe.“</p>
+  <a class="read" href="clanek-07-volno-neni-luxus-je-to-navrat-k-sobe.html">Číst dál</a>
+</article>
+<article class="post">
+  <div class="post-meta">06 · 3 min čtení</div>
+  <h2><a href="clanek-06-souvislosti-ktere-se-spojuji-v-jeden-obraz.html">Souvislosti, které se spojují v jeden obraz</a></h2>
+  <p class="quote">„To, co hledáš venku, už dávno žije uvnitř Tebe.“</p>
+  <a class="read" href="clanek-06-souvislosti-ktere-se-spojuji-v-jeden-obraz.html">Číst dál</a>
+</article>
+<article class="post">
+  <div class="post-meta">05 · 3 min čtení</div>
+  <h2><a href="clanek-05-vztahy-a-zavislosti.html">Vztahy a závislosti</a></h2>
+  <p class="quote">„Krása se nerodí z dokonalosti, ale z odvahy být pravdivý sám k sobě...“</p>
+  <a class="read" href="clanek-05-vztahy-a-zavislosti.html">Číst dál</a>
+</article>
+<article class="post">
+  <div class="post-meta">04 · 3 min čtení</div>
+  <h2><a href="clanek-04-spiritualita-vs-nabozenstvi.html">Spiritualita vs. náboženství</a></h2>
+  <p class="quote">„Učíš mě každým dnem být o trochu lepší...“</p>
+  <a class="read" href="clanek-04-spiritualita-vs-nabozenstvi.html">Číst dál</a>
+</article>
+<article class="post">
+  <div class="post-meta">03 · 3 min čtení</div>
+  <h2><a href="clanek-03-a-pritom-staci-tak-malo-ver-si.html">A přitom stačí tak málo… Věř si!</a></h2>
+  <p class="quote">„Není to náhoda, že to čteš právě teď – možná je to i Tvůj den, kdy začneš věřit víc sobě, než hlasům zvenčí.“</p>
+  <a class="read" href="clanek-03-a-pritom-staci-tak-malo-ver-si.html">Číst dál</a>
+</article>
+<article class="post">
+  <div class="post-meta">02 · 2 min čtení</div>
+  <h2><a href="clanek-02-kdyz-se-na-chvili-zastavim.html">Když se na chvíli zastavím...</a></h2>
+  <p class="quote">„Když se na chvíli zastavím, dochází mi, jak moc se změnilo...“</p>
+  <a class="read" href="clanek-02-kdyz-se-na-chvili-zastavim.html">Číst dál</a>
+</article>
+<article class="post">
+  <div class="post-meta">01 · 2 min čtení</div>
+  <h2><a href="clanek-01-ocekavani-nejsou-laska.html">Očekávání nejsou láska</a></h2>
+  <p class="quote">„Někdy stačí říct jedno upřímné NE, abychom konečně mohli říct ANO sami sobě.“</p>
+  <a class="read" href="clanek-01-ocekavani-nejsou-laska.html">Číst dál</a>
+</article></div>
+</section>
+<section class="whisper"><div class="line"></div><p>Tady končí slova... a začíná šepot duše.</p></section>
+</main>
+<footer><div class="footer-logo">ORINAYA</div><div class="copy">© 2026 ORINAYA</div></footer>
+</body></html>

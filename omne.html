@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080611">
+<title>O mně | ORINAYA</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#080611;
+  --gold:#d7aa57;
+  --text:#f3ebf2;
+  --muted:#c0b5c7;
+  --line:rgba(224,183,99,.16);
+}
+
+*{box-sizing:border-box}
+
+html{
+  scroll-behavior:smooth;
+  background:var(--bg);
+}
+
+body{
+  margin:0;
+  color:var(--text);
+  font-family:"Montserrat",Arial,sans-serif;
+  font-weight:300;
+  background:
+    radial-gradient(circle at 50% 8%,rgba(101,53,131,.18),transparent 28rem),
+    radial-gradient(circle at 15% 68%,rgba(51,34,104,.12),transparent 28rem),
+    linear-gradient(180deg,#080611 0%,#0b0715 46%,#090711 100%);
+  overflow-x:hidden;
+}
+
+a{color:inherit;text-decoration:none}
+
+/* ===== HEADER ===== */
+header{
+  position:sticky;
+  top:0;
+  z-index:30;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:20px clamp(20px,5vw,72px);
+  background:rgba(8,6,17,.82);
+  border-bottom:1px solid rgba(224,183,99,.08);
+  backdrop-filter:blur(16px);
+}
+
+.brand{
+  font-family:"Cormorant Garamond",Georgia,serif;
+  letter-spacing:.18em;
+  font-size:24px;
+  color:#e8d5ad;
+}
+
+.back{
+  position:relative;
+  color:#d8c7b0;
+  font-size:9px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  padding-bottom:6px;
+}
+
+.back:after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:0;
+  height:1px;
+  background:var(--gold);
+  transition:width .25s ease;
+}
+
+.back:hover:after{width:100%}
+
+/* ===== HERO O MNĚ ===== */
+.about-hero{
+  position:relative;
+  min-height:500px;
+  display:grid;
+  align-items:center;
+  overflow:hidden;
+  border-bottom:1px solid var(--line);
+}
+
+/*
+  DESKTOP ÚPRAVA:
+  Fotka je o kousek blíž k textu.
+  Původně byla na 96 % a 118 %.
+  Teď je na 88 % a 123 %.
+*/
+.about-photo{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      90deg,
+      #080611 0%,
+      rgba(8,6,17,.94) 28%,
+      rgba(8,6,17,.48) 49%,
+      rgba(8,6,17,.08) 78%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(8,6,17,.02),
+      rgba(8,6,17,.30)
+    ),
+    url("./omne-hero.jpg") 88% 57% / auto 123% no-repeat;
+}
+
+.about-photo:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 67% 34%,rgba(224,172,72,.11),transparent 24%),
+    linear-gradient(180deg,transparent 66%,#080611 100%);
+}
+
+.about-copy{
+  position:relative;
+  z-index:2;
+  width:min(620px,82vw);
+  margin-left:max(6vw,28px);
+  padding:54px 0 46px;
+}
+
+.about-copy .kicker{
+  color:var(--gold);
+  font-size:10px;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  font-weight:500;
+  margin-bottom:22px;
+}
+
+.about-copy h1{
+  margin:0;
+  max-width:620px;
+  font-family:"Cormorant Garamond",Georgia,serif;
+  font-weight:400;
+  font-size:clamp(42px,5vw,68px);
+  line-height:1.04;
+  color:#ead9b6;
+  text-wrap:balance;
+}
+
+.about-copy .hero-line{
+  width:82px;
+  height:1px;
+  margin-top:34px;
+  background:linear-gradient(90deg,#d7aa57,transparent);
+  box-shadow:0 0 10px rgba(215,170,87,.28);
+}
+
+/* ===== TEXTY ===== */
+.story{
+  width:min(820px,86vw);
+  margin:0 auto;
+  padding:18px 0 110px;
+}
+
+.block{
+  padding:30px 0;
+}
+
+.block p{
+  margin:0;
+  color:var(--muted);
+  font-size:clamp(17px,1.7vw,21px);
+  line-height:1.78;
+  white-space:pre-line;
+}
+
+.block p+p{margin-top:18px}
+
+.list-title,
+.emphasis,
+.final p{
+  font-family:"Cormorant Garamond",Georgia,serif;
+}
+
+.list-title{
+  color:#ead8b3!important;
+  font-size:clamp(27px,3.2vw,40px)!important;
+  line-height:1.25!important;
+  margin-bottom:18px!important;
+}
+
+.emphasis{
+  color:#ead8b3!important;
+  font-size:clamp(25px,3.1vw,40px)!important;
+  line-height:1.45!important;
+  margin-bottom:16px!important;
+}
+
+/* ===== DĚLIČE ===== */
+.divider{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:48px;
+  gap:12px;
+}
+
+.divider:before{
+  content:"";
+  display:block;
+  width:96px;
+  height:1px;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(221,177,89,.74),
+    transparent
+  );
+  box-shadow:0 0 12px rgba(218,170,75,.22);
+}
+
+.divider-dot{
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:#ead4a3;
+  box-shadow:0 0 10px rgba(232,191,104,.7);
+  flex:0 0 4px;
+}
+
+/* ===== ZÁVĚR ===== */
+.final{
+  text-align:center;
+  padding:62px 0 86px;
+}
+
+.final p{
+  margin:0 auto;
+  max-width:760px;
+  color:#f4edf3;
+  font-size:clamp(32px,5vw,62px);
+  line-height:1.16;
+}
+
+.final .cta-link{
+  position:relative;
+  display:inline-block;
+  margin-top:68px;
+  padding:0 0 8px;
+  color:#ead9b8;
+  font-size:10px;
+  font-weight:400;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+
+.final .cta-link:after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:100%;
+  height:1px;
+  background:linear-gradient(90deg,#d7aa57,rgba(215,170,87,.45));
+  box-shadow:0 0 8px rgba(215,170,87,.18);
+}
+
+footer{
+  border-top:1px solid var(--line);
+  padding:44px 20px;
+  text-align:center;
+  color:#74697c;
+  font-size:10px;
+  letter-spacing:.16em;
+}
+
+/* ===== JEMNÉ ANIMACE ===== */
+.reveal-soft{
+  opacity:0;
+  transform:translate3d(0,16px,0);
+  filter:blur(3px);
+  transition:
+    opacity .72s cubic-bezier(.22,.61,.36,1),
+    transform .72s cubic-bezier(.22,.61,.36,1),
+    filter .72s ease;
+  transition-delay:var(--reveal-delay,0ms);
+  will-change:opacity,transform,filter;
+}
+
+.reveal-soft.is-visible{
+  opacity:1;
+  transform:translate3d(0,0,0);
+  filter:blur(0);
+}
+
+.orinaya-page-fade{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  pointer-events:none;
+  opacity:0;
+  background:#080611;
+  transition:opacity .22s ease;
+}
+
+html.is-leaving .orinaya-page-fade{
+  opacity:1;
+  pointer-events:auto;
+}
+
+html.is-entering .orinaya-page-fade{
+  opacity:1;
+}
+
+/* ===== MOBIL ===== */
+@media(max-width:760px){
+  header{
+    padding:18px 20px;
+  }
+
+  .brand{
+    font-size:20px;
+  }
+
+  .back{
+    font-size:8px;
+  }
+
+  .about-hero{
+    min-height:calc(100svh - 118px);
+    align-items:end;
+  }
+
+  /* MOBILNÍ FOTO ZŮSTÁVÁ STEJNÉ */
+  .about-photo{
+    background:
+      linear-gradient(
+        180deg,
+        rgba(8,6,17,.02) 0%,
+        rgba(8,6,17,.08) 34%,
+        rgba(8,6,17,.68) 74%,
+        #080611 100%
+      ),
+      url("./omne-hero.jpg") 68% 34% / auto 92% no-repeat;
+  }
+
+  .about-copy{
+    width:78vw;
+    max-width:620px;
+    margin:0 auto;
+    padding:0 0 22px;
+  }
+
+  .about-copy .kicker{
+    margin-bottom:12px;
+  }
+
+  .about-copy h1{
+    font-size:clamp(29px,7.8vw,37px);
+    line-height:1;
+  }
+
+  .about-copy .hero-line{
+    margin-top:18px;
+  }
+
+  .story{
+    padding:22px 0 76px;
+  }
+
+  .block{
+    padding:28px 0;
+  }
+
+  .block p{
+    font-size:16px;
+    line-height:1.72;
+  }
+
+  .block p+p{
+    margin-top:16px;
+  }
+
+  .list-title{
+    font-size:28px!important;
+  }
+
+  .emphasis{
+    font-size:27px!important;
+  }
+
+  .divider{
+    height:44px;
+  }
+
+  .divider:before{
+    width:78px;
+  }
+
+  .final{
+    padding:54px 0 70px;
+  }
+
+  .final p{
+    font-size:clamp(30px,9vw,42px);
+  }
+
+  .final .cta-link{
+    margin-top:52px;
+  }
+}
+
+
+/* ===== MOBIL NA ŠÍŘKU · JEMNĚ UPRAVENÁ KOMPOZICE ===== */
+@media (max-width:950px) and (orientation:landscape){
+  .about-hero{
+    min-height:calc(100svh - 118px);
+    align-items:end;
+  }
+
+  .about-photo{
+    background:
+      linear-gradient(
+        90deg,
+        #080611 0%,
+        rgba(8,6,17,.92) 26%,
+        rgba(8,6,17,.44) 48%,
+        rgba(8,6,17,.06) 80%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(8,6,17,.02) 0%,
+        rgba(8,6,17,.08) 34%,
+        rgba(8,6,17,.64) 74%,
+        #080611 100%
+      ),
+      url("./omne-hero.jpg") 90% 36% / auto 84% no-repeat;
+  }
+
+  .about-copy{
+    width:50vw;
+    max-width:520px;
+    margin-left:6vw;
+    margin-right:auto;
+    padding:0 0 22px;
+  }
+
+  .about-copy .kicker{
+    margin-bottom:10px;
+  }
+
+  .about-copy h1{
+    font-size:clamp(26px,4.9vw,34px);
+    line-height:1.01;
+    max-width:100%;
+  }
+
+  .about-copy .hero-line{
+    margin-top:16px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .reveal-soft{
+    opacity:1!important;
+    transform:none!important;
+    filter:none!important;
+    transition:none!important;
+  }
+
+  .orinaya-page-fade{
+    display:none!important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a class="brand" href="/">ORINAYA</a>
+  <a class="back" href="/">← Zpět domů</a>
+</header>
+
+<section class="about-hero">
+  <div class="about-photo" aria-hidden="true"></div>
+
+  <div class="about-copy">
+    <div class="kicker">O mně</div>
+    <h1>„Nevěděla jsem, kdo budu. Jen jsem cítila, že už nemůžu zůstat tím, kým jsem byla.“</h1>
+    <div class="hero-line"></div>
+  </div>
+</section>
+
+<main class="story">
+
+  <section class="block">
+    <p class="list-title">Dřív jsem si myslela, že…</p>
+    <p>…musím být hodná holka.
+…musím všechno zvládnout.
+…musím vydržet i to, co bolí.
+…že když budu milovat, někdo si toho všimne a vrátí mi to.
+…že na sebe nemám tolik myslet, že je to sobecké.
+…že štěstí je venku. Až se něco stane. Až mě někdo zachrání.
+Až…</p>
+  </section>
+
+  <div class="divider"><div class="divider-dot"></div></div>
+
+  <section class="block">
+    <p class="list-title">Dnes už vím, že…</p>
+    <p>…nepřišla jsem zachraňovat, ale zářit.
+…moje hodnota není v tom, co dělám, ale v tom, kdo jsem.
+…že láska, kterou hledám, začíná uvnitř.
+…že když se probudí duše, starý život se rozpadne. Ale to nové, co vzniká, je pravdivé.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="block">
+    <p class="emphasis">Když přijde láska duše, nic už nezůstane stejné.</p>
+    <p>Ne proto, že bys najednou začala chtít víc – ale protože jsi poprvé pocítila, že to, co jsi dosud žila, bylo málo.
+Ona Tě nezraní – ona Tě probudí.
+Zboří iluze o tom, kdo jsi měla být… a odhalí, kým jsi ve skutečnosti.</p>
+  </section>
+
+  <section class="block">
+    <p>A tak se díváš kolem sebe.
+Na vztahy, které byly postavené na loajalitě, ne na pravdě.
+Na sliby, které jsi dala dřív, než jsi znala samu sebe.
+Na „měla bys“, která Tě dusila, i když se tvářila jako láska.</p>
+  </section>
+
+  <section class="block">
+    <p>A v manželství, kde jsi dřív „měla vydržet“, najednou zjistíš, že se tam nedá dýchat.
+Protože láska není o přežívání. Láska je dech. Prostor. Opravdovost.
+A když jednou zakusíš svobodu duše, už se nespokojíš s pouty, která se tváří jako závazek.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="block">
+    <p class="emphasis">Není to rebelie.
+Je to návrat.</p>
+    <p>K sobě. K hlasu, který jsi umlčovala. K pravdě, kterou už nelze nevyslovit.</p>
+  </section>
+
+  <section class="block">
+    <p>Neříkám, že je to snadné.
+Ale říkám, že to stojí za to.
+Protože být věrná sobě je ten největší akt lásky, jaký můžeš světu nabídnout.</p>
+  </section>
+
+  <div class="divider"><div class="divider-dot"></div></div>
+
+  <section class="block">
+    <p>A teď, když stojím na prahu starého a nového a ohlédnu se,
+vím, že všechna ta bolest měla smysl.
+Protože už vím, kdo jsem – bez masek, bez snahy se zavděčit,
+v pravdě, která, i když pálí, dává vnitřní klid.
+Kdo má zůstat, zůstane. A kdo ne – ten nikdy zůstat neměl.</p>
+  </section>
+
+  <section class="final">
+    <p>Nejsi tu proto, abys zapadla.<br>Jsi tu proto, abys žila jako ty.</p>
+    <a class="cta-link" href="/">ZPĚT NA ORINAYA</a>
+  </section>
+
+</main>
+
+<footer>ORINAYA • VNITŘNÍ PRAVDA • SVOBODA • NÁVRAT K SOBĚ</footer>
+
+<script>
+(function(){
+  const root = document.documentElement;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const fade = document.createElement('div');
+  fade.className = 'orinaya-page-fade';
+  fade.setAttribute('aria-hidden','true');
+  document.body.appendChild(fade);
+
+  if (!reduceMotion){
+    root.classList.add('is-entering');
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => root.classList.remove('is-entering'));
+    });
+
+    const items = [
+      ...document.querySelectorAll('.story .block, .divider, .final')
+    ];
+
+    items.forEach((el, i) => {
+      el.classList.add('reveal-soft');
+      el.style.setProperty('--reveal-delay', `${Math.min((i % 4) * 55, 165)}ms`);
+    });
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold:.10,
+      rootMargin:'0px 0px -7% 0px'
+    });
+
+    items.forEach(el => observer.observe(el));
+
+    document.addEventListener('click', function(e){
+      const a = e.target.closest('a[href]');
+      if (!a) return;
+
+      if (
+        e.defaultPrevented ||
+        e.button !== 0 ||
+        e.metaKey ||
+        e.ctrlKey ||
+        e.shiftKey ||
+        e.altKey
+      ) return;
+
+      if (a.target === '_blank' || a.hasAttribute('download')) return;
+
+      const href = a.getAttribute('href');
+
+      if (
+        !href ||
+        href.startsWith('#') ||
+        href.startsWith('mailto:') ||
+        href.startsWith('tel:') ||
+        href.startsWith('javascript:')
+      ) return;
+
+      let url;
+      try{
+        url = new URL(a.href,window.location.href);
+      }catch{
+        return;
+      }
+
+      if (url.origin !== window.location.origin) return;
+
+      e.preventDefault();
+      root.classList.add('is-leaving');
+
+      setTimeout(() => {
+        window.location.href = url.href;
+      },190);
+    });
+
+    window.addEventListener('pageshow', () => {
+      root.classList.remove('is-leaving','is-entering');
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

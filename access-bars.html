@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080611">
+<title>Access Bars Praha | Anežka Zajícová | ORINAYA</title>
+<meta name="description" content="Jemná doteková metoda pro chvíle, kdy potřebuješ zpomalit, vypnout hlavu a dopřát si prostor jen pro sebe.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+:root{--bg:#080611;--gold:#d7aa57;--gold2:#f1d79b;--text:#f3ebf2;--muted:#d8ced7;--muted2:#a99dad;--line:rgba(224,183,99,.17)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;background:radial-gradient(circle at 70% 8%,rgba(92,44,122,.18),transparent 34%),linear-gradient(180deg,#080611 0%,#0b0715 45%,#090711 100%);color:var(--text);font-family:"Montserrat",Arial,sans-serif;font-weight:300;overflow-x:hidden}
+a{color:inherit;text-decoration:none}.kicker{color:var(--gold);font-size:10px;letter-spacing:.32em;text-transform:uppercase;margin-bottom:20px;font-weight:500}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:400}h1{font-size:clamp(52px,8vw,92px);line-height:.98;margin:0}h2{font-size:clamp(42px,5vw,68px);line-height:1.04;margin:0;max-width:850px;color:#eee3e9}
+.lead{max-width:760px;color:var(--muted);font-size:clamp(16px,1.55vw,20px);line-height:1.85;margin:30px 0 0}
+.service-detail{max-width:760px;color:var(--muted);font-size:15px;line-height:1.85;margin:20px 0 0}
+.cta-link{position:relative;display:inline-block;margin-top:28px;padding:0 0 8px;color:#ead9b8;font-size:12px;font-weight:400;letter-spacing:.16em;text-transform:uppercase}
+.cta-link:after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:linear-gradient(90deg,var(--gold),rgba(215,170,87,.45));box-shadow:0 0 8px rgba(215,170,87,.18)}
+.contact-block{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:38px}.contact-item{padding:28px;border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.012)}
+.contact-item small{display:block;color:#96899e;font-size:9px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:8px}.contact-item a,.contact-item span{color:#ead9b8;font-size:15px}
+footer{border-top:1px solid var(--line);padding:54px 22px 40px;text-align:center}.footer-logo{font-family:"Cormorant Garamond",Georgia,serif;font-size:36px;letter-spacing:.17em;color:#e7d3aa}
+.socials{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-top:26px}.socials a{color:#c8bdca;font-size:11px;text-transform:uppercase;letter-spacing:.14em}.copy{margin-top:32px;color:#96899e;font-size:9px;letter-spacing:.17em}
+.service-nav{width:min(1080px,88vw);margin:auto;padding:28px 0;display:flex;justify-content:space-between;align-items:center}.service-nav .logo{font-family:"Cormorant Garamond",serif;color:#e7d3aa;font-size:27px;letter-spacing:.16em}.service-nav .back{font-size:10px;letter-spacing:.17em;text-transform:uppercase;color:#cfc2cf}
+.service-hero{width:min(920px,88vw);margin:auto;padding:92px 0 70px}.service-section{width:min(920px,88vw);margin:auto;padding:70px 0;border-top:1px solid var(--line)}.service-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:start}
+.service-section p{color:var(--muted);line-height:1.85;font-size:15px}.price{padding:34px;border:1px solid var(--line);border-radius:26px;background:linear-gradient(145deg,rgba(255,255,255,.03),rgba(255,255,255,.006))}
+.price strong{font-family:"Cormorant Garamond",serif;font-size:42px;font-weight:400;color:#f0dfc1}.price strong .currency{font-size:.62em;letter-spacing:.02em}.price small{display:block;color:#a99dad;line-height:1.7;margin-top:8px}
+.location-box{margin-top:24px;padding:20px 22px;border:1px solid rgba(215,170,87,.34);border-radius:18px;background:linear-gradient(145deg,rgba(215,170,87,.07),rgba(255,255,255,.015));box-shadow:0 0 24px rgba(215,170,87,.05)}
+.location-box .place{display:block;font-family:"Cormorant Garamond",Georgia,serif;font-size:28px;line-height:1.1;color:#f0dfc1;margin-bottom:8px}.location-box .hours{display:block;color:#ead9b8;font-size:13px;letter-spacing:.06em;line-height:1.6}.location-box .availability{display:block;color:#a99dad;font-size:12px;line-height:1.7;margin-top:8px}
+.contact-name{font-size:clamp(30px,4vw,44px);line-height:1.08}.note{font-family:"Cormorant Garamond",serif;font-size:clamp(56px,8vw,108px);line-height:1.03;color:#eee3e9;margin:0;max-width:1100px}
+@media(max-width:760px){.contact-block{grid-template-columns:1fr}.service-grid{grid-template-columns:1fr;gap:26px}.service-hero{padding:58px 0 48px}.service-section{padding:52px 0}.price strong{font-size:30px;line-height:1.08;white-space:nowrap}.price strong .currency{font-size:.58em}.service-nav{padding:22px 0}.service-nav .logo{font-size:23px}.service-detail{font-size:14px;line-height:1.8}}
+.reveal-soft{opacity:0;transform:translate3d(0,16px,0);filter:blur(3px);transition:opacity .72s cubic-bezier(.22,.61,.36,1),transform .72s cubic-bezier(.22,.61,.36,1),filter .72s ease;transition-delay:var(--reveal-delay,0ms)}
+.reveal-soft.is-visible{opacity:1;transform:none;filter:blur(0)}.orinaya-page-fade{position:fixed;inset:0;z-index:99999;pointer-events:none;opacity:0;background:#080611;transition:opacity .22s ease}html.is-leaving .orinaya-page-fade{opacity:1;pointer-events:auto}html.is-entering .orinaya-page-fade{opacity:1}
+@media(prefers-reduced-motion:reduce){.reveal-soft{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}.orinaya-page-fade{display:none!important}}
+
+
+/* ===== ORINAYA • HUDBA ===== */
+.music-toggle{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  z-index:9990;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:10px 14px;
+  border:1px solid rgba(215,170,87,.34);
+  border-radius:999px;
+  background:rgba(8,6,17,.78);
+  color:#ead9b8;
+  font:400 9px/1 "Montserrat",Arial,sans-serif;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  box-shadow:0 8px 28px rgba(0,0,0,.26);
+  cursor:pointer;
+  opacity:.80;
+  transition:opacity .2s ease,border-color .2s ease,transform .2s ease,box-shadow .2s ease;
+}
+.music-toggle:hover{
+  opacity:1;
+  border-color:rgba(215,170,87,.58);
+  transform:translateY(-1px);
+}
+.music-toggle .music-icon{
+  width:18px;
+  height:18px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(215,170,87,.32);
+  border-radius:50%;
+  font-size:10px;
+  line-height:1;
+  color:#f1d79b;
+}
+.music-toggle.is-playing .music-icon{
+  box-shadow:0 0 12px rgba(215,170,87,.32);
+}
+@media(max-width:760px){
+  .music-toggle{
+    right:14px;
+    bottom:14px;
+    padding:9px 11px;
+    font-size:8px;
+    gap:7px;
+    background:rgba(8,6,17,.84);
+  }
+}
+
+/* ===== DOMLUVIT SETKÁNÍ • EFEKT ===== */
+.service-hero .cta-link,
+.price .cta-link{
+  transition:color .22s ease,text-shadow .22s ease,transform .22s ease;
+}
+.service-hero .cta-link:after,
+.price .cta-link:after{
+  transform:scaleX(.82);
+  transform-origin:left center;
+  transition:transform .22s ease,background .22s ease,box-shadow .22s ease;
+}
+.service-hero .cta-link:hover,
+.price .cta-link:hover{
+  color:#f1d79b;
+  text-shadow:0 0 10px rgba(215,170,87,.28);
+  transform:translateY(-1px);
+}
+.service-hero .cta-link:hover:after,
+.price .cta-link:hover:after{
+  transform:scaleX(1);
+  background:linear-gradient(90deg,#f1d79b,#d7aa57);
+  box-shadow:0 0 11px rgba(215,170,87,.42);
+}
+.service-hero .cta-link:active,
+.price .cta-link:active{
+  transform:translateY(1px);
+  color:#f1d79b;
+}
+@media(hover:none){
+  .service-hero .cta-link:hover,
+  .price .cta-link:hover{
+    color:#ead9b8;
+    text-shadow:none;
+    transform:none;
+  }
+  .service-hero .cta-link:hover:after,
+  .price .cta-link:hover:after{
+    transform:scaleX(.82);
+    background:linear-gradient(90deg,var(--gold),rgba(215,170,87,.45));
+    box-shadow:0 0 8px rgba(215,170,87,.18);
+  }
+  .service-hero .cta-link:active,
+  .price .cta-link:active{
+    color:#f1d79b;
+    transform:translateY(1px);
+  }
+  .service-hero .cta-link:active:after,
+  .price .cta-link:active:after{
+    transform:scaleX(1);
+  }
+}
+
+</style>
+</head>
+<body>
+
+<audio id="orinaya-music" src="./orinaya-piano.mp3" preload="metadata" loop></audio>
+<button class="music-toggle" id="music-toggle" type="button"
+        aria-label="Pustit atmosféru" aria-pressed="false">
+  <span class="music-icon" aria-hidden="true">♪</span>
+  <span class="music-label">Pustit atmosféru</span>
+</button>
+
+
+<nav class="service-nav"><a class="logo" href="/">ORINAYA</a><a class="back" href="/#terapie">← Zpět ke službám</a></nav>
+
+<header class="service-hero">
+  <div class="kicker">Access Bars • Praha</div>
+  <h1>Dovol si na chvíli vypnout.</h1>
+  <p class="lead">Jemná doteková metoda pro chvíle, kdy potřebuješ zpomalit, vypnout hlavu a dopřát si prostor jen pro sebe.</p>
+  <p class="service-detail">Access Bars podporuje větší přítomnost v životě a učí tělo přijímat. Jemným dotykem pomáhá uvolňovat oblasti, vzorce, myšlenky a emoce, které už nám neslouží, a vytvářet prostor pro nové možnosti. Může podpořit změnu myšlení, větší kreativitu, lehkost a otevřenost vůči tomu, co se v našem životě chce proměnit.</p>
+  <a class="cta-link" href="mailto:anezzajicova@gmail.com?subject=Rezervace%20Access%20Bars">Domluvit setkání</a>
+</header>
+
+<section class="service-section service-grid">
+  <div>
+    <div class="kicker">Jak setkání probíhá</div>
+    <h2>Prostor pro zklidnění těla i mysli.</h2>
+    <p>Na začátku si krátce řekneme, s čím přicházíš a co právě potřebuješ. Potom následuje přibližně 60–80 minut Access Bars, při kterých pohodlně ležíš a já se jemně dotýkám 32 bodů na hlavě.</p>
+    <p>Po ošetření necháváme čas na návrat, sdílení a to, co budeš chtít pojmenovat. Nemusíš vědět, co přesně potřebuješ změnit. Můžeš jednoduše přijít a nechat tělo přijímat.</p>
+  </div>
+
+  <div class="price">
+    <div class="kicker">Cena</div>
+    <strong>2 hodiny / 2&nbsp;000 <span class="currency">Kč</span></strong>
+    <small>Přibližně 60–80 minut ošetření + dostatek prostoru před i po setkání na konzultaci, sdílení a otázky.</small>
+
+    <div class="location-box">
+      <span class="place">Praha 4 – Braník</span>
+      <span class="hours">Čtvrtek a pátek</span>
+      <span class="availability">Konkrétní čas domluvíme individuálně.</span>
+    </div>
+
+    <a class="cta-link" href="mailto:anezzajicova@gmail.com?subject=Rezervace%20Access%20Bars">Domluvit setkání</a>
+  </div>
+</section>
+
+<section class="service-section">
+  <div class="kicker">Kontakt</div>
+  <h2 class="contact-name">Anežka Zajícová</h2>
+  <p>Chceš se objednat nebo se nejdřív na něco zeptat? Napiš mi nebo zavolej.</p>
+  <div class="contact-block">
+    <div class="contact-item"><small>E-mail</small><a href="mailto:anezzajicova@gmail.com">anezzajicova@gmail.com</a></div>
+    <div class="contact-item"><small>Telefon</small><a href="tel:+420776540840">776 540 840</a></div>
+  </div>
+</section>
+
+<section class="service-section">
+  <p class="note">Prostor pro ženy, které chtějí znovu cítit sebe, svůj život a svou vlastní cestu.</p>
+</section>
+
+<footer>
+  <div class="footer-logo">ORINAYA</div>
+  <div class="socials">
+    <a href="https://www.instagram.com/orinaya.energy" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.facebook.com/share/1EFY1Sjqfv/" target="_blank" rel="noopener">Facebook</a>
+    <a href="/ochrana-osobnich-udaju.html">Ochrana osobních údajů</a>
+    <a href="/obchodni-podminky.html">Obchodní podmínky</a>
+  </div>
+  <div class="copy">© 2026 ORINAYA · ANEŽKA ZAJÍCOVÁ · IČO 22590528 · PRAHA</div>
+</footer>
+
+
+<script>
+(function(){const root=document.documentElement,reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;const fade=document.createElement('div');fade.className='orinaya-page-fade';fade.setAttribute('aria-hidden','true');document.body.appendChild(fade);
+if(!reduceMotion){root.classList.add('is-entering');requestAnimationFrame(()=>requestAnimationFrame(()=>root.classList.remove('is-entering')));const selectors=['.service-hero > .kicker','.service-hero > h1','.service-hero > .lead','.service-hero > .service-detail','.service-grid > *','.contact-block > *','.service-section > .note'];const seen=new Set(),items=[];selectors.forEach(sel=>document.querySelectorAll(sel).forEach(el=>{if(!seen.has(el)&&!el.closest('footer')){seen.add(el);items.push(el)}}));items.forEach((el,i)=>{el.classList.add('reveal-soft');el.style.setProperty('--reveal-delay',`${Math.min((i%4)*55,165)}ms`)});const ob=new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');o.unobserve(e.target)}}),{threshold:.1,rootMargin:'0px 0px -7% 0px'});items.forEach(el=>ob.observe(el));document.addEventListener('click',e=>{const a=e.target.closest('a[href]');if(!a||e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||a.target==='_blank'||a.hasAttribute('download'))return;const href=a.getAttribute('href');if(!href||href.startsWith('#')||href.startsWith('mailto:')||href.startsWith('tel:')||href.startsWith('javascript:'))return;let url;try{url=new URL(a.href,location.href)}catch{return}if(url.origin!==location.origin)return;e.preventDefault();root.classList.add('is-leaving');setTimeout(()=>location.href=url.href,190)});window.addEventListener('pageshow',()=>root.classList.remove('is-leaving','is-entering'))}})();
+</script>
+
+
+<script>
+(function(){
+  const audio = document.getElementById('orinaya-music');
+  const button = document.getElementById('music-toggle');
+  if (!audio || !button) return;
+
+  const label = button.querySelector('.music-label');
+  const KEY = 'orinayaMusicStateV1';
+  audio.volume = 0.18;
+  let lastSavedSecond = -1;
+
+  function readState(){
+    try{
+      return JSON.parse(localStorage.getItem(KEY) || '{}');
+    }catch(e){
+      return {};
+    }
+  }
+
+  function saveState(){
+    try{
+      localStorage.setItem(KEY, JSON.stringify({
+        playing: !audio.paused,
+        time: Number.isFinite(audio.currentTime) ? audio.currentTime : 0,
+        updated: Date.now()
+      }));
+    }catch(e){}
+  }
+
+  function setButton(playing, wantsResume){
+    button.classList.toggle('is-playing', playing);
+    button.setAttribute('aria-pressed', playing ? 'true' : 'false');
+
+    if (playing){
+      button.setAttribute('aria-label','Ztišit atmosféru');
+      if (label) label.textContent = 'Ztišit atmosféru';
+    }else if (wantsResume){
+      button.setAttribute('aria-label','Pokračovat v hudbě');
+      if (label) label.textContent = 'Pokračovat v hudbě';
+    }else{
+      button.setAttribute('aria-label','Pustit atmosféru');
+      if (label) label.textContent = 'Pustit atmosféru';
+    }
+  }
+
+  const saved = readState();
+  const wantsResume = saved.playing === true;
+
+  function restoreTime(){
+    if (Number.isFinite(saved.time) && saved.time > 0 && Number.isFinite(audio.duration) && audio.duration > 0){
+      audio.currentTime = saved.time % audio.duration;
+    }else if (Number.isFinite(saved.time) && saved.time > 0){
+      try{ audio.currentTime = saved.time; }catch(e){}
+    }
+  }
+
+  audio.addEventListener('loadedmetadata', restoreTime, {once:true});
+
+  async function resumeIfWanted(){
+    if (!wantsResume) {
+      setButton(false, false);
+      return;
+    }
+    restoreTime();
+    try{
+      await audio.play();
+      setButton(true, false);
+    }catch(e){
+      setButton(false, true);
+    }
+  }
+
+  if (audio.readyState >= 1) resumeIfWanted();
+  else audio.addEventListener('loadedmetadata', resumeIfWanted, {once:true});
+
+  button.addEventListener('click', async function(){
+    if (audio.paused){
+      const state = readState();
+      if (Number.isFinite(state.time) && state.time > 0){
+        try{
+          if (Number.isFinite(audio.duration) && audio.duration > 0) audio.currentTime = state.time % audio.duration;
+          else audio.currentTime = state.time;
+        }catch(e){}
+      }
+      try{
+        await audio.play();
+        setButton(true, false);
+        saveState();
+      }catch(e){
+        setButton(false, true);
+      }
+    }else{
+      audio.pause();
+      setButton(false, false);
+      saveState();
+    }
+  });
+
+  audio.addEventListener('play', () => {
+    setButton(true, false);
+    saveState();
+  });
+
+  audio.addEventListener('pause', () => {
+    const state = readState();
+    setButton(false, state.playing === true);
+  });
+
+  audio.addEventListener('timeupdate', () => {
+    const second = Math.floor(audio.currentTime || 0);
+    if (second !== lastSavedSecond){
+      lastSavedSecond = second;
+      saveState();
+    }
+  });
+
+  window.addEventListener('pagehide', saveState);
+  window.addEventListener('beforeunload', saveState);
+})();
+</script>
+
+</body>
+</html>

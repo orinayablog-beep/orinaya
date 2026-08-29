@@ -273,6 +273,39 @@ header{
   box-shadow:0 0 8px rgba(215,170,87,.18);
 }
 
+
+/* ===== ZPĚT NA ORINAYA • HOVER ===== */
+.final .cta-link{
+  transition:color .22s ease,text-shadow .22s ease,transform .22s ease;
+}
+.final .cta-link:after{
+  transition:transform .22s ease,background .22s ease,box-shadow .22s ease;
+  transform:scaleX(.82);
+  transform-origin:left center;
+}
+.final .cta-link:hover{
+  color:#f1d79b;
+  text-shadow:0 0 10px rgba(215,170,87,.26);
+  transform:translateY(-1px);
+}
+.final .cta-link:hover:after{
+  transform:scaleX(1);
+  background:linear-gradient(90deg,#f1d79b,#d7aa57);
+  box-shadow:0 0 10px rgba(215,170,87,.38);
+}
+@media(hover:none){
+  .final .cta-link:hover{
+    color:#ead9b8;
+    text-shadow:none;
+    transform:none;
+  }
+  .final .cta-link:hover:after{
+    transform:scaleX(.82);
+    background:linear-gradient(90deg,#d7aa57,rgba(215,170,87,.45));
+    box-shadow:0 0 8px rgba(215,170,87,.18);
+  }
+}
+
 footer{
   border-top:1px solid var(--line);
   padding:44px 20px;

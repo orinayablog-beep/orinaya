@@ -1,0 +1,802 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080611">
+
+<title>Denní poselství | ORINAYA</title>
+<meta name="description" content="Vyber si intuitivně jednu kartu ORINAYA a nech k sobě přijít dnešní poselství.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Italianno&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#080611;
+  --bg2:#0b0715;
+  --gold:#d7aa57;
+  --gold2:#f1d79b;
+  --text:#f3ebf2;
+  --muted:#d8ced7;
+  --muted2:#a99dad;
+  --line:rgba(224,183,99,.17);
+}
+
+*{box-sizing:border-box}
+html{background:var(--bg);scroll-behavior:smooth}
+body{
+  margin:0;
+  min-height:100vh;
+  color:var(--text);
+  font-family:"Montserrat",Arial,sans-serif;
+  font-weight:300;
+  overflow-x:hidden;
+  background:
+    radial-gradient(circle at 18% 10%,rgba(105,45,138,.18),transparent 30%),
+    radial-gradient(circle at 82% 28%,rgba(90,48,131,.15),transparent 34%),
+    radial-gradient(circle at 50% 80%,rgba(117,67,145,.08),transparent 32%),
+    linear-gradient(180deg,#080611 0%,#0b0715 48%,#090711 100%);
+}
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.43;
+  background-image:
+    radial-gradient(circle at 12% 18%,rgba(255,236,182,.85) 0 1px,transparent 1.5px),
+    radial-gradient(circle at 77% 13%,rgba(255,225,159,.65) 0 1px,transparent 1.4px),
+    radial-gradient(circle at 31% 56%,rgba(230,192,255,.55) 0 1px,transparent 1.4px),
+    radial-gradient(circle at 68% 70%,rgba(255,230,173,.55) 0 1px,transparent 1.4px),
+    radial-gradient(circle at 90% 48%,rgba(210,172,255,.55) 0 1px,transparent 1.4px);
+  background-size:160px 180px,220px 210px,190px 230px,260px 240px,180px 200px;
+}
+
+a{color:inherit;text-decoration:none}
+
+.nav{
+  width:min(1080px,88vw);
+  margin:auto;
+  padding:28px 0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:relative;
+  z-index:5;
+}
+
+.logo{
+  font-family:"Cormorant Garamond",Georgia,serif;
+  color:#e7d3aa;
+  font-size:27px;
+  letter-spacing:.16em;
+}
+
+.back{
+  color:#cfc2cf;
+  font-size:10px;
+  letter-spacing:.17em;
+  text-transform:uppercase;
+  transition:color .2s ease;
+}
+.back:hover{color:var(--gold2)}
+
+main{
+  width:min(1080px,88vw);
+  margin:auto;
+  padding:58px 0 100px;
+  position:relative;
+  z-index:2;
+}
+
+.hero{
+  text-align:center;
+  max-width:850px;
+  margin:0 auto 52px;
+}
+
+.kicker{
+  color:var(--gold);
+  font-size:10px;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  margin-bottom:18px;
+  font-weight:500;
+}
+
+h1,h2{
+  font-family:"Cormorant Garamond",Georgia,serif;
+  font-weight:400;
+  color:#eee3e9;
+}
+
+h1{
+  font-size:clamp(48px,7vw,78px);
+  line-height:1;
+  margin:0 0 24px;
+}
+
+.hero p{
+  max-width:650px;
+  margin:0 auto;
+  color:#d8ced7;
+  font-size:clamp(15px,1.5vw,18px);
+  line-height:1.9;
+}
+
+.script{
+  display:block;
+  margin-top:24px;
+  color:#e4bf77;
+  font-family:"Italianno",cursive;
+  font-size:clamp(34px,4vw,48px);
+  line-height:1;
+}
+
+.deck{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:26px;
+  max-width:920px;
+  margin:0 auto;
+  transition:opacity .35s ease,transform .35s ease;
+}
+
+.deck.is-hidden{
+  opacity:0;
+  transform:translateY(10px);
+  pointer-events:none;
+  position:absolute;
+}
+
+.pick{
+  appearance:none;
+  border:0;
+  padding:0;
+  background:none;
+  cursor:pointer;
+  perspective:1200px;
+  min-width:0;
+}
+
+.card-back{
+  position:relative;
+  width:100%;
+  aspect-ratio:3/4.18;
+  border-radius:25px;
+  overflow:hidden;
+  border:1px solid rgba(215,170,87,.55);
+  background:
+    radial-gradient(circle at 64% 26%,rgba(130,62,163,.24),transparent 31%),
+    radial-gradient(circle at 31% 77%,rgba(123,55,154,.20),transparent 34%),
+    linear-gradient(160deg,#080614,#0c0719 55%,#080611);
+  box-shadow:
+    0 22px 58px rgba(0,0,0,.45),
+    inset 0 0 0 5px rgba(4,3,10,.42);
+  transition:transform .45s cubic-bezier(.2,.7,.2,1),border-color .3s ease,box-shadow .3s ease;
+}
+
+.card-back:before{
+  content:"";
+  position:absolute;
+  inset:12px;
+  border:1px solid rgba(215,170,87,.75);
+  border-radius:19px;
+  box-shadow:
+    inset 0 0 0 5px rgba(7,5,14,.75),
+    inset 0 0 0 6px rgba(215,170,87,.20);
+}
+
+.card-back:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  opacity:.9;
+  background:
+    radial-gradient(circle at 15% 19%,#f3ce77 0 1px,transparent 1.5px),
+    radial-gradient(circle at 71% 17%,#e7c36d 0 1px,transparent 1.5px),
+    radial-gradient(circle at 84% 43%,#fff0b8 0 1px,transparent 1.5px),
+    radial-gradient(circle at 29% 58%,#dba9f0 0 1px,transparent 1.5px),
+    radial-gradient(circle at 61% 72%,#f4d68c 0 1px,transparent 1.5px),
+    radial-gradient(circle at 17% 83%,#ebc974 0 1px,transparent 1.5px);
+  background-size:83px 97px,127px 151px,101px 117px,139px 133px,119px 143px,95px 111px;
+}
+
+.pick:hover .card-back{
+  transform:translateY(-9px) rotateX(2deg);
+  border-color:rgba(241,215,155,.9);
+  box-shadow:0 30px 72px rgba(0,0,0,.56),0 0 28px rgba(215,170,87,.08);
+}
+
+.pick:focus-visible{
+  outline:2px solid var(--gold2);
+  outline-offset:8px;
+  border-radius:25px;
+}
+
+.back-symbol{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+.star{
+  width:13px;
+  height:13px;
+  margin-bottom:9px;
+  transform:rotate(45deg);
+  background:linear-gradient(135deg,#f6dfa7,#c9943e);
+  box-shadow:0 0 16px rgba(238,194,98,.72);
+}
+
+.orbit{
+  width:44%;
+  aspect-ratio:1;
+  border:1px solid rgba(215,170,87,.72);
+  border-radius:50%;
+  position:relative;
+}
+
+.orbit:before,.orbit:after{
+  content:"";
+  position:absolute;
+  left:50%;
+  width:1px;
+  height:35%;
+  background:linear-gradient(var(--gold),rgba(215,170,87,.1));
+}
+.orbit:before{bottom:100%}
+.orbit:after{top:100%}
+
+.back-brand{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  font-family:"Cormorant Garamond",Georgia,serif;
+  letter-spacing:.17em;
+  font-size:clamp(18px,2.4vw,28px);
+  color:#e4bd70;
+  text-shadow:0 0 16px rgba(215,170,87,.15);
+  white-space:nowrap;
+}
+
+
+.intro-board{
+  position:relative;
+  width:min(100%,1033px);
+  margin:0 auto;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 26px 70px rgba(0,0,0,.46);
+  transition:opacity .35s ease,transform .35s ease;
+}
+.intro-board.is-hidden{
+  opacity:0;
+  transform:translateY(10px);
+  pointer-events:none;
+  position:absolute;
+}
+.intro-board-img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+.hotspot{
+  position:absolute;
+  top:16%;
+  height:72%;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  border-radius:24px;
+}
+.hotspot:focus-visible{
+  outline:2px solid var(--gold2);
+  outline-offset:-5px;
+}
+.hotspot-1{left:2.2%;width:30.5%}
+.hotspot-2{left:34.4%;width:31.2%}
+.hotspot-3{left:67.2%;width:30.6%}
+
+.lock-note{
+  margin:18px auto 0;
+  color:#b9aebe;
+  font-size:12px;
+  line-height:1.75;
+  max-width:620px;
+}
+.result{
+  display:none;
+  max-width:800px;
+  margin:0 auto;
+  text-align:center;
+}
+
+.result.is-visible{
+  display:block;
+  animation:appear .65s ease both;
+}
+
+@keyframes appear{
+  from{opacity:0;transform:translateY(16px)}
+  to{opacity:1;transform:none}
+}
+
+.result-label{
+  color:var(--gold);
+  font-size:10px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  margin-bottom:22px;
+}
+
+.image-shell{
+  position:relative;
+  width:min(100%,650px);
+  margin:0 auto;
+}
+
+.card-image{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:24px;
+  box-shadow:0 28px 75px rgba(0,0,0,.5);
+  background:#0b0715;
+}
+
+.loading{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#d9c4a0;
+  font-family:"Cormorant Garamond",serif;
+  font-size:24px;
+  letter-spacing:.06em;
+  background:rgba(8,6,17,.58);
+  border-radius:24px;
+  backdrop-filter:blur(5px);
+}
+.loading[hidden]{display:none}
+
+.actions{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:12px;
+  margin-top:30px;
+}
+
+.btn{
+  appearance:none;
+  border:1px solid rgba(215,170,87,.44);
+  background:rgba(255,255,255,.018);
+  color:#ead9b8;
+  border-radius:999px;
+  padding:13px 19px;
+  font-family:"Montserrat",Arial,sans-serif;
+  font-size:10px;
+  font-weight:400;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:background .2s ease,border-color .2s ease,transform .2s ease;
+}
+
+.btn:hover{
+  background:rgba(215,170,87,.08);
+  border-color:rgba(241,215,155,.78);
+  transform:translateY(-2px);
+}
+
+.btn.primary{
+  color:#150d18;
+  background:linear-gradient(135deg,#f0d59a,#c89a4a);
+  border-color:transparent;
+  font-weight:500;
+}
+
+.btn.primary:hover{
+  background:linear-gradient(135deg,#f4dfae,#d5aa5a);
+}
+
+.btn[hidden]{display:none}
+
+.hint{
+  margin:22px auto 0;
+  color:#a99dad;
+  font-size:12px;
+  line-height:1.75;
+  max-width:620px;
+}
+
+footer{
+  position:relative;
+  z-index:2;
+  border-top:1px solid var(--line);
+  padding:48px 22px 38px;
+  text-align:center;
+}
+
+.footer-logo{
+  font-family:"Cormorant Garamond",Georgia,serif;
+  font-size:32px;
+  letter-spacing:.17em;
+  color:#e7d3aa;
+}
+
+.footer-links{
+  display:flex;
+  justify-content:center;
+  gap:24px;
+  flex-wrap:wrap;
+  margin-top:24px;
+}
+
+.footer-links a{
+  color:#c8bdca;
+  font-size:10px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.copy{
+  margin-top:25px;
+  color:#96899e;
+  font-size:9px;
+  letter-spacing:.15em;
+  line-height:1.8;
+}
+
+@media(max-width:760px){
+  .nav{padding:22px 0}
+  .logo{font-size:23px}
+  main{padding:42px 0 72px}
+  .hero{margin-bottom:38px}
+  .deck{gap:10px;width:100%}
+  .card-back{border-radius:17px}
+  .card-back:before{inset:7px;border-radius:12px}
+  .orbit{width:50%}
+  .back-brand{
+    font-size:clamp(11px,4vw,18px);
+    letter-spacing:.12em
+  }
+  .star{width:8px;height:8px}
+  .image-shell{width:100%}
+  .card-image{border-radius:18px}
+  .actions{gap:9px}
+  .btn{padding:12px 15px;font-size:9px}
+}
+
+@media(max-width:430px){
+  .deck{gap:7px}
+  .card-back{border-radius:14px}
+  .card-back:before{inset:5px;border-radius:10px}
+  .back-brand{font-size:11px}
+}
+</style>
+</head>
+
+<body>
+
+<nav class="nav">
+  <a class="logo" href="/">ORINAYA</a>
+  <a class="back" href="/">Zpět na web</a>
+</nav>
+
+<main>
+
+  <section class="hero">
+    <div class="kicker">44 denních poselství</div>
+    <h1>Vzpomeň, kdo jsi.</h1>
+    <p>
+      Na chvíli zavři oči. Nemusíš nic hledat ani vědět.
+      Jen si všimni, ke které kartě tě to dnes táhne.
+    </p>
+    <span class="script">Vyber si intuitivně jednu kartu.</span>
+  </section>
+
+  <section class="intro-board" id="deck" aria-label="Výběr ze tří karet">
+    <img src="/karty/uvod-vyber-karty.png" alt="Vyber si intuitivně jednu ze tří karet ORINAYA" class="intro-board-img">
+
+    <button class="hotspot hotspot-1" type="button" data-slot="0" aria-label="Vybrat první kartu"></button>
+    <button class="hotspot hotspot-2" type="button" data-slot="1" aria-label="Vybrat druhou kartu"></button>
+    <button class="hotspot hotspot-3" type="button" data-slot="2" aria-label="Vybrat třetí kartu"></button>
+  </section>
+
+  <section class="result" id="result" aria-live="polite">
+    <div class="result-label" id="resultLabel">Tvoje dnešní poselství</div>
+
+    <div class="image-shell">
+      <img class="card-image" id="cardImage" alt="">
+      <div class="loading" id="loading">Karta se odkrývá…</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" type="button" id="flipBtn">Otočit na otázku</button>
+      <button class="btn" type="button" id="messageBtn" hidden>Zpět na poselství</button>
+      <button class="btn" type="button" id="shareBtn">Sdílet</button>
+      <a class="btn" id="saveBtn" href="#" download>Uložit kartu</a>
+      <button class="btn" type="button" id="newBtn">Vybrat jinou</button>
+    </div>
+
+    <p class="hint" id="hint">
+      Polož si dnešní otázku a nech ji otevřenou. Nemusíš hledat odpověď ani kontrolovat,
+      kdy přijde. Jen si všímej, co se během dne objeví.
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-logo">ORINAYA</div>
+
+  <div class="footer-links">
+    <a href="/">Zpět na web</a>
+    <a href="/ochrana-osobnich-udaju.html">Ochrana osobních údajů</a>
+    <a href="/obchodni-podminky.html">Obchodní podmínky</a>
+  </div>
+
+  <div class="copy">ANEŽKA ZAJÍCOVÁ • IČO 22590528 • ORINAYA • PRAHA</div>
+</footer>
+
+<script>
+const cards = [
+  "01_duveruj",
+  "02_zpomal",
+  "03_dychej",
+  "04_pust_to",
+  "05_vyber_si_sebe",
+  "06_nech_se_prekvapit",
+  "07_prijimej",
+  "08_nevysvetluj_se",
+  "09_radost",
+  "10_tve_telo_vi",
+  "11_nech_to_prijit",
+  "12_stacis",
+  "13_odvaha",
+  "14_zavri_dvere",
+  "15_tve_tempo",
+  "16_vrat_se_k_sobe",
+  "17_dovol_si_vic",
+  "18_zazraky",
+  "19_tva_pravda",
+  "20_jednoduse",
+  "21_znameni",
+  "22_hranice",
+  "23_jdi_tam_kde_to_zije",
+  "24_nemusis_zachranovat",
+  "25_hraj_si",
+  "26_zustan_zvedava",
+  "27_zmena",
+  "28_nevracej_se_pro_dukaz",
+  "29_laska",
+  "30_tvor",
+  "31_odpocivej",
+  "32_nech_se_videt",
+  "33_lehkost",
+  "34_prestan_cekat",
+  "35_muzes_zmenit_nazor",
+  "36_pribeh",
+  "37_dovol_si_citit",
+  "38_tady_a_ted",
+  "39_ty_vis",
+  "40_vdecnost",
+  "41_novy_zacatek",
+  "42_zij",
+  "43_domov",
+  "44_prostor"
+];
+
+const STORAGE_KEY = "orinaya_daily_card_v1";
+
+const deck = document.getElementById("deck");
+const result = document.getElementById("result");
+const cardImage = document.getElementById("cardImage");
+const loading = document.getElementById("loading");
+const resultLabel = document.getElementById("resultLabel");
+const flipBtn = document.getElementById("flipBtn");
+const messageBtn = document.getElementById("messageBtn");
+const shareBtn = document.getElementById("shareBtn");
+const saveBtn = document.getElementById("saveBtn");
+const newBtn = document.getElementById("newBtn");
+const hint = document.getElementById("hint");
+
+let offered = [];
+let selected = null;
+let side = "poselstvi";
+
+function localDateKey(){
+  const d = new Date();
+  const y = d.getFullYear();
+  const m = String(d.getMonth()+1).padStart(2,"0");
+  const day = String(d.getDate()).padStart(2,"0");
+  return `${y}-${m}-${day}`;
+}
+
+function shuffleCopy(list){
+  const copy = [...list];
+  for(let i = copy.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i],copy[j]] = [copy[j],copy[i]];
+  }
+  return copy;
+}
+
+function pathFor(card,variant){
+  return `/karty/${card}_${variant}.png`;
+}
+
+function showCard(card,variant){
+  loading.hidden = false;
+  loading.textContent = "Karta se odkrývá…";
+
+  cardImage.onload = () => {
+    loading.hidden = true;
+  };
+
+  cardImage.onerror = () => {
+    loading.hidden = false;
+    loading.textContent = "Obrázek karty se nepodařilo načíst.";
+  };
+
+  cardImage.src = pathFor(card,variant);
+  cardImage.alt = variant === "otazka"
+    ? "Otázka dnešní karty ORINAYA"
+    : "Dnešní poselství ORINAYA";
+}
+
+function getSavedDailyCard(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(!raw) return null;
+    const data = JSON.parse(raw);
+    if(data.date !== localDateKey()) return null;
+    if(!cards.includes(data.card)) return null;
+    return data;
+  }catch{
+    return null;
+  }
+}
+
+function saveDailyCard(card){
+  localStorage.setItem(STORAGE_KEY,JSON.stringify({
+    date:localDateKey(),
+    card
+  }));
+}
+
+function showResult(card,restore=false){
+  selected = card;
+  side = "poselstvi";
+
+  deck.classList.add("is-hidden");
+  result.classList.add("is-visible");
+
+  resultLabel.textContent = restore
+    ? "Tvoje dnešní karta"
+    : "Tvoje dnešní poselství";
+
+  flipBtn.hidden = false;
+  messageBtn.hidden = true;
+
+  showCard(selected,"poselstvi");
+
+  const sharePath = pathFor(selected,"sdileni");
+  saveBtn.href = sharePath;
+  saveBtn.download = `${selected}_sdileni.png`;
+
+  newBtn.hidden = true;
+  hint.innerHTML = restore
+    ? "Tahle karta tě dnes provází. Novou si budeš moct vytáhnout zase po půlnoci."
+    : "Polož si dnešní otázku a nech ji otevřenou. Nemusíš hledat odpověď ani kontrolovat, kdy přijde. Jen si všímej, co se během dne objeví.";
+
+  setTimeout(() => {
+    result.scrollIntoView({behavior:"smooth",block:"start"});
+  },80);
+}
+
+function prepareDeck(){
+  const saved = getSavedDailyCard();
+
+  if(saved){
+    showResult(saved.card,true);
+    return;
+  }
+
+  offered = shuffleCopy(cards).slice(0,3);
+  selected = null;
+  side = "poselstvi";
+
+  deck.classList.remove("is-hidden");
+  result.classList.remove("is-visible");
+  newBtn.hidden = true;
+
+  cardImage.removeAttribute("src");
+  cardImage.alt = "";
+}
+
+function chooseCard(slot){
+  if(getSavedDailyCard()) return;
+
+  selected = offered[slot];
+  saveDailyCard(selected);
+  showResult(selected,false);
+}
+
+document.querySelectorAll(".hotspot").forEach(button => {
+  button.addEventListener("click",() => {
+    chooseCard(Number(button.dataset.slot));
+  });
+});
+
+flipBtn.addEventListener("click",() => {
+  if(!selected) return;
+  side = "otazka";
+  resultLabel.textContent = "Otázka, kterou můžeš dnes nechat otevřenou";
+  showCard(selected,"otazka");
+  flipBtn.hidden = true;
+  messageBtn.hidden = false;
+});
+
+messageBtn.addEventListener("click",() => {
+  if(!selected) return;
+  side = "poselstvi";
+  resultLabel.textContent = "Tvoje dnešní karta";
+  showCard(selected,"poselstvi");
+  flipBtn.hidden = false;
+  messageBtn.hidden = true;
+});
+
+shareBtn.addEventListener("click",async () => {
+  if(!selected) return;
+
+  const shareUrl = new URL(pathFor(selected,"sdileni"),window.location.origin).href;
+
+  try{
+    const response = await fetch(shareUrl);
+    const blob = await response.blob();
+    const file = new File([blob],`${selected}_sdileni.png`,{type:blob.type || "image/png"});
+
+    if(navigator.canShare && navigator.canShare({files:[file]})){
+      await navigator.share({
+        title:"ORINAYA • dnešní poselství",
+        text:"Moje dnešní karta ORINAYA",
+        files:[file]
+      });
+      return;
+    }
+
+    if(navigator.share){
+      await navigator.share({
+        title:"ORINAYA • dnešní poselství",
+        text:"Moje dnešní karta ORINAYA",
+        url:shareUrl
+      });
+      return;
+    }
+
+    window.open(shareUrl,"_blank","noopener");
+  }catch(error){
+    if(error && error.name === "AbortError") return;
+    window.open(shareUrl,"_blank","noopener");
+  }
+});
+
+newBtn.addEventListener("click",prepareDeck);
+
+prepareDeck();
+</script>
+
+</body>
+</html>

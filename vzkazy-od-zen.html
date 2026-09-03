@@ -1,0 +1,987 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080611">
+<title>Vzkazy od žen ženám | ORINAYA</title>
+<meta name="description" content="Vzkazy od žen ženám. Slova odvahy, podpory a naděje pro chvíle, kdy je potřebujeme slyšet.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Italianno&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#080611;
+  --gold:#d7aa57;
+  --gold2:#f1d79b;
+  --text:#f4edf3;
+  --body:#eee6ed;
+  --muted:#d8ced7;
+  --muted2:#a99dad;
+  --line:rgba(224,183,99,.17);
+}
+*{box-sizing:border-box}
+html{background:var(--bg);scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--text);
+  font-family:"Montserrat",Arial,sans-serif;
+  font-weight:300;
+  background:
+    radial-gradient(circle at 70% 8%,rgba(92,44,122,.20),transparent 34%),
+    radial-gradient(circle at 15% 55%,rgba(82,38,108,.12),transparent 34%),
+    linear-gradient(180deg,#080611 0%,#0b0715 48%,#090711 100%);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+
+/* HVĚZDY */
+.stars{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+}
+.star{
+  position:absolute;
+  width:3px;
+  height:3px;
+  border-radius:50%;
+  background:#fff1bf;
+  box-shadow:0 0 6px rgba(255,232,170,.85),0 0 14px rgba(222,171,75,.32);
+  opacity:.28;
+  animation:twinkle var(--d,6s) ease-in-out infinite;
+  animation-delay:var(--delay,0s);
+}
+@keyframes twinkle{
+  0%,100%{opacity:.12;transform:scale(.72)}
+  50%{opacity:.72;transform:scale(1.2)}
+}
+.s1{left:8%;top:14%;--d:6.2s}
+.s2{left:20%;top:30%;--d:8s;--delay:1.4s}
+.s3{left:36%;top:18%;--d:7.1s;--delay:2.2s}
+.s4{left:51%;top:11%;--d:5.9s;--delay:.8s}
+.s5{left:70%;top:25%;--d:8.4s;--delay:3.1s}
+.s6{left:88%;top:16%;--d:6.7s;--delay:1.9s}
+.s7{left:12%;top:64%;--d:7.8s;--delay:2.7s}
+.s8{left:29%;top:78%;--d:6.4s;--delay:.4s}
+.s9{left:60%;top:72%;--d:8.8s;--delay:2.5s}
+.s10{left:83%;top:62%;--d:6.1s;--delay:4s}
+
+/* NAV */
+.nav{
+  width:min(1080px,88vw);
+  margin:auto;
+  padding:28px 0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:relative;
+  z-index:2;
+}
+.logo{
+  font-family:"Cormorant Garamond",Georgia,serif;
+  color:#e7d3aa;
+  font-size:27px;
+  letter-spacing:.16em;
+}
+.home-link{
+  position:relative;
+  display:inline-block;
+  padding:0 0 7px;
+  color:#cfc2cf;
+  font-size:10px;
+  letter-spacing:.17em;
+  text-transform:uppercase;
+  transition:color .22s ease,text-shadow .22s ease,transform .22s ease;
+}
+.home-link::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:100%;
+  height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(215,170,87,.45));
+  box-shadow:0 0 8px rgba(215,170,87,.18);
+  transform:scaleX(.72);
+  transform-origin:left center;
+  transition:transform .22s ease,background .22s ease,box-shadow .22s ease;
+}
+.home-link:hover{
+  color:#f1d79b;
+  text-shadow:0 0 10px rgba(215,170,87,.26);
+  transform:translateY(-1px);
+}
+.home-link:hover::after{
+  transform:scaleX(1);
+  background:linear-gradient(90deg,#f1d79b,#d7aa57);
+  box-shadow:0 0 10px rgba(215,170,87,.38);
+}
+
+/* HERO */
+.hero{
+  width:min(900px,88vw);
+  margin:0 auto;
+  padding:72px 0 54px;
+  text-align:center;
+  position:relative;
+  z-index:1;
+}
+.kicker{
+  color:var(--gold);
+  font-size:10px;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  margin-bottom:16px;
+  font-weight:500;
+}
+.hero-symbol-wrap{
+  display:flex;
+  justify-content:center;
+  margin:8px auto 22px;
+}
+.hero-symbol{
+  display:block;
+  width:clamp(190px,24vw,280px);
+  height:auto;
+  border-radius:22px;
+  opacity:.98;
+  filter:drop-shadow(0 0 24px rgba(215,170,87,.10)) drop-shadow(0 0 46px rgba(106,55,138,.12));
+}
+h1,h2,h3{
+  font-family:"Cormorant Garamond",Georgia,serif;
+  font-weight:400;
+}
+h1{
+  font-size:clamp(50px,7vw,84px);
+  line-height:1;
+  margin:0;
+  color:#f5edf3;
+}
+.script{
+  font-family:"Italianno",cursive;
+  color:#e4bf77;
+  font-size:clamp(36px,5vw,56px);
+  line-height:1.08;
+  margin:22px 0 0;
+  text-shadow:0 2px 12px rgba(0,0,0,.38);
+}
+.intro{
+  max-width:720px;
+  margin:34px auto 0;
+  color:var(--body);
+  line-height:1.9;
+  font-size:16px;
+}
+.intro strong{color:#fff7ef;font-weight:400}
+.divider{
+  width:70px;
+  height:1px;
+  margin:40px auto 0;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  box-shadow:0 0 12px rgba(215,170,87,.18);
+}
+
+/* FORM */
+.form-wrap{
+  width:min(760px,88vw);
+  margin:0 auto 90px;
+  position:relative;
+  z-index:1;
+}
+.form-card{
+  border:1px solid var(--line);
+  border-radius:30px;
+  padding:34px;
+  background:
+    radial-gradient(circle at 86% 8%,rgba(109,55,138,.13),transparent 36%),
+    linear-gradient(145deg,rgba(255,255,255,.026),rgba(255,255,255,.008));
+  box-shadow:0 20px 70px rgba(0,0,0,.28);
+}
+.form-card h2{
+  margin:0 0 24px;
+  font-size:clamp(31px,4vw,43px);
+  color:#f5edf3;
+}
+label{
+  display:block;
+  color:#eee5ed;
+  font-size:10px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  margin:18px 0 9px;
+}
+textarea,input[type=text]{
+  width:100%;
+  border:1px solid rgba(224,183,99,.18);
+  background:rgba(255,255,255,.018);
+  color:#fff;
+  border-radius:18px;
+  padding:16px 17px;
+  outline:none;
+  font-family:"Montserrat",Arial,sans-serif;
+  font-size:14px;
+  font-weight:300;
+  transition:.2s ease;
+}
+textarea{
+  min-height:170px;
+  resize:vertical;
+  line-height:1.7;
+}
+textarea:focus,input:focus{
+  border-color:rgba(215,170,87,.5);
+  box-shadow:0 0 0 3px rgba(215,170,87,.05);
+}
+::placeholder{color:#b9adb9}
+.counter{
+  margin-top:8px;
+  text-align:right;
+  color:#a99daa;
+  font-size:10px;
+  letter-spacing:.05em;
+}
+
+/* SYMBOLY */
+.symbol-label{
+  margin-top:14px;
+  color:#cfc3cf;
+  font-size:10px;
+  letter-spacing:.08em;
+}
+.symbol-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin:11px 0 3px;
+}
+.symbol-btn{
+  width:42px;
+  height:42px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(224,183,99,.22);
+  border-radius:999px;
+  background:radial-gradient(circle at 50% 50%,rgba(215,170,87,.045),rgba(255,255,255,.012));
+  color:#e4bf77;
+  font-family:"Cormorant Garamond",Georgia,serif;
+  font-size:24px;
+  line-height:1;
+  cursor:pointer;
+  transition:.18s ease;
+  box-shadow:inset 0 0 18px rgba(90,44,119,.035);
+}
+.symbol-btn:hover,.symbol-btn:focus-visible{
+  transform:translateY(-2px);
+  border-color:rgba(215,170,87,.55);
+  color:#f1d79b;
+  background:rgba(215,170,87,.07);
+  box-shadow:0 0 18px rgba(215,170,87,.06),inset 0 0 18px rgba(90,44,119,.06);
+  outline:none;
+}
+
+/* CHECKBOX + BUTTON */
+.check{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:16px;
+  color:#eee5ed;
+  font-size:13px;
+}
+.check input{accent-color:#d7aa57}
+.submit{
+  display:inline-block;
+  margin-top:24px;
+  border:1px solid rgba(215,170,87,.5);
+  border-radius:999px;
+  padding:14px 22px;
+  color:#f0d8aa;
+  background:rgba(215,170,87,.03);
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:.2s ease;
+}
+.submit:hover{
+  background:rgba(215,170,87,.07);
+  transform:translateY(-1px);
+}
+.submit:disabled{opacity:.45;cursor:wait}
+.note,.status{
+  margin-top:14px;
+  color:#ddd2dc;
+  font-size:11px;
+  line-height:1.6;
+}
+.status{display:none}
+.status.show{display:block}
+.status.ok{color:#f1d79b}
+.status.err{color:#ffb6c1}
+
+/* VZKAZY */
+.messages{
+  width:min(1040px,88vw);
+  margin:0 auto;
+  padding:0 0 100px;
+  position:relative;
+  z-index:1;
+}
+.messages-head{
+  text-align:center;
+  margin-bottom:42px;
+}
+.messages-head .script{
+  font-size:clamp(31px,4vw,46px);
+  margin-top:0;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  align-items:start;
+}
+.message{
+  padding:27px 27px 24px;
+  border:1px solid rgba(224,183,99,.16);
+  border-radius:26px;
+  background:
+    radial-gradient(circle at 88% 8%,rgba(122,66,150,.14),transparent 40%),
+    radial-gradient(circle at 12% 100%,rgba(215,170,87,.045),transparent 36%),
+    linear-gradient(145deg,rgba(255,255,255,.027),rgba(255,255,255,.006));
+  box-shadow:0 12px 38px rgba(0,0,0,.20),inset 0 0 32px rgba(113,63,137,.025);
+  position:relative;
+  transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+}
+.message:hover{
+  transform:translateY(-3px);
+  border-color:rgba(224,183,99,.28);
+  box-shadow:0 18px 48px rgba(0,0,0,.25),0 0 28px rgba(104,55,134,.07);
+}
+.message:nth-child(3n+2){transform:rotate(.35deg)}
+.message:nth-child(3n){transform:rotate(-.3deg)}
+.message:nth-child(3n+2):hover,.message:nth-child(3n):hover{transform:translateY(-3px)}
+.message::before{
+  content:"✦";
+  position:absolute;
+  right:22px;
+  top:18px;
+  color:#d7aa57;
+  opacity:.42;
+  font-size:13px;
+}
+.message-text{
+  margin:17px 0 19px;
+  font-family:"Cormorant Garamond",Georgia,serif;
+  color:#f7eff5;
+  font-size:24px;
+  line-height:1.42;
+  overflow-wrap:anywhere;
+}
+.message-line{
+  width:38px;
+  height:1px;
+  background:linear-gradient(90deg,rgba(215,170,87,.60),rgba(215,170,87,.05));
+  margin:0 0 12px;
+}
+.author{
+  font-family:"Italianno",cursive;
+  color:#d7aa57;
+  font-size:27px;
+  line-height:1.05;
+  letter-spacing:.01em;
+  text-transform:none;
+}
+.empty{
+  text-align:center;
+  color:#e8dfe7;
+  line-height:1.8;
+  grid-column:1/-1;
+  padding:30px;
+}
+.more-wrap{
+  display:none;
+  text-align:center;
+  margin-top:36px;
+}
+.more-wrap.show{display:block}
+.more-btn{
+  border:1px solid rgba(215,170,87,.42);
+  border-radius:999px;
+  padding:13px 21px;
+  color:#ecd29e;
+  background:rgba(215,170,87,.025);
+  font-family:"Montserrat",Arial,sans-serif;
+  font-size:10px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:.2s ease;
+}
+.more-btn:hover{
+  transform:translateY(-1px);
+  background:rgba(215,170,87,.07);
+}
+.more-btn:disabled{opacity:.5;cursor:wait}
+
+/* FOOTER */
+footer{
+  border-top:1px solid var(--line);
+  padding:54px 22px 40px;
+  text-align:center;
+}
+.footer-logo{
+  font-family:"Cormorant Garamond",Georgia,serif;
+  font-size:36px;
+  letter-spacing:.17em;
+  color:#e7d3aa;
+}
+.socials{
+  display:flex;
+  justify-content:center;
+  gap:28px;
+  flex-wrap:wrap;
+  margin-top:26px;
+}
+.socials a{
+  color:#c8bdca;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  transition:color .22s ease,text-shadow .22s ease,transform .22s ease;
+}
+.socials a:hover{
+  color:#f1d79b;
+  text-shadow:0 0 10px rgba(215,170,87,.25);
+  transform:translateY(-1px);
+}
+.copy{
+  margin-top:32px;
+  color:#96899e;
+  font-size:9px;
+  letter-spacing:.17em;
+}
+
+/* MOBIL */
+@media(max-width:760px){
+  .nav{padding:22px 0}
+  .logo{font-size:23px}
+  .hero{padding:54px 0 42px}
+  .hero-symbol{width:190px}
+  .intro{font-size:14px;line-height:1.82}
+  .form-wrap{margin-bottom:68px}
+  .form-card{padding:25px 22px;border-radius:24px}
+  .grid{grid-template-columns:1fr;gap:15px}
+  .message{padding:24px 23px 21px}
+  .message-text{font-size:23px;line-height:1.42}
+  .author{font-size:25px}
+  .messages{padding-bottom:70px}
+  .symbol-btn{width:39px;height:39px;font-size:22px}
+  footer{padding:46px 20px 36px}
+  .footer-logo{font-size:31px}
+  .socials{gap:17px 20px;margin-top:22px}
+  .socials a{font-size:9px;letter-spacing:.11em}
+  .copy{margin-top:25px;font-size:8px;line-height:1.8;letter-spacing:.13em}
+}
+@media(hover:none){
+  .home-link:hover,.socials a:hover{
+    color:inherit;
+    text-shadow:none;
+    transform:none;
+  }
+}
+/* ===== ORINAYA • HUDBA ===== */
+.music-toggle{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  z-index:9990;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:10px 14px;
+  border:1px solid rgba(215,170,87,.34);
+  border-radius:999px;
+  background:rgba(8,6,17,.78);
+  color:#ead9b8;
+  font:400 9px/1 "Montserrat",Arial,sans-serif;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  box-shadow:0 8px 28px rgba(0,0,0,.26);
+  cursor:pointer;
+  opacity:.80;
+  transition:opacity .2s ease,border-color .2s ease,transform .2s ease;
+}
+.music-toggle:hover{
+  opacity:1;
+  border-color:rgba(215,170,87,.58);
+  transform:translateY(-1px);
+}
+.music-toggle .music-icon{
+  width:18px;
+  height:18px;
+  display:grid;
+  place-items:center;
+  flex:0 0 auto;
+  border:1px solid rgba(215,170,87,.32);
+  border-radius:50%;
+  font-size:10px;
+  line-height:1;
+  color:#f1d79b;
+}
+.music-toggle.is-playing .music-icon{
+  box-shadow:0 0 12px rgba(215,170,87,.32);
+}
+@media(max-width:760px){
+  .music-toggle{
+    right:14px;
+    bottom:14px;
+    padding:9px 11px;
+    gap:7px;
+    font-size:8px;
+    background:rgba(8,6,17,.84);
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<audio id="orinaya-music" src="./orinaya-piano.mp3" preload="metadata" loop></audio>
+<button class="music-toggle" id="music-toggle" type="button"
+        aria-label="Pustit atmosféru" aria-pressed="false">
+  <span class="music-icon" aria-hidden="true">♪</span>
+  <span class="music-label">Pustit atmosféru</span>
+</button>
+
+<div class="stars" aria-hidden="true">
+  <span class="star s1"></span>
+  <span class="star s2"></span>
+  <span class="star s3"></span>
+  <span class="star s4"></span>
+  <span class="star s5"></span>
+  <span class="star s6"></span>
+  <span class="star s7"></span>
+  <span class="star s8"></span>
+  <span class="star s9"></span>
+  <span class="star s10"></span>
+</div>
+
+<nav class="nav">
+  <a class="logo" href="/">ORINAYA</a>
+  <a class="home-link" href="/">Domů</a>
+</nav>
+
+<header class="hero">
+  <div class="kicker">Slova, která si nás najdou ve správný čas.</div>
+
+  <div class="hero-symbol-wrap">
+    <img src="/vzkazy-symbol.png" alt="" class="hero-symbol">
+  </div>
+
+  <h1>Vzkazy od žen ženám</h1>
+
+  <div class="script">
+    Možná právě tvoje slova dnes někdo potřebuje slyšet.
+  </div>
+
+  <div class="intro">
+    Možná právě teď některá žena stojí na místě, které už ty znáš.
+    <br>
+    Možná se bojí. Možná neví, co dál. Možná jen potřebuje slyšet, že v tom není sama.
+    <br><br>
+    <strong>Co bys jí chtěla vzkázat?</strong>
+    <br><br>
+    Napiš pár slov, která jí mohou dodat odvahu, naději nebo pocit, že je možné udělat další krok.
+    Můžeš se podepsat. A můžeš svůj vzkaz nechat úplně anonymně.
+  </div>
+
+  <div class="divider"></div>
+</header>
+
+<main>
+
+<section class="form-wrap">
+  <div class="form-card">
+    <h2>Zanech svůj vzkaz</h2>
+
+    <form id="messageForm">
+      <label for="message">Tvůj vzkaz</label>
+
+      <textarea
+        id="message"
+        maxlength="500"
+        required
+        placeholder="Napiš, co bys chtěla předat ženě, která právě teď potřebuje trochu odvahy..."
+      ></textarea>
+
+      <div class="counter"><span id="count">0</span> / 500</div>
+
+      <div class="symbol-label">Můžeš přidat i malý symbol:</div>
+
+      <div class="symbol-row">
+        <button class="symbol-btn" type="button" data-symbol="♡" aria-label="Srdce">♡</button>
+        <button class="symbol-btn" type="button" data-symbol="✦" aria-label="Hvězda">✦</button>
+        <button class="symbol-btn" type="button" data-symbol="✧" aria-label="Jiskra">✧</button>
+        <button class="symbol-btn" type="button" data-symbol="☼" aria-label="Slunce">☼</button>
+        <button class="symbol-btn" type="button" data-symbol="❀" aria-label="Květ">❀</button>
+        <button class="symbol-btn" type="button" data-symbol="⋆" aria-label="Malá hvězda">⋆</button>
+        <button class="symbol-btn" type="button" data-symbol="❦" aria-label="Ozdoba">❦</button>
+      </div>
+
+      <label for="name">Jméno / podpis (volitelné)</label>
+
+      <input id="name" type="text" maxlength="80" placeholder="Např. Jana">
+
+      <label class="check">
+        <input type="checkbox" id="anonymous">
+        Chci zůstat anonymní
+      </label>
+
+      <button class="submit" id="submitBtn" type="submit">
+        Poslat vzkaz ♡
+      </button>
+
+      <div class="note">
+        Vzkaz bude zveřejněn až po schválení.
+      </div>
+
+      <div id="status" class="status"></div>
+    </form>
+  </div>
+</section>
+
+<section class="messages">
+  <div class="messages-head">
+    <div class="script">
+      Možná právě tady na tebe čeká věta, kterou jsi potřebovala slyšet.
+    </div>
+  </div>
+
+  <div id="grid" class="grid">
+    <div class="empty">Načítám vzkazy…</div>
+  </div>
+
+  <div id="moreWrap" class="more-wrap">
+    <button id="moreBtn" class="more-btn" type="button">
+      Načíst další vzkazy
+    </button>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-logo">ORINAYA</div>
+
+  <div class="socials">
+    <a href="https://www.instagram.com/orinaya.energy" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.facebook.com/share/1EFY1Sjqfv/" target="_blank" rel="noopener">Facebook</a>
+    <a href="/ochrana-osobnich-udaju">Ochrana osobních údajů</a>
+    <a href="/obchodni-podminky">Obchodní podmínky</a>
+  </div>
+
+  <div class="copy">
+    © 2026 ORINAYA · ANEŽKA ZAJÍCOVÁ · IČO 22590528 · PRAHA
+  </div>
+</footer>
+
+<script>
+const esc = s =>
+  String(s ?? "").replace(
+    /[&<>"']/g,
+    c => ({
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#39;"
+    }[c])
+  );
+
+const PAGE_SIZE = 12;
+
+let loadedMessages = [];
+let nextOffset = 0;
+let hasMore = false;
+let loadingMessages = false;
+
+function renderMessages(){
+  const grid = document.getElementById("grid");
+  const moreWrap = document.getElementById("moreWrap");
+
+  if(!loadedMessages.length){
+    grid.innerHTML = '<div class="empty">První vzkazy teprve přijdou.</div>';
+    moreWrap.classList.remove("show");
+    return;
+  }
+
+  grid.innerHTML = loadedMessages.map(m => `
+    <article class="message">
+      <div class="message-text">${esc(m.message)}</div>
+      <div class="message-line"></div>
+      <div class="author">${esc(m.anonymous ? "Anonymně" : (m.name || "Anonymně"))}</div>
+    </article>
+  `).join("");
+
+  moreWrap.classList.toggle("show", hasMore);
+}
+
+async function loadMessages(reset = false){
+  if(loadingMessages) return;
+
+  loadingMessages = true;
+
+  const grid = document.getElementById("grid");
+  const moreBtn = document.getElementById("moreBtn");
+
+  if(reset){
+    loadedMessages = [];
+    nextOffset = 0;
+    grid.innerHTML = '<div class="empty">Načítám vzkazy…</div>';
+  }
+
+  moreBtn.disabled = true;
+  moreBtn.textContent = "Načítám…";
+
+  try{
+    const r = await fetch(`/api/messages?limit=${PAGE_SIZE}&offset=${nextOffset}`);
+
+    if(!r.ok) throw new Error();
+
+    const data = await r.json();
+    const newMessages = data.messages || [];
+
+    loadedMessages = loadedMessages.concat(newMessages);
+    hasMore = !!data.hasMore;
+    nextOffset = data.nextOffset ?? (nextOffset + newMessages.length);
+
+    renderMessages();
+
+  }catch(e){
+    if(!loadedMessages.length){
+      grid.innerHTML = '<div class="empty">Vzkazy se teď nepodařilo načíst.</div>';
+    }
+  }finally{
+    loadingMessages = false;
+    moreBtn.disabled = false;
+    moreBtn.textContent = "Načíst další vzkazy";
+  }
+}
+
+document.getElementById("moreBtn").addEventListener("click", () => loadMessages(false));
+
+const messageArea = document.getElementById("message");
+const count = document.getElementById("count");
+
+messageArea.addEventListener("input", () => {
+  count.textContent = messageArea.value.length;
+});
+
+document.querySelectorAll(".symbol-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const symbol = btn.dataset.symbol;
+
+    const start = messageArea.selectionStart ?? messageArea.value.length;
+    const end = messageArea.selectionEnd ?? messageArea.value.length;
+
+    const before = messageArea.value.slice(0,start);
+    const after = messageArea.value.slice(end);
+
+    const spacer = before && !/\s$/.test(before) ? " " : "";
+    const next = before + spacer + symbol + after;
+
+    messageArea.value = next.slice(0,500);
+    count.textContent = messageArea.value.length;
+
+    const pos = Math.min(
+      before.length + spacer.length + symbol.length,
+      messageArea.value.length
+    );
+
+    messageArea.focus();
+    messageArea.setSelectionRange(pos,pos);
+  });
+});
+
+document.getElementById("anonymous").addEventListener("change", e => {
+  const nameInput = document.getElementById("name");
+  nameInput.disabled = e.target.checked;
+
+  if(e.target.checked){
+    nameInput.value = "";
+  }
+});
+
+document.getElementById("messageForm").addEventListener("submit", async e => {
+  e.preventDefault();
+
+  const btn = document.getElementById("submitBtn");
+  const st = document.getElementById("status");
+
+  btn.disabled = true;
+  st.className = "status show";
+  st.textContent = "Odesílám…";
+
+  try{
+    const body = {
+      message: messageArea.value.trim(),
+      name: document.getElementById("name").value.trim(),
+      anonymous: document.getElementById("anonymous").checked
+    };
+
+    const r = await fetch("/api/messages", {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(body)
+    });
+
+    const data = await r.json().catch(() => ({}));
+
+    if(!r.ok){
+      throw new Error(data.error || "Nepodařilo se odeslat vzkaz.");
+    }
+
+    e.target.reset();
+    document.getElementById("name").disabled = false;
+    count.textContent = "0";
+
+    st.className = "status show ok";
+    st.textContent = "Děkuju. Tvůj vzkaz teď čeká na schválení. ♡";
+
+  }catch(err){
+    st.className = "status show err";
+    st.textContent = err.message || "Nepodařilo se odeslat vzkaz.";
+  }finally{
+    btn.disabled = false;
+  }
+});
+
+loadMessages(true);
+</script>
+
+
+
+<script>
+(function(){
+  const audio = document.getElementById('orinaya-music');
+  const button = document.getElementById('music-toggle');
+  if (!audio || !button) return;
+
+  const label = button.querySelector('.music-label');
+  const KEY = 'orinayaMusicStateV1';
+  audio.volume = 0.18;
+
+  function readState(){
+    try{
+      return JSON.parse(localStorage.getItem(KEY) || '{}');
+    }catch(e){
+      return {};
+    }
+  }
+
+  function saveState(){
+    try{
+      localStorage.setItem(KEY, JSON.stringify({
+        playing: !audio.paused,
+        time: Number.isFinite(audio.currentTime) ? audio.currentTime : 0,
+        updated: Date.now()
+      }));
+    }catch(e){}
+  }
+
+  function setButton(playing, wantsResume){
+    button.classList.toggle('is-playing', playing);
+    button.setAttribute('aria-pressed', playing ? 'true' : 'false');
+
+    if (playing){
+      button.setAttribute('aria-label','Ztišit atmosféru');
+      if (label) label.textContent = 'Ztišit atmosféru';
+    }else if (wantsResume){
+      button.setAttribute('aria-label','Pokračovat v atmosféře');
+      if (label) label.textContent = 'Pokračovat v atmosféře';
+    }else{
+      button.setAttribute('aria-label','Pustit atmosféru');
+      if (label) label.textContent = 'Pustit atmosféru';
+    }
+  }
+
+  const state = readState();
+  let wantsResume = !!state.playing;
+
+  audio.addEventListener('loadedmetadata', async function(){
+    if (Number.isFinite(state.time) && state.time > 0 && audio.duration){
+      audio.currentTime = state.time % audio.duration;
+    }
+
+    if (wantsResume){
+      try{
+        await audio.play();
+        setButton(true, false);
+      }catch(e){
+        setButton(false, true);
+      }
+    }else{
+      setButton(false, false);
+    }
+  }, {once:true});
+
+  button.addEventListener('click', async function(){
+    if (audio.paused){
+      try{
+        await audio.play();
+        wantsResume = true;
+        setButton(true, false);
+        saveState();
+      }catch(e){
+        setButton(false, true);
+      }
+    }else{
+      audio.pause();
+      wantsResume = false;
+      setButton(false, false);
+      saveState();
+    }
+  });
+
+  audio.addEventListener('play', function(){
+    wantsResume = true;
+    setButton(true, false);
+    saveState();
+  });
+
+  audio.addEventListener('pause', function(){
+    setButton(false, wantsResume);
+    saveState();
+  });
+
+  let lastSave = 0;
+  audio.addEventListener('timeupdate', function(){
+    const now = Date.now();
+    if (now - lastSave > 1000){
+      lastSave = now;
+      saveState();
+    }
+  });
+
+  document.addEventListener('click', function(e){
+    const a = e.target.closest('a[href]');
+    if (a) saveState();
+  }, true);
+
+  window.addEventListener('pagehide', saveState);
+  window.addEventListener('beforeunload', saveState);
+})();
+</script>
+
+</body>
+</html>

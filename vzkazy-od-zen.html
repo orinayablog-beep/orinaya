@@ -21,6 +21,7 @@
 >
 
 <style>
+
 :root{
   --bg:#080611;
   --gold:#d7aa57;
@@ -135,7 +136,7 @@ a{
 .hero{
   width:min(900px,88vw);
   margin:0 auto;
-  padding:86px 0 54px;
+  padding:72px 0 54px;
   text-align:center;
   position:relative;
   z-index:1;
@@ -146,11 +147,30 @@ a{
   font-size:10px;
   letter-spacing:.32em;
   text-transform:uppercase;
-  margin-bottom:20px;
+  margin-bottom:16px;
   font-weight:500;
 }
 
-h1,h2,h3{
+.hero-symbol-wrap{
+  display:flex;
+  justify-content:center;
+  margin:8px auto 22px;
+}
+
+.hero-symbol{
+  display:block;
+  width:clamp(190px,24vw,280px);
+  height:auto;
+  border-radius:22px;
+  opacity:.98;
+  filter:
+    drop-shadow(0 0 24px rgba(215,170,87,.10))
+    drop-shadow(0 0 46px rgba(106,55,138,.12));
+}
+
+h1,
+h2,
+h3{
   font-family:"Cormorant Garamond",Georgia,serif;
   font-weight:400;
 }
@@ -278,39 +298,54 @@ input:focus{
   letter-spacing:.05em;
 }
 
-.emoji-label{
-  margin-top:13px;
+/* ORINAYA SYMBOLY */
+
+.symbol-label{
+  margin-top:14px;
   color:#cfc3cf;
   font-size:10px;
   letter-spacing:.08em;
 }
 
-.emoji-row{
+.symbol-row{
   display:flex;
   flex-wrap:wrap;
-  gap:8px;
-  margin:10px 0 2px;
+  gap:9px;
+  margin:11px 0 3px;
 }
 
-.emoji-btn{
-  width:39px;
-  height:39px;
+.symbol-btn{
+  width:42px;
+  height:42px;
   display:flex;
   align-items:center;
   justify-content:center;
-  border:1px solid rgba(224,183,99,.18);
+  border:1px solid rgba(224,183,99,.22);
   border-radius:999px;
-  background:rgba(255,255,255,.018);
-  font-size:18px;
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(215,170,87,.045),
+      rgba(255,255,255,.012)
+    );
+  color:#e4bf77;
+  font-family:"Cormorant Garamond",Georgia,serif;
+  font-size:24px;
+  line-height:1;
   cursor:pointer;
   transition:.18s ease;
+  box-shadow:inset 0 0 18px rgba(90,44,119,.035);
 }
 
-.emoji-btn:hover,
-.emoji-btn:focus-visible{
-  transform:translateY(-1px);
-  border-color:rgba(215,170,87,.48);
+.symbol-btn:hover,
+.symbol-btn:focus-visible{
+  transform:translateY(-2px);
+  border-color:rgba(215,170,87,.55);
+  color:#f1d79b;
   background:rgba(215,170,87,.07);
+  box-shadow:
+    0 0 18px rgba(215,170,87,.06),
+    inset 0 0 18px rgba(90,44,119,.06);
   outline:none;
 }
 
@@ -404,7 +439,7 @@ input:focus{
 }
 
 .message{
-  padding:27px 27px 24px;
+  padding:28px 27px 25px;
   border:1px solid rgba(224,183,99,.16);
   border-radius:26px;
   background:
@@ -460,35 +495,43 @@ input:focus{
   right:22px;
   top:18px;
   color:#d7aa57;
-  opacity:.45;
+  opacity:.42;
   font-size:13px;
 }
 
+/* text vzkazu - čitelný */
+
 .message-text{
-  margin:18px 0 18px;
-  font-family:"Italianno",cursive;
+  margin:18px 0 21px;
+  font-family:"Cormorant Garamond",Georgia,serif;
   color:#f7eff5;
-  font-size:34px;
-  line-height:1.16;
+  font-size:28px;
+  line-height:1.35;
   overflow-wrap:anywhere;
 }
+
+/* jemná linka */
 
 .message-line{
   width:38px;
   height:1px;
   background:linear-gradient(
     90deg,
-    rgba(215,170,87,.55),
+    rgba(215,170,87,.60),
     rgba(215,170,87,.05)
   );
-  margin:0 0 15px;
+  margin:0 0 13px;
 }
 
+/* podpis - ručně */
+
 .author{
-  color:#d8cdd7;
-  font-size:9px;
-  letter-spacing:.16em;
-  text-transform:uppercase;
+  font-family:"Italianno",cursive;
+  color:#d7aa57;
+  font-size:27px;
+  line-height:1.05;
+  letter-spacing:.01em;
+  text-transform:none;
 }
 
 .empty{
@@ -570,7 +613,11 @@ footer{
   }
 
   .hero{
-    padding:58px 0 42px;
+    padding:54px 0 42px;
+  }
+
+  .hero-symbol{
+    width:190px;
   }
 
   .intro{
@@ -593,23 +640,29 @@ footer{
   }
 
   .message{
-    padding:24px 23px 21px;
+    padding:25px 23px 22px;
   }
 
   .message-text{
-    font-size:31px;
+    font-size:27px;
+  }
+
+  .author{
+    font-size:25px;
   }
 
   .messages{
     padding-bottom:70px;
   }
 
-  .emoji-btn{
-    width:37px;
-    height:37px;
+  .symbol-btn{
+    width:39px;
+    height:39px;
+    font-size:22px;
   }
 
 }
+
 </style>
 </head>
 
@@ -629,14 +682,29 @@ footer{
 </div>
 
 <nav class="nav">
-  <a class="logo" href="/">ORINAYA</a>
-  <a class="back" href="/">Zpět na web</a>
+
+  <a class="logo" href="/">
+    ORINAYA
+  </a>
+
+  <a class="back" href="/">
+    Zpět na web
+  </a>
+
 </nav>
 
 <header class="hero">
 
   <div class="kicker">
     Slova, která mohou nést dál
+  </div>
+
+  <div class="hero-symbol-wrap">
+    <img
+      src="/vzkazy-symbol.png"
+      alt=""
+      class="hero-symbol"
+    >
   </div>
 
   <h1>
@@ -648,10 +716,13 @@ footer{
   </div>
 
   <div class="intro">
+
     Možná právě teď některá žena stojí na místě, které už ty znáš.
+
     <br>
-    Možná se bojí. Možná neví, co dál. Možná jen potřebuje slyšet,
-    že v tom není sama.
+
+    Možná se bojí. Možná neví, co dál.
+    Možná jen potřebuje slyšet, že v tom není sama.
 
     <br><br>
 
@@ -661,9 +732,12 @@ footer{
 
     <br><br>
 
-    Napiš pár slov, která jí mohou dodat odvahu, naději nebo pocit,
-    že je možné udělat další krok. Můžeš se podepsat.
+    Napiš pár slov, která jí mohou dodat odvahu,
+    naději nebo pocit, že je možné udělat další krok.
+
+    Můžeš se podepsat.
     A můžeš svůj vzkaz nechat úplně anonymně.
+
   </div>
 
   <div class="divider"></div>
@@ -697,19 +771,39 @@ footer{
         <span id="count">0</span> / 500
       </div>
 
-      <div class="emoji-label">
+      <div class="symbol-label">
         Můžeš přidat i malý symbol:
       </div>
 
-      <div class="emoji-row">
+      <div class="symbol-row">
 
-        <button class="emoji-btn" type="button" data-emoji="💜">💜</button>
-        <button class="emoji-btn" type="button" data-emoji="✨">✨</button>
-        <button class="emoji-btn" type="button" data-emoji="🤍">🤍</button>
-        <button class="emoji-btn" type="button" data-emoji="🦋">🦋</button>
-        <button class="emoji-btn" type="button" data-emoji="🌸">🌸</button>
-        <button class="emoji-btn" type="button" data-emoji="🌿">🌿</button>
-        <button class="emoji-btn" type="button" data-emoji="☀️">☀️</button>
+        <button class="symbol-btn" type="button" data-symbol="♡">
+          ♡
+        </button>
+
+        <button class="symbol-btn" type="button" data-symbol="✦">
+          ✦
+        </button>
+
+        <button class="symbol-btn" type="button" data-symbol="✧">
+          ✧
+        </button>
+
+        <button class="symbol-btn" type="button" data-symbol="☼">
+          ☼
+        </button>
+
+        <button class="symbol-btn" type="button" data-symbol="❀">
+          ❀
+        </button>
+
+        <button class="symbol-btn" type="button" data-symbol="⋆">
+          ⋆
+        </button>
+
+        <button class="symbol-btn" type="button" data-symbol="❦">
+          ❦
+        </button>
 
       </div>
 
@@ -725,8 +819,14 @@ footer{
       >
 
       <label class="check">
-        <input type="checkbox" id="anonymous">
+
+        <input
+          type="checkbox"
+          id="anonymous"
+        >
+
         Chci zůstat anonymní
+
       </label>
 
       <button
@@ -762,7 +862,10 @@ footer{
 
   </div>
 
-  <div id="grid" class="grid">
+  <div
+    id="grid"
+    class="grid"
+  >
 
     <div class="empty">
       Načítám vzkazy…
@@ -833,11 +936,12 @@ function renderMessages(){
   if(!loadedMessages.length){
 
     grid.innerHTML =
-      '<div class="empty">První vzkazy teprve přijdou. ✨</div>';
+      '<div class="empty">První vzkazy teprve přijdou.</div>';
 
     moreWrap.classList.remove("show");
 
     return;
+
   }
 
   grid.innerHTML =
@@ -862,9 +966,13 @@ function renderMessages(){
     `).join("");
 
   if(hasMore){
+
     moreWrap.classList.add("show");
+
   }else{
+
     moreWrap.classList.remove("show");
+
   }
 
 }
@@ -914,7 +1022,9 @@ async function loadMessages(reset = false){
       data.messages || [];
 
     loadedMessages =
-      loadedMessages.concat(newMessages);
+      loadedMessages.concat(
+        newMessages
+      );
 
     hasMore =
       !!data.hasMore;
@@ -939,6 +1049,7 @@ async function loadMessages(reset = false){
     loadingMessages = false;
 
     moreBtn.disabled = false;
+
     moreBtn.textContent =
       "Načíst další vzkazy";
 
@@ -964,23 +1075,25 @@ const count =
 messageArea.addEventListener(
   "input",
   () => {
+
     count.textContent =
       messageArea.value.length;
+
   }
 );
 
-/* EMOJI */
+/* ORINAYA SYMBOLY */
 
 document
-  .querySelectorAll(".emoji-btn")
+  .querySelectorAll(".symbol-btn")
   .forEach(btn => {
 
     btn.addEventListener(
       "click",
       () => {
 
-        const emoji =
-          btn.dataset.emoji;
+        const symbol =
+          btn.dataset.symbol;
 
         const start =
           messageArea.selectionStart ??
@@ -991,10 +1104,15 @@ document
           messageArea.value.length;
 
         const before =
-          messageArea.value.slice(0,start);
+          messageArea.value.slice(
+            0,
+            start
+          );
 
         const after =
-          messageArea.value.slice(end);
+          messageArea.value.slice(
+            end
+          );
 
         const spacer =
           before &&
@@ -1005,7 +1123,7 @@ document
         const next =
           before +
           spacer +
-          emoji +
+          symbol +
           after;
 
         messageArea.value =
@@ -1018,7 +1136,7 @@ document
           Math.min(
             before.length +
             spacer.length +
-            emoji.length,
+            symbol.length,
             messageArea.value.length
           );
 
@@ -1111,13 +1229,17 @@ document
           await fetch(
             "/api/messages",
             {
+
               method:"POST",
+
               headers:{
                 "Content-Type":
                   "application/json"
               },
+
               body:
                 JSON.stringify(body)
+
             }
           );
 

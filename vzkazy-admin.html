@@ -1,35 +1,483 @@
 <!doctype html>
-<html lang="cs"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ORINAYA | Schvalování vzkazů</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+<html lang="cs">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1"
+>
+
+<title>
+  ORINAYA | Schvalování vzkazů
+</title>
+
+<link
+  rel="preconnect"
+  href="https://fonts.googleapis.com"
+>
+
+<link
+  rel="preconnect"
+  href="https://fonts.gstatic.com"
+  crossorigin
+>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400&family=Montserrat:wght@300;400;500&display=swap"
+  rel="stylesheet"
+>
+
 <style>
-:root{--bg:#080611;--gold:#d7aa57;--text:#f4edf3;--body:#eee6ed;--line:rgba(224,183,99,.18)}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 70% 8%,rgba(92,44,122,.20),transparent 34%),#080611;color:var(--text);font-family:Montserrat,Arial,sans-serif;font-weight:300;min-height:100vh}
-main{width:min(900px,90vw);margin:auto;padding:60px 0 90px}h1{font-family:"Cormorant Garamond",serif;font-weight:400;font-size:clamp(44px,7vw,72px);margin:0 0 10px}.lead{color:var(--body);line-height:1.7}.login,.card{border:1px solid var(--line);border-radius:24px;background:rgba(255,255,255,.02);padding:25px;margin-top:28px}.login{max-width:520px}
-input{width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:#0d0916;color:#fff;font:inherit;outline:none}.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}button{border:1px solid rgba(215,170,87,.45);border-radius:999px;padding:11px 17px;background:transparent;color:#f0d8aa;text-transform:uppercase;font-size:10px;letter-spacing:.12em;cursor:pointer}.delete{border-color:rgba(255,130,150,.35);color:#ffbdc8}.msg{font-family:"Cormorant Garamond",serif;font-size:27px;line-height:1.35;color:#fff;margin:8px 0 14px}.meta{color:#cfc3ce;font-size:11px;line-height:1.6}.empty{color:#d8ced7;padding:30px 0}.top{display:flex;justify-content:space-between;gap:15px;align-items:center}.logout{display:none}
-</style></head><body><main>
-<div class="top"><div><div style="color:#d7aa57;font-size:10px;letter-spacing:.25em;text-transform:uppercase">ORINAYA · soukromá administrace</div><h1>Vzkazy ke schválení</h1></div><button id="logout" class="logout">Odhlásit</button></div>
-<p class="lead">Tady uvidíš jen vzkazy, které ještě nejsou veřejné.</p>
-<div id="login" class="login"><div style="margin-bottom:10px;color:#eee6ed">Zadej svoje administrátorské heslo:</div><input id="key" type="password" autocomplete="current-password"><div class="btns"><button id="enter">Otevřít schvalování</button></div><div id="loginErr" class="meta"></div></div>
+
+:root{
+  --bg:#080611;
+  --gold:#d7aa57;
+  --text:#f4edf3;
+  --body:#eee6ed;
+  --line:rgba(224,183,99,.18);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  background:
+    radial-gradient(
+      circle at 70% 8%,
+      rgba(92,44,122,.20),
+      transparent 34%
+    ),
+    #080611;
+  color:var(--text);
+  font-family:Montserrat,Arial,sans-serif;
+  font-weight:300;
+  min-height:100vh;
+}
+
+main{
+  width:min(900px,90vw);
+  margin:auto;
+  padding:60px 0 90px;
+}
+
+h1{
+  font-family:"Cormorant Garamond",serif;
+  font-weight:400;
+  font-size:clamp(44px,7vw,72px);
+  margin:0 0 10px;
+}
+
+.lead{
+  color:var(--body);
+  line-height:1.7;
+}
+
+.login,
+.card{
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:rgba(255,255,255,.02);
+  padding:25px;
+  margin-top:28px;
+}
+
+.login{
+  max-width:520px;
+}
+
+input{
+  width:100%;
+  padding:14px 16px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#0d0916;
+  color:#fff;
+  font:inherit;
+  outline:none;
+}
+
+.btns{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+
+button{
+  border:1px solid rgba(215,170,87,.45);
+  border-radius:999px;
+  padding:11px 17px;
+  background:transparent;
+  color:#f0d8aa;
+  text-transform:uppercase;
+  font-size:10px;
+  letter-spacing:.12em;
+  cursor:pointer;
+}
+
+.delete{
+  border-color:rgba(255,130,150,.35);
+  color:#ffbdc8;
+}
+
+.msg{
+  font-family:"Cormorant Garamond",serif;
+  font-size:27px;
+  line-height:1.35;
+  color:#fff;
+  margin:8px 0 14px;
+}
+
+.meta{
+  color:#cfc3ce;
+  font-size:11px;
+  line-height:1.6;
+}
+
+.empty{
+  color:#d8ced7;
+  padding:30px 0;
+}
+
+.top{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  align-items:center;
+}
+
+.logout{
+  display:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<main>
+
+<div class="top">
+
+  <div>
+
+    <div
+      style="
+        color:#d7aa57;
+        font-size:10px;
+        letter-spacing:.25em;
+        text-transform:uppercase;
+      "
+    >
+      ORINAYA · soukromá administrace
+    </div>
+
+    <h1>
+      Vzkazy ke schválení
+    </h1>
+
+  </div>
+
+  <button
+    id="logout"
+    class="logout"
+  >
+    Odhlásit
+  </button>
+
+</div>
+
+<p class="lead">
+  Tady uvidíš jen vzkazy, které ještě nejsou veřejné.
+</p>
+
+<div
+  id="login"
+  class="login"
+>
+
+  <div
+    style="
+      margin-bottom:10px;
+      color:#eee6ed
+    "
+  >
+    Zadej svoje administrátorské heslo:
+  </div>
+
+  <input
+    id="key"
+    type="password"
+    autocomplete="current-password"
+  >
+
+  <div class="btns">
+
+    <button id="enter">
+      Otevřít schvalování
+    </button>
+
+  </div>
+
+  <div
+    id="loginErr"
+    class="meta"
+  ></div>
+
+</div>
+
 <div id="list"></div>
+
 </main>
+
 <script>
-const $=id=>document.getElementById(id); const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let key=sessionStorage.getItem('orinayaAdminKey')||'';
-async function api(method='',body){
- const r=await fetch('/api/admin-messages',{method:method||'GET',headers:{'Content-Type':'application/json','X-Admin-Key':key},body:body?JSON.stringify(body):undefined});
- const d=await r.json().catch(()=>({})); if(!r.ok)throw new Error(d.error||'Chyba'); return d;
+
+const $ =
+  id =>
+    document.getElementById(id);
+
+const esc =
+  s =>
+    String(s ?? "").replace(
+      /[&<>"']/g,
+      c => ({
+        "&":"&amp;",
+        "<":"&lt;",
+        ">":"&gt;",
+        '"':"&quot;",
+        "'":"&#39;"
+      }[c])
+    );
+
+let key =
+  sessionStorage.getItem(
+    "orinayaAdminKey"
+  ) || "";
+
+async function api(
+  method = "",
+  body
+){
+
+  const r =
+    await fetch(
+      "/api/admin-messages",
+      {
+
+        method:
+          method || "GET",
+
+        headers:{
+          "Content-Type":
+            "application/json",
+          "X-Admin-Key":
+            key
+        },
+
+        body:
+          body
+            ? JSON.stringify(body)
+            : undefined
+
+      }
+    );
+
+  const d =
+    await r
+      .json()
+      .catch(() => ({}));
+
+  if(!r.ok){
+
+    throw new Error(
+      d.error || "Chyba"
+    );
+
+  }
+
+  return d;
+
 }
+
 async function load(){
- $('loginErr').textContent='';
- try{
-  const d=await api(); $('login').style.display='none';$('logout').style.display='block';
-  $('list').innerHTML=d.messages?.length?d.messages.map(m=>`<div class="card" id="m-${m.id}"><div class="meta">${new Date(m.created_at).toLocaleString('cs-CZ')} · ${esc(m.anonymous?'Anonymně':(m.name||'Bez podpisu'))}</div><div class="msg">${esc(m.message)}</div><div class="btns"><button onclick="act('${m.id}','approve')">Schválit</button><button class="delete" onclick="act('${m.id}','delete')">Smazat</button></div></div>`).join(''):'<div class="empty">Nic tu nečeká. ✨</div>';
- }catch(e){$('login').style.display='block';$('logout').style.display='none';$('list').innerHTML='';$('loginErr').textContent='Heslo nesedí nebo zatím není API nastavené.'}
+
+  $("loginErr").textContent = "";
+
+  try{
+
+    const d =
+      await api();
+
+    $("login").style.display =
+      "none";
+
+    $("logout").style.display =
+      "block";
+
+    $("list").innerHTML =
+      d.messages?.length
+
+        ? d.messages.map(
+            m => `
+
+              <div
+                class="card"
+                id="m-${m.id}"
+              >
+
+                <div class="meta">
+
+                  ${
+                    new Date(
+                      m.created_at
+                    ).toLocaleString(
+                      "cs-CZ"
+                    )
+                  }
+
+                  ·
+
+                  ${
+                    esc(
+                      m.anonymous
+                        ? "Anonymně"
+                        : (
+                            m.name ||
+                            "Bez podpisu"
+                          )
+                    )
+                  }
+
+                </div>
+
+                <div class="msg">
+
+                  ${
+                    esc(
+                      m.message
+                    )
+                  }
+
+                </div>
+
+                <div class="btns">
+
+                  <button
+                    onclick="
+                      act(
+                        '${m.id}',
+                        'approve'
+                      )
+                    "
+                  >
+                    Schválit
+                  </button>
+
+                  <button
+                    class="delete"
+                    onclick="
+                      act(
+                        '${m.id}',
+                        'delete'
+                      )
+                    "
+                  >
+                    Smazat
+                  </button>
+
+                </div>
+
+              </div>
+
+            `
+          ).join("")
+
+        : '<div class="empty">Nic tu nečeká.</div>';
+
+  }catch(e){
+
+    $("login").style.display =
+      "block";
+
+    $("logout").style.display =
+      "none";
+
+    $("list").innerHTML = "";
+
+    $("loginErr").textContent =
+      "Heslo nesedí nebo zatím není API nastavené.";
+
+  }
+
 }
-async function act(id,action){if(action==='delete'&&!confirm('Opravdu smazat?'))return;await api(action==='delete'?'DELETE':'PATCH',{id,action});load()}
-$('enter').onclick=()=>{key=$('key').value;sessionStorage.setItem('orinayaAdminKey',key);load()};
-$('logout').onclick=()=>{sessionStorage.removeItem('orinayaAdminKey');key='';location.reload()};
-if(key)load();
-</script></body></html>
+
+async function act(
+  id,
+  action
+){
+
+  if(
+    action === "delete" &&
+    !confirm("Opravdu smazat?")
+  ){
+    return;
+  }
+
+  await api(
+    action === "delete"
+      ? "DELETE"
+      : "PATCH",
+    {
+      id,
+      action
+    }
+  );
+
+  load();
+
+}
+
+$("enter").onclick =
+  () => {
+
+    key =
+      $("key").value;
+
+    sessionStorage.setItem(
+      "orinayaAdminKey",
+      key
+    );
+
+    load();
+
+  };
+
+$("logout").onclick =
+  () => {
+
+    sessionStorage.removeItem(
+      "orinayaAdminKey"
+    );
+
+    key = "";
+
+    location.reload();
+
+  };
+
+if(key){
+  load();
+}
+
+</script>
+
+</body>
+
+</html>

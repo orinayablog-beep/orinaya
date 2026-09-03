@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080611">
+<title>Vzkazy od žen ženám | ORINAYA</title>
+<meta name="description" content="Vzkazy od žen ženám. Slova odvahy, podpory a naděje pro chvíle, kdy je potřebujeme slyšet.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Italianno&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080611;--gold:#d7aa57;--gold2:#f1d79b;--text:#f4edf3;--body:#eee6ed;--muted:#d8ced7;--line:rgba(224,183,99,.17)}
+*{box-sizing:border-box} html{background:var(--bg);scroll-behavior:smooth}
+body{margin:0;color:var(--text);font-family:"Montserrat",Arial,sans-serif;font-weight:300;background:radial-gradient(circle at 70% 8%,rgba(92,44,122,.20),transparent 34%),radial-gradient(circle at 15% 55%,rgba(82,38,108,.12),transparent 34%),linear-gradient(180deg,#080611 0%,#0b0715 48%,#090711 100%);min-height:100vh;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.stars{position:fixed;inset:0;pointer-events:none;overflow:hidden}.star{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff1bf;box-shadow:0 0 6px rgba(255,232,170,.85),0 0 14px rgba(222,171,75,.32);opacity:.28;animation:twinkle var(--d,6s) ease-in-out infinite;animation-delay:var(--delay,0s)}
+@keyframes twinkle{0%,100%{opacity:.12;transform:scale(.72)}50%{opacity:.72;transform:scale(1.2)}}.s1{left:8%;top:14%;--d:6.2s}.s2{left:20%;top:30%;--d:8s;--delay:1.4s}.s3{left:36%;top:18%;--d:7.1s;--delay:2.2s}.s4{left:51%;top:11%;--d:5.9s;--delay:.8s}.s5{left:70%;top:25%;--d:8.4s;--delay:3.1s}.s6{left:88%;top:16%;--d:6.7s;--delay:1.9s}.s7{left:12%;top:64%;--d:7.8s;--delay:2.7s}.s8{left:29%;top:78%;--d:6.4s;--delay:.4s}.s9{left:60%;top:72%;--d:8.8s;--delay:2.5s}.s10{left:83%;top:62%;--d:6.1s;--delay:4s}
+.nav{width:min(1080px,88vw);margin:auto;padding:28px 0;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2}.logo{font-family:"Cormorant Garamond",Georgia,serif;color:#e7d3aa;font-size:27px;letter-spacing:.16em}.back{font-size:10px;letter-spacing:.17em;text-transform:uppercase;color:#e8dfe7}
+.hero{width:min(900px,88vw);margin:0 auto;padding:86px 0 54px;text-align:center;position:relative;z-index:1}.kicker{color:var(--gold);font-size:10px;letter-spacing:.32em;text-transform:uppercase;margin-bottom:20px;font-weight:500}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:400} h1{font-size:clamp(50px,7vw,84px);line-height:1;margin:0;color:#f5edf3}.script{font-family:"Italianno",cursive;color:#e4bf77;font-size:clamp(36px,5vw,56px);line-height:1.08;margin:22px 0 0;text-shadow:0 2px 12px rgba(0,0,0,.38)}
+.intro{max-width:720px;margin:34px auto 0;color:var(--body);line-height:1.9;font-size:16px}.intro strong{color:#fff7ef;font-weight:400}.divider{width:70px;height:1px;margin:40px auto 0;background:linear-gradient(90deg,transparent,var(--gold),transparent);box-shadow:0 0 12px rgba(215,170,87,.18)}
+.form-wrap{width:min(760px,88vw);margin:0 auto 90px;position:relative;z-index:1}.form-card{border:1px solid var(--line);border-radius:30px;padding:34px;background:radial-gradient(circle at 86% 8%,rgba(109,55,138,.13),transparent 36%),linear-gradient(145deg,rgba(255,255,255,.026),rgba(255,255,255,.008));box-shadow:0 20px 70px rgba(0,0,0,.28)}.form-card h2{margin:0 0 8px;font-size:clamp(31px,4vw,43px);color:#f5edf3}.form-card .hint{margin:0 0 28px;color:var(--body);font-size:13px;line-height:1.7}
+label{display:block;color:#eee5ed;font-size:10px;letter-spacing:.16em;text-transform:uppercase;margin:18px 0 9px} textarea,input[type=text]{width:100%;border:1px solid rgba(224,183,99,.18);background:rgba(255,255,255,.018);color:#fff;border-radius:18px;padding:16px 17px;outline:none;font-family:"Montserrat",Arial,sans-serif;font-size:14px;font-weight:300;transition:.2s ease} textarea{min-height:170px;resize:vertical;line-height:1.7}textarea:focus,input:focus{border-color:rgba(215,170,87,.5);box-shadow:0 0 0 3px rgba(215,170,87,.05)}::placeholder{color:#b9adb9}
+.check{display:flex;align-items:center;gap:10px;margin-top:16px;color:#eee5ed;font-size:13px}.check input{accent-color:#d7aa57}.submit{display:inline-block;margin-top:24px;border:1px solid rgba(215,170,87,.5);border-radius:999px;padding:14px 22px;color:#f0d8aa;background:rgba(215,170,87,.03);font-size:11px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}.submit:disabled{opacity:.45;cursor:wait}.note,.status{margin-top:14px;color:#ddd2dc;font-size:11px;line-height:1.6}.status{display:none}.status.show{display:block}.status.ok{color:#f1d79b}.status.err{color:#ffb6c1}
+.messages{width:min(1040px,88vw);margin:0 auto;padding:0 0 100px;position:relative;z-index:1}.messages-head{text-align:center;margin-bottom:42px}.messages-head .script{font-size:clamp(31px,4vw,46px);margin-top:0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}.message{min-height:230px;padding:30px 27px 26px;border:1px solid rgba(224,183,99,.15);border-radius:26px;background:radial-gradient(circle at 90% 10%,rgba(120,67,148,.10),transparent 37%),linear-gradient(145deg,rgba(255,255,255,.024),rgba(255,255,255,.006));box-shadow:0 12px 38px rgba(0,0,0,.18);position:relative}.message:nth-child(3n+2){transform:rotate(.45deg)}.message:nth-child(3n){transform:rotate(-.4deg)}.message::before{content:"✦";position:absolute;right:22px;top:18px;color:#d7aa57;opacity:.45;font-size:13px}.message-text{margin:20px 0 28px;font-family:"Italianno",cursive;color:#f7eff5;font-size:34px;line-height:1.18}.author{color:#e1d6df;font-size:10px;letter-spacing:.14em;text-transform:uppercase}.empty{text-align:center;color:#e8dfe7;line-height:1.8;grid-column:1/-1;padding:30px}
+footer{border-top:1px solid var(--line);padding:48px 22px 38px;text-align:center;position:relative;z-index:1}.footer-logo{font-family:"Cormorant Garamond",Georgia,serif;font-size:34px;letter-spacing:.17em;color:#e7d3aa}.copy{margin-top:24px;color:#d6cbd5;font-size:9px;letter-spacing:.14em}
+@media(max-width:760px){.nav{padding:22px 0}.logo{font-size:23px}.hero{padding:58px 0 42px}.intro{font-size:14px;line-height:1.82}.form-wrap{margin-bottom:68px}.form-card{padding:25px 22px;border-radius:24px}.grid{grid-template-columns:1fr;gap:15px}.message{min-height:0;padding:25px 23px 23px}.message-text{font-size:31px}.messages{padding-bottom:70px}}
+</style>
+</head>
+<body>
+<div class="stars" aria-hidden="true"><span class="star s1"></span><span class="star s2"></span><span class="star s3"></span><span class="star s4"></span><span class="star s5"></span><span class="star s6"></span><span class="star s7"></span><span class="star s8"></span><span class="star s9"></span><span class="star s10"></span></div>
+<nav class="nav"><a class="logo" href="/">ORINAYA</a><a class="back" href="/">Zpět na web</a></nav>
+<header class="hero">
+<div class="kicker">Slova, která mohou nést dál</div>
+<h1>Vzkazy od žen ženám</h1>
+<div class="script">Možná právě tvoje slova dnes někdo potřebuje slyšet.</div>
+<div class="intro">Možná právě teď některá žena stojí na místě, které už ty znáš.<br>Možná se bojí. Možná neví, co dál. Možná jen potřebuje slyšet, že v tom není sama.<br><br><strong>Co bys jí chtěla vzkázat?</strong><br><br>Napiš pár slov, která jí mohou dodat odvahu, naději nebo pocit, že je možné udělat další krok. Můžeš se podepsat. A můžeš svůj vzkaz nechat úplně anonymně.</div>
+<div class="divider"></div>
+</header>
+<main>
+<section class="form-wrap"><div class="form-card">
+<h2>Zanech svůj vzkaz</h2><p class="hint">Po odeslání se vzkaz nezobrazí hned. Nejprve projde schválením.</p>
+<form id="messageForm">
+<label for="message">Tvůj vzkaz</label><textarea id="message" maxlength="900" required placeholder="Napiš, co bys chtěla předat ženě, která právě teď potřebuje trochu odvahy..."></textarea>
+<label for="name">Jméno / podpis (volitelné)</label><input id="name" type="text" maxlength="80" placeholder="Např. Jana">
+<label class="check"><input type="checkbox" id="anonymous"> Chci zůstat anonymní</label>
+<button class="submit" id="submitBtn" type="submit">Poslat vzkaz ♡</button>
+<div class="note">Vzkaz bude zveřejněn až po schválení.</div><div id="status" class="status"></div>
+</form></div></section>
+<section class="messages"><div class="messages-head"><div class="script">Některá slova si nás najdou právě ve chvíli, kdy je potřebujeme.</div></div><div id="grid" class="grid"><div class="empty">Načítám vzkazy…</div></div></section>
+</main>
+<footer><div class="footer-logo">ORINAYA</div><div class="copy">© 2026 ORINAYA · www.orinaya.blog</div></footer>
+<script>
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+async function loadMessages(){
+ const grid=document.getElementById('grid');
+ try{
+  const r=await fetch('/api/messages');
+  if(!r.ok) throw new Error();
+  const data=await r.json();
+  if(!data.messages?.length){grid.innerHTML='<div class="empty">První vzkazy teprve přijdou. ✨</div>';return}
+  grid.innerHTML=data.messages.map(m=>`<article class="message"><div class="message-text">${esc(m.message)}</div><div class="author">${esc(m.anonymous?'Anonymně':(m.name||'Anonymně'))}</div></article>`).join('');
+ }catch(e){grid.innerHTML='<div class="empty">Vzkazy se teď nepodařilo načíst.</div>'}
+}
+document.getElementById('anonymous').addEventListener('change',e=>{
+ const n=document.getElementById('name'); n.disabled=e.target.checked; if(e.target.checked)n.value='';
+});
+document.getElementById('messageForm').addEventListener('submit',async e=>{
+ e.preventDefault(); const btn=document.getElementById('submitBtn'),st=document.getElementById('status');
+ btn.disabled=true; st.className='status show';st.textContent='Odesílám…';
+ try{
+  const body={message:document.getElementById('message').value.trim(),name:document.getElementById('name').value.trim(),anonymous:document.getElementById('anonymous').checked};
+  const r=await fetch('/api/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+  const data=await r.json().catch(()=>({}));
+  if(!r.ok) throw new Error(data.error||'Nepodařilo se odeslat vzkaz.');
+  e.target.reset();document.getElementById('name').disabled=false;
+  st.className='status show ok';st.textContent='Děkuju. Tvůj vzkaz teď čeká na schválení. ♡';
+ }catch(err){st.className='status show err';st.textContent=err.message||'Nepodařilo se odeslat vzkaz.'}
+ finally{btn.disabled=false}
+});
+loadMessages();
+</script>
+</body></html>

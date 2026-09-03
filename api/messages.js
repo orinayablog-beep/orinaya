@@ -66,13 +66,52 @@ export default async function handler(req, res) {
   }
 
   try {
+
+    /* =========================
+       VEŘEJNÉ VZKAZY
+       ========================= */
+
     if (req.method === "GET") {
+
+      const requestedLimit =
+        parseInt(req.query?.limit || "12", 10);
+
+      const requestedOffset =
+        parseInt(req.query?.offset || "0", 10);
+
+      const limit =
+        Math.min(
+          Math.max(
+            Number.isFinite(requestedLimit)
+              ? requestedLimit
+              : 12,
+            1
+          ),
+          24
+        );
+
+      const offset =
+        Math.max(
+          Number.isFinite(requestedOffset)
+            ? requestedOffset
+            : 0,
+          0
+        );
+
+      /*
+        Vezmeme o jeden záznam navíc.
+        Díky tomu poznáme, zda existuje další stránka.
+      */
+
+      const fetchLimit = limit + 1;
+
       const url =
         `${SUPABASE_URL}/rest/v1/orinaya_messages` +
         `?status=eq.approved` +
         `&select=id,message,name,anonymous,created_at,approved_at` +
         `&order=approved_at.desc` +
-        `&limit=100`;
+        `&limit=${fetchLimit}` +
+        `&offset=${offset}`;
 
       const r = await fetch(url, {
         headers: headers(),
@@ -82,15 +121,38 @@ export default async function handler(req, res) {
         throw new Error(await r.text());
       }
 
+      const rows = await r.json();
+
+      const hasMore =
+        rows.length > limit;
+
+      const messages =
+        rows.slice(0, limit);
+
       return res.status(200).json({
-        messages: await r.json(),
+        messages,
+        hasMore,
+        nextOffset:
+          hasMore
+            ? offset + messages.length
+            : null,
       });
     }
 
+    /* =========================
+       NOVÝ VZKAZ
+       ========================= */
+
     if (req.method === "POST") {
-      const message = clean(req.body?.message, 900);
-      const name = clean(req.body?.name, 80);
-      const anonymous = !!req.body?.anonymous;
+
+      const message =
+        clean(req.body?.message, 500);
+
+      const name =
+        clean(req.body?.name, 80);
+
+      const anonymous =
+        !!req.body?.anonymous;
 
       if (message.length < 3) {
         return res.status(400).json({
@@ -98,9 +160,20 @@ export default async function handler(req, res) {
         });
       }
 
+      if (
+        String(req.body?.message ?? "").trim().length > 500
+      ) {
+        return res.status(400).json({
+          error: "Vzkaz může mít maximálně 500 znaků.",
+        });
+      }
+
       const payload = {
         message,
-        name: anonymous ? null : (name || null),
+        name:
+          anonymous
+            ? null
+            : (name || null),
         anonymous,
         status: "pending",
       };
@@ -117,26 +190,38 @@ export default async function handler(req, res) {
       );
 
       if (!r.ok) {
-        throw new Error(await r.text());
+        throw new Error(
+          await r.text()
+        );
       }
 
-      sendMail(message, name, anonymous).catch(() => {});
+      sendMail(
+        message,
+        name,
+        anonymous
+      ).catch(() => {});
 
       return res.status(201).json({
         ok: true,
       });
     }
 
-    res.setHeader("Allow", "GET, POST");
+    res.setHeader(
+      "Allow",
+      "GET, POST"
+    );
 
     return res.status(405).json({
       error: "Method not allowed",
     });
+
   } catch (e) {
+
     console.error(e);
 
     return res.status(500).json({
-      error: "Něco se nepovedlo. Zkus to prosím znovu.",
+      error:
+        "Něco se nepovedlo. Zkus to prosím znovu.",
     });
   }
 }

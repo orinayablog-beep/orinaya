@@ -11,8 +11,13 @@
   content="width=device-width,initial-scale=1"
 >
 
+<meta
+  name="theme-color"
+  content="#080611"
+>
+
 <title>
-  ORINAYA | Schvalování vzkazů
+  ORINAYA | Administrace vzkazů
 </title>
 
 <link
@@ -36,8 +41,10 @@
 :root{
   --bg:#080611;
   --gold:#d7aa57;
+  --gold2:#f1d79b;
   --text:#f4edf3;
   --body:#eee6ed;
+  --muted:#d8ced7;
   --line:rgba(224,183,99,.18);
 }
 
@@ -45,145 +52,495 @@
   box-sizing:border-box;
 }
 
+html{
+  background:var(--bg);
+}
+
 body{
   margin:0;
+
   background:
     radial-gradient(
       circle at 70% 8%,
       rgba(92,44,122,.20),
       transparent 34%
     ),
+    radial-gradient(
+      circle at 15% 55%,
+      rgba(82,38,108,.10),
+      transparent 34%
+    ),
     #080611;
+
   color:var(--text);
-  font-family:Montserrat,Arial,sans-serif;
+
+  font-family:
+    "Montserrat",
+    Arial,
+    sans-serif;
+
   font-weight:300;
+
   min-height:100vh;
 }
 
 main{
-  width:min(900px,90vw);
+  width:min(1100px,90vw);
+
   margin:auto;
-  padding:60px 0 90px;
+
+  padding:
+    60px 0
+    90px;
+}
+
+
+/* HEADER */
+
+.top{
+  display:flex;
+
+  justify-content:space-between;
+  align-items:flex-start;
+
+  gap:24px;
+}
+
+.admin-kicker{
+  color:var(--gold);
+
+  font-size:10px;
+
+  letter-spacing:.25em;
+
+  text-transform:uppercase;
+
+  margin-bottom:14px;
 }
 
 h1{
-  font-family:"Cormorant Garamond",serif;
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
   font-weight:400;
-  font-size:clamp(44px,7vw,72px);
-  margin:0 0 10px;
+
+  font-size:
+    clamp(
+      44px,
+      7vw,
+      72px
+    );
+
+  line-height:1;
+
+  margin:0;
 }
 
 .lead{
   color:var(--body);
+
   line-height:1.7;
+
+  margin:
+    20px 0
+    0;
 }
 
-.login,
-.card{
-  border:1px solid var(--line);
-  border-radius:24px;
-  background:rgba(255,255,255,.02);
-  padding:25px;
-  margin-top:28px;
-}
 
-.login{
-  max-width:520px;
-}
-
-input{
-  width:100%;
-  padding:14px 16px;
-  border:1px solid var(--line);
-  border-radius:14px;
-  background:#0d0916;
-  color:#fff;
-  font:inherit;
-  outline:none;
-}
-
-.btns{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:18px;
-}
+/* BUTTONY */
 
 button{
-  border:1px solid rgba(215,170,87,.45);
+  border:
+    1px solid
+    rgba(215,170,87,.45);
+
   border-radius:999px;
-  padding:11px 17px;
+
+  padding:
+    11px 17px;
+
   background:transparent;
+
   color:#f0d8aa;
+
   text-transform:uppercase;
+
+  font-family:
+    "Montserrat",
+    Arial,
+    sans-serif;
+
   font-size:10px;
+
   letter-spacing:.12em;
+
   cursor:pointer;
+
+  transition:
+    background .2s ease,
+    border-color .2s ease,
+    color .2s ease,
+    transform .2s ease;
+}
+
+button:hover{
+  transform:
+    translateY(-1px);
+
+  border-color:
+    rgba(215,170,87,.70);
+
+  background:
+    rgba(215,170,87,.06);
+
+  color:#f1d79b;
+}
+
+button:disabled{
+  opacity:.45;
+  cursor:wait;
+  transform:none;
 }
 
 .delete{
-  border-color:rgba(255,130,150,.35);
+  border-color:
+    rgba(255,130,150,.35);
+
   color:#ffbdc8;
 }
 
-.msg{
-  font-family:"Cormorant Garamond",serif;
-  font-size:27px;
-  line-height:1.35;
-  color:#fff;
-  margin:8px 0 14px;
-}
+.delete:hover{
+  border-color:
+    rgba(255,130,150,.65);
 
-.meta{
-  color:#cfc3ce;
-  font-size:11px;
-  line-height:1.6;
-}
+  background:
+    rgba(255,130,150,.05);
 
-.empty{
-  color:#d8ced7;
-  padding:30px 0;
-}
-
-.top{
-  display:flex;
-  justify-content:space-between;
-  gap:15px;
-  align-items:center;
+  color:#ffd3db;
 }
 
 .logout{
   display:none;
+
+  flex:0 0 auto;
+}
+
+
+/* LOGIN */
+
+.login{
+  max-width:520px;
+
+  border:
+    1px solid
+    var(--line);
+
+  border-radius:24px;
+
+  background:
+    rgba(255,255,255,.02);
+
+  padding:25px;
+
+  margin-top:34px;
+}
+
+.login-title{
+  margin-bottom:12px;
+
+  color:#eee6ed;
+}
+
+input{
+  width:100%;
+
+  padding:
+    14px 16px;
+
+  border:
+    1px solid
+    var(--line);
+
+  border-radius:14px;
+
+  background:#0d0916;
+
+  color:#fff;
+
+  font:inherit;
+
+  outline:none;
+}
+
+input:focus{
+  border-color:
+    rgba(215,170,87,.48);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(215,170,87,.05);
+}
+
+
+/* TOOLBAR */
+
+.toolbar{
+  display:none;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:18px;
+
+  flex-wrap:wrap;
+
+  margin-top:38px;
+
+  padding-bottom:18px;
+
+  border-bottom:
+    1px solid
+    rgba(224,183,99,.12);
+}
+
+.tabs{
+  display:flex;
+
+  gap:10px;
+
+  flex-wrap:wrap;
+}
+
+.tab{
+  color:#cfc3ce;
+
+  border-color:
+    rgba(224,183,99,.20);
+}
+
+.tab.active{
+  color:#f1d79b;
+
+  border-color:
+    rgba(215,170,87,.58);
+
+  background:
+    rgba(215,170,87,.07);
+
+  box-shadow:
+    0 0 18px
+    rgba(215,170,87,.05);
+}
+
+.count{
+  color:#a99dad;
+
+  font-size:10px;
+
+  letter-spacing:.12em;
+
+  text-transform:uppercase;
+}
+
+
+/* SEZNAM */
+
+#list{
+  margin-top:6px;
+}
+
+.card{
+  border:
+    1px solid
+    var(--line);
+
+  border-radius:24px;
+
+  background:
+    radial-gradient(
+      circle at 90% 5%,
+      rgba(105,53,134,.10),
+      transparent 36%
+    ),
+    rgba(255,255,255,.018);
+
+  padding:
+    25px;
+
+  margin-top:20px;
+
+  box-shadow:
+    0 12px 34px
+    rgba(0,0,0,.16);
+}
+
+.card-status{
+  display:inline-block;
+
+  margin-bottom:12px;
+
+  padding:
+    5px 9px;
+
+  border-radius:999px;
+
+  border:
+    1px solid
+    rgba(215,170,87,.18);
+
+  color:#cdbd9d;
+
+  font-size:8px;
+
+  letter-spacing:.15em;
+
+  text-transform:uppercase;
+}
+
+.card-status.approved{
+  color:#e3c886;
+
+  border-color:
+    rgba(215,170,87,.30);
+
+  background:
+    rgba(215,170,87,.035);
+}
+
+.meta{
+  color:#cfc3ce;
+
+  font-size:11px;
+
+  line-height:1.65;
+}
+
+.msg{
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size:26px;
+
+  line-height:1.4;
+
+  color:#fff;
+
+  margin:
+    16px 0
+    12px;
+
+  overflow-wrap:anywhere;
+}
+
+.btns{
+  display:flex;
+
+  gap:10px;
+
+  flex-wrap:wrap;
+
+  margin-top:18px;
+}
+
+
+/* EMPTY */
+
+.empty{
+  color:#d8ced7;
+
+  padding:
+    36px 0;
+
+  font-size:15px;
+}
+
+
+/* ERROR */
+
+.error{
+  margin-top:14px;
+
+  color:#ffbdc8;
+
+  font-size:11px;
+
+  line-height:1.6;
+}
+
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+  main{
+    width:88vw;
+
+    padding:
+      40px 0
+      70px;
+  }
+
+  .top{
+    flex-direction:column;
+  }
+
+  h1{
+    font-size:
+      clamp(
+        42px,
+        14vw,
+        62px
+      );
+  }
+
+  .logout{
+    align-self:flex-start;
+  }
+
+  .toolbar{
+    align-items:flex-start;
+  }
+
+  .msg{
+    font-size:23px;
+  }
+
+  .card{
+    padding:22px 20px;
+  }
+
 }
 
 </style>
 
 </head>
 
+
 <body>
 
+
 <main>
+
 
 <div class="top">
 
   <div>
 
-    <div
-      style="
-        color:#d7aa57;
-        font-size:10px;
-        letter-spacing:.25em;
-        text-transform:uppercase;
-      "
-    >
+    <div class="admin-kicker">
       ORINAYA · soukromá administrace
     </div>
 
     <h1>
-      Vzkazy ke schválení
+      Vzkazy
     </h1>
 
   </div>
+
 
   <button
     id="logout"
@@ -194,21 +551,19 @@ button{
 
 </div>
 
+
 <p class="lead">
-  Tady uvidíš jen vzkazy, které ještě nejsou veřejné.
+  Tady můžeš schvalovat nové vzkazy
+  a spravovat už zveřejněné.
 </p>
+
 
 <div
   id="login"
   class="login"
 >
 
-  <div
-    style="
-      margin-bottom:10px;
-      color:#eee6ed
-    "
-  >
+  <div class="login-title">
     Zadej svoje administrátorské heslo:
   </div>
 
@@ -221,27 +576,67 @@ button{
   <div class="btns">
 
     <button id="enter">
-      Otevřít schvalování
+      Otevřít administraci
     </button>
 
   </div>
 
   <div
     id="loginErr"
-    class="meta"
+    class="error"
   ></div>
 
 </div>
 
+
+<div
+  id="toolbar"
+  class="toolbar"
+>
+
+  <div class="tabs">
+
+    <button
+      id="pendingTab"
+      class="tab active"
+      type="button"
+    >
+      Čekající
+    </button>
+
+
+    <button
+      id="approvedTab"
+      class="tab"
+      type="button"
+    >
+      Schválené
+    </button>
+
+  </div>
+
+
+  <div
+    id="count"
+    class="count"
+  ></div>
+
+</div>
+
+
 <div id="list"></div>
+
 
 </main>
 
+
 <script>
+
 
 const $ =
   id =>
     document.getElementById(id);
+
 
 const esc =
   s =>
@@ -256,167 +651,410 @@ const esc =
       }[c])
     );
 
+
 let key =
   sessionStorage.getItem(
     "orinayaAdminKey"
   ) || "";
 
+
+let currentStatus =
+  "pending";
+
+
+let loading =
+  false;
+
+
+/* =========================
+   API
+   ========================= */
+
 async function api(
-  method = "",
-  body
+  method = "GET",
+  body = null,
+  status = currentStatus
 ){
+
+  const options = {
+
+    method,
+
+    headers:{
+      "Content-Type":
+        "application/json",
+
+      "X-Admin-Key":
+        key
+    }
+
+  };
+
+
+  if(body){
+
+    options.body =
+      JSON.stringify(body);
+
+  }
+
+
+  const url =
+
+    method === "GET"
+
+      ? `/api/admin-messages?status=${encodeURIComponent(status)}`
+
+      : "/api/admin-messages";
+
 
   const r =
     await fetch(
-      "/api/admin-messages",
-      {
-
-        method:
-          method || "GET",
-
-        headers:{
-          "Content-Type":
-            "application/json",
-          "X-Admin-Key":
-            key
-        },
-
-        body:
-          body
-            ? JSON.stringify(body)
-            : undefined
-
-      }
+      url,
+      options
     );
+
 
   const d =
     await r
       .json()
-      .catch(() => ({}));
+      .catch(
+        () => ({})
+      );
+
 
   if(!r.ok){
 
     throw new Error(
-      d.error || "Chyba"
+      d.error ||
+      "Chyba"
     );
 
   }
+
 
   return d;
 
 }
 
-async function load(){
 
-  $("loginErr").textContent = "";
+/* =========================
+   TABS
+   ========================= */
 
-  try{
+function setTab(status){
 
-    const d =
-      await api();
+  currentStatus =
+    status;
 
-    $("login").style.display =
-      "none";
 
-    $("logout").style.display =
-      "block";
+  $("pendingTab")
+    .classList
+    .toggle(
+      "active",
+      status === "pending"
+    );
 
-    $("list").innerHTML =
-      d.messages?.length
 
-        ? d.messages.map(
-            m => `
+  $("approvedTab")
+    .classList
+    .toggle(
+      "active",
+      status === "approved"
+    );
+
+
+  load();
+
+}
+
+
+/* =========================
+   RENDER
+   ========================= */
+
+function render(messages){
+
+  const list =
+    $("list");
+
+
+  $("count").textContent =
+
+    messages.length === 1
+
+      ? "1 vzkaz"
+
+      : `${messages.length} vzkazů`;
+
+
+  if(!messages.length){
+
+    list.innerHTML =
+
+      currentStatus === "pending"
+
+        ? '<div class="empty">Nic tu nečeká.</div>'
+
+        : '<div class="empty">Zatím tu nejsou žádné schválené vzkazy.</div>';
+
+
+    return;
+
+  }
+
+
+  list.innerHTML =
+
+    messages
+      .map(
+        m => {
+
+
+          const author =
+
+            m.anonymous
+
+              ? "Anonymně"
+
+              : (
+                  m.name ||
+                  "Bez podpisu"
+                );
+
+
+          const created =
+
+            m.created_at
+
+              ? new Date(
+                  m.created_at
+                ).toLocaleString(
+                  "cs-CZ"
+                )
+
+              : "";
+
+
+          const approved =
+
+            m.approved_at
+
+              ? new Date(
+                  m.approved_at
+                ).toLocaleString(
+                  "cs-CZ"
+                )
+
+              : "";
+
+
+          const statusLabel =
+
+            currentStatus === "approved"
+
+              ? "Schválený"
+
+              : "Čeká na schválení";
+
+
+          const statusClass =
+
+            currentStatus === "approved"
+
+              ? "card-status approved"
+
+              : "card-status";
+
+
+          const dateText =
+
+            currentStatus === "approved"
+
+              ? (
+                  approved
+                    ? `Schváleno ${approved}`
+                    : created
+                )
+
+              : created;
+
+
+          const approveButton =
+
+            currentStatus === "pending"
+
+              ? `
+
+                <button
+                  type="button"
+                  onclick="
+                    act(
+                      '${m.id}',
+                      'approve'
+                    )
+                  "
+                >
+                  Schválit
+                </button>
+
+              `
+
+              : "";
+
+
+          return `
+
+            <article
+              class="card"
+              id="m-${m.id}"
+            >
 
               <div
-                class="card"
-                id="m-${m.id}"
+                class="${statusClass}"
               >
+                ${statusLabel}
+              </div>
 
-                <div class="meta">
 
-                  ${
-                    new Date(
-                      m.created_at
-                    ).toLocaleString(
-                      "cs-CZ"
-                    )
-                  }
+              <div class="meta">
 
-                  ·
+                ${esc(dateText)}
 
-                  ${
-                    esc(
-                      m.anonymous
-                        ? "Anonymně"
-                        : (
-                            m.name ||
-                            "Bez podpisu"
-                          )
-                    )
-                  }
+                ${dateText ? " · " : ""}
 
-                </div>
-
-                <div class="msg">
-
-                  ${
-                    esc(
-                      m.message
-                    )
-                  }
-
-                </div>
-
-                <div class="btns">
-
-                  <button
-                    onclick="
-                      act(
-                        '${m.id}',
-                        'approve'
-                      )
-                    "
-                  >
-                    Schválit
-                  </button>
-
-                  <button
-                    class="delete"
-                    onclick="
-                      act(
-                        '${m.id}',
-                        'delete'
-                      )
-                    "
-                  >
-                    Smazat
-                  </button>
-
-                </div>
+                ${esc(author)}
 
               </div>
 
-            `
-          ).join("")
 
-        : '<div class="empty">Nic tu nečeká.</div>';
+              <div class="msg">
+
+                ${esc(
+                  m.message
+                )}
+
+              </div>
+
+
+              <div class="btns">
+
+                ${approveButton}
+
+                <button
+                  type="button"
+                  class="delete"
+                  onclick="
+                    act(
+                      '${m.id}',
+                      'delete'
+                    )
+                  "
+                >
+                  Smazat
+                </button>
+
+              </div>
+
+
+            </article>
+
+          `;
+
+        }
+      )
+      .join("");
+
+}
+
+
+/* =========================
+   LOAD
+   ========================= */
+
+async function load(){
+
+  if(loading){
+    return;
+  }
+
+
+  loading = true;
+
+
+  $("loginErr").textContent =
+    "";
+
+
+  $("list").innerHTML =
+    '<div class="empty">Načítám…</div>';
+
+
+  try{
+
+
+    const d =
+      await api(
+        "GET",
+        null,
+        currentStatus
+      );
+
+
+    $("login").style.display =
+      "none";
+
+
+    $("logout").style.display =
+      "block";
+
+
+    $("toolbar").style.display =
+      "flex";
+
+
+    render(
+      d.messages || []
+    );
+
 
   }catch(e){
+
 
     $("login").style.display =
       "block";
 
+
     $("logout").style.display =
       "none";
 
-    $("list").innerHTML = "";
+
+    $("toolbar").style.display =
+      "none";
+
+
+    $("list").innerHTML =
+      "";
+
 
     $("loginErr").textContent =
       "Heslo nesedí nebo zatím není API nastavené.";
 
+
+  }finally{
+
+
+    loading = false;
+
+
   }
 
 }
+
+
+/* =========================
+   AKCE
+   ========================= */
 
 async function act(
   id,
@@ -424,59 +1062,163 @@ async function act(
 ){
 
   if(
-    action === "delete" &&
-    !confirm("Opravdu smazat?")
+    action === "delete"
   ){
-    return;
+
+    const text =
+
+      currentStatus === "approved"
+
+        ? "Opravdu chceš tento zveřejněný vzkaz trvale smazat?"
+
+        : "Opravdu chceš tento vzkaz smazat?";
+
+
+    if(
+      !confirm(text)
+    ){
+      return;
+    }
+
   }
 
-  await api(
-    action === "delete"
-      ? "DELETE"
-      : "PATCH",
-    {
-      id,
-      action
-    }
-  );
 
-  load();
+  try{
+
+
+    if(
+      action === "approve"
+    ){
+
+
+      await api(
+        "PATCH",
+        {
+          id,
+          action:"approve"
+        }
+      );
+
+
+    }else{
+
+
+      await api(
+        "DELETE",
+        {
+          id
+        }
+      );
+
+
+    }
+
+
+    await load();
+
+
+  }catch(e){
+
+
+    alert(
+      e.message ||
+      "Něco se nepovedlo."
+    );
+
+
+  }
 
 }
+
+
+/* =========================
+   LOGIN
+   ========================= */
 
 $("enter").onclick =
   () => {
 
+
     key =
       $("key").value;
+
 
     sessionStorage.setItem(
       "orinayaAdminKey",
       key
     );
 
+
     load();
 
   };
 
+
+$("key")
+  .addEventListener(
+    "keydown",
+    e => {
+
+      if(
+        e.key === "Enter"
+      ){
+
+        $("enter").click();
+
+      }
+
+    }
+  );
+
+
+/* =========================
+   TABY
+   ========================= */
+
+$("pendingTab").onclick =
+  () =>
+    setTab(
+      "pending"
+    );
+
+
+$("approvedTab").onclick =
+  () =>
+    setTab(
+      "approved"
+    );
+
+
+/* =========================
+   LOGOUT
+   ========================= */
+
 $("logout").onclick =
   () => {
+
 
     sessionStorage.removeItem(
       "orinayaAdminKey"
     );
 
+
     key = "";
+
 
     location.reload();
 
   };
 
+
+/* automatické otevření */
+
 if(key){
   load();
 }
 
+
 </script>
+
 
 </body>
 

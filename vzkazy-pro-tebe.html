@@ -35,7 +35,7 @@ body{
 a{color:inherit;text-decoration:none}
 button,input,textarea{font:inherit}
 
-/* TOP: pouze Zpět domů, stejné chování jako u karet */
+/* TOPBAR */
 .topbar{
   width:100%;
   margin:0;
@@ -80,7 +80,7 @@ button,input,textarea{font:inherit}
 }
 .home-link:hover::after{width:100%}
 
-/* HERO jako skutečný obrázek 1:1 */
+/* HERO */
 .hero-image-wrap{
   width:100vw;
   max-width:none;
@@ -96,7 +96,8 @@ button,input,textarea{font:inherit}
   border-radius:0;
   filter:none;
 }
-/* Jemné živé hvězdičky přes hero */
+
+/* blikající hvězdičky */
 .hero-spark{
   position:absolute;
   z-index:3;
@@ -205,13 +206,11 @@ button,input,textarea{font:inherit}
   font-size:clamp(18px,1.55vw,23px);
   line-height:1.38;
 }
-.random-result .message-line{margin:12px auto 8px}
-.random-result .author{font-size:23px}
-.random-result .message-actions{margin-top:11px}
 .random-result .message-line{margin:18px auto 12px}
-.random-result .message-actions{justify-content:center}
+.random-result .author{font-size:23px}
+.random-result .message-actions{margin-top:11px;justify-content:center}
 
-/* FORM • ORINAYA glassmorphism */
+/* FORM */
 .form-wrap{
   width:min(720px,88vw);
   margin:0 auto 96px;
@@ -230,16 +229,6 @@ button,input,textarea{font:inherit}
   font-weight:400;
   color:#f0e2c8;
 }
-.form-script{
-  margin-top:9px;
-  color:#cab8c7;
-  font-family:"Montserrat",Arial,sans-serif;
-  font-size:clamp(12px,1.1vw,14px);
-  line-height:1.55;
-  letter-spacing:.02em;
-  opacity:.82;
-}
-
 .form-card{
   position:relative;
   padding:34px 34px 30px;
@@ -275,15 +264,6 @@ button,input,textarea{font:inherit}
 }
 .form-card h2{display:none}
 
-
-.message-helper{
-  margin:0 0 18px;
-  color:rgba(215,204,215,.72);
-  font-size:12px;
-  line-height:1.7;
-  letter-spacing:.01em;
-}
-
 .input-group{
   position:relative;
   margin-bottom:24px;
@@ -297,7 +277,6 @@ label{
   letter-spacing:.15em;
   text-transform:uppercase;
 }
-
 textarea,input[type=text]{
   width:100%;
   border:0;
@@ -329,7 +308,6 @@ textarea:focus,input[type=text]:focus{
   color:rgba(255,255,255,.44);
   font-weight:300;
 }
-
 .counter{
   margin-top:7px;
   text-align:right;
@@ -365,7 +343,6 @@ textarea:focus,input[type=text]:focus{
   box-shadow:0 0 13px rgba(232,208,141,.08);
   transform:translateY(-1px);
 }
-
 .check{
   display:flex;
   align-items:center;
@@ -376,7 +353,6 @@ textarea:focus,input[type=text]:focus{
   letter-spacing:.01em;
 }
 .check input{accent-color:#d7aa57}
-
 .submit{
   display:block;
   margin:30px auto 0;
@@ -399,8 +375,6 @@ textarea:focus,input[type=text]:focus{
   box-shadow:0 0 18px rgba(232,208,141,.24);
   transform:translateY(-1px);
 }
-
-
 .thank-you{
   margin-top:18px;
   text-align:center;
@@ -411,7 +385,6 @@ textarea:focus,input[type=text]:focus{
   letter-spacing:.01em;
   opacity:.88;
 }
-
 .note{
   margin-top:17px;
   text-align:center;
@@ -457,7 +430,15 @@ textarea:focus,input[type=text]:focus{
   box-shadow:0 12px 36px rgba(0,0,0,.18);
   position:relative;
 }
-.message::before{content:"✦";position:absolute;right:20px;top:16px;color:#d7aa57;opacity:.44;font-size:12px}
+.message::before{
+  content:"✦";
+  position:absolute;
+  right:20px;
+  top:16px;
+  color:#d7aa57;
+  opacity:.44;
+  font-size:12px;
+}
 .message-text{
   margin:14px 0 18px;
   font-family:"Cormorant Garamond",Georgia,serif;
@@ -465,13 +446,47 @@ textarea:focus,input[type=text]:focus{
   line-height:1.42;
   color:#f6eef4;
 }
-.message-line{width:38px;height:1px;background:linear-gradient(90deg,rgba(215,170,87,.6),transparent);margin-bottom:10px}
-.author{font-family:"Italianno",cursive;color:#d7aa57;font-size:27px}
-.message-actions{display:flex;gap:15px;margin-top:15px;flex-wrap:wrap}
-.message-action{border:0;background:transparent;color:#bfb3c0;padding:0;font-size:9px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
-.action-status{min-height:17px;margin-top:9px;color:#cfc3cf;font-size:10px}
-.empty{grid-column:1/-1;text-align:center;color:#ddd4dd;padding:30px}
-.more-wrap{display:none;text-align:center;margin-top:28px} .more-wrap.show{display:block}
+.message-line{
+  width:38px;
+  height:1px;
+  background:linear-gradient(90deg,rgba(215,170,87,.6),transparent);
+  margin-bottom:10px;
+}
+.author{
+  font-family:"Italianno",cursive;
+  color:#d7aa57;
+  font-size:27px;
+}
+.message-actions{
+  display:flex;
+  gap:15px;
+  margin-top:15px;
+  flex-wrap:wrap;
+}
+.message-action{
+  border:0;
+  background:transparent;
+  color:#bfb3c0;
+  padding:0;
+  font-size:9px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  cursor:pointer;
+}
+.action-status{
+  min-height:17px;
+  margin-top:9px;
+  color:#cfc3cf;
+  font-size:10px;
+}
+.empty{
+  grid-column:1/-1;
+  text-align:center;
+  color:#ddd4dd;
+  padding:30px;
+}
+.more-wrap{display:none;text-align:center;margin-top:28px}
+.more-wrap.show{display:block}
 .more-btn{
   border:1px solid rgba(215,170,87,.42);
   border-radius:999px;
@@ -489,20 +504,59 @@ footer{
   padding:48px 20px 36px;
   text-align:center;
 }
-.footer-logo{font-family:"Cormorant Garamond",Georgia,serif;font-size:34px;letter-spacing:.17em;color:#e7d3aa}
-.socials{display:flex;justify-content:center;gap:26px;flex-wrap:wrap;margin-top:22px}
-.socials a{color:#c5b9c6;font-size:10px;letter-spacing:.13em;text-transform:uppercase}
-.copy{margin-top:28px;color:#948797;font-size:9px;letter-spacing:.16em}
+.footer-logo{
+  font-family:"Cormorant Garamond",Georgia,serif;
+  font-size:34px;
+  letter-spacing:.17em;
+  color:#e7d3aa;
+}
+.socials{
+  display:flex;
+  justify-content:center;
+  gap:26px;
+  flex-wrap:wrap;
+  margin-top:22px;
+}
+.socials a{
+  color:#c5b9c6;
+  font-size:10px;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+}
+.copy{
+  margin-top:28px;
+  color:#948797;
+  font-size:9px;
+  letter-spacing:.16em;
+}
 
 .music-toggle{
-  position:fixed;right:22px;bottom:22px;z-index:999;
-  display:flex;align-items:center;gap:9px;padding:10px 14px;
-  border:1px solid rgba(215,170,87,.34);border-radius:999px;
-  background:rgba(8,6,17,.82);color:#ead9b8;
-  font-size:9px;letter-spacing:.13em;text-transform:uppercase;
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  z-index:999;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:10px 14px;
+  border:1px solid rgba(215,170,87,.34);
+  border-radius:999px;
+  background:rgba(8,6,17,.82);
+  color:#ead9b8;
+  font-size:9px;
+  letter-spacing:.13em;
+  text-transform:uppercase;
 }
-.music-icon{width:18px;height:18px;display:grid;place-items:center;border:1px solid rgba(215,170,87,.32);border-radius:50%}
+.music-icon{
+  width:18px;
+  height:18px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(215,170,87,.32);
+  border-radius:50%;
+}
 
+/* MOBIL */
 @media(max-width:760px){
   .topbar{padding:16px 4.5vw 12px}
   .top-logo{font-size:20px}
@@ -528,6 +582,43 @@ footer{
   .messages{padding-bottom:68px}
   .music-toggle{right:14px;bottom:14px;font-size:8px;padding:9px 11px}
 }
+
+/* MOBIL NA ŠÍŘKU */
+@media (max-width: 1024px) and (orientation: landscape){
+  .topbar{
+    padding:16px 28px 12px;
+  }
+  .top-logo{
+    font-size:20px;
+    letter-spacing:.16em;
+  }
+  .home-link{
+    font-size:8px;
+    letter-spacing:.15em;
+  }
+  .hero-image-wrap{
+    margin-bottom:20px;
+  }
+  .hero-image{
+    width:100%;
+    max-width:100%;
+    margin-left:0;
+  }
+  .random-wrap{
+    margin:18px auto 54px;
+  }
+  .random-btn{
+    padding:12px 24px;
+    min-width:260px;
+  }
+  .music-toggle{
+    right:12px;
+    bottom:12px;
+    transform:scale(.92);
+    transform-origin:bottom right;
+  }
+}
+
 @media(prefers-reduced-motion:reduce){
   .hero-spark{animation:none;opacity:.45}
 }
@@ -537,6 +628,7 @@ footer{
 <body>
 
 <audio id="orinaya-music" src="./orinaya-piano.mp3" preload="metadata" loop></audio>
+
 <button class="music-toggle" id="music-toggle" type="button" aria-label="Pustit atmosféru" aria-pressed="false">
   <span class="music-icon">♪</span>
   <span class="music-label">Pustit atmosféru</span>
@@ -552,6 +644,7 @@ footer{
     <source media="(max-width: 760px)" srcset="/vzkazy-hero-mobile.png">
     <img class="hero-image" src="/vzkazy-hero-final.png" alt="Vzkazy pro Tebe">
   </picture>
+
   <span class="hero-spark big hs1"></span>
   <span class="hero-spark hs2"></span>
   <span class="hero-spark hs3"></span>
@@ -626,7 +719,6 @@ footer{
       <button class="submit" id="submitBtn" type="submit">Odeslat vzkaz ✦</button>
 
       <div class="thank-you">Děkuji, že sdílíš ♡</div>
-
       <div class="note">Vzkaz bude zveřejněn až po schválení.</div>
       <div id="status" class="status"></div>
     </form>
@@ -659,7 +751,6 @@ footer{
 </footer>
 
 <script>
-
 const esc = s =>
   String(s ?? "").replace(
     /[&<>"']/g,
@@ -738,7 +829,6 @@ async function loadMessages(reset = false){
     nextOffset = data.nextOffset ?? (nextOffset + newMessages.length);
 
     renderMessages();
-
   }catch(e){
     if(!loadedMessages.length){
       grid.innerHTML = '<div class="empty">Vzkazy se teď nepodařilo načíst.</div>';
@@ -778,11 +868,7 @@ document.querySelectorAll(".symbol-btn").forEach(btn => {
     messageArea.value = next.slice(0,500);
     count.textContent = messageArea.value.length;
 
-    const pos = Math.min(
-      before.length + spacer.length + symbol.length,
-      messageArea.value.length
-    );
-
+    const pos = Math.min(before.length + spacer.length + symbol.length, messageArea.value.length);
     messageArea.focus();
     messageArea.setSelectionRange(pos,pos);
   });
@@ -791,7 +877,6 @@ document.querySelectorAll(".symbol-btn").forEach(btn => {
 document.getElementById("anonymous").addEventListener("change", e => {
   const nameInput = document.getElementById("name");
   nameInput.disabled = e.target.checked;
-
   if(e.target.checked){
     nameInput.value = "";
   }
@@ -832,7 +917,6 @@ document.getElementById("messageForm").addEventListener("submit", async e => {
 
     st.className = "status show ok";
     st.textContent = "Děkuju. Tvůj vzkaz teď čeká na schválení. ♡";
-
   }catch(err){
     st.className = "status show err";
     st.textContent = err.message || "Nepodařilo se odeslat vzkaz.";
@@ -840,7 +924,6 @@ document.getElementById("messageForm").addEventListener("submit", async e => {
     btn.disabled = false;
   }
 });
-
 
 let currentRandomMessage = null;
 let randomPool = null;
@@ -913,13 +996,6 @@ document.getElementById("randomBtn").addEventListener("click", async () => {
     box.classList.add("show");
     st.textContent = "";
 
-    const afterglow = document.getElementById("randomAfterglow");
-    if(afterglow){
-      afterglow.classList.remove("show");
-      void afterglow.offsetWidth;
-      afterglow.classList.add("show");
-    }
-
     box.scrollIntoView({behavior:"smooth",block:"center"});
   }catch(err){
     st.textContent = err.message || "Náhodný vzkaz se teď nepodařilo načíst.";
@@ -966,7 +1042,6 @@ async function createMessageImage(message){
     throw new Error("Chybí soubor vzkaz-karticka-bg.png");
   }
 
-  /* Zachováme přesně poměr stran nového horizontálního podkladu. */
   const canvas = document.createElement("canvas");
   canvas.width = bg.naturalWidth;
   canvas.height = bg.naturalHeight;
@@ -974,26 +1049,15 @@ async function createMessageImage(message){
 
   ctx.drawImage(bg,0,0,canvas.width,canvas.height);
 
-  /*
-    Pravá část je schválně čistá.
-    Podklad obsahuje jen obálku, hvězdy a rámeček.
-    Dynamicky doplníme:
-    - Vzkaz pro tebe
-    - konkrétní text
-    - autora
-    - ORINAYA
-  */
   const cx = canvas.width * 0.70;
   const maxWidth = canvas.width * 0.48;
 
   ctx.textAlign = "center";
 
-  /* Nadpis */
   ctx.fillStyle = "#e9d5ac";
   ctx.font = `400 ${Math.round(canvas.width * 0.031)}px "Cormorant Garamond", Georgia, serif`;
   ctx.fillText("Vzkaz pro tebe",cx,canvas.height * 0.25);
 
-  /* Jemná zlatá linka a hvězda */
   ctx.strokeStyle = "rgba(215,170,87,.48)";
   ctx.lineWidth = Math.max(1,canvas.width * 0.0008);
 
@@ -1012,7 +1076,6 @@ async function createMessageImage(message){
   ctx.font = `${Math.round(canvas.width * 0.018)}px Georgia,serif`;
   ctx.fillText("✦",cx,dividerY + canvas.height * 0.008);
 
-  /* Dynamický text */
   let fontSize = Math.round(canvas.width * 0.029);
   const minFontSize = Math.round(canvas.width * 0.020);
   let lineHeight = Math.round(fontSize * 1.24);
@@ -1038,13 +1101,11 @@ async function createMessageImage(message){
     y += lineHeight;
   }
 
-  /* Autor */
   const author = message.anonymous ? "Anonymně" : (message.name || "Anonymně");
   ctx.fillStyle = "#d7aa57";
   ctx.font = `400 ${Math.round(canvas.width * 0.026)}px "Italianno", cursive`;
   ctx.fillText(author,cx,canvas.height * 0.76);
 
-  /* Značka */
   ctx.fillStyle = "#b7a9b9";
   ctx.font = `300 ${Math.round(canvas.width * 0.011)}px "Montserrat", Arial, sans-serif`;
   ctx.fillText("ORINAYA",cx,canvas.height * 0.88);
@@ -1145,13 +1206,10 @@ document.addEventListener("click", async e => {
   }
 });
 
-
 loadMessages(true);
-
 </script>
 
 <script>
-
 (function(){
   const audio = document.getElementById('orinaya-music');
   const button = document.getElementById('music-toggle');
@@ -1261,7 +1319,6 @@ loadMessages(true);
   window.addEventListener('pagehide', saveState);
   window.addEventListener('beforeunload', saveState);
 })();
-
 </script>
 
 </body>

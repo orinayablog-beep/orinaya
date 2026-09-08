@@ -5,6 +5,20 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#080611">
 <title>O mně | ORINAYA</title>
+<meta name="description" content="Můj příběh návratu k sobě, vnitřní pravdě a svobodě.">
+<link rel="canonical" href="https://orinaya.vercel.app/omne">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="cs_CZ">
+<meta property="og:title" content="O mně | ORINAYA">
+<meta property="og:description" content="Můj příběh návratu k sobě, vnitřní pravdě a svobodě.">
+<meta property="og:url" content="https://orinaya.vercel.app/omne">
+<meta property="og:image" content="https://orinaya.vercel.app/omne-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="O mně | ORINAYA">
+<meta name="twitter:description" content="Můj příběh návratu k sobě, vnitřní pravdě a svobodě.">
+<meta name="twitter:image" content="https://orinaya.vercel.app/omne-hero.jpg">
+
+
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -235,7 +249,6 @@ header{
   box-shadow:0 0 10px rgba(232,191,104,.7);
   flex:0 0 4px;
 }
-
 
 /* ===== NÁSTROJE • MOST KE SLUŽBÁM ===== */
 .tools-bridge{
@@ -495,7 +508,6 @@ html.is-entering .orinaya-page-fade{
   }
 }
 
-
 /* ===== MOBIL NA ŠÍŘKU · FINÁLNÍ KOMPOZICE ===== */
 @media (max-width:950px) and (orientation:landscape){
   .about-hero{
@@ -613,7 +625,6 @@ html.is-entering .orinaya-page-fade{
   }
 }
 
-
 /* ===== O MNĚ · MOST K PROMĚNĚ ===== */
 .promena-bridge{
   text-align:center;
@@ -713,12 +724,10 @@ html.is-entering .orinaya-page-fade{
 <body>
 
 <audio id="orinaya-music" src="./orinaya-piano.mp3" preload="metadata" loop></audio>
-<button class="music-toggle" id="music-toggle" type="button"
-        aria-label="Pustit atmosféru" aria-pressed="false">
+<button class="music-toggle" id="music-toggle" type="button" aria-label="Pustit atmosféru" aria-pressed="false">
   <span class="music-icon" aria-hidden="true">♪</span>
   <span class="music-label">Pustit atmosféru</span>
 </button>
-
 
 <header>
   <a class="brand" href="/">ORINAYA</a>
@@ -736,7 +745,6 @@ html.is-entering .orinaya-page-fade{
 </section>
 
 <main class="story">
-
   <section class="block">
     <p class="list-title">Dřív jsem si myslela, že…</p>
     <p>…musím být hodná holka.
@@ -812,7 +820,6 @@ Kdo má zůstat, zůstane. A kdo ne – ten nikdy zůstat neměl.</p>
 
   <div class="divider"></div>
 
-
   <section class="block promena-bridge">
     <p class="promena-kicker">Můj příběh</p>
     <p class="promena-title">Můj příběh nekončí tady.</p>
@@ -829,7 +836,6 @@ Kdo má zůstat, zůstane. A kdo ne – ten nikdy zůstat neměl.</p>
     <p>Nejsi tu proto, abys zapadla.<br>Jsi tu proto, abys žila jako ty.</p>
     <a class="cta-link" href="/">ZPĚT NA ORINAYA</a>
   </section>
-
 </main>
 
 <footer>ORINAYA • VNITŘNÍ PRAVDA • SVOBODA • NÁVRAT K SOBĚ</footer>
@@ -924,42 +930,42 @@ Kdo má zůstat, zůstane. A kdo ne – ten nikdy zůstat neměl.</p>
 </script>
 
 
-<script>
+
+
+<script id="orinaya-audio-controller">
 (function(){
   const audio = document.getElementById('orinaya-music');
   const button = document.getElementById('music-toggle');
-  if (!audio || !button) return;
+  if (!audio || !button || window.__orinayaMusicBound) return;
+  window.__orinayaMusicBound = true;
 
   const label = button.querySelector('.music-label');
   const KEY = 'orinayaMusicStateV1';
   audio.volume = 0.18;
+  let wantsResume = false;
 
   function readState(){
-    try{
-      return JSON.parse(localStorage.getItem(KEY) || '{}');
-    }catch(e){
-      return {};
-    }
+    try { return JSON.parse(localStorage.getItem(KEY) || '{}'); }
+    catch(e){ return {}; }
   }
 
   function saveState(){
     try{
       localStorage.setItem(KEY, JSON.stringify({
-        playing: !audio.paused,
+        playing: wantsResume,
         time: Number.isFinite(audio.currentTime) ? audio.currentTime : 0,
         updated: Date.now()
       }));
     }catch(e){}
   }
 
-  function setButton(playing, wantsResume){
+  function setButton(playing, resumeWanted){
     button.classList.toggle('is-playing', playing);
     button.setAttribute('aria-pressed', playing ? 'true' : 'false');
-
     if (playing){
       button.setAttribute('aria-label','Ztišit atmosféru');
       if (label) label.textContent = 'Ztišit atmosféru';
-    }else if (wantsResume){
+    }else if (resumeWanted){
       button.setAttribute('aria-label','Pokračovat v atmosféře');
       if (label) label.textContent = 'Pokračovat v atmosféře';
     }else{
@@ -968,39 +974,49 @@ Kdo má zůstat, zůstane. A kdo ne – ten nikdy zůstat neměl.</p>
     }
   }
 
-  const state = readState();
-  let wantsResume = !!state.playing;
+  function restoreTime(state){
+    const t = Number(state.time || 0);
+    if (!Number.isFinite(t) || t <= 0) return;
+    try{
+      if (Number.isFinite(audio.duration) && audio.duration > 0) audio.currentTime = t % audio.duration;
+      else audio.currentTime = t;
+    }catch(e){}
+  }
 
-  audio.addEventListener('loadedmetadata', async function(){
-    if (Number.isFinite(state.time) && state.time > 0 && audio.duration){
-      audio.currentTime = state.time % audio.duration;
-    }
-
-    if (wantsResume){
-      try{
-        await audio.play();
-        setButton(true, false);
-      }catch(e){
-        setButton(false, true);
-      }
-    }else{
+  async function restorePlayback(state){
+    wantsResume = !!state.playing;
+    restoreTime(state);
+    if (!wantsResume){
       setButton(false, false);
+      return;
     }
-  }, {once:true});
+    try{
+      await audio.play();
+      setButton(true, false);
+    }catch(e){
+      setButton(false, true);
+    }
+    saveState();
+  }
+
+  const initialState = readState();
+  wantsResume = !!initialState.playing;
+  if (audio.readyState >= 1) restorePlayback(initialState);
+  else audio.addEventListener('loadedmetadata', function(){ restorePlayback(initialState); }, {once:true});
 
   button.addEventListener('click', async function(){
     if (audio.paused){
+      wantsResume = true;
       try{
         await audio.play();
-        wantsResume = true;
         setButton(true, false);
-        saveState();
       }catch(e){
         setButton(false, true);
       }
+      saveState();
     }else{
-      audio.pause();
       wantsResume = false;
+      audio.pause();
       setButton(false, false);
       saveState();
     }
@@ -1020,21 +1036,26 @@ Kdo má zůstat, zůstane. A kdo ne – ten nikdy zůstat neměl.</p>
   let lastSave = 0;
   audio.addEventListener('timeupdate', function(){
     const now = Date.now();
-    if (now - lastSave > 1000){
-      lastSave = now;
-      saveState();
-    }
+    if (now - lastSave > 1000){ lastSave = now; saveState(); }
   });
 
   document.addEventListener('click', function(e){
-    const a = e.target.closest('a[href]');
-    if (a) saveState();
+    if (e.target.closest && e.target.closest('a[href]')) saveState();
   }, true);
 
   window.addEventListener('pagehide', saveState);
   window.addEventListener('beforeunload', saveState);
+  document.addEventListener('visibilitychange', function(){
+    if (document.visibilityState === 'hidden') saveState();
+  });
+
+  window.addEventListener('pageshow', function(){
+    const state = readState();
+    wantsResume = !!state.playing;
+    if (audio.readyState >= 1) restorePlayback(state);
+    else audio.addEventListener('loadedmetadata', function(){ restorePlayback(state); }, {once:true});
+  });
 })();
 </script>
-
 </body>
 </html>

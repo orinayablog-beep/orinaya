@@ -6,6 +6,19 @@
 <meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
 <meta content="#080611" name="theme-color"/>
 <title>Proměna | ORINAYA</title>
+<meta name="description" content="width=device-width,initial-scale=1,viewport-fit=cover&quot; name=&quot;viewport&quot;/&gt; &lt;meta content=&quot;#080611&quot; name=&quot;theme-color&quot;/&gt; &lt;title&gt;Proměna | ORINAYA&lt;/title&gt; &lt;meta content=&quot;Proměna. Můj osobní příběh krok za krokem v dvanácti kapitolách.">
+<link rel="canonical" href="https://orinaya.vercel.app/promena">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="cs_CZ">
+<meta property="og:title" content="Proměna | ORINAYA">
+<meta property="og:description" content="width=device-width,initial-scale=1,viewport-fit=cover&quot; name=&quot;viewport&quot;/&gt; &lt;meta content=&quot;#080611&quot; name=&quot;theme-color&quot;/&gt; &lt;title&gt;Proměna | ORINAYA&lt;/title&gt; &lt;meta content=&quot;Proměna. Můj osobní příběh krok za krokem v dvanácti kapitolách.">
+<meta property="og:url" content="https://orinaya.vercel.app/promena">
+<meta property="og:image" content="https://orinaya.vercel.app/promena-01.jpeg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Proměna | ORINAYA">
+<meta name="twitter:description" content="width=device-width,initial-scale=1,viewport-fit=cover&quot; name=&quot;viewport&quot;/&gt; &lt;meta content=&quot;#080611&quot; name=&quot;theme-color&quot;/&gt; &lt;title&gt;Proměna | ORINAYA&lt;/title&gt; &lt;meta content=&quot;Proměna. Můj osobní příběh krok za krokem v dvanácti kapitolách.">
+<meta name="twitter:image" content="https://orinaya.vercel.app/promena-01.jpeg">
+
 <meta content="Proměna. Můj osobní příběh krok za krokem v dvanácti kapitolách." name="description"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -815,8 +828,7 @@ html.is-entering .orinaya-page-fade{
 <body>
 
 <audio id="orinaya-music" src="./orinaya-piano.mp3" preload="metadata" loop></audio>
-<button class="music-toggle" id="music-toggle" type="button"
-        aria-label="Pustit atmosféru" aria-pressed="false">
+<button class="music-toggle" id="music-toggle" type="button" aria-label="Pustit atmosféru" aria-pressed="false">
   <span class="music-icon" aria-hidden="true">♪</span>
   <span class="music-label">Pustit atmosféru</span>
 </button>
@@ -1055,119 +1067,7 @@ html.is-entering .orinaya-page-fade{
 </script>
 
 
-<script>
-(function(){
-  const audio = document.getElementById('orinaya-music');
-  const button = document.getElementById('music-toggle');
-  if (!audio || !button) return;
 
-  const label = button.querySelector('.music-label');
-  const KEY = 'orinayaMusicStateV1';
-  audio.volume = 0.18;
-
-  function readState(){
-    try{
-      return JSON.parse(localStorage.getItem(KEY) || '{}');
-    }catch(e){
-      return {};
-    }
-  }
-
-  function saveState(){
-    try{
-      localStorage.setItem(KEY, JSON.stringify({
-        playing: !audio.paused,
-        time: Number.isFinite(audio.currentTime) ? audio.currentTime : 0,
-        updated: Date.now()
-      }));
-    }catch(e){}
-  }
-
-  function setButton(playing, wantsResume){
-    button.classList.toggle('is-playing', playing);
-    button.setAttribute('aria-pressed', playing ? 'true' : 'false');
-
-    if (playing){
-      button.setAttribute('aria-label','Ztišit atmosféru');
-      if (label) label.textContent = 'Ztišit atmosféru';
-    }else if (wantsResume){
-      button.setAttribute('aria-label','Pokračovat v atmosféře');
-      if (label) label.textContent = 'Pokračovat v atmosféře';
-    }else{
-      button.setAttribute('aria-label','Pustit atmosféru');
-      if (label) label.textContent = 'Pustit atmosféru';
-    }
-  }
-
-  const state = readState();
-  let wantsResume = !!state.playing;
-
-  audio.addEventListener('loadedmetadata', async function(){
-    if (Number.isFinite(state.time) && state.time > 0 && audio.duration){
-      audio.currentTime = state.time % audio.duration;
-    }
-
-    if (wantsResume){
-      try{
-        await audio.play();
-        setButton(true, false);
-      }catch(e){
-        /* Některé mobilní prohlížeče autoplay po přechodu zablokují.
-           V tom případě návštěvník jen klepne na "Pokračovat v atmosféře". */
-        setButton(false, true);
-      }
-    }else{
-      setButton(false, false);
-    }
-  }, {once:true});
-
-  button.addEventListener('click', async function(){
-    if (audio.paused){
-      try{
-        await audio.play();
-        wantsResume = true;
-        setButton(true, false);
-        saveState();
-      }catch(e){
-        setButton(false, true);
-      }
-    }else{
-      audio.pause();
-      wantsResume = false;
-      setButton(false, false);
-      saveState();
-    }
-  });
-
-  audio.addEventListener('play', function(){
-    wantsResume = true;
-    setButton(true, false);
-    saveState();
-  });
-
-  audio.addEventListener('pause', function(){
-    setButton(false, wantsResume);
-    saveState();
-  });
-
-  let lastSave = 0;
-  audio.addEventListener('timeupdate', function(){
-    const now = Date.now();
-    if (now - lastSave > 1000){
-      lastSave = now;
-      saveState();
-    }
-  });
-
-  document.addEventListener('click', function(e){
-    const a = e.target.closest('a[href]');
-    if (a) saveState();
-  }, true);
-
-  window.addEventListener('pagehide', saveState);
-  window.addEventListener('beforeunload', saveState);
-})();
-</script>
 
 
 <script>
@@ -1248,5 +1148,130 @@ html.is-entering .orinaya-page-fade{
 })();
 </script>
 
+<script id="orinaya-audio-controller">
+(function(){
+  const audio = document.getElementById('orinaya-music');
+  const button = document.getElementById('music-toggle');
+  if (!audio || !button || window.__orinayaMusicBound) return;
+  window.__orinayaMusicBound = true;
+
+  const label = button.querySelector('.music-label');
+  const KEY = 'orinayaMusicStateV1';
+  audio.volume = 0.18;
+  let wantsResume = false;
+
+  function readState(){
+    try { return JSON.parse(localStorage.getItem(KEY) || '{}'); }
+    catch(e){ return {}; }
+  }
+
+  function saveState(){
+    try{
+      localStorage.setItem(KEY, JSON.stringify({
+        playing: wantsResume,
+        time: Number.isFinite(audio.currentTime) ? audio.currentTime : 0,
+        updated: Date.now()
+      }));
+    }catch(e){}
+  }
+
+  function setButton(playing, resumeWanted){
+    button.classList.toggle('is-playing', playing);
+    button.setAttribute('aria-pressed', playing ? 'true' : 'false');
+    if (playing){
+      button.setAttribute('aria-label','Ztišit atmosféru');
+      if (label) label.textContent = 'Ztišit atmosféru';
+    }else if (resumeWanted){
+      button.setAttribute('aria-label','Pokračovat v atmosféře');
+      if (label) label.textContent = 'Pokračovat v atmosféře';
+    }else{
+      button.setAttribute('aria-label','Pustit atmosféru');
+      if (label) label.textContent = 'Pustit atmosféru';
+    }
+  }
+
+  function restoreTime(state){
+    const t = Number(state.time || 0);
+    if (!Number.isFinite(t) || t <= 0) return;
+    try{
+      if (Number.isFinite(audio.duration) && audio.duration > 0) audio.currentTime = t % audio.duration;
+      else audio.currentTime = t;
+    }catch(e){}
+  }
+
+  async function restorePlayback(state){
+    wantsResume = !!state.playing;
+    restoreTime(state);
+    if (!wantsResume){
+      setButton(false, false);
+      return;
+    }
+    try{
+      await audio.play();
+      setButton(true, false);
+    }catch(e){
+      setButton(false, true);
+    }
+    saveState();
+  }
+
+  const initialState = readState();
+  wantsResume = !!initialState.playing;
+  if (audio.readyState >= 1) restorePlayback(initialState);
+  else audio.addEventListener('loadedmetadata', function(){ restorePlayback(initialState); }, {once:true});
+
+  button.addEventListener('click', async function(){
+    if (audio.paused){
+      wantsResume = true;
+      try{
+        await audio.play();
+        setButton(true, false);
+      }catch(e){
+        setButton(false, true);
+      }
+      saveState();
+    }else{
+      wantsResume = false;
+      audio.pause();
+      setButton(false, false);
+      saveState();
+    }
+  });
+
+  audio.addEventListener('play', function(){
+    wantsResume = true;
+    setButton(true, false);
+    saveState();
+  });
+
+  audio.addEventListener('pause', function(){
+    setButton(false, wantsResume);
+    saveState();
+  });
+
+  let lastSave = 0;
+  audio.addEventListener('timeupdate', function(){
+    const now = Date.now();
+    if (now - lastSave > 1000){ lastSave = now; saveState(); }
+  });
+
+  document.addEventListener('click', function(e){
+    if (e.target.closest && e.target.closest('a[href]')) saveState();
+  }, true);
+
+  window.addEventListener('pagehide', saveState);
+  window.addEventListener('beforeunload', saveState);
+  document.addEventListener('visibilitychange', function(){
+    if (document.visibilityState === 'hidden') saveState();
+  });
+
+  window.addEventListener('pageshow', function(){
+    const state = readState();
+    wantsResume = !!state.playing;
+    if (audio.readyState >= 1) restorePlayback(state);
+    else audio.addEventListener('loadedmetadata', function(){ restorePlayback(state); }, {once:true});
+  });
+})();
+</script>
 </body>
 </html>

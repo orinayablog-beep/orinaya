@@ -27,60 +27,152 @@ h2{font-size:clamp(40px,5vw,62px);line-height:1.04;margin:0;max-width:850px;colo
 .price strong{font-family:"Cormorant Garamond",serif;font-size:42px;font-weight:400;color:#f0dfc1}
 .price small{display:block;color:#a99dad;line-height:1.7;margin-top:8px}
 .location-box{margin-top:24px;padding:20px 22px;border:1px solid rgba(215,170,87,.27);border-radius:18px;background:rgba(255,255,255,.012)}
-.location-box span{display:block}
-.location-box .place{font-family:"Cormorant Garamond",Georgia,serif;font-size:27px;color:#f0dfc1;margin-bottom:9px}
-.location-box .hours{color:#ead9b8;font-size:13px;line-height:1.6}
-.location-box .availability{color:#a99dad;font-size:12px;line-height:1.7;margin-top:8px}
+.location-box span{display:block}.location-box .place{font-family:"Cormorant Garamond",Georgia,serif;font-size:27px;color:#f0dfc1;margin-bottom:9px}.location-box .hours{color:#ead9b8;font-size:13px;line-height:1.6}.location-box .availability{color:#a99dad;font-size:12px;line-height:1.7;margin-top:8px}
 .cta-link{position:relative;display:inline-block;margin-top:28px;padding:0 0 8px;color:#ead9b8;font-size:12px;font-weight:400;letter-spacing:.16em;text-transform:uppercase}
-.cta-link:after{content:"";position:absolute;left:0;bottom:0;width:82%;height:1px;background:linear-gradient(90deg,var(--gold),rgba(215,170,87,.45));transition:width .25s ease}
-.cta-link:hover:after{width:100%}
-.contact-name{font-size:clamp(30px,4vw,44px);line-height:1.08}
-.contact-block{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:34px}
-.contact-item{position:relative;padding:28px;border:1px solid rgba(215,170,87,.18);border-radius:20px;background:rgba(255,255,255,.01)}
-.contact-item .icon{width:30px;height:30px;margin-bottom:15px;color:#d7aa57}
-.contact-item .icon svg{width:100%;height:100%;stroke:currentColor;fill:none;stroke-width:1.5}
-.contact-item small{display:block;color:#96899e;font-size:9px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:8px}
-.contact-item a,.contact-item span{color:#ead9b8;font-size:15px}
-.phone-number{display:block!important;margin-top:9px;color:#a99dad!important;font-size:11px!important;letter-spacing:.08em}
+.cta-link:after{content:"";position:absolute;left:0;bottom:0;width:82%;height:1px;background:linear-gradient(90deg,var(--gold),rgba(215,170,87,.45));transition:width .25s ease}.cta-link:hover:after{width:100%}
+.contact-name{font-size:clamp(30px,4vw,44px);line-height:1.08}.contact-block{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:34px}.contact-item{position:relative;padding:28px;border:1px solid rgba(215,170,87,.18);border-radius:20px;background:rgba(255,255,255,.01)}.contact-item .icon{width:30px;height:30px;margin-bottom:15px;color:#d7aa57}.contact-item .icon svg{width:100%;height:100%;stroke:currentColor;fill:none;stroke-width:1.5}.contact-item small{display:block;color:#96899e;font-size:9px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:8px}.contact-item a,.contact-item span{color:#ead9b8;font-size:15px}.phone-number{display:block!important;margin-top:9px;color:#a99dad!important;font-size:11px!important;letter-spacing:.08em}
 .note{font-family:"Cormorant Garamond",serif;font-size:clamp(54px,8vw,100px);line-height:1.03;color:#eee3e9;margin:0;max-width:1100px}
-footer{border-top:1px solid var(--line);padding:54px 22px 40px;text-align:center}
-.footer-logo{font-family:"Cormorant Garamond",Georgia,serif;font-size:36px;letter-spacing:.17em;color:#e7d3aa}
-.socials{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-top:26px}
-.socials a{color:#c8bdca;font-size:11px;text-transform:uppercase;letter-spacing:.14em}
-.copy{margin-top:32px;color:#96899e;font-size:9px;letter-spacing:.17em}
-.music-toggle{position:fixed;right:22px;bottom:22px;z-index:9990;display:flex;align-items:center;gap:9px;padding:10px 14px;border:1px solid rgba(215,170,87,.34);border-radius:999px;background:rgba(8,6,17,.78);color:#ead9b8;font:400 9px/1 "Montserrat",Arial,sans-serif;letter-spacing:.13em;text-transform:uppercase;backdrop-filter:blur(12px);cursor:pointer}
-.music-icon{width:18px;height:18px;display:grid;place-items:center;border:1px solid rgba(215,170,87,.32);border-radius:50%}
+footer{border-top:1px solid var(--line);padding:54px 22px 40px;text-align:center}.footer-logo{font-family:"Cormorant Garamond",Georgia,serif;font-size:36px;letter-spacing:.17em;color:#e7d3aa}.socials{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-top:26px}.socials a{color:#c8bdca;font-size:11px;text-transform:uppercase;letter-spacing:.14em}.copy{margin-top:32px;color:#96899e;font-size:9px;letter-spacing:.17em}
+.music-toggle{position:fixed;right:22px;bottom:22px;z-index:9990;display:flex;align-items:center;gap:9px;padding:10px 14px;border:1px solid rgba(215,170,87,.34);border-radius:999px;background:rgba(8,6,17,.78);color:#ead9b8;font:400 9px/1 "Montserrat",Arial,sans-serif;letter-spacing:.13em;text-transform:uppercase;backdrop-filter:blur(12px);cursor:pointer}.music-icon{width:18px;height:18px;display:grid;place-items:center;border:1px solid rgba(215,170,87,.32);border-radius:50%}
 @media(max-width:760px){.service-grid,.contact-block{grid-template-columns:1fr}.service-hero{padding:52px 0 46px}.service-section{padding:50px 0}.service-nav{padding:22px 0}.price strong{font-size:30px}.music-toggle{right:14px;bottom:14px}}
 </style>
-
 </head><body>
 <audio id="orinaya-music" src="./orinaya-piano.mp3" preload="metadata" loop></audio>
-<button class="music-toggle" id="music-toggle" type="button"><span class="music-icon">♪</span><span class="music-label">Pustit atmosféru</span></button>
+<button class="music-toggle" id="music-toggle" type="button" aria-label="Pustit atmosféru" aria-pressed="false">
+  <span class="music-icon" aria-hidden="true">♪</span>
+  <span class="music-label">Pustit atmosféru</span>
+</button>
 <nav class="service-nav"><a class="logo" href="/">ORINAYA</a><a class="back" href="/#terapie">← Zpět ke službám</a></nav>
 <header class="service-hero"><div class="kicker">Access Bars • Praha</div><h1>Dovol si na chvíli vypnout.</h1><p class="lead">Jemná doteková metoda pro chvíle, kdy potřebuješ zpomalit, vypnout hlavu a dopřát si prostor jen pro sebe.</p><p class="service-detail">Access Bars podporuje větší přítomnost v životě a učí tělo přijímat. Jemným dotykem pomáhá uvolňovat oblasti, vzorce, myšlenky a emoce, které už nám neslouží, a vytvářet prostor pro nové možnosti. Podporuje změnu myšlení, větší kreativitu, lehkost a otevřenost vůči tomu, co se v našem životě chce proměnit.</p><a class="cta-link" href="mailto:anezzajicova@gmail.com?subject=Rezervace%20Access%20Bars">Domluvit setkání</a></header>
-<section class="service-section service-grid">
-<div><div class="kicker">Jak setkání probíhá</div><h2>Prostor pro zklidnění těla i mysli.</h2><p>Na začátku si krátce řekneme, s čím přicházíš a co právě potřebuješ. Potom následuje přibližně 60–80 minut Access Bars, při kterých pohodlně ležíš a já se jemně dotýkám 32 bodů na hlavě.</p><p>Po ošetření necháváme čas na návrat, sdílení a to, co budeš chtít pojmenovat. Nemusíš vědět, co přesně potřebuješ změnit. Můžeš jednoduše přijít a nechat tělo přijímat.</p></div>
-<div class="price"><div class="kicker">Cena</div><strong>2 hodiny / 2&nbsp;000 <span class="currency">Kč</span></strong><small>Přibližně 60–80 minut ošetření + dostatek prostoru před i po setkání na konzultaci, sdílení a otázky.</small>
-<div class="location-box"><span class="place">Praha 4 – Braník</span><span class="hours">Čtvrtek a pátek</span><span class="availability">Konkrétní čas domluvíme individuálně.</span></div>
-<a class="cta-link" href="mailto:anezzajicova@gmail.com?subject=Rezervace%20Access%20Bars">Domluvit setkání</a></div></section>
-<section class="service-section"><div class="kicker">Kontakt</div><h2 class="contact-name">Anežka Zajícová</h2><p>Chceš se objednat nebo se nejdřív na něco zeptat? Napiš mi nebo zavolej.</p>
-<div class="contact-block"><div class="contact-item"><small>E-mail</small><a href="mailto:anezzajicova@gmail.com">anezzajicova@gmail.com</a></div>
-<div class="contact-item"><small>Telefon</small><a class="cta-link" style="margin-top:0" href="tel:+420776540840">Zavolat mi</a><span class="phone-number">776 540 840</span></div></div></section>
+<section class="service-section service-grid"><div><div class="kicker">Jak setkání probíhá</div><h2>Prostor pro zklidnění těla i mysli.</h2><p>Na začátku si krátce řekneme, s čím přicházíš a co právě potřebuješ. Potom následuje přibližně 60–80 minut Access Bars, při kterých pohodlně ležíš a já se jemně dotýkám 32 bodů na hlavě.</p><p>Po ošetření necháváme čas na návrat, sdílení a to, co budeš chtít pojmenovat. Nemusíš vědět, co přesně potřebuješ změnit. Můžeš jednoduše přijít a nechat tělo přijímat.</p></div><div class="price"><div class="kicker">Cena</div><strong>2 hodiny / 2&nbsp;000 <span class="currency">Kč</span></strong><small>Přibližně 60–80 minut ošetření + dostatek prostoru před i po setkání na konzultaci, sdílení a otázky.</small><div class="location-box"><span class="place">Praha 4 – Braník</span><span class="hours">Čtvrtek a pátek</span><span class="availability">Konkrétní čas domluvíme individuálně.</span></div><a class="cta-link" href="mailto:anezzajicova@gmail.com?subject=Rezervace%20Access%20Bars">Domluvit setkání</a></div></section>
+<section class="service-section"><div class="kicker">Kontakt</div><h2 class="contact-name">Anežka Zajícová</h2><p>Chceš se objednat nebo se nejdřív na něco zeptat? Napiš mi nebo zavolej.</p><div class="contact-block"><div class="contact-item"><small>E-mail</small><a href="mailto:anezzajicova@gmail.com">anezzajicova@gmail.com</a></div><div class="contact-item"><small>Telefon</small><a class="cta-link" style="margin-top:0" href="tel:+420776540840">Zavolat mi</a><span class="phone-number">776 540 840</span></div></div></section>
 <section class="service-section"><p class="note">Prostor pro ženy, které chtějí znovu cítit sebe, svůj život a svou vlastní cestu.</p></section>
 <footer><div class="footer-logo">ORINAYA</div><div class="socials"><a href="https://www.instagram.com/orinaya.energy" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/share/1EFY1Sjqfv/" target="_blank" rel="noopener">Facebook</a><a href="/ochrana-osobnich-udaju">Ochrana osobních údajů</a><a href="/obchodni-podminky">Obchodní podmínky</a></div><div class="copy">© 2026 ORINAYA · ANEŽKA ZAJÍCOVÁ · IČO 22590528 · PRAHA</div></footer>
 
-<script>
+
+<script id="orinaya-audio-controller">
 (function(){
- const audio=document.getElementById('orinaya-music'),btn=document.getElementById('music-toggle');
- if(!audio||!btn)return;
- const label=btn.querySelector('.music-label'),KEY='orinayaMusicStateV1'; audio.volume=.18;
- function state(){try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){return{}}}
- function save(){try{localStorage.setItem(KEY,JSON.stringify({playing:!audio.paused,time:audio.currentTime||0}))}catch(e){}}
- function paint(){const p=!audio.paused; label.textContent=p?'Ztišit atmosféru':'Pustit atmosféru';btn.setAttribute('aria-pressed',p?'true':'false')}
- const s=state();
- audio.addEventListener('loadedmetadata',async()=>{if(s.time)audio.currentTime=s.time%audio.duration;if(s.playing){try{await audio.play()}catch(e){}}paint()},{once:true});
- btn.addEventListener('click',async()=>{if(audio.paused){try{await audio.play()}catch(e){}}else audio.pause();paint();save()});
- audio.addEventListener('timeupdate',save); window.addEventListener('pagehide',save);
+  const audio = document.getElementById('orinaya-music');
+  const button = document.getElementById('music-toggle');
+  if (!audio || !button || window.__orinayaMusicBound) return;
+  window.__orinayaMusicBound = true;
+
+  const label = button.querySelector('.music-label');
+  const KEY = 'orinayaMusicStateV1';
+  audio.volume = 0.18;
+  let wantsResume = false;
+
+  function readState(){
+    try { return JSON.parse(localStorage.getItem(KEY) || '{}'); }
+    catch(e){ return {}; }
+  }
+
+  function saveState(){
+    try{
+      localStorage.setItem(KEY, JSON.stringify({
+        playing: wantsResume,
+        time: Number.isFinite(audio.currentTime) ? audio.currentTime : 0,
+        updated: Date.now()
+      }));
+    }catch(e){}
+  }
+
+  function setButton(playing, resumeWanted){
+    button.classList.toggle('is-playing', playing);
+    button.setAttribute('aria-pressed', playing ? 'true' : 'false');
+    if (playing){
+      button.setAttribute('aria-label','Ztišit atmosféru');
+      if (label) label.textContent = 'Ztišit atmosféru';
+    }else if (resumeWanted){
+      button.setAttribute('aria-label','Pokračovat v atmosféře');
+      if (label) label.textContent = 'Pokračovat v atmosféře';
+    }else{
+      button.setAttribute('aria-label','Pustit atmosféru');
+      if (label) label.textContent = 'Pustit atmosféru';
+    }
+  }
+
+  function restoreTime(state){
+    const t = Number(state.time || 0);
+    if (!Number.isFinite(t) || t <= 0) return;
+    try{
+      if (Number.isFinite(audio.duration) && audio.duration > 0) audio.currentTime = t % audio.duration;
+      else audio.currentTime = t;
+    }catch(e){}
+  }
+
+  async function restorePlayback(state){
+    wantsResume = !!state.playing;
+    restoreTime(state);
+    if (!wantsResume){
+      setButton(false, false);
+      return;
+    }
+    try{
+      await audio.play();
+      setButton(true, false);
+    }catch(e){
+      setButton(false, true);
+    }
+    saveState();
+  }
+
+  const initialState = readState();
+  wantsResume = !!initialState.playing;
+  if (audio.readyState >= 1) restorePlayback(initialState);
+  else audio.addEventListener('loadedmetadata', function(){ restorePlayback(initialState); }, {once:true});
+
+  button.addEventListener('click', async function(){
+    if (audio.paused){
+      wantsResume = true;
+      try{
+        await audio.play();
+        setButton(true, false);
+      }catch(e){
+        setButton(false, true);
+      }
+      saveState();
+    }else{
+      wantsResume = false;
+      audio.pause();
+      setButton(false, false);
+      saveState();
+    }
+  });
+
+  audio.addEventListener('play', function(){
+    wantsResume = true;
+    setButton(true, false);
+    saveState();
+  });
+
+  audio.addEventListener('pause', function(){
+    setButton(false, wantsResume);
+    saveState();
+  });
+
+  let lastSave = 0;
+  audio.addEventListener('timeupdate', function(){
+    const now = Date.now();
+    if (now - lastSave > 1000){ lastSave = now; saveState(); }
+  });
+
+  document.addEventListener('click', function(e){
+    if (e.target.closest && e.target.closest('a[href]')) saveState();
+  }, true);
+
+  window.addEventListener('pagehide', saveState);
+  window.addEventListener('beforeunload', saveState);
+  document.addEventListener('visibilitychange', function(){
+    if (document.visibilityState === 'hidden') saveState();
+  });
+
+  window.addEventListener('pageshow', function(){
+    const state = readState();
+    wantsResume = !!state.playing;
+    if (audio.readyState >= 1) restorePlayback(state);
+    else audio.addEventListener('loadedmetadata', function(){ restorePlayback(state); }, {once:true});
+  });
 })();
 </script>
 </body></html>

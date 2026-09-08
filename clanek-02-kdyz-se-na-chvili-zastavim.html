@@ -4,6 +4,18 @@
 <meta name="theme-color" content="#080611">
 <title>Když se na chvíli zastavím... | ORINAYA</title>
 <meta name="description" content="Když se na chvíli zastavím, dochází mi, jak moc se změnilo...">
+<link rel="canonical" href="https://orinaya.vercel.app/clanek-02-kdyz-se-na-chvili-zastavim">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="cs_CZ">
+<meta property="og:title" content="Když se na chvíli zastavím... | ORINAYA">
+<meta property="og:description" content="Když se na chvíli zastavím, dochází mi, jak moc se změnilo...">
+<meta property="og:url" content="https://orinaya.vercel.app/clanek-02-kdyz-se-na-chvili-zastavim">
+<meta property="og:image" content="https://orinaya.vercel.app/blog-02.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Když se na chvíli zastavím... | ORINAYA">
+<meta name="twitter:description" content="Když se na chvíli zastavím, dochází mi, jak moc se změnilo...">
+<meta name="twitter:image" content="https://orinaya.vercel.app/blog-02.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500&family=Italianno&display=swap" rel="stylesheet">
 <style>
@@ -165,10 +177,9 @@ h1{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(48px,7vw,82px)
 <body>
 
 <audio id="orinaya-music" src="./orinaya-piano.mp3" preload="metadata" loop></audio>
-<button class="music-toggle" id="music-toggle" type="button"
- aria-label="Pustit atmosféru" aria-pressed="false">
- <span class="music-icon" aria-hidden="true"></span>
- <span class="music-label">Pustit atmosféru</span>
+<button class="music-toggle" id="music-toggle" type="button" aria-label="Pustit atmosféru" aria-pressed="false">
+  <span class="music-icon" aria-hidden="true">♪</span>
+  <span class="music-label">Pustit atmosféru</span>
 </button>
 
 <header><a class="brand" href="index.html">ORINAYA</a><nav><a href="index.html">Domů</a><a href="omne.html">O mně</a><a href="promena.html">Proměna</a><a class="active" href="blog.html">Blog</a></nav></header>
@@ -198,147 +209,131 @@ h1{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(48px,7vw,82px)
 </main>
 <footer><div class="footer-logo">ORINAYA</div><div class="copy">© 2026 ORINAYA</div></footer>
 
-<script>
+
+
+<script id="orinaya-audio-controller">
 (function(){
-  const audio=document.getElementById('orinaya-music');
-  const button=document.getElementById('music-toggle');
-  if(!audio||!button)return;
+  const audio = document.getElementById('orinaya-music');
+  const button = document.getElementById('music-toggle');
+  if (!audio || !button || window.__orinayaMusicBound) return;
+  window.__orinayaMusicBound = true;
 
-  const label=button.querySelector('.music-label');
-  const KEY='orinayaMusicStateV1';
-  audio.volume=.18;
-
-  let wantsResume=false;
+  const label = button.querySelector('.music-label');
+  const KEY = 'orinayaMusicStateV1';
+  audio.volume = 0.18;
+  let wantsResume = false;
 
   function readState(){
-    try{return JSON.parse(localStorage.getItem(KEY)||'{}')}
-    catch(e){return {}}
+    try { return JSON.parse(localStorage.getItem(KEY) || '{}'); }
+    catch(e){ return {}; }
   }
 
   function saveState(){
     try{
-      localStorage.setItem(KEY,JSON.stringify({
-        playing:wantsResume,
-        time:Number.isFinite(audio.currentTime)?audio.currentTime:0,
-        updated:Date.now()
-      }))
+      localStorage.setItem(KEY, JSON.stringify({
+        playing: wantsResume,
+        time: Number.isFinite(audio.currentTime) ? audio.currentTime : 0,
+        updated: Date.now()
+      }));
     }catch(e){}
   }
 
-  function setButton(playing,resumeWanted){
-    button.classList.toggle('is-playing',playing);
-    button.setAttribute('aria-pressed',playing?'true':'false');
-
-    if(playing){
+  function setButton(playing, resumeWanted){
+    button.classList.toggle('is-playing', playing);
+    button.setAttribute('aria-pressed', playing ? 'true' : 'false');
+    if (playing){
       button.setAttribute('aria-label','Ztišit atmosféru');
-      if(label)label.textContent='Ztišit atmosféru';
-    }else if(resumeWanted){
+      if (label) label.textContent = 'Ztišit atmosféru';
+    }else if (resumeWanted){
       button.setAttribute('aria-label','Pokračovat v atmosféře');
-      if(label)label.textContent='Pokračovat v atmosféře';
+      if (label) label.textContent = 'Pokračovat v atmosféře';
     }else{
       button.setAttribute('aria-label','Pustit atmosféru');
-      if(label)label.textContent='Pustit atmosféru';
+      if (label) label.textContent = 'Pustit atmosféru';
     }
   }
 
   function restoreTime(state){
-    if(Number.isFinite(state.time)&&state.time>0&&Number.isFinite(audio.duration)&&audio.duration>0){
-      const target=state.time%audio.duration;
-      if(Math.abs(audio.currentTime-target)>.75){
-        try{audio.currentTime=target}catch(e){}
-      }
-    }
+    const t = Number(state.time || 0);
+    if (!Number.isFinite(t) || t <= 0) return;
+    try{
+      if (Number.isFinite(audio.duration) && audio.duration > 0) audio.currentTime = t % audio.duration;
+      else audio.currentTime = t;
+    }catch(e){}
   }
 
   async function restorePlayback(state){
-    wantsResume=!!state.playing;
+    wantsResume = !!state.playing;
     restoreTime(state);
-
-    if(!wantsResume){
-      setButton(false,false);
+    if (!wantsResume){
+      setButton(false, false);
       return;
     }
-
     try{
       await audio.play();
-      setButton(true,false);
+      setButton(true, false);
     }catch(e){
-      setButton(false,true);
+      setButton(false, true);
     }
+    saveState();
   }
 
-  const initialState=readState();
-  wantsResume=!!initialState.playing;
+  const initialState = readState();
+  wantsResume = !!initialState.playing;
+  if (audio.readyState >= 1) restorePlayback(initialState);
+  else audio.addEventListener('loadedmetadata', function(){ restorePlayback(initialState); }, {once:true});
 
-  if(audio.readyState>=1){
-    restorePlayback(initialState);
-  }else{
-    audio.addEventListener('loadedmetadata',function(){
-      restorePlayback(initialState);
-    },{once:true});
-  }
-
-  button.addEventListener('click',async function(){
-    if(audio.paused){
-      wantsResume=true;
+  button.addEventListener('click', async function(){
+    if (audio.paused){
+      wantsResume = true;
       try{
         await audio.play();
-        setButton(true,false);
-        saveState();
+        setButton(true, false);
       }catch(e){
-        setButton(false,true);
-        saveState();
+        setButton(false, true);
       }
+      saveState();
     }else{
-      wantsResume=false;
+      wantsResume = false;
       audio.pause();
-      setButton(false,false);
+      setButton(false, false);
       saveState();
     }
   });
 
-  audio.addEventListener('play',function(){
-    wantsResume=true;
-    setButton(true,false);
+  audio.addEventListener('play', function(){
+    wantsResume = true;
+    setButton(true, false);
     saveState();
   });
 
-  audio.addEventListener('pause',function(){
-    setButton(false,wantsResume);
+  audio.addEventListener('pause', function(){
+    setButton(false, wantsResume);
     saveState();
   });
 
-  let last=0;
-  audio.addEventListener('timeupdate',function(){
-    const now=Date.now();
-    if(now-last>1000){
-      last=now;
-      saveState();
-    }
+  let lastSave = 0;
+  audio.addEventListener('timeupdate', function(){
+    const now = Date.now();
+    if (now - lastSave > 1000){ lastSave = now; saveState(); }
   });
 
-  document.addEventListener('click',function(e){
-    const a=e.target.closest('a[href]');
-    if(a)saveState();
-  },true);
+  document.addEventListener('click', function(e){
+    if (e.target.closest && e.target.closest('a[href]')) saveState();
+  }, true);
 
-  window.addEventListener('pagehide',saveState);
-  window.addEventListener('beforeunload',saveState);
+  window.addEventListener('pagehide', saveState);
+  window.addEventListener('beforeunload', saveState);
+  document.addEventListener('visibilitychange', function(){
+    if (document.visibilityState === 'hidden') saveState();
+  });
 
-  window.addEventListener('pageshow',function(e){
-    if(!e.persisted)return;
-    const state=readState();
-    wantsResume=!!state.playing;
-
-    if(audio.readyState>=1){
-      restorePlayback(state);
-    }else{
-      audio.addEventListener('loadedmetadata',function(){
-        restorePlayback(state);
-      },{once:true});
-    }
+  window.addEventListener('pageshow', function(){
+    const state = readState();
+    wantsResume = !!state.playing;
+    if (audio.readyState >= 1) restorePlayback(state);
+    else audio.addEventListener('loadedmetadata', function(){ restorePlayback(state); }, {once:true});
   });
 })();
 </script>
-
 </body></html>

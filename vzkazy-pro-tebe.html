@@ -6,18 +6,6 @@
 <meta name="theme-color" content="#080611">
 <title>Vzkazy pro Tebe | ORINAYA</title>
 <meta name="description" content="Vzkazy pro Tebe. Slova podpory, laskavosti a inspirace pro chvíle, kdy je potřebujeme slyšet.">
-<link rel="canonical" href="https://orinaya.vercel.app/vzkazy-pro-tebe">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="cs_CZ">
-<meta property="og:title" content="Vzkazy pro Tebe | ORINAYA">
-<meta property="og:description" content="Vzkazy pro Tebe. Slova podpory, laskavosti a inspirace pro chvíle, kdy je potřebujeme slyšet.">
-<meta property="og:url" content="https://orinaya.vercel.app/vzkazy-pro-tebe">
-<meta property="og:image" content="https://orinaya.vercel.app/vzkazy-hero-final.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Vzkazy pro Tebe | ORINAYA">
-<meta name="twitter:description" content="Vzkazy pro Tebe. Slova podpory, laskavosti a inspirace pro chvíle, kdy je potřebujeme slyšet.">
-<meta name="twitter:image" content="https://orinaya.vercel.app/vzkazy-hero-final.png">
-
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -540,6 +528,63 @@ footer{
   .messages{padding-bottom:68px}
   .music-toggle{right:14px;bottom:14px;font-size:8px;padding:9px 11px}
 }
+
+/* ===== MOBIL / TABLET NA ŠÍŘKU =====
+   V landscape se VŽDY použije široký desktop hero.
+   Tohle je schválně až za mobilním blokem, aby ho přepsalo. */
+@media (orientation: landscape) and (max-height: 600px){
+  .topbar{
+    padding:12px 4vw 10px;
+    min-height:54px;
+  }
+  .top-logo{
+    font-size:18px;
+    letter-spacing:.20em;
+  }
+  .home-link{
+    font-size:8px;
+    letter-spacing:.15em;
+  }
+
+  .hero-image-wrap{
+    width:100vw;
+    height:auto;
+    min-height:0;
+    margin:0 0 18px;
+    overflow:hidden;
+  }
+  .hero-image-wrap picture{
+    display:block;
+    width:100%;
+  }
+  .hero-image{
+    display:block;
+    width:100% !important;
+    height:auto !important;
+    max-width:none !important;
+    margin:0 !important;
+    object-fit:contain !important;
+    object-position:center top !important;
+    transform:none !important;
+  }
+
+  .random-wrap{
+    margin:14px auto 42px;
+  }
+  .random-btn{
+    padding:11px 24px;
+    min-width:250px;
+    font-size:9px;
+  }
+
+  .music-toggle{
+    right:10px;
+    bottom:10px;
+    transform:scale(.88);
+    transform-origin:bottom right;
+  }
+}
+
 @media(prefers-reduced-motion:reduce){
   .hero-spark{animation:none;opacity:.45}
 }
@@ -550,7 +595,7 @@ footer{
 
 <audio id="orinaya-music" src="./orinaya-piano.mp3" preload="metadata" loop></audio>
 <button class="music-toggle" id="music-toggle" type="button" aria-label="Pustit atmosféru" aria-pressed="false">
-  <span class="music-icon" aria-hidden="true">♪</span>
+  <span class="music-icon">♪</span>
   <span class="music-label">Pustit atmosféru</span>
 </button>
 
@@ -560,7 +605,10 @@ footer{
 </div>
 
 <section class="hero-image-wrap" aria-label="Vzkazy pro Tebe">
-  <img class="hero-image" src="/vzkazy-hero-final.png" alt="Vzkazy pro Tebe">
+  <picture>
+    <source media="(max-width: 760px) and (orientation: portrait)" srcset="/vzkazy-hero-mobile.png">
+    <img class="hero-image" src="/vzkazy-hero-final.png" alt="Vzkazy pro Tebe">
+  </picture>
   <span class="hero-spark big hs1"></span>
   <span class="hero-spark hs2"></span>
   <span class="hero-spark hs3"></span>
@@ -598,7 +646,6 @@ footer{
 <section class="form-wrap">
   <div class="form-heading">
     <h2>Zanech svůj vzkaz</h2>
-    <div class="form-script">Napiš pár slov, která mohou pohladit, podpořit nebo jen tak někomu zlepšit dnešní den…</div>
   </div>
 
   <div class="form-card">
@@ -610,7 +657,7 @@ footer{
       </div>
 
       <div class="input-group">
-        <textarea id="message" maxlength="500" required placeholder="Napiš svůj vzkaz…"></textarea>
+        <textarea id="message" maxlength="500" required placeholder="Napiš pár slov, která mohou pohladit, podpořit nebo jen tak někomu zlepšit dnešní den…"></textarea>
         <div class="counter"><span id="count">0</span> / 500</div>
       </div>
 
@@ -1160,42 +1207,43 @@ loadMessages(true);
 
 </script>
 
+<script>
 
-
-<script id="orinaya-audio-controller">
 (function(){
   const audio = document.getElementById('orinaya-music');
   const button = document.getElementById('music-toggle');
-  if (!audio || !button || window.__orinayaMusicBound) return;
-  window.__orinayaMusicBound = true;
+  if (!audio || !button) return;
 
   const label = button.querySelector('.music-label');
   const KEY = 'orinayaMusicStateV1';
   audio.volume = 0.18;
-  let wantsResume = false;
 
   function readState(){
-    try { return JSON.parse(localStorage.getItem(KEY) || '{}'); }
-    catch(e){ return {}; }
+    try{
+      return JSON.parse(localStorage.getItem(KEY) || '{}');
+    }catch(e){
+      return {};
+    }
   }
 
   function saveState(){
     try{
       localStorage.setItem(KEY, JSON.stringify({
-        playing: wantsResume,
+        playing: !audio.paused,
         time: Number.isFinite(audio.currentTime) ? audio.currentTime : 0,
         updated: Date.now()
       }));
     }catch(e){}
   }
 
-  function setButton(playing, resumeWanted){
+  function setButton(playing, wantsResume){
     button.classList.toggle('is-playing', playing);
     button.setAttribute('aria-pressed', playing ? 'true' : 'false');
+
     if (playing){
       button.setAttribute('aria-label','Ztišit atmosféru');
       if (label) label.textContent = 'Ztišit atmosféru';
-    }else if (resumeWanted){
+    }else if (wantsResume){
       button.setAttribute('aria-label','Pokračovat v atmosféře');
       if (label) label.textContent = 'Pokračovat v atmosféře';
     }else{
@@ -1204,49 +1252,39 @@ loadMessages(true);
     }
   }
 
-  function restoreTime(state){
-    const t = Number(state.time || 0);
-    if (!Number.isFinite(t) || t <= 0) return;
-    try{
-      if (Number.isFinite(audio.duration) && audio.duration > 0) audio.currentTime = t % audio.duration;
-      else audio.currentTime = t;
-    }catch(e){}
-  }
+  const state = readState();
+  let wantsResume = !!state.playing;
 
-  async function restorePlayback(state){
-    wantsResume = !!state.playing;
-    restoreTime(state);
-    if (!wantsResume){
-      setButton(false, false);
-      return;
+  audio.addEventListener('loadedmetadata', async function(){
+    if (Number.isFinite(state.time) && state.time > 0 && audio.duration){
+      audio.currentTime = state.time % audio.duration;
     }
-    try{
-      await audio.play();
-      setButton(true, false);
-    }catch(e){
-      setButton(false, true);
-    }
-    saveState();
-  }
 
-  const initialState = readState();
-  wantsResume = !!initialState.playing;
-  if (audio.readyState >= 1) restorePlayback(initialState);
-  else audio.addEventListener('loadedmetadata', function(){ restorePlayback(initialState); }, {once:true});
-
-  button.addEventListener('click', async function(){
-    if (audio.paused){
-      wantsResume = true;
+    if (wantsResume){
       try{
         await audio.play();
         setButton(true, false);
       }catch(e){
         setButton(false, true);
       }
-      saveState();
     }else{
-      wantsResume = false;
+      setButton(false, false);
+    }
+  }, {once:true});
+
+  button.addEventListener('click', async function(){
+    if (audio.paused){
+      try{
+        await audio.play();
+        wantsResume = true;
+        setButton(true, false);
+        saveState();
+      }catch(e){
+        setButton(false, true);
+      }
+    }else{
       audio.pause();
+      wantsResume = false;
       setButton(false, false);
       saveState();
     }
@@ -1266,26 +1304,22 @@ loadMessages(true);
   let lastSave = 0;
   audio.addEventListener('timeupdate', function(){
     const now = Date.now();
-    if (now - lastSave > 1000){ lastSave = now; saveState(); }
+    if (now - lastSave > 1000){
+      lastSave = now;
+      saveState();
+    }
   });
 
   document.addEventListener('click', function(e){
-    if (e.target.closest && e.target.closest('a[href]')) saveState();
+    const a = e.target.closest('a[href]');
+    if (a) saveState();
   }, true);
 
   window.addEventListener('pagehide', saveState);
   window.addEventListener('beforeunload', saveState);
-  document.addEventListener('visibilitychange', function(){
-    if (document.visibilityState === 'hidden') saveState();
-  });
-
-  window.addEventListener('pageshow', function(){
-    const state = readState();
-    wantsResume = !!state.playing;
-    if (audio.readyState >= 1) restorePlayback(state);
-    else audio.addEventListener('loadedmetadata', function(){ restorePlayback(state); }, {once:true});
-  });
 })();
+
 </script>
+
 </body>
 </html>

@@ -6,6 +6,18 @@
 <meta name="theme-color" content="#080611">
 <title>Vzkazy pro Tebe | ORINAYA</title>
 <meta name="description" content="Vzkazy pro Tebe. Slova podpory, laskavosti a inspirace pro chvíle, kdy je potřebujeme slyšet.">
+<link rel="canonical" href="https://orinaya.vercel.app/vzkazy-pro-tebe">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="cs_CZ">
+<meta property="og:title" content="Vzkazy pro Tebe | ORINAYA">
+<meta property="og:description" content="Vzkazy pro Tebe. Slova podpory, laskavosti a inspirace pro chvíle, kdy je potřebujeme slyšet.">
+<meta property="og:url" content="https://orinaya.vercel.app/vzkazy-pro-tebe">
+<meta property="og:image" content="https://orinaya.vercel.app/vzkazy-hero-final.png">
+<meta property="og:image:alt" content="Vzkazy pro Tebe | ORINAYA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Vzkazy pro Tebe | ORINAYA">
+<meta name="twitter:description" content="Vzkazy pro Tebe. Slova podpory, laskavosti a inspirace pro chvíle, kdy je potřebujeme slyšet.">
+<meta name="twitter:image" content="https://orinaya.vercel.app/vzkazy-hero-final.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,7 +51,7 @@ button,input,textarea{font:inherit}
 .topbar{
   width:100%;
   margin:0;
-  padding:20px 3.8vw 16px;
+  padding:24px 5vw 18px;
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -48,7 +60,7 @@ button,input,textarea{font:inherit}
 }
 .top-logo{
   font-family:"Cormorant Garamond",Georgia,serif;
-  font-size:22px;
+  font-size:27px;
   line-height:1;
   letter-spacing:.18em;
   color:#ead8b0;
@@ -58,7 +70,7 @@ button,input,textarea{font:inherit}
   display:inline-block;
   padding:0 0 6px;
   color:#cfc2cf;
-  font-size:9px;
+  font-size:10px;
   letter-spacing:.17em;
   text-transform:uppercase;
   transition:color .22s ease,text-shadow .22s ease,transform .22s ease;
@@ -504,8 +516,8 @@ footer{
 .music-icon{width:18px;height:18px;display:grid;place-items:center;border:1px solid rgba(215,170,87,.32);border-radius:50%}
 
 @media(max-width:760px){
-  .topbar{padding:16px 4.5vw 12px}
-  .top-logo{font-size:20px}
+  .topbar{padding:20px 5vw 14px}
+  .top-logo{font-size:23px}
   .hero-image-wrap{
     width:100vw;
     margin-bottom:24px;
@@ -528,63 +540,6 @@ footer{
   .messages{padding-bottom:68px}
   .music-toggle{right:14px;bottom:14px;font-size:8px;padding:9px 11px}
 }
-
-/* ===== MOBIL / TABLET NA ŠÍŘKU =====
-   V landscape se VŽDY použije široký desktop hero.
-   Tohle je schválně až za mobilním blokem, aby ho přepsalo. */
-@media (orientation: landscape) and (max-height: 600px){
-  .topbar{
-    padding:12px 4vw 10px;
-    min-height:54px;
-  }
-  .top-logo{
-    font-size:18px;
-    letter-spacing:.20em;
-  }
-  .home-link{
-    font-size:8px;
-    letter-spacing:.15em;
-  }
-
-  .hero-image-wrap{
-    width:100vw;
-    height:auto;
-    min-height:0;
-    margin:0 0 18px;
-    overflow:hidden;
-  }
-  .hero-image-wrap picture{
-    display:block;
-    width:100%;
-  }
-  .hero-image{
-    display:block;
-    width:100% !important;
-    height:auto !important;
-    max-width:none !important;
-    margin:0 !important;
-    object-fit:contain !important;
-    object-position:center top !important;
-    transform:none !important;
-  }
-
-  .random-wrap{
-    margin:14px auto 42px;
-  }
-  .random-btn{
-    padding:11px 24px;
-    min-width:250px;
-    font-size:9px;
-  }
-
-  .music-toggle{
-    right:10px;
-    bottom:10px;
-    transform:scale(.88);
-    transform-origin:bottom right;
-  }
-}
-
 @media(prefers-reduced-motion:reduce){
   .hero-spark{animation:none;opacity:.45}
 }
@@ -605,10 +560,7 @@ footer{
 </div>
 
 <section class="hero-image-wrap" aria-label="Vzkazy pro Tebe">
-  <picture>
-    <source media="(max-width: 760px) and (orientation: portrait)" srcset="/vzkazy-hero-mobile.png">
-    <img class="hero-image" src="/vzkazy-hero-final.png" alt="Vzkazy pro Tebe">
-  </picture>
+  <img class="hero-image" src="/vzkazy-hero-final.png" alt="Vzkazy pro Tebe">
   <span class="hero-spark big hs1"></span>
   <span class="hero-spark hs2"></span>
   <span class="hero-spark hs3"></span>
@@ -646,6 +598,7 @@ footer{
 <section class="form-wrap">
   <div class="form-heading">
     <h2>Zanech svůj vzkaz</h2>
+    <div class="form-script">Slova, která chceš poslat dál.</div>
   </div>
 
   <div class="form-card">
@@ -656,8 +609,11 @@ footer{
         <input id="name" type="text" maxlength="80" placeholder="Tvé jméno nebo přezdívka">
       </div>
 
+      <div class="message-helper">Napiš pár slov, která mohou pohladit, podpořit nebo jen tak někomu zlepšit dnešní den…</div>
+
       <div class="input-group">
-        <textarea id="message" maxlength="500" required placeholder="Napiš pár slov, která mohou pohladit, podpořit nebo jen tak někomu zlepšit dnešní den…"></textarea>
+        <label for="message">Tvůj vzkaz</label>
+        <textarea id="message" maxlength="500" required placeholder="Napiš svůj vzkaz…"></textarea>
         <div class="counter"><span id="count">0</span> / 500</div>
       </div>
 
@@ -1016,14 +972,10 @@ async function createMessageImage(message){
     img.src = src;
   });
 
-  let bg;
-  try{
-    bg = await loadImage("/vzkaz-karticka-bg.png");
-  }catch(e){
-    throw new Error("Chybí soubor vzkaz-karticka-bg.png");
-  }
+  const bg = await loadImage("/vzkaz-karticka-bg.png");
 
-  /* Zachováme přesně poměr stran nového horizontálního podkladu. */
+  /* Zachováme přesný poměr stran podkladového obrázku.
+     Nic se už nebude deformovat do široké kartičky. */
   const canvas = document.createElement("canvas");
   canvas.width = bg.naturalWidth;
   canvas.height = bg.naturalHeight;
@@ -1031,56 +983,25 @@ async function createMessageImage(message){
 
   ctx.drawImage(bg,0,0,canvas.width,canvas.height);
 
-  /*
-    Pravá část je schválně čistá.
-    Podklad obsahuje jen obálku, hvězdy a rámeček.
-    Dynamicky doplníme:
-    - Vzkaz pro tebe
-    - konkrétní text
-    - autora
-    - ORINAYA
-  */
-  const cx = canvas.width * 0.70;
-  const maxWidth = canvas.width * 0.48;
-
   ctx.textAlign = "center";
 
-  /* Nadpis */
-  ctx.fillStyle = "#e9d5ac";
-  ctx.font = `400 ${Math.round(canvas.width * 0.031)}px "Cormorant Garamond", Georgia, serif`;
-  ctx.fillText("Vzkaz pro tebe",cx,canvas.height * 0.25);
+  /* Dynamický text patří do čistého prostoru mezi titulkem
+     "Vzkaz pro tebe" a obálku. */
+  const cx = canvas.width / 2;
+  const maxWidth = canvas.width * 0.68;
 
-  /* Jemná zlatá linka a hvězda */
-  ctx.strokeStyle = "rgba(215,170,87,.48)";
-  ctx.lineWidth = Math.max(1,canvas.width * 0.0008);
-
-  const dividerY = canvas.height * 0.34;
-  const gap = canvas.width * 0.035;
-  const half = canvas.width * 0.09;
-
-  ctx.beginPath();
-  ctx.moveTo(cx-half-gap,dividerY);
-  ctx.lineTo(cx-gap,dividerY);
-  ctx.moveTo(cx+gap,dividerY);
-  ctx.lineTo(cx+half+gap,dividerY);
-  ctx.stroke();
-
-  ctx.fillStyle = "#e3bb68";
-  ctx.font = `${Math.round(canvas.width * 0.018)}px Georgia,serif`;
-  ctx.fillText("✦",cx,dividerY + canvas.height * 0.008);
-
-  /* Dynamický text */
-  let fontSize = Math.round(canvas.width * 0.029);
-  const minFontSize = Math.round(canvas.width * 0.020);
-  let lineHeight = Math.round(fontSize * 1.24);
+  let fontSize = Math.round(canvas.width * 0.044);
+  const minFontSize = Math.round(canvas.width * 0.030);
+  let lineHeight = Math.round(fontSize * 1.25);
   let lines = [];
 
   while(fontSize >= minFontSize){
     ctx.font = `400 ${fontSize}px "Cormorant Garamond", Georgia, serif`;
-    lineHeight = Math.round(fontSize * 1.24);
+    lineHeight = Math.round(fontSize * 1.25);
     lines = splitCanvasText(ctx,message.message,maxWidth);
 
-    if(lines.length * lineHeight <= canvas.height * 0.29) break;
+    /* Hlídáme, aby text nesjel do obálky. */
+    if(lines.length * lineHeight <= canvas.height * 0.22) break;
     fontSize -= 2;
   }
 
@@ -1088,23 +1009,19 @@ async function createMessageImage(message){
   ctx.font = `400 ${fontSize}px "Cormorant Garamond", Georgia, serif`;
 
   const blockHeight = lines.length * lineHeight;
-  let y = canvas.height * 0.53 - blockHeight / 2;
+  let y = Math.round(canvas.height * 0.38 - blockHeight / 2);
 
   for(const line of lines){
     ctx.fillText(line,cx,y);
     y += lineHeight;
   }
 
-  /* Autor */
+  /* Podpis je stále dynamický, ale zůstává nad obálkou. */
   const author = message.anonymous ? "Anonymně" : (message.name || "Anonymně");
-  ctx.fillStyle = "#d7aa57";
-  ctx.font = `400 ${Math.round(canvas.width * 0.026)}px "Italianno", cursive`;
-  ctx.fillText(author,cx,canvas.height * 0.76);
 
-  /* Značka */
-  ctx.fillStyle = "#b7a9b9";
-  ctx.font = `300 ${Math.round(canvas.width * 0.011)}px "Montserrat", Arial, sans-serif`;
-  ctx.fillText("ORINAYA",cx,canvas.height * 0.88);
+  ctx.fillStyle = "#d7aa57";
+  ctx.font = `400 ${Math.round(canvas.width * 0.034)}px "Italianno", cursive`;
+  ctx.fillText(author,cx,Math.round(canvas.height * 0.55));
 
   return await new Promise(resolve => canvas.toBlob(resolve,"image/png",1));
 }

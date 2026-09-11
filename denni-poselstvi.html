@@ -14,11 +14,11 @@
 <meta property="og:description" content="Vyber si intuitivně jednu kartu ORINAYA a nech k sobě přijít dnešní poselství.">
 <meta property="og:url" content="https://orinaya.vercel.app/denni-poselstvi">
 <meta property="og:image" content="https://orinaya.vercel.app/karty/uvod-vyber-karty.png">
+<meta property="og:image:alt" content="Denní poselství ORINAYA – vyber si intuitivně svou kartu">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Denní poselství | ORINAYA">
 <meta name="twitter:description" content="Vyber si intuitivně jednu kartu ORINAYA a nech k sobě přijít dnešní poselství.">
 <meta name="twitter:image" content="https://orinaya.vercel.app/karty/uvod-vyber-karty.png">
-
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -505,7 +505,8 @@ footer{
 <body>
 
 <audio id="orinaya-music" src="./orinaya-piano.mp3" preload="metadata" loop></audio>
-<button class="music-toggle" id="music-toggle" type="button" aria-label="Pustit atmosféru" aria-pressed="false">
+<button class="music-toggle" id="music-toggle" type="button"
+        aria-label="Pustit atmosféru" aria-pressed="false">
   <span class="music-icon" aria-hidden="true">♪</span>
   <span class="music-label">Pustit atmosféru</span>
 </button>
@@ -1095,23 +1096,24 @@ prepareDeck();
 </script>
 
 
-
-
-<script id="orinaya-audio-controller">
+<script>
 (function(){
   const audio = document.getElementById('orinaya-music');
   const button = document.getElementById('music-toggle');
-  if (!audio || !button || window.__orinayaMusicBound) return;
-  window.__orinayaMusicBound = true;
+  if (!audio || !button) return;
 
   const label = button.querySelector('.music-label');
   const KEY = 'orinayaMusicStateV1';
   audio.volume = 0.18;
+
   let wantsResume = false;
 
   function readState(){
-    try { return JSON.parse(localStorage.getItem(KEY) || '{}'); }
-    catch(e){ return {}; }
+    try{
+      return JSON.parse(localStorage.getItem(KEY) || '{}');
+    }catch(e){
+      return {};
+    }
   }
 
   function saveState(){
@@ -1127,6 +1129,7 @@ prepareDeck();
   function setButton(playing, resumeWanted){
     button.classList.toggle('is-playing', playing);
     button.setAttribute('aria-pressed', playing ? 'true' : 'false');
+
     if (playing){
       button.setAttribute('aria-label','Ztišit atmosféru');
       if (label) label.textContent = 'Ztišit atmosféru';
@@ -1140,34 +1143,46 @@ prepareDeck();
   }
 
   function restoreTime(state){
-    const t = Number(state.time || 0);
-    if (!Number.isFinite(t) || t <= 0) return;
-    try{
-      if (Number.isFinite(audio.duration) && audio.duration > 0) audio.currentTime = t % audio.duration;
-      else audio.currentTime = t;
-    }catch(e){}
+    if (
+      Number.isFinite(state.time) &&
+      state.time > 0 &&
+      Number.isFinite(audio.duration) &&
+      audio.duration > 0
+    ){
+      const target = state.time % audio.duration;
+      if (Math.abs(audio.currentTime - target) > 0.75){
+        try{ audio.currentTime = target; }catch(e){}
+      }
+    }
   }
 
   async function restorePlayback(state){
     wantsResume = !!state.playing;
     restoreTime(state);
+
     if (!wantsResume){
       setButton(false, false);
       return;
     }
+
     try{
       await audio.play();
       setButton(true, false);
     }catch(e){
       setButton(false, true);
     }
-    saveState();
   }
 
   const initialState = readState();
   wantsResume = !!initialState.playing;
-  if (audio.readyState >= 1) restorePlayback(initialState);
-  else audio.addEventListener('loadedmetadata', function(){ restorePlayback(initialState); }, {once:true});
+
+  if (audio.readyState >= 1){
+    restorePlayback(initialState);
+  }else{
+    audio.addEventListener('loadedmetadata', function(){
+      restorePlayback(initialState);
+    }, {once:true});
+  }
 
   button.addEventListener('click', async function(){
     if (audio.paused){
@@ -1175,10 +1190,11 @@ prepareDeck();
       try{
         await audio.play();
         setButton(true, false);
+        saveState();
       }catch(e){
         setButton(false, true);
+        saveState();
       }
-      saveState();
     }else{
       wantsResume = false;
       audio.pause();
@@ -1201,26 +1217,36 @@ prepareDeck();
   let lastSave = 0;
   audio.addEventListener('timeupdate', function(){
     const now = Date.now();
-    if (now - lastSave > 1000){ lastSave = now; saveState(); }
+    if (now - lastSave > 1000){
+      lastSave = now;
+      saveState();
+    }
   });
 
   document.addEventListener('click', function(e){
-    if (e.target.closest && e.target.closest('a[href]')) saveState();
+    const a = e.target.closest('a[href]');
+    if (a) saveState();
   }, true);
 
   window.addEventListener('pagehide', saveState);
   window.addEventListener('beforeunload', saveState);
-  document.addEventListener('visibilitychange', function(){
-    if (document.visibilityState === 'hidden') saveState();
-  });
 
-  window.addEventListener('pageshow', function(){
+  window.addEventListener('pageshow', function(e){
+    if (!e.persisted) return;
+
     const state = readState();
     wantsResume = !!state.playing;
-    if (audio.readyState >= 1) restorePlayback(state);
-    else audio.addEventListener('loadedmetadata', function(){ restorePlayback(state); }, {once:true});
+
+    if (audio.readyState >= 1){
+      restorePlayback(state);
+    }else{
+      audio.addEventListener('loadedmetadata', function(){
+        restorePlayback(state);
+      }, {once:true});
+    }
   });
 })();
 </script>
+
 </body>
 </html>

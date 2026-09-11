@@ -560,7 +560,7 @@ footer{
 </div>
 
 <section class="hero-image-wrap" aria-label="Vzkazy pro Tebe">
-  <img class="hero-image" src="/vzkazy-hero-final.png" alt="Vzkazy pro Tebe">
+  <img class="hero-image" id="hero-image" src="/vzkazy-hero-final.png" data-desktop-src="/vzkazy-hero-final.png" alt="Vzkazy pro Tebe">
   <span class="hero-spark big hs1"></span>
   <span class="hero-spark hs2"></span>
   <span class="hero-spark hs3"></span>
@@ -691,6 +691,57 @@ let loadedMessages = [];
 let nextOffset = 0;
 let hasMore = false;
 let loadingMessages = false;
+
+function initResponsiveHero(){
+  const hero = document.getElementById("hero-image");
+  if(!hero) return;
+
+  const desktopSrc = hero.dataset.desktopSrc || hero.getAttribute("src");
+  const mobileCandidates = [
+    "/vzkazy-hero-mobile.png",
+    "/vzkazy-hero-mobile.jpg",
+    "/vzkazy-hero-mobile.jpeg",
+    "/vzkazy-hero-mobil.png",
+    "/vzkazy-hero-mobil.jpg",
+    "/vzkazy-hero-final-mobile.png",
+    "/vzkazy-hero-final-mobile.jpg",
+    "/vzkazy-hero-final-mobil.png",
+    "/vzkazy-hero-final-mobil.jpg"
+  ];
+
+  let lastMode = null;
+
+  const findFirstExisting = (sources) => new Promise(resolve => {
+    let i = 0;
+    const tryNext = () => {
+      if(i >= sources.length){ resolve(null); return; }
+      const src = sources[i++];
+      const img = new Image();
+      img.onload = () => resolve(src);
+      img.onerror = tryNext;
+      img.src = src;
+    };
+    tryNext();
+  });
+
+  const applyHero = async () => {
+    const isMobile = window.matchMedia('(max-width: 760px)').matches;
+    const mode = isMobile ? 'mobile' : 'desktop';
+    if(mode === lastMode) return;
+    lastMode = mode;
+
+    if(!isMobile){
+      hero.src = desktopSrc;
+      return;
+    }
+
+    const mobileSrc = await findFirstExisting(mobileCandidates);
+    hero.src = mobileSrc || desktopSrc;
+  };
+
+  applyHero();
+  window.addEventListener('resize', applyHero, { passive:true });
+}
 
 function messageCardMarkup(m,key){
   return `
@@ -1147,6 +1198,7 @@ document.addEventListener("click", async e => {
 
 
 loadMessages(true);
+initResponsiveHero();
 
 </script>
 

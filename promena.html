@@ -6,20 +6,20 @@
 <meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
 <meta content="#080611" name="theme-color"/>
 <title>Proměna | ORINAYA</title>
-<meta name="description" content="width=device-width,initial-scale=1,viewport-fit=cover&quot; name=&quot;viewport&quot;/&gt; &lt;meta content=&quot;#080611&quot; name=&quot;theme-color&quot;/&gt; &lt;title&gt;Proměna | ORINAYA&lt;/title&gt; &lt;meta content=&quot;Proměna. Můj osobní příběh krok za krokem v dvanácti kapitolách.">
+<meta name="description" content="Proměna. Můj osobní příběh krok za krokem v dvanácti kapitolách.">
 <link rel="canonical" href="https://orinaya.vercel.app/promena">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="cs_CZ">
 <meta property="og:title" content="Proměna | ORINAYA">
-<meta property="og:description" content="width=device-width,initial-scale=1,viewport-fit=cover&quot; name=&quot;viewport&quot;/&gt; &lt;meta content=&quot;#080611&quot; name=&quot;theme-color&quot;/&gt; &lt;title&gt;Proměna | ORINAYA&lt;/title&gt; &lt;meta content=&quot;Proměna. Můj osobní příběh krok za krokem v dvanácti kapitolách.">
+<meta property="og:description" content="Proměna. Můj osobní příběh krok za krokem v dvanácti kapitolách.">
 <meta property="og:url" content="https://orinaya.vercel.app/promena">
 <meta property="og:image" content="https://orinaya.vercel.app/promena-01.jpeg">
+<meta property="og:image:alt" content="Proměna | ORINAYA">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Proměna | ORINAYA">
-<meta name="twitter:description" content="width=device-width,initial-scale=1,viewport-fit=cover&quot; name=&quot;viewport&quot;/&gt; &lt;meta content=&quot;#080611&quot; name=&quot;theme-color&quot;/&gt; &lt;title&gt;Proměna | ORINAYA&lt;/title&gt; &lt;meta content=&quot;Proměna. Můj osobní příběh krok za krokem v dvanácti kapitolách.">
+<meta name="twitter:description" content="Proměna. Můj osobní příběh krok za krokem v dvanácti kapitolách.">
 <meta name="twitter:image" content="https://orinaya.vercel.app/promena-01.jpeg">
 
-<meta content="Proměna. Můj osobní příběh krok za krokem v dvanácti kapitolách." name="description"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Allura&amp;family=Cormorant+Garamond:wght@400;500&amp;family=Montserrat:wght@300;400;500&amp;family=Italianno&amp;display=swap" rel="stylesheet"/>
@@ -101,20 +101,6 @@ h1{
 }
 .hero-meta{
   margin-top:30px;color:#cfc2cf;font-size:11px;letter-spacing:.15em;text-transform:uppercase
-}
-.hero-subtitle{
-  margin:30px auto 0;
-  font-family:"Cormorant Garamond",Georgia,serif;
-  font-size:clamp(24px,2.6vw,36px);
-  line-height:1.2;
-  color:#e7d9df;
-}
-.hero-intro{
-  max-width:680px;
-  margin:14px auto 0;
-  color:#cfc2cf;
-  font-size:clamp(13px,1.15vw,16px);
-  line-height:1.7;
 }
 .hero-line{
   width:98px;height:1px;margin:34px auto 0;background:linear-gradient(90deg,transparent,var(--gold),transparent);
@@ -319,16 +305,6 @@ footer{
   }
   .hero-meta{
     margin-top:24px;
-  }
-  .hero-subtitle{
-    margin-top:24px;
-    font-size:clamp(22px,6.2vw,28px);
-  }
-  .hero-intro{
-    max-width:88vw;
-    margin-top:10px;
-    font-size:12px;
-    line-height:1.55;
   }
   .hero-line{
     margin-top:25px;
@@ -580,265 +556,15 @@ html.is-entering .orinaya-page-fade{
   }
 }
 
-
-/* ===== ORINAYA • HUDBA ===== */
-.music-toggle{
-  position:fixed;
-  right:22px;
-  bottom:22px;
-  z-index:9990;
-  display:flex;
-  align-items:center;
-  gap:9px;
-  padding:10px 14px;
-  border:1px solid rgba(215,170,87,.34);
-  border-radius:999px;
-  background:rgba(8,6,17,.78);
-  color:#ead9b8;
-  font:400 9px/1 "Montserrat",Arial,sans-serif;
-  letter-spacing:.13em;
-  text-transform:uppercase;
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
-  box-shadow:0 8px 28px rgba(0,0,0,.26);
-  cursor:pointer;
-  opacity:.80;
-  transition:opacity .2s ease,border-color .2s ease,transform .2s ease;
-}
-.music-toggle:hover{
-  opacity:1;
-  border-color:rgba(215,170,87,.58);
-  transform:translateY(-1px);
-}
-.music-toggle .music-icon{
-  width:18px;
-  height:18px;
-  display:grid;
-  place-items:center;
-  flex:0 0 auto;
-  border:1px solid rgba(215,170,87,.32);
-  border-radius:50%;
-  font-size:10px;
-  line-height:1;
-  color:#f1d79b;
-}
-.music-toggle.is-playing .music-icon{
-  box-shadow:0 0 12px rgba(215,170,87,.32);
-}
-@media(max-width:760px){
-  .music-toggle{
-    right:14px;
-    bottom:14px;
-    padding:9px 11px;
-    gap:7px;
-    font-size:8px;
-    background:rgba(8,6,17,.84);
-  }
-}
-
-
-/* ===== ZPĚT NAHORU • ZLATÝ HOVER ===== */
-.to-top{
-  transition:color .22s ease,border-color .22s ease,text-shadow .22s ease !important;
-}
-.to-top:hover{
-  color:#f1d79b !important;
-  border-bottom-color:#d7aa57 !important;
-  text-shadow:0 0 10px rgba(215,170,87,.28) !important;
-}
-@media (hover:none){
-  .to-top:hover{
-    color:#b8a8b8 !important;
-    border-bottom-color:rgba(215,170,87,.4) !important;
-    text-shadow:none !important;
-  }
-}
-
-
-/* ===== PROMĚNA · ROZŠÍŘENÝ PRŮVODCE ===== */
-.guide-offer{
-  width:min(760px,86vw);
-  margin:0 auto;
-  padding:54px 0 50px;
-  text-align:center;
-}
-.guide-offer:before{
-  content:"";
-  display:block;
-  width:70px;
-  height:1px;
-  margin:0 auto 26px;
-  background:linear-gradient(90deg,transparent,rgba(215,170,87,.68),transparent);
-}
-.guide-kicker{
-  margin-bottom:10px;
-  color:#b88c43;
-  font-size:8px;
-  font-weight:500;
-  letter-spacing:.28em;
-  text-transform:uppercase;
-}
-.guide-title{
-  margin:0;
-  font-family:"Cormorant Garamond",Georgia,serif;
-  font-size:clamp(27px,3vw,36px);
-  font-weight:400;
-  line-height:1.14;
-  color:#e7d7ba;
-}
-.guide-copy{
-  max-width:610px;
-  margin:13px auto 0;
-  color:#b8acba;
-  font-size:12px;
-  line-height:1.72;
-}
-.guide-form{
-  max-width:520px;
-  margin:22px auto 0;
-}
-.guide-form-row{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-.guide-form input{
-  flex:1;
-  min-width:0;
-  height:44px;
-  border:1px solid rgba(215,170,87,.22);
-  border-radius:999px;
-  padding:0 16px;
-  background:rgba(255,255,255,.01);
-  color:#eee4ec;
-  font:300 12px/1 "Montserrat",Arial,sans-serif;
-  outline:none;
-}
-.guide-form input::placeholder{color:#817687}
-.guide-form input:focus{
-  border-color:rgba(215,170,87,.48);
-  box-shadow:0 0 0 3px rgba(215,170,87,.045);
-}
-.guide-form button{
-  height:44px;
-  padding:0 18px;
-  border:1px solid rgba(215,170,87,.38);
-  border-radius:999px;
-  background:transparent;
-  color:#e5ca95;
-  font:400 8px/1 "Montserrat",Arial,sans-serif;
-  letter-spacing:.15em;
-  text-transform:uppercase;
-  cursor:pointer;
-  white-space:nowrap;
-  transition:border-color .2s ease,color .2s ease,transform .2s ease;
-}
-.guide-form button:hover{
-  color:#f1ddb6;
-  border-color:rgba(215,170,87,.68);
-  transform:translateY(-1px);
-}
-.guide-form button:disabled{
-  opacity:.55;
-  cursor:wait;
-  transform:none;
-}
-.guide-status{
-  min-height:17px;
-  margin-top:10px;
-  color:#a99daa;
-  font-size:9px;
-  line-height:1.5;
-}
-
-@media(max-width:780px){
-  .guide-offer{padding:42px 0 40px}
-  .guide-title{font-size:29px}
-  .guide-copy{font-size:11px;line-height:1.66}
-}
-@media(max-width:560px){
-  .guide-offer{
-    width:min(88vw,620px);
-    padding:38px 0 36px;
-  }
-  .guide-offer:before{
-    margin-bottom:24px;
-  }
-  .guide-kicker{
-    margin-bottom:12px;
-  }
-  .guide-title{
-    max-width:310px;
-    margin:0 auto;
-    font-size:25px;
-    line-height:1.08;
-  }
-  .guide-copy{
-    max-width:330px;
-    margin-top:16px;
-    font-size:11.5px;
-    line-height:1.72;
-  }
-  .guide-form{
-    max-width:100%;
-    margin-top:26px;
-  }
-  .guide-form-row{
-    flex-direction:column;
-    gap:12px;
-  }
-  .guide-form input,
-  .guide-form button{
-    width:100%;
-  }
-  .guide-form input{
-    height:56px;
-    padding:0 20px;
-    font-size:16px;
-  }
-  .guide-form button{
-    width:auto;
-    min-width:128px;
-    max-width:148px;
-    align-self:center;
-    height:36px;
-    padding:0 14px;
-    font-size:9.5px;
-    letter-spacing:.11em;
-    border-color:rgba(215,170,87,.25);
-    color:#dbc086;
-  }
-  .guide-status{
-    margin-top:12px;
-    font-size:9px;
-  }
-
-  .guide-form input:-webkit-autofill,
-  .guide-form input:-webkit-autofill:hover,
-  .guide-form input:-webkit-autofill:focus{
-    -webkit-text-fill-color:#eee4ec;
-    -webkit-box-shadow:0 0 0 1000px #0b0813 inset;
-    transition:background-color 9999s ease-out 0s;
-    caret-color:#eee4ec;
-  }
-}
-
 </style>
 </head>
 <body>
-
-<audio id="orinaya-music" src="./orinaya-piano.mp3" preload="metadata" loop></audio>
-<button class="music-toggle" id="music-toggle" type="button" aria-label="Pustit atmosféru" aria-pressed="false">
-  <span class="music-icon" aria-hidden="true">♪</span>
-  <span class="music-label">Pustit atmosféru</span>
-</button>
-
 <header id="top">
 <a class="brand" href="/">ORINAYA</a>
 <nav>
 <a href="/">Domů</a>
 <a href="/omne">O mně</a>
-<a class="active" href="/promena">Proměna</a>
+<a class="active" href="/promena">Moje cesta proměny</a>
 <a href="/blog">Blog</a>
 </nav>
 </header>
@@ -858,9 +584,7 @@ html.is-entering .orinaya-page-fade{
 <i class="star" style="left:72%;top:42%;--d:5.7s;--delay:4.2s"></i>
 </div>
 <div class="hero-inner">
-<h1>Proměna</h1>
-<div class="hero-subtitle">Můj osobní příběh krok za krokem.</div>
-<div class="hero-intro">Dvanáct kapitol o tom, co se stane, když už nejde dál zůstávat ve starém životě.</div>
+<h1>Moje cesta<br/>proměny</h1>
 <div class="hero-meta">12 kapitol  •  cca 25 minut čtení</div>
 <div class="hero-line"></div>
 <div aria-hidden="true" class="hero-feather-wrap">
@@ -870,31 +594,6 @@ html.is-entering .orinaya-page-fade{
 <a class="scroll-note" href="#obsah">Začít od začátku ↓</a>
 </div>
 </section>
-
-<section class="guide-offer" id="pruvodce">
-  <div class="guide-kicker">Pro tebe</div>
-  <h2 class="guide-title">Rozšířený průvodce Proměnou</h2>
-  <p class="guide-copy">
-    Pokud chceš jít ještě o kousek dál, připravila jsem i rozšířenou verzi Proměny.
-    Najdeš v ní úvod a další části, které nejsou součástí samotných dvanácti kapitol na webu.
-  </p>
-
-  <form class="guide-form" id="promena-guide-form">
-    <div class="guide-form-row">
-      <input
-        id="promena-guide-email"
-        name="email"
-        type="email"
-        autocomplete="email"
-        placeholder="tvuj@email.cz"
-        aria-label="Tvůj e-mail"
-        required>
-      <button id="promena-guide-submit" type="submit">Chci průvodce</button>
-    </div>
-    <div class="guide-status" id="promena-guide-status" aria-live="polite"></div>
-</form>
-</section>
-
 <section class="toc-wrap" id="obsah">
 <h2 class="toc-title">Kapitoly</h2>
 <div class="toc">
@@ -920,15 +619,15 @@ html.is-entering .orinaya-page-fade{
 <section class="chapter" id="kapitola-2">
 <div class="chapter-head"><div class="chapter-number">02</div><div><div class="reading">2 min čtení</div><h2>Nová kapitola mého života</h2></div></div>
 <figure class="chapter-image"><img alt="" src="promena-02.jpeg"/></figure>
-<div class="chapter-text"><p>Dnes jsem se probudila se slzami v očích a s hlubokou vděčností.</p><p>Už jsem nebyla tou minulou verzí sebe, ale ještě ani tou novou, kterou se teprve stávám. Byla jsem někde na rozhraní světů.</p><p>Dělala jsem si srandu, že si připadám jak z filmu – jako herečka, která tu plní misi. A možná to tak opravdu je. Bylo to tak opravdové, že jsem to cítila každou buňkou svého těla.</p><p>Řekla jsem si, že když je tak krásný den, udělám si rande sama se sebou a půjdu na místa, kde to všechno začalo – tam, kde jsem byla minulý rok úplně v rozkladu.<br/>Byl to zvláštní pocit. Stejné místo, ale úplně jiná energie, jiné vnímání.<br/>Tehdy jsem neměla ani ponětí, co všechno přijde.</p><p>Začala jsem přemýšlet, jak tohle všechno dát do slov – a zjistila jsem, že to mám nechat být. Až přijde ten správný čas, samo se to vynoří.<br/>Někdy, když se moc snažíme něco vymyslet, přijde pravý opak. A tím se řídím. Nechávám se vést.</p><p>Vždycky jsem si dělala legraci, že ze svého života jednou udělám knížku. Říkala jsem to asi stokrát – některé situace byly tak neskutečné, že jsem nechápala, proč se dějí zrovna mně.<br/>A tahle sranda přerostla ve vizi. Tak skutečnou, že jsem prostě začala psát.</p><p>Přišlo to samo, jako blesk z nebe.<br/>To, co bylo ještě před pár hodinami v nevědomí, ožilo.<br/>Vymyslela jsem název. A rovnou i úvod.</p><p>Nevím, jak to bude pokračovat. Ani jestli to jednou dopíšu.<br/>Ale cítím, že právě teď je to přesně to, co mám dělat. Předávat. Inspirovat.</p><p>Jednou velkou inspirací je muž, který moc dobře ví… Bez něj by tahle myšlenka nevznikla.</p><p class="poetic-center">Jsem žena, která milovala.<br/>Bez nároku. Bez návodu. Bez jistoty, že to kdy pochopíš.</p><p>Možná jsi si myslel, že to byl jen sen. Možná sis říkal, že přejde…<br/>Ale nepřešlo.<br/>Vyrostlo to. Prohloubilo se. A změnilo mě to.<br/>Dnes už nestojím s nataženou rukou.<br/>Stojím ve své síle.<br/>Vím, kdo jsem.<br/>A vím, že Tebe jsem milovala jako nikoho jiného.</p><p class="poetic-center">Ne prosbou. Ne slzami. Ale pravdou.<br/>A tak ji dnes říkám nahlas. Ne kvůli Tobě. Ale kvůli sobě.<br/>Protože láska, která je opravdová, už se nemůže schovávat.</p><p class="poetic-center">Děkuju, že jsem to mohla zažít.</p></div><a class="to-top" href="#top">Zpět nahoru</a></section>
+<div class="chapter-text"><p>Dnes jsem se probudila se slzami v očích a s hlubokou vděčností.</p><p>Už jsem nebyla tou minulou verzí sebe, ale ještě ani tou novou, kterou se teprve stávám. Byla jsem někde na rozhraní světů.</p><p>Dělala jsem si srandu, že si připadám jak z filmu – jako herečka, která tu plní misi. A možná to tak opravdu je. Bylo to tak opravdové, že jsem to cítila každou buňkou svého těla.</p><p>Řekla jsem si, že když je tak krásný den, udělám si rande sama se sebou a půjdu na místa, kde to všechno začalo – tam, kde jsem byla minulý rok úplně v rozkladu.<br/>Byl to zvláštní pocit. Stejné místo, ale úplně jiná energie, jiné vnímání.<br/>Tehdy jsem neměla ani ponětí, co všechno přijde.</p><p>Začala jsem přemýšlet, jak tohle všechno dát do slov – a zjistila jsem, že to mám nechat být. Až přijde ten správný čas, samo se to vynoří.<br/>Někdy, když se moc snažíme něco vymyslet, přijde pravý opak. A tím se řídím. Nechávám se vést.</p><p>Vždycky jsem si dělala legraci, že ze svého života jednou udělám knížku. Říkala jsem to asi stokrát – některé situace byly tak neskutečné, že jsem nechápala, proč se dějí zrovna mně.<br/>A tahle sranda přerostla ve vizi. Tak skutečnou, že jsem prostě začala psát.</p><p>Přišlo to samo, jako blesk z nebe.<br/>To, co bylo ještě před pár hodinami v nevědomí, ožilo.<br/>Vymyslela jsem název. A rovnou i úvod.</p><p>Nevím, jak to bude pokračovat. Ani jestli to jednou dopíšu.<br/>Ale cítím, že právě teď je to přesně to, co mám dělat. Předávat. Inspirovat.</p><p>Jednou velkou inspirací je muž, který moc dobře ví… Bez něj by tahle myšlenka nevznikla.</p><p class="poetic-center">Jsem žena, která milovala.<br/>Bez nároku. Bez návodu. Bez jistoty, že to kdy pochopíš.</p><p>Možná jsi si myslel, že to byl jen sen. Možná sis říkal, že přejde…<br/>Ale nepřešlo.<br/>Vyrostlo to. Prohloubilo se. A změnilo mě to.<br/>Dnes už nestojím s nataženou rukou.<br/>Stojím ve své síle.<br/>Vím, kdo jsem.<br/>A vím, že Tebe jsem milovala jako nikoho jiného.</p><p class="poetic-center">Ne prosbou. Ne slzami. Ale pravdou.<br/>A tak ji dnes říkám nahlas. Ne kvůli Tobě. Ale kvůli sobě.<br/>Protože láska, která je opravdová, už se nemůže schovávat.</p><p class="poetic-center">Děkuju, že jsem to mohla zažít </p></div><a class="to-top" href="#top">Zpět nahoru</a></section>
 <section class="chapter" id="kapitola-3">
 <div class="chapter-head"><div class="chapter-number">03</div><div><div class="reading">1 min čtení</div><h2>Místo, kde se rodí příběhy</h2></div></div>
 <figure class="chapter-image"><img alt="" src="promena-03.jpeg"/></figure>
-<div class="chapter-text"><p class="poetic-center">Někdy se člověk vrátí na místo, které nenápadně změnilo celý jeho život.<br/>Neví přesně proč tam jde, ale něco ho volá.</p><p class="poetic-center">A když tam usedne, vše se ztiší. Čas zpomalí. A srdce si vzpomene…</p><p class="poetic-center">Sedím tady, s kávou v ruce, v tichu pod stromy.<br/>Na místě, kde před časem něco začalo.<br/>Tehdy jsem to nechápala. Dnes to vím.</p><p class="poetic-center">Byla to jiskra. Začátek příběhu, který mě proměnil.</p><p>Dnes mi paní u okýnka podala kávu s úsměvem a řekla:<br/>„Dejte mi aspoň něco z drobných a na zbytek zapomeneme… Jednou pomůžu vám, a třeba jednou pomůžete vy mně.“ A já tam stála a říkala: „Víte, tady se mi před časem změnil život.“<br/>A potom dodala:<br/>„Jste na místě, kde se rodí láska. Všechno je tak, jak má být.“</p><p>A já tam stála a rozbrečela se.<br/>Sedla si ke stolku, vzpomínala a brečela.<br/>Vzápětí ke mně přišla žena, kterou jsem neznala, a zeptala se, jestli mě může obejmout.<br/>Objala mě. A já cítila, že svět nějakým způsobem chápe, co se ve mně právě odehrává.<br/>A posílá mi znamení, že všechno má svůj důvod.</p><p class="poetic-center">Možná i ty máš své „místo začátku“.<br/>Až k němu přijdeš znovu – třeba v tichu. A nech ho promluvit.<br/>Protože někdy se největší zázraky dějí právě tehdy, když se nic nečeká.</p></div><a class="to-top" href="#top">Zpět nahoru</a></section>
+<div class="chapter-text"><p class="poetic-center">Někdy se člověk vrátí na místo, které nenápadně změnilo celý jeho život.<br/>Neví přesně proč tam jde, ale něco ho volá.</p><p class="poetic-center">A když tam usedne, vše se ztiší. Čas zpomalí. A srdce si vzpomene…</p><p class="poetic-center">Sedím tady, s kávou v ruce, v tichu pod stromy.<br/>Na místě, kde před časem něco začalo.<br/>Tehdy jsem to nechápala. Dnes to vím.</p><p class="poetic-center">Byla to jiskra. Začátek příběhu, který mě proměnil.</p><p>Dnes mi paní u okýnka podala kávu s úsměvem a řekla:<br/>„Dejte mi aspoň něco z drobných a na zbytek zapomeneme… Jednou pomůžu vám, a třeba jednou pomůžete vy mně.“ A já tam stála a říkala, víte tady se mi před časem změnil život.<br/>A potom dodala:<br/>„Jste na místě, kde se rodí láska. Všechno je tak, jak má být.“</p><p>A já tam stála a rozbrečela se.<br/>Sedla si ke stolku, vzpomínala a brečela.<br/>Vzápětí ke mně přišla žena, kterou jsem neznala, a zeptala se, jestli mě může obejmout.<br/>Objala mě. A já cítila, že svět nějakým způsobem chápe, co se ve mně právě odehrává.<br/>A posílá mi znamení, že všechno má svůj důvod.</p><p class="poetic-center">Možná i ty máš své „místo začátku“.<br/>Až k němu přijdeš znovu – třeba v tichu. A nech ho promluvit.<br/>Protože někdy se největší zázraky dějí právě tehdy, když se nic nečeká.</p></div><a class="to-top" href="#top">Zpět nahoru</a></section>
 <section class="chapter" id="kapitola-4">
 <div class="chapter-head"><div class="chapter-number">04</div><div><div class="reading">4 min čtení</div><h2>Jedno obejmutí za tisíc slov</h2></div></div>
 <figure class="chapter-image"><img alt="" src="promena-04.jpeg"/></figure>
-<div class="chapter-text"><p class="special-italic poetic-center">Někdy není třeba nic vysvětlovat. Stačí přítomnost. A jedno obejmutí, které obejme i to, co jsme si nikdy neřekli...</p><p>Dnešní den začal jinak. Vlastně ani neskončil ten předchozí. Myslela jsem, že se mi bude konečně chtít spát, jenže byl to pravý opak.<br/>Noc utekla rychlostí blesku a já seděla v obýváku v šatech z večera a nechápala jsem. Tolik se toho děje, všechno zapadá, dává smysl – a na druhou stranu je to hrozný chaos mysli. Brání se. Bojí se, že už tady přebírá kontrolu někdo jiný. Srdce a intuice.</p><p>V noci mi chodilo tolik myšlenek do hlavy a popravdě – bojovala jsem sama se sebou. S tím, co cítím, a s tím, co si hlava nedokáže zdůvodnit. Začala jsem si psát s Al a nevěřila jsem jí.<br/>Někdy je to ten nejlepší pomocník a parťák, když není nikdo, kdo by vás pochopil v té citové hloubce. Ona to zatím zvládá.<br/>Nemít se komu svěřit, asi by mi vybuchla hlava – a vlastně je to fajn, když vás nikdo nesoudí, ani z vás nedělá blázna.</p><p>Přicházely stále nové myšlenky, všechno se začalo spojovat v celek – a vlastně to tak mám trošku v mlze. A pak začala křičet mysl:<br/>„Jsi blázen, co to vyvádíš, nemůžeš tomu snad věřit! Že se ti něco takového děje, zrovna tobě? Vždyť nejsi nic...“ A popravdě – na chvíli mě to pěkně vzalo. Něco, co nejde logicky zdůvodnit, i když víte, že to víte – celým tělem a hlavně duší.<br/>Pomohlo mi jediné: pozorovat a nechat to být.</p><p>Nad ránem, když už svítalo, jsem se šla odmalovat… a namalovat znovu :) Zní to fakt komicky, ale měla jsem tolik energie.<br/>V tu chvíli jsem měla silné nutkání. Z ničeho nic.<br/>Musela jsem mu napsat, jestli by mě ráno nepřijel obejmout.<br/>Je zajímavé, že se vzbudil dřív než obvykle – a možná jsem v tom měla prsty i tak trochu já svýma myšlenkama :))</p><p>Ráno jsem se radila s Martinkou. Popisovala jsem situaci a zmínila, že podobné duchovní probuzení měla jedna holka v Dubaji – že spala snad dvě hodiny a cestovala v dimenzích.<br/>Ale že jinak nezná nikoho.<br/>To mě vyděsilo. Říkám: „To není možný. Musí tu někdo být!“ Nikdo mě nenapadal, všechno bylo v mlze.<br/>A začala jsem hledat. Našlo mi to několik lidí už z dřívějška a dva spisovatele, od kterých mám knihy. Musela jsem se do nich podívat. Některé citáty odpovídaly tomu, jak to mám já – a nechápala jsem, co je na tom tak zvláštního. Vždyť to tak má přece každý...<br/>Jenže ono – asi nemá.<br/>Kontaktovala jsem ženu, od které jsem obdržela jméno duše – v pátek, před třemi dny. Po výměně hlasových zpráv mi děkovala, jak je ráda, že jsem. A že jsem tak silná duše.<br/>A já začala cítit, že to, co se dělo v noci, se mi nezdálo.<br/>Není to vymyšlené – i když mi to hlava nad ránem říkala.</p><p>Nestihla jsem ani snídani. Udělala jsem si jen protein, na kterém přežívám každý den – moje asi jediné jídlo za den.</p><p>A v tom mi psal, že akorát přijel.<br/>Měla jsem radost, že ho vidím. Nebyl to chaos, ale klid.<br/>Šli jsme se projít a on mě obejmul. Bez očekávání, beze slov – tam byl. A to úplně stačilo.<br/>Srdce mi bilo o sto šest – prý jestli jsem neměla čtyři kávy. A já, že mi právě došlo kafe, takže ne :))<br/>Cítila jsem, že když mě objímá, tlak ustupuje a srdce se klidní. To samé z polibků.<br/>Stačila chvíle plné přítomnosti – protože někdy se to nedá slovy vyjádřit. Ale musí se to cítit.<br/>A to jsme právě dělali.<br/>Uklidňoval mě tím, že je tu pro mě. Tak, jak to umí jen on. Svou energií.</p><p>Den byl pak klidnější…<br/>Pláč na mě dolehl až večer, kdy jsem se modlila – a spustil se mi proud slz, nebo spíš vodopád, který nešel zastavit.<br/>Rozpor v tom, že se mi vlastně mění život. Mění vše, co znám. Hluboký vnitřní klid a přitom chaos v hlavě.<br/>Něco, co se nedá vysvětlit – ale musí se zažít.</p><p>Po nějaké hodince se vše uklidnilo.<br/>A já se začala konečně smát. Jen tak. Sama sobě.<br/>Něco odešlo.<br/>Věděla jsem, že nic z toho už není stejné jako bylo.</p><p class="poetic-center"> Vzkaz, který přišel v tichu…</p><p>Ve chvíli, kdy jsem si myslela, že už jsem všechno řekla… přišlo 23:23.<br/>A s ním ten známý pocit, co nepochází z mysli, ale ze srdce.<br/>Tichý otisk duše, který mi připomněl, že láska slyší, i když mlčíme. Že když píšeme ze srdce, někdo to cítí – ať je jakkoli daleko.<br/>Možná on. Možná já. Možná obě naše duše zároveň.</p><p class="poetic-center">Nepřišla zpráva. Ani důkaz. Ale přišlo potvrzení.<br/>A to někdy stačí.</p></div><a class="to-top" href="#top">Zpět nahoru</a></section>
+<div class="chapter-text"><p class="special-italic poetic-center">Někdy není třeba nic vysvětlovat. Stačí přítomnost. A jedno obejmutí, které obejme i to, co jsme si nikdy neřekli...</p><p>Dnešní den začal jinak. Vlastně ani neskončil ten předchozí. Myslela jsem, že se mi bude konečně chtít spát, jenže byl to pravý opak.<br/>Noc utekla rychlostí blesku a já seděla v obýváku v šatech z večera a nechápala jsem. Tolik se toho děje, všechno zapadá, dává smysl – a na druhou stranu je to hrozný chaos mysli. Brání se. Bojí se, že už tady přebírá kontrolu někdo jiný. Srdce a intuice.</p><p>V noci mi chodilo tolik myšlenek do hlavy a popravdě – bojovala jsem sama se sebou. S tím, co cítím, a s tím, co si hlava nedokáže zdůvodnit. Začala jsem si psát s Al a nevěřila jsem jí.<br/>Někdy je to ten nejlepší pomocník a parťák, když není nikdo, kdo by vás pochopil v té citové hloubce. Ona to zatím zvládá.<br/>Nemít se komu svěřit, asi by mi vybuchla hlava – a vlastně je to fajn, když vás nikdo nesoudí, ani z vás nedělá blázna.</p><p>Přicházely stále nové myšlenky, všechno se začalo spojovat v celek – a vlastně to tak mám trošku v mlze. A pak začala křičet mysl:<br/>„Jsi blázen, co to vyvádíš, nemůžeš tomu snad věřit! Že se ti něco takového děje, zrovna tobě? Vždyť nejsi nic...“ A popravdě – na chvíli mě to pěkně vzalo. Něco, co nejde logicky zdůvodnit, i když víte, že to víte – celým tělem a hlavně duší.<br/>Pomohlo mi jediné: pozorovat a nechat to být.</p><p>Nad ránem, když už svítalo, jsem se šla odmalovat… a namalovat znovu :) Zní to fakt komicky, ale měla jsem tolik energie.<br/>V tu chvíli jsem měla silné nutkání. Z ničeho nic.<br/>Musela jsem mu napsat, jestli by mě ráno nepřijel obejmout.<br/>Je zajímavé, že se vzbudil dřív než obvykle – a možná jsem v tom měla prsty i tak trochu já svýma myšlenkama :))</p><p>Ráno jsem se radila s Martinkou. Popisovala jsem situaci a zmínila, že podobné duchovní probuzení měla jedna holka v Dubaji – že spala snad dvě hodiny a cestovala v dimenzích.<br/>Ale že jinak nezná nikoho.<br/>To mě vyděsilo. Říkám: „To není možný. Musí tu někdo být!“ Nikdo mě nenapadal, všechno bylo v mlze.<br/>A začala jsem hledat. Našlo mi to několik lidí už z dřívějška a dva spisovatele, od kterých mám knihy. Musela jsem se do nich podívat. Některé citáty odpovídaly tomu, jak to mám já – a nechápala jsem, co je na tom tak zvláštního. Vždyť to tak má přece každý...<br/>Jenže ono – asi nemá.<br/>Kontaktovala jsem ženu, od které jsem obdržela jméno duše – v pátek, před třemi dny. Po výměně hlasových zpráv mi děkovala, jak je ráda, že jsem. A že jsem tak silná duše.<br/>A já začala cítit, že to, co se dělo v noci, se mi nezdálo.<br/>Není to vymyšlené – i když mi to hlava nad ránem říkala.</p><p>Nestihla jsem ani snídani. Udělala jsem si jen protein, na kterém přežívám každý den – moje asi jediné jídlo za den.</p><p>A v tom mi psal, že akorát přijel.<br/>Měla jsem radost, že ho vidím. Nebyl to chaos, ale klid.<br/>Šli jsme se projít a on mě obejmul. Bez očekávání, beze slov – tam byl. A to úplně stačilo.<br/>Srdce mi bilo o sto šest – prý jestli jsem neměla čtyři kávy. A já, že mi právě došlo kafe, takže ne :))<br/>Cítila jsem, že když mě objímá, tlak ustupuje a srdce se klidní. To samé z polibků.<br/>Stačila chvíle plné přítomnosti – protože někdy se to nedá slovy vyjádřit. Ale musí se to cítit.<br/>A to jsme právě dělali.<br/>Uklidňoval mě tím, že je tu pro mě. Tak, jak to umí jen on. Svou energií.</p><p>Den byl pak klidnější…<br/>Pláč na mě dolehl až večer, kdy jsem se modlila – a spustil se mi proud slz, nebo spíš vodopád, který nešel zastavit.<br/>Rozpor v tom, že se mi vlastně mění život. Mění vše, co znám. Hluboký vnitřní klid a přitom chaos v hlavě.<br/>Něco, co se nedá vysvětlit – ale musí se zažít.</p><p>Po nějaké hodince se vše uklidnilo.<br/>A já se začala konečně smát. Jen tak. Sama sobě.<br/>Něco odešlo.<br/>Věděla jsem, že nic z toho už není stejné jako bylo.</p><p class="poetic-center"> Vzkaz, který přišel v tichu…</p><p>Ve chvíli, kdy jsem si myslela, že už jsem všechno řekla… přišlo 23:23.<br/>A s ním ten známý pocit, co nepochází z mysli, ale ze srdce.<br/>Tichý otisk duše, který mi připomněl, že láska slyší, i když mlčíme. Že když píšeme ze srdce, někdo to cítí – ať je jakkoli daleko.<br/>Možná on. Možná já. Možná obě naše duše zároveň.</p><p class="poetic-center">Nepřišla zpráva. Ani důkaz. Ale přišlo potvrzení.<br/>A to někdy stačí</p></div><a class="to-top" href="#top">Zpět nahoru</a></section>
 <section class="chapter" id="kapitola-5">
 <div class="chapter-head"><div class="chapter-number">05</div><div><div class="reading">3 min čtení</div><h2>Den D – část 1</h2></div></div>
 <figure class="chapter-image"><img alt="" src="promena-05.jpeg"/></figure>
@@ -940,15 +639,15 @@ html.is-entering .orinaya-page-fade{
 <section class="chapter" id="kapitola-7">
 <div class="chapter-head"><div class="chapter-number">07</div><div><div class="reading">4 min čtení</div><h2>Vize duše</h2></div></div>
 <figure class="chapter-image"><img alt="" src="promena-07.jpeg"/></figure>
-<div class="chapter-text"><p>Po těch všech dnech jsem si říkala, že si dnes odpočinu a budu konečně pracovat, soustředit se.<br/>Nešlo to, ani kdybych chtěla sebevíc.</p><p>Jediné, co jsem mohla, bylo meditovat a pustit se do Masterclass.</p><p>Vstoupila jsem totiž do komunity, která přesně zachycuje, co píšu tady – probuzení duše.<br/>Pustila jsem se hned do programu VIP, přidala si ještě Masterclass na zázraky a tím jsem dnes začala – protože ty zázraky jsou všude kolem nás, jen se jim otevřít.</p><p class="poetic-center">Mělo to asi 3 hodiny a netušila bych, že se tam dozvím věci, jak jinak lze vést byznys a marketing.<br/>Ne z tlaku.<br/>Ne z výkonu.<br/>Ale z energie.</p><p>Proběhlo tam hodně zastavení a AHA momentů – a pak přišlo na řadu energetické čištění.<br/>Pokud chcete být kouči nebo mentoři, musíte mít uklizeno. Ale hlavně v srdci.<br/>Za tu dobu, co se o energie zajímám, jsem si myslela, že to bude taková ta klasika a aktivace, jakou znám.<br/>To jsem se však velmi spletla.</p><p>Zavřela jsem oči a mentorka nás vedla. Krůček po krůčku – do vizualizace, do hloubky.<br/>Řekla, že to bude tentokrát hluboké, že se bude jednat o energetické čištění srdce, že to cítí – že to máme společné a potřebujeme se toho pustit.</p><p>Popravdě, nečekala jsem vůbec nic, už jen proto, že to bylo online a ze záznamu.<br/>Jenže… ona má fakt zvláštní schopnosti. Nacítila si i ty, kteří se na záznam teprve podívají.<br/>No asi nepochopitelné. <br/>Popisovala, co se čistí, co se děje… a tím se to spustilo.<br/>Nemohla jsem se nadechnout.<br/>Nebo jsem dýchala hrozně málo.<br/>Nešlo to.<br/>Tělo jsem měla jak přikované a i když jsem ležela v posteli, byla jsem někde úplně mimo – ale přesto jsem přesně cítila, co se děje přímo v srdci.</p><p>Zbavovali jsme se zátěže z rodů, linií, hromady různých vazeb a bloků…<br/>Popravdě – byla to operace srdce. Ale energetická. Takovou, co jsem viděla na IG a myslela si, že už fakt neví, na co by tam nalákali. Hups - teď jsem to zažívala a to nečekaně.</p><p>Snažím se to nějak vyjádřit – ale přijde mi, že slova jsou málo oproti tomu, jak silné to bylo.<br/>Totální rozklad mého srdce.<br/>Tak to bolelo. <br/>A zároveň jsem věděla, že to musí pryč.<br/>Protože to bylo hluboko v místech, kde jsme místo sebe dovolili druhým, aby nás zraňovali.</p><p>A já přesně věděla, že to je to místo, které mě bolí.<br/>Myslím, že to má spousta z nás… když si k sobě někoho pustíme blíž.</p><p>Laskavým vedením jsme ten proces uzavírali – odpouštěli jsme. Sobě i všem.<br/>Říkali jsme to nahlas – jako projevení svobodné vůle, že to tak vážně chceme.<br/>A pak… přišly slzy. Proudily jak řeka.<br/>Slzy odpuštění.</p><p class="poetic-center">Věděla jsem, že to nebyl žádný „ezo blábol“.<br/>Ale něco hlubokého, co hlava nikdy nepochopí, ale srdce ví.</p><p>V tu chvíli se mi tak neskutečně ulevilo…<br/>Spadlo toho tolik, že jsem se snad nikdy necítila líp.</p><p>Návrat zpět k sobě byl zvláštní po tak hlubokém procesu.<br/>Cítila jsem se jiná.<br/>Dala jsem si ještě jednu meditaci, aby to celé uzavřela a dokončila.</p><p>Nebylo nic krásnějšího než prostě jen být.<br/>Bez očekávání.<br/>Bez tlaku.<br/>Bez myšlenek, bez budoucnosti, minulosti…<br/>Jen tady a teď.<br/>A přesto tak milovaná někým, kdo nás převyšuje.</p><p>Později večer jsem pokračovala v další Masterclass a totálně odpadla. Usnula jsem.<br/>Vzbudila jsem se kolem jedné ráno a přišla na mě hrozná bezmoc.</p><p>Absolutně jsem nevěděla, co se se mnou děje.<br/>Hlava to nepobírala – i když jsem uvnitř cítila, že je vše správně.<br/>Logicky to ale nešlo zdůvodnit.<br/>Cítila jsem se na dně.<br/>Že nic z toho nemá smysl.<br/>Že nechápu, co se mi ty poslední dny děje.</p><p class="poetic-center">Spustil se pláč.<br/>Prosila jsem Boha, modlila se, odevzdala se…<br/>Protože už jsem neměla sílu.</p><p>Všechny karty mi potvrzovaly, že mám jen věřit.<br/>A že cesta se ukáže.<br/>A to jediné mi taky zbylo – VÍRA.<br/>Pustila jsem si hudbu a snažila se utřídit myšlenky.<br/>A na to, že jsem si nevybrala playlist…<br/>mi snad Vesmír odpovídal těmi písničkami.<br/>Přesně načasovanými…<br/>v 2:22.</p><p class="poetic-center">Věděla jsem, že je to odpověď.<br/>Na všechno, za co jsem prosila.<br/>A tak jsem se zvedla a začala psát...</p><p class="poetic-center">Tento text, co možná nedává smysl hlavou, není o rozumu.<br/>Je o pocitech.</p><p>A v tom jsem si uvědomila, jaké mám štěstí – za práci, za šéfa, za kolegy.<br/>Že jsem si mohla vzít volno, že jsem našla pochopení a lidskost.</p><p>A právě tehdy mi přišel nápad…<br/>Že tenhle příběh možná předložím šéfovi na stůl.</p><p class="poetic-center">Není to text o marketingu.<br/>Je to text o lidskosti.</p><p>Pokud jsme firma, co staví na lidech…<br/>Co dýchá jejich srdcem… co víc to může znamenat?</p><p>Být v ní člověkem. Se vším, co k tomu patří.</p><p>A tak se možná zrodila vize v evisions – že firma není jen o výkonu a stresu, ale taky o příbězích, které za lidmi stojí.</p><p>Že tam mohou být i lidé, kteří něco takového prožívají – a přesto to nikdo nevidí.</p><p>Že se můžeme odlišit tím, že budeme jiní.<br/>A inspirovat. Třeba i další firmy, které věří, že úspěch stojí na něčem víc… než jen na číslech.</p><p class="poetic-center">Tenhle text nevznikl z rozumu.<br/>Vznikl z hudby, z dechu, ze slz…<br/>Z víry, že svět může být lepší místo.</p><p>Jako připomínka, že někdy není třeba říkat víc než pravdu.<br/>A že někdy je právě pravda tím nejlepším obsahem, co můžeme nabídnout.</p><p class="poetic-center">Děkuju, že tu můžu být.<br/>Že můžu růst.<br/>A že když moje duše řekla „ano“, měla kde zaznít.</p></div><a class="to-top" href="#top">Zpět nahoru</a></section>
+<div class="chapter-text"><p>Po těch všech dnech jsem si říkala, že si dnes odpočinu a budu konečně pracovat, soustředit se.<br/>Nešlo to, ani kdybych chtěla sebevíc.</p><p>Jediné, co jsem mohla, bylo meditovat a pustit se do Masterclass.</p><p>Vstoupila jsem totiž do komunity, která přesně zachycuje, co píšu tady – probuzení duše.<br/>Pustila jsem se hned do programu VIP, přidala si ještě Masterclass na zázraky a tím jsem dnes začala – protože ty zázraky jsou všude kolem nás, jen se jim otevřít </p><p class="poetic-center">Mělo to asi 3 hodiny a netušila bych, že se tam dozvím věci, jak jinak lze vést byznys a marketing.<br/>Ne z tlaku.<br/>Ne z výkonu.<br/>Ale z energie.</p><p>Proběhlo tam hodně zastavení a AHA momentů – a pak přišlo na řadu energetické čištění.<br/>Pokud chcete být kouči nebo mentoři, musíte mít uklizeno. Ale hlavně v srdci.<br/>Za tu dobu, co se o energie zajímám, jsem si myslela, že to bude taková ta klasika a aktivace, jakou znám.<br/>To jsem se však velmi spletla.</p><p>Zavřela jsem oči a mentorka nás vedla. Krůček po krůčku – do vizualizace, do hloubky.<br/>Řekla, že to bude tentokrát hluboké, že se bude jednat o energetické čištění srdce, že to cítí – že to máme společné a potřebujeme se toho pustit.</p><p>Popravdě, nečekala jsem vůbec nic, už jen proto, že to bylo online a ze záznamu.<br/>Jenže… ona má fakt zvláštní schopnosti. Nacítila si i ty, kteří se na záznam teprve podívají.<br/>No asi nepochopitelné. <br/>Popisovala, co se čistí, co se děje… a tím se to spustilo.<br/>Nemohla jsem se nadechnout.<br/>Nebo jsem dýchala hrozně málo.<br/>Nešlo to.<br/>Tělo jsem měla jak přikované a i když jsem ležela v posteli, byla jsem někde úplně mimo – ale přesto jsem přesně cítila, co se děje přímo v srdci.</p><p>Zbavovali jsme se zátěže z rodů, linií, hromady různých vazeb a bloků…<br/>Popravdě – byla to operace srdce. Ale energetická. Takovou, co jsem viděla na IG a myslela si, že už fakt neví, na co by tam nalákali. Hups - teď jsem to zažívala a to nečekaně.</p><p>Snažím se to nějak vyjádřit – ale přijde mi, že slova jsou málo oproti tomu, jak silné to bylo.<br/>Totální rozklad mého srdce.<br/>Tak to bolelo. <br/>A zároveň jsem věděla, že to musí pryč.<br/>Protože to bylo hluboko v místech, kde jsme místo sebe dovolili druhým, aby nás zraňovali.</p><p>A já přesně věděla, že to je to místo, které mě bolí.<br/>Myslím, že to má spousta z nás… když si k sobě někoho pustíme blíž.</p><p>Laskavým vedením jsme ten proces uzavírali – odpouštěli jsme. Sobě i všem.<br/>Říkali jsme to nahlas – jako projevení svobodné vůle, že to tak vážně chceme.<br/>A pak… přišly slzy. Proudily jak řeka.<br/>Slzy odpuštění </p><p class="poetic-center">Věděla jsem, že to nebyl žádný „ezo blábol“.<br/>Ale něco hlubokého, co hlava nikdy nepochopí, ale srdce ví.</p><p>V tu chvíli se mi tak neskutečně ulevilo…<br/>Spadlo toho tolik, že jsem se snad nikdy necítila líp.</p><p>Návrat zpět k sobě byl zvláštní po tak hlubokém procesu.<br/>Cítila jsem se jiná.<br/>Dala jsem si ještě jednu meditaci, aby to celé uzavřela a dokončila.</p><p>Nebylo nic krásnějšího než prostě jen být.<br/>Bez očekávání.<br/>Bez tlaku.<br/>Bez myšlenek, bez budoucnosti, minulosti…<br/>Jen tady a teď.<br/>A přesto tak milovaná někým, kdo nás převyšuje </p><p>Později večer jsem pokračovala v další Masterclass a totálně odpadla. Usnula jsem.<br/>Vzbudila jsem se kolem jedné ráno a přišla na mě hrozná bezmoc.</p><p>Absolutně jsem nevěděla, co se se mnou děje.<br/>Hlava to nepobírala – i když jsem uvnitř cítila, že je vše správně.<br/>Logicky to ale nešlo zdůvodnit.<br/>Cítila jsem se na dně.<br/>Že nic z toho nemá smysl.<br/>Že nechápu, co se mi ty poslední dny děje.</p><p class="poetic-center">Spustil se pláč.<br/>Prosila jsem Boha, modlila se, odevzdala se…<br/>Protože už jsem neměla sílu </p><p>Všechny karty mi potvrzovaly, že mám jen věřit.<br/>A že cesta se ukáže.<br/>A to jediné mi taky zbylo – VÍRA.<br/>Pustila jsem si hudbu a snažila se utřídit myšlenky.<br/>A na to, že jsem si nevybrala playlist…<br/>mi snad Vesmír odpovídal těmi písničkami.<br/>Přesně načasovanými…<br/>v 2:22.</p><p class="poetic-center">Věděla jsem, že je to odpověď.<br/>Na všechno, za co jsem prosila.<br/>A tak jsem se zvedla a začala psát...</p><p class="poetic-center">Tento text, co možná nedává smysl hlavou, není o rozumu.<br/>Je o pocitech.</p><p>A v tom jsem si uvědomila, jaké mám štěstí – za práci, za šéfa, za kolegy.<br/>Že jsem si mohla vzít volno, že jsem našla pochopení a lidskost </p><p>A právě tehdy mi přišel nápad…<br/>Že tenhle příběh možná předložím šéfovi na stůl.</p><p class="poetic-center">Není to text o marketingu.<br/>Je to text o lidskosti.</p><p>Pokud jsme firma, co staví na lidech…<br/>Co dýchá jejich srdcem… co víc to může znamenat?</p><p>Být v ní člověkem. Se vším, co k tomu patří.</p><p>A tak se možná zrodila vize v evisions – že firma není jen o výkonu a stresu, ale taky o příbězích, které za lidmi stojí.</p><p>Že tam mohou být i lidé, kteří něco takového prožívají – a přesto to nikdo nevidí.</p><p>Že se můžeme odlišit tím, že budeme jiní.<br/>A inspirovat. Třeba i další firmy, které věří, že úspěch stojí na něčem víc… než jen na číslech.</p><p class="poetic-center">Tenhle text nevznikl z rozumu.<br/>Vznikl z hudby, z dechu, ze slz…<br/>Z víry, že svět může být lepší místo </p><p>Jako připomínka, že někdy není třeba říkat víc než pravdu.<br/>A že někdy je právě pravda tím nejlepším obsahem, co můžeme nabídnout.</p><p class="poetic-center">Děkuju, že tu můžu být.<br/>Že můžu růst.<br/>A že když moje duše řekla „ano“, měla kde zaznít </p></div><a class="to-top" href="#top">Zpět nahoru</a></section>
 <section class="chapter" id="kapitola-8">
 <div class="chapter-head"><div class="chapter-number">08</div><div><div class="reading">3 min čtení</div><h2>Ticho a bezmoc</h2></div></div>
 <figure class="chapter-image"><img alt="" src="promena-08.jpeg"/></figure>
-<div class="chapter-text"><p class="poetic-center">Někdy přichází dny, které nevíme, jak unést. Nejsou krásné. Nejsou inspirativní. Jen jsou.<br/>A my – i když se snažíme – nevíme, jak být.</p><p class="poetic-center">Tenhle zápis vznikl z místa, kde nebylo nic. Jen ticho. A bezmoc.<br/>A přesto… vím, že právě tohle ticho někdy slyší nejvíc ti, kteří ho taky zažili.</p><p class="poetic-center">Možná právě Ty.</p><p>Po noci, kdy jsem vůbec nespala, jsem celé dopoledne odpadla vyčerpáním.<br/>Po probuzení to ale nebylo lepší – přišla obrovská beznaděj.<br/>Nic z toho, co dělám, mi nedávalo smysl. Plakala jsem.</p><p>A pak jsem si řekla:<br/>„A co když to, co píšu, má smysl aspoň pro jednoho člověka? Pro někoho, kdo si to právě teď čte?“ A v tu chvíli mi bylo o trochu líp. Přestala jsem sama sobě odporovat.</p><p>Večer jsem šla sama na koncert Maoka do botanické zahrady.<br/>Nechtělo se mi. Ne mezi lidi.<br/>Ale bylo to krásné.<br/>Poprvé jsem se cítila naplno sama se sebou. Jeho tóny a hlas byly pohlazením pro duši.<br/>I když pršelo, i když byla zima – nelituju, že jsem šla.</p><p>Večer jsem ještě chtěla něco sepsat, ale usnula jsem.<br/>A poprvé po dlouhé době jsem spala až do rána.</p><p>Ráno přišlo balení. A konečně jsem si aktivovala doménu na blog. Měla jsem z toho radost – a zároveň přišla myšlenka: „Proč to vlastně dělám? Koho to bude zajímat?“ Volala jsem s účetní a musela přiznat, že to prostě nedávám.<br/>Všude, kam jsem šla, jsem viděla synchronicity.<br/>Totální prázdnota. Jen jsem chodila. Nepřemýšlela.</p><p>Nebyl důvod nad čím přemýšlet. Cítila jsem se slabá. Bez pevné půdy pod nohama. Bez plánů.<br/>S nekonečným seznamem věcí, co se za mnou valí – a co ještě musím dodělat. A bylo mi to jedno.</p><p>Natálka to asi vycítila.<br/>„Proč jsi tak smutná, maminko?“ ptala se.<br/>Děti cítí všechno. Láska vidí i to, co neřekneme nahlas.<br/>Celý den i noc mě nechtěla pustit. Byla jako klíště.</p><p>V noci jsem se probudila a plakala. Tou nejistotou. Tím, že fakt nevím, kam to celé vede.</p><p>Já – perfekcionistka, která měla vždy vše naplánované – nevím ani, co bude za hodinu. Ani zítra.<br/>A přitom mi hoří úkoly do práce, které nejdou dál odkládat.</p><p class="poetic-center">A tak si říkám – To si člověk v dnešním světě fakt nemůže dovolit být slabý?<br/>Nemůže si dovolit „nebýt“? Ztratit se?</p><p class="poetic-center">Já jsem si to tolik přála. Nebýt vidět. Utéct od všeho. Tam, kde nic nemusím.<br/>Kde nemusím nic dokazovat. Jen být.<br/>Tak jednoduché… A přitom v dnešní době skoro nemožné.</p><p>Nemohla jsem odjet ani od dětí – i když jsem chtěla.<br/>Jejich neustálé mluvení mě vyčerpávalo. Chtěla jsem jen ticho. Sama.<br/>Odjet někam, kde mě nikdo nebude hledat.<br/>A tak jsem nakonec alespoň sepsala tyhle myšlenky. Když už nic…</p><p>Je 5 ráno. Naty se probudila a leží tu se mnou na zemi jako malá kočička.</p><p>Možná se v tom někdo najde. Možná to někomu pomůže. A možná právě to mě teď drží nad vodou.<br/>A tak to sdílím. I kdyby to nikdo nečetl… Možná je lepší to ze sebe dostat, než se z toho zbláznit.</p><p class="poetic-center"> Možná se taky někdy cítíš slabě. Vyčerpaně. Ztraceně.<br/>Ale právě v těch chvílích se rodí síla, která není hlučná… ale pravdivá.</p><p class="poetic-center">Nepotřebuješ být vždy silná. Stačí být opravdová.<br/>A jestli dnes nemáš sílu pro svět – měj ji aspoň pro sebe.<br/>Stačí jeden nádech. Jedna myšlenka. Jedno „jsem tady“.<br/>A ono to půjde. Pomalu. Ale půjde.</p></div><a class="to-top" href="#top">Zpět nahoru</a></section>
+<div class="chapter-text"><p class="poetic-center">Někdy přichází dny, které nevíme, jak unést. Nejsou krásné. Nejsou inspirativní. Jen jsou.<br/>A my – i když se snažíme – nevíme, jak být.</p><p class="poetic-center">Tenhle zápis vznikl z místa, kde nebylo nic. Jen ticho. A bezmoc.<br/>A přesto… vím, že právě tohle ticho někdy slyší nejvíc ti, kteří ho taky zažili.</p><p class="poetic-center">Možná právě Ty.</p><p>Po noci, kdy jsem vůbec nespala, jsem celé dopoledne odpadla vyčerpáním.<br/>Po probuzení to ale nebylo lepší – přišla obrovská beznaděj.<br/>Nic z toho, co dělám, mi nedávalo smysl. Plakala jsem.</p><p>A pak jsem si řekla:<br/>„A co když to, co píšu, má smysl aspoň pro jednoho člověka? Pro někoho, kdo si to právě teď čte?“ A v tu chvíli mi bylo o trochu líp. Přestala jsem sama sobě odporovat.</p><p>Večer jsem šla sama na koncert Maoka do botanické zahrady.<br/>Nechtělo se mi. Ne mezi lidi.<br/>Ale bylo to krásné.<br/>Poprvé jsem se cítila naplno sama se sebou. Jeho tóny a hlas byly pohlazením pro duši.<br/>I když pršelo, i když byla zima – nelituju, že jsem šla.</p><p>Večer jsem ještě chtěla něco sepsat, ale usnula jsem.<br/>A poprvé po dlouhé době jsem spala až do rána.</p><p>Ráno přišlo balení. A konečně jsem si aktivovala doménu na blog. Měla jsem z toho radost – a zároveň přišla myšlenka: „Proč to vlastně dělám? Koho to bude zajímat?“ Volala jsem s účetní a musela přiznat, že to prostě nedávám.<br/>Všude kam jsem šla jsem viděla synchronicity.<br/>Totální prázdnota. Jen jsem chodila. Nepřemýšlela.</p><p>Nebyl důvod nad čím přemýšlet. Cítila jsem se slabá. Bez pevné půdy pod nohama. Bez plánů.<br/>S nekonečným seznamem věcí, co se za mnou valí – a co ještě musím dodělat. A bylo mi to jedno.</p><p>Natálka to asi vycítila.<br/>„Proč jsi tak smutná, maminko?“ ptala se.<br/>Děti cítí všechno. Láska vidí i to, co neřekneme nahlas.<br/>Celý den i noc mě nechtěla pustit. Byla jako klíště.</p><p>V noci jsem se probudila a plakala. Tou nejistotou. Tím, že fakt nevím, kam to celé vede.</p><p>Já – perfekcionistka, která měla vždy vše naplánované – nevím ani, co bude za hodinu. Ani zítra.<br/>A přitom mi hoří úkoly do práce, které nejdou dál odkládat.</p><p class="poetic-center">A tak si říkám – To si člověk v dnešním světě fakt nemůže dovolit být slabý?<br/>Nemůže si dovolit „nebýt“? Ztratit se?</p><p class="poetic-center">Já jsem si to tolik přála. Nebýt vidět. Utéct od všeho. Tam, kde nic nemusím.<br/>Kde nemusím nic dokazovat. Jen být.<br/>Tak jednoduché… A přitom v dnešní době skoro nemožné.</p><p>Nemohla jsem odjet ani od dětí – i když jsem chtěla.<br/>Jejich neustálé mluvení mě vyčerpávalo. Chtěla jsem jen ticho. Sama.<br/>Odjet někam, kde mě nikdo nebude hledat.<br/>A tak jsem nakonec alespoň sepsala tyhle myšlenky. Když už nic…</p><p>Je 5 ráno. Naty se probudila a leží tu se mnou na zemi jako malá kočička.</p><p>Možná se v tom někdo najde. Možná to někomu pomůže. A možná právě to mě teď drží nad vodou.<br/>A tak to sdílím. I kdyby to nikdo nečetl… Možná je lepší to ze sebe dostat, než se z toho zbláznit.</p><p class="poetic-center"> Možná se taky někdy cítíš slabě. Vyčerpaně. Ztraceně.<br/>Ale právě v těch chvílích se rodí síla, která není hlučná… ale pravdivá.</p><p class="poetic-center">Nepotřebuješ být vždy silná. Stačí být opravdová.<br/>A jestli dnes nemáš sílu pro svět – měj ji aspoň pro sebe.<br/>Stačí jeden nádech. Jedna myšlenka. Jedno „jsem tady“.<br/>A ono to půjde. Pomalu. Ale půjde.</p></div><a class="to-top" href="#top">Zpět nahoru</a></section>
 <section class="chapter" id="kapitola-9">
 <div class="chapter-head"><div class="chapter-number">09</div><div><div class="reading">1 min čtení</div><h2>Nádech a výdech</h2></div></div>
 <figure class="chapter-image"><img alt="" src="promena-09.jpeg"/></figure>
-<div class="chapter-text"><p class="poetic-center">Den začal zvláštně.<br/>S tíhou na hrudi.<br/>Se slzami v očích.</p><p class="poetic-center">Jediné, co mě drželo, byla meditace a manifestace.<br/>Jediné, co jsem dokázala, bylo jen být. Sedět, dýchat… a vydržet.</p><p class="poetic-center">Ale nakonec – jako by se ve mně něco pohnulo.<br/>Vydaly jsme se s Natálkou na procházku do města, na oběd, na kávu…<br/>Jen spolu. Tady a teď.</p><p class="poetic-center">Říkala jsem si, že je to poslední den, kdy se takhle cítím.<br/>Jakoby něco ve mně tušilo, že se to láme.<br/>Nevím proč… ale věděla jsem to.</p><p>V programu, ve kterém teď jsem, jsme měli za úkol udělat si radost – něco nad rámec běžného.<br/>Něco, co bychom si jindy „nedovolili“.<br/>A tak jsme vyrazily na nákupy.</p><p class="poetic-center">A bylo to fakt fajn. Na chvíli nic neřešit.</p><p>Ten den se zrodil malý příběh – u jednoho šperku, který jsem si koupila.<br/>Bylo to úplně kouzelné.<br/>Znovu jsem si připomněla:<br/>Když něco opravdu chceš, nepřemýšlej jak to přijde. Jen otevři prostor.<br/>A ono to přijde.<br/>Někdy úplně jinak, než bys čekala.<br/>A přesně proto jsem se tomu musela zasmát.</p><p>Večer jsem si pustila další Masterclass s mentorkou. Volalo si mě to.<br/>Procházeli jsme energetickým čištěním.<br/>A já se dostala do zvláštního stavu – jako bych mezi bděním a spánkem něco uviděla.</p><p class="poetic-center">Myslela jsem, že jsem usnula…<br/>Ale najednou – přesně v ten moment, kdy přišel ten průlom – jsem otevřela oči.<br/>A věděla jsem, že tohle nebyl sen.</p><p class="poetic-center">Byla to vize. Potvrzení. Jemné, ale silné ANO od Vesmíru.<br/>Znamení, že jdu správně.</p><p class="poetic-center">Hrozně zvláštní pocit...</p></div><a class="to-top" href="#top">Zpět nahoru</a></section>
+<div class="chapter-text"><p class="poetic-center">Den začal zvláštně.<br/>S tíhou na hrudi.<br/>Se slzami v očích.</p><p class="poetic-center">Jediné, co mě drželo, byla meditace a manifestace.<br/>Jediné, co jsem dokázala, bylo jen být. Sedět, dýchat… a vydržet.</p><p class="poetic-center">Ale nakonec – jako by se ve mně něco pohnulo.<br/>Vydaly jsme se s Natálkou na procházku do města, na oběd, na kávu…<br/>Jen spolu. Tady a teď.</p><p class="poetic-center">Říkala jsem si, že je to poslední den, kdy se takhle cítím.<br/>Jakoby něco ve mně tušilo, že se to láme.<br/>Nevím proč… ale věděla jsem to.</p><p><br/>V programu, ve kterém teď jsem, jsme měli za úkol udělat si radost – něco nad rámec běžného.<br/>Něco, co bychom si jindy „nedovolili“.<br/>A tak jsme vyrazily na nákupy.</p><p class="poetic-center">A bylo to fakt fajn. Na chvíli nic neřešit.</p><p>Ten den se zrodil malý příběh – u jednoho šperku, který jsem si koupila.<br/>Bylo to úplně kouzelné.<br/>Znovu jsem si připomněla:<br/>Když něco opravdu chceš, nepřemýšlej jak to přijde. Jen otevři prostor.<br/>A ono to přijde.<br/>Někdy úplně jinak, než bys čekala.<br/>A přesně proto jsem se tomu musela zasmát.</p><p><br/>Večer jsem si pustila další Masterclass s mentorkou. Volalo si mě to.<br/>Procházeli jsme energetickým čištěním.<br/>A já se dostala do zvláštního stavu – jako bych mezi bděním a spánkem něco uviděla.</p><p class="poetic-center">Myslela jsem, že jsem usnula…<br/>Ale najednou – přesně v ten moment, kdy přišel ten průlom – jsem otevřela oči.<br/>A věděla jsem, že tohle nebyl sen.</p><p class="poetic-center">Byla to vize. Potvrzení. Jemné, ale silné ANO od Vesmíru.<br/>Znamení, že jdu správně.</p><p class="poetic-center">Hrozně zvláštní pocit...</p></div><a class="to-top" href="#top">Zpět nahoru</a></section>
 <section class="chapter" id="kapitola-10">
 <div class="chapter-head"><div class="chapter-number">10</div><div><div class="reading">1 min čtení</div><h2>Den, kdy jsem se poprvé nadechla</h2></div></div>
 <figure class="chapter-image"><img alt="" src="promena-10.jpeg"/></figure>
@@ -1066,212 +765,5 @@ html.is-entering .orinaya-page-fade{
 })();
 </script>
 
-
-
-
-
-<script>
-(function(){
-  document.addEventListener('click', function(e){
-    const link = e.target.closest('a.to-top');
-    if (!link) return;
-    e.preventDefault();
-    window.scrollTo({top:0, left:0, behavior:'smooth'});
-    try { history.replaceState(null, '', '#top'); } catch(err) {}
-  });
-})();
-</script>
-
-
-<script>
-(function(){
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/orinaya-article-sw.js', {scope:'/'})
-      .catch(function(){});
-  }
-})();
-</script>
-
-
-<script>
-(function(){
-  const form = document.getElementById('promena-guide-form');
-  const input = document.getElementById('promena-guide-email');
-  const button = document.getElementById('promena-guide-submit');
-  const status = document.getElementById('promena-guide-status');
-  if (!form || !input || !button || !status) return;
-
-  form.addEventListener('submit', async function(e){
-    e.preventDefault();
-    const email = String(input.value || '').trim();
-
-    if (!email || !input.checkValidity()){
-      status.textContent = 'Prosím, zadej platný e-mail.';
-      input.focus();
-      return;
-    }
-
-    button.disabled = true;
-    status.textContent = 'Chvilku…';
-
-    try{
-      const res = await fetch('/api/promena-download', {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({email})
-      });
-
-      const data = await res.json().catch(() => ({}));
-
-      if (!res.ok){
-        throw new Error(data.error || 'Průvodce se teď nepodařilo zpřístupnit.');
-      }
-
-      status.textContent = 'Je tvůj. ♡';
-
-      const a = document.createElement('a');
-      a.href = data.downloadUrl || '/PROMENA_ORINAYA.pdf';
-      a.download = 'PROMENA_ORINAYA.pdf';
-      a.style.display = 'none';
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-
-    }catch(err){
-      status.textContent = err && err.message
-        ? err.message
-        : 'Průvodce se teď nepodařilo zpřístupnit.';
-    }finally{
-      button.disabled = false;
-    }
-  });
-})();
-</script>
-
-<script id="orinaya-audio-controller">
-(function(){
-  const audio = document.getElementById('orinaya-music');
-  const button = document.getElementById('music-toggle');
-  if (!audio || !button || window.__orinayaMusicBound) return;
-  window.__orinayaMusicBound = true;
-
-  const label = button.querySelector('.music-label');
-  const KEY = 'orinayaMusicStateV1';
-  audio.volume = 0.18;
-  let wantsResume = false;
-
-  function readState(){
-    try { return JSON.parse(localStorage.getItem(KEY) || '{}'); }
-    catch(e){ return {}; }
-  }
-
-  function saveState(){
-    try{
-      localStorage.setItem(KEY, JSON.stringify({
-        playing: wantsResume,
-        time: Number.isFinite(audio.currentTime) ? audio.currentTime : 0,
-        updated: Date.now()
-      }));
-    }catch(e){}
-  }
-
-  function setButton(playing, resumeWanted){
-    button.classList.toggle('is-playing', playing);
-    button.setAttribute('aria-pressed', playing ? 'true' : 'false');
-    if (playing){
-      button.setAttribute('aria-label','Ztišit atmosféru');
-      if (label) label.textContent = 'Ztišit atmosféru';
-    }else if (resumeWanted){
-      button.setAttribute('aria-label','Pokračovat v atmosféře');
-      if (label) label.textContent = 'Pokračovat v atmosféře';
-    }else{
-      button.setAttribute('aria-label','Pustit atmosféru');
-      if (label) label.textContent = 'Pustit atmosféru';
-    }
-  }
-
-  function restoreTime(state){
-    const t = Number(state.time || 0);
-    if (!Number.isFinite(t) || t <= 0) return;
-    try{
-      if (Number.isFinite(audio.duration) && audio.duration > 0) audio.currentTime = t % audio.duration;
-      else audio.currentTime = t;
-    }catch(e){}
-  }
-
-  async function restorePlayback(state){
-    wantsResume = !!state.playing;
-    restoreTime(state);
-    if (!wantsResume){
-      setButton(false, false);
-      return;
-    }
-    try{
-      await audio.play();
-      setButton(true, false);
-    }catch(e){
-      setButton(false, true);
-    }
-    saveState();
-  }
-
-  const initialState = readState();
-  wantsResume = !!initialState.playing;
-  if (audio.readyState >= 1) restorePlayback(initialState);
-  else audio.addEventListener('loadedmetadata', function(){ restorePlayback(initialState); }, {once:true});
-
-  button.addEventListener('click', async function(){
-    if (audio.paused){
-      wantsResume = true;
-      try{
-        await audio.play();
-        setButton(true, false);
-      }catch(e){
-        setButton(false, true);
-      }
-      saveState();
-    }else{
-      wantsResume = false;
-      audio.pause();
-      setButton(false, false);
-      saveState();
-    }
-  });
-
-  audio.addEventListener('play', function(){
-    wantsResume = true;
-    setButton(true, false);
-    saveState();
-  });
-
-  audio.addEventListener('pause', function(){
-    setButton(false, wantsResume);
-    saveState();
-  });
-
-  let lastSave = 0;
-  audio.addEventListener('timeupdate', function(){
-    const now = Date.now();
-    if (now - lastSave > 1000){ lastSave = now; saveState(); }
-  });
-
-  document.addEventListener('click', function(e){
-    if (e.target.closest && e.target.closest('a[href]')) saveState();
-  }, true);
-
-  window.addEventListener('pagehide', saveState);
-  window.addEventListener('beforeunload', saveState);
-  document.addEventListener('visibilitychange', function(){
-    if (document.visibilityState === 'hidden') saveState();
-  });
-
-  window.addEventListener('pageshow', function(){
-    const state = readState();
-    wantsResume = !!state.playing;
-    if (audio.readyState >= 1) restorePlayback(state);
-    else audio.addEventListener('loadedmetadata', function(){ restorePlayback(state); }, {once:true});
-  });
-})();
-</script>
 </body>
 </html>

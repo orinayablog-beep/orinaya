@@ -1023,82 +1023,95 @@ async function createMessageImage(message){
     img.src = src;
   });
 
-  const bg = await loadImage("/vzkaz-karticka-bg.png");
+  let bg;
+  try{
+    bg = await loadImage("/vzkaz-karticka-bg.png");
+  }catch(e){
+    throw new Error("Chybí soubor vzkaz-karticka-bg.png");
+  }
 
+  /* Zachováme přesně poměr stran nového horizontálního podkladu. */
   const canvas = document.createElement("canvas");
   canvas.width = bg.naturalWidth;
   canvas.height = bg.naturalHeight;
   const ctx = canvas.getContext("2d");
 
   ctx.drawImage(bg,0,0,canvas.width,canvas.height);
+
+  /*
+    Pravá část je schválně čistá.
+    Podklad obsahuje jen obálku, hvězdy a rámeček.
+    Dynamicky doplníme:
+    - Vzkaz pro tebe
+    - konkrétní text
+    - autora
+    - ORINAYA
+  */
+  const cx = canvas.width * 0.70;
+  const maxWidth = canvas.width * 0.48;
+
   ctx.textAlign = "center";
 
-  /* Pravý obsahový panel – zachováme text mimo obálku a vrátíme
-     rozložení podobné původní krásné kartičce. */
-  const panelCenterX = Math.round(canvas.width * 0.705);
-  const messageMaxWidth = Math.round(canvas.width * 0.40);
+  /* Nadpis */
+  ctx.fillStyle = "#e9d5ac";
+  ctx.font = `400 ${Math.round(canvas.width * 0.031)}px "Cormorant Garamond", Georgia, serif`;
+  ctx.fillText("Vzkaz pro tebe",cx,canvas.height * 0.25);
 
-  /* Titulek */
-  ctx.fillStyle = "#f3e8d3";
-  ctx.font = `400 ${Math.round(canvas.width * 0.038)}px "Cormorant Garamond", Georgia, serif`;
-  ctx.fillText("Vzkaz pro tebe", panelCenterX, Math.round(canvas.height * 0.18));
+  /* Jemná zlatá linka a hvězda */
+  ctx.strokeStyle = "rgba(215,170,87,.48)";
+  ctx.lineWidth = Math.max(1,canvas.width * 0.0008);
 
-  /* Ozdobná linka + hvězda pod titulkem */
-  const decoY = Math.round(canvas.height * 0.26);
-  const lineGap = Math.round(canvas.width * 0.018);
-  const lineLen = Math.round(canvas.width * 0.09);
-  ctx.strokeStyle = "rgba(215,170,87,.68)";
-  ctx.lineWidth = Math.max(1, Math.round(canvas.width * 0.0013));
+  const dividerY = canvas.height * 0.34;
+  const gap = canvas.width * 0.035;
+  const half = canvas.width * 0.09;
+
   ctx.beginPath();
-  ctx.moveTo(panelCenterX - lineGap - lineLen, decoY);
-  ctx.lineTo(panelCenterX - lineGap, decoY);
-  ctx.moveTo(panelCenterX + lineGap, decoY);
-  ctx.lineTo(panelCenterX + lineGap + lineLen, decoY);
+  ctx.moveTo(cx-half-gap,dividerY);
+  ctx.lineTo(cx-gap,dividerY);
+  ctx.moveTo(cx+gap,dividerY);
+  ctx.lineTo(cx+half+gap,dividerY);
   ctx.stroke();
-  ctx.fillStyle = "#d7aa57";
-  ctx.font = `400 ${Math.round(canvas.width * 0.018)}px "Cormorant Garamond", Georgia, serif`;
-  ctx.fillText("✦", panelCenterX, decoY + Math.round(canvas.height * 0.01));
 
-  /* Dynamický text zprávy */
+  ctx.fillStyle = "#e3bb68";
+  ctx.font = `${Math.round(canvas.width * 0.018)}px Georgia,serif`;
+  ctx.fillText("✦",cx,dividerY + canvas.height * 0.008);
+
+  /* Dynamický text */
   let fontSize = Math.round(canvas.width * 0.029);
   const minFontSize = Math.round(canvas.width * 0.020);
-  let lineHeight = Math.round(fontSize * 1.28);
+  let lineHeight = Math.round(fontSize * 1.24);
   let lines = [];
 
   while(fontSize >= minFontSize){
     ctx.font = `400 ${fontSize}px "Cormorant Garamond", Georgia, serif`;
-    lineHeight = Math.round(fontSize * 1.28);
-    lines = splitCanvasText(ctx, message.message, messageMaxWidth);
+    lineHeight = Math.round(fontSize * 1.24);
+    lines = splitCanvasText(ctx,message.message,maxWidth);
 
-    const fitsHeight = lines.length * lineHeight <= canvas.height * 0.30;
-    const widestLine = Math.max(...lines.map(line => ctx.measureText(line).width), 0);
-    if(fitsHeight && widestLine <= messageMaxWidth) break;
+    if(lines.length * lineHeight <= canvas.height * 0.29) break;
     fontSize -= 2;
   }
 
   ctx.fillStyle = "#f5eef3";
   ctx.font = `400 ${fontSize}px "Cormorant Garamond", Georgia, serif`;
-  lineHeight = Math.round(fontSize * 1.28);
 
   const blockHeight = lines.length * lineHeight;
-  let y = Math.round(canvas.height * 0.43 - blockHeight / 2);
+  let y = canvas.height * 0.53 - blockHeight / 2;
 
   for(const line of lines){
-    ctx.fillText(line, panelCenterX, y);
+    ctx.fillText(line,cx,y);
     y += lineHeight;
   }
 
-  /* Podpis */
+  /* Autor */
   const author = message.anonymous ? "Anonymně" : (message.name || "Anonymně");
-  const authorY = Math.max(Math.round(canvas.height * 0.68), y + Math.round(canvas.height * 0.04));
   ctx.fillStyle = "#d7aa57";
-  ctx.font = `400 ${Math.round(canvas.width * 0.030)}px "Italianno", cursive`;
-  ctx.fillText(author, panelCenterX, authorY);
+  ctx.font = `400 ${Math.round(canvas.width * 0.026)}px "Italianno", cursive`;
+  ctx.fillText(author,cx,canvas.height * 0.76);
 
   /* Značka */
-  ctx.fillStyle = "rgba(243,235,242,.68)";
-  ctx.font = `400 ${Math.round(canvas.width * 0.014)}px "Montserrat", Arial, sans-serif`;
-  ctx.fillText("ORINAYA", panelCenterX, Math.round(canvas.height * 0.84));
+  ctx.fillStyle = "#b7a9b9";
+  ctx.font = `300 ${Math.round(canvas.width * 0.011)}px "Montserrat", Arial, sans-serif`;
+  ctx.fillText("ORINAYA",cx,canvas.height * 0.88);
 
   return await new Promise(resolve => canvas.toBlob(resolve,"image/png",1));
 }

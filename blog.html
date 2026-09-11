@@ -7,7 +7,7 @@
 <meta name="description" content="Osobní texty, příběhy a inspirace na cestě zpět k sobě.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500&family=Italianno&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500&family=Italianno&family=Allura&display=swap" rel="stylesheet">
 <style>
 
 :root{
@@ -46,15 +46,40 @@ footer{border-top:1px solid var(--line);padding:50px 22px 40px;text-align:center
   header{padding:18px;gap:15px}.brand{font-size:21px}nav{gap:13px}nav a{font-size:8px}
 }
 
-.hero{min-height:590px;display:grid;place-items:center;text-align:center;padding:110px 22px 85px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
-.hero:before{content:"";position:absolute;width:530px;height:530px;border-radius:50%;left:50%;top:48%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(122,61,151,.18),rgba(72,35,96,.05) 42%,transparent 69%);filter:blur(8px)}
-.hero-inner{position:relative;z-index:2;max-width:980px}
-.kicker{color:var(--gold);font-size:10px;letter-spacing:.34em;text-transform:uppercase;margin-bottom:22px;font-weight:500}
-h1{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(62px,9vw,116px);font-weight:400;line-height:.92;margin:0;color:#ead9b6;letter-spacing:-.025em}
-.hero-script{margin:38px auto 0;max-width:920px;font-family:"Italianno",cursive;font-weight:400;font-size:clamp(34px,5vw,54px);line-height:1.15;color:#e7d9c5}
-.hero-script span{display:block}
-.hero-line{width:98px;height:1px;margin:35px auto 0;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-.scroll-note{display:inline-block;margin-top:34px;color:#b7a9b9;font-size:9px;letter-spacing:.17em;text-transform:uppercase}
+
+
+
+
+.hero-visual{
+  position:relative;
+  width:100%;
+  background:#080611;
+  border-bottom:1px solid var(--line);
+  overflow:hidden;
+}
+.hero-visual img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+.hero-seo{
+  position:absolute!important;
+  width:1px!important;height:1px!important;
+  padding:0!important;margin:-1px!important;
+  overflow:hidden!important;clip:rect(0,0,0,0)!important;
+  white-space:nowrap!important;border:0!important;
+}
+@media(max-width:760px){
+  .hero-visual{
+    overflow:hidden;
+  }
+  .hero-visual img{
+    display:block;
+    width:100%;
+    max-width:100%;
+    height:auto;
+  }
+}
 .posts-wrap{width:min(1080px,90vw);margin:0 auto;padding:95px 0 110px}
 .posts-head{display:flex;justify-content:space-between;gap:28px;align-items:end;padding-bottom:24px;border-bottom:1px solid var(--line)}
 .posts-head h2{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(40px,5vw,62px);font-weight:400;color:#ead8b3;margin:0}
@@ -67,10 +92,124 @@ h1{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(62px,9vw,116px
 .read{position:relative;display:inline-block;margin-top:23px;padding-bottom:7px;color:#ead9b8;font-size:10px;letter-spacing:.15em;text-transform:uppercase}
 .read:after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:linear-gradient(90deg,var(--gold),rgba(215,170,87,.35))}
 @media(max-width:760px){
-  .hero{min-height:520px;padding:92px 18px 70px}.hero-script{font-size:clamp(31px,9vw,42px);max-width:94vw}
+  .hero{min-height:620px;padding:86px 18px 68px;background:linear-gradient(180deg,rgba(8,6,17,.92) 0%,rgba(8,6,17,.74) 48%,rgba(8,6,17,.42) 100%),url("kolibrik-blog.png") 72% center/auto 100% no-repeat}.hero-inner{max-width:94vw}.hero-script{font-size:clamp(31px,9vw,42px);max-width:94vw}.hero-bridge{font-size:clamp(31px,9vw,42px)}
   .posts-wrap{padding:70px 0 85px}.posts-head{display:block}.posts-head p{margin-top:12px}
   .posts{grid-template-columns:1fr}.post{padding:36px 0 40px}
 }
+
+  .hero-copy{
+    min-height:520px;
+    padding:70px 7vw 58px;
+    background:
+      linear-gradient(180deg,rgba(8,6,17,.98) 0%,rgba(8,6,17,.92) 100%)
+  }
+  .hero-art{
+    min-height:390px;
+    background:
+      linear-gradient(180deg,rgba(8,6,17,.48) 0%,rgba(8,6,17,.04) 35%,rgba(8,6,17,.18) 100%),
+      url("kolibrik-blog-FIX.png") center 42%/cover no-repeat
+  }
+  .hero-script{font-size:clamp(34px,8vw,46px);max-width:92vw}
+  .hero-bridge{font-size:clamp(38px,9vw,50px)}
+  .hero-divider{width:min(100%,500px)}
+}
+
+
+.hero-script{font-size:clamp(34px,8vw,46px);max-width:92vw}
+  .hero-bridge{font-size:clamp(36px,9vw,48px)}
+  .hero-divider{width:min(100%,500px)}
+}
+
+
+/* PORTRAIT MOBILE ONLY - desktop/landscape remain untouched */
+.mobile-portrait-hero{display:none}
+
+@media (max-width:600px) and (orientation:portrait){
+  .hero-visual{display:none!important}
+
+  .mobile-portrait-hero{
+    display:block;
+    position:relative;
+    min-height:680px;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+    background:
+      linear-gradient(90deg,rgba(8,6,17,.97) 0%,rgba(8,6,17,.91) 57%,rgba(8,6,17,.30) 100%),
+      url("kolibrik-blog-FIX.png") 66% center/cover no-repeat;
+  }
+
+  .mph-copy{
+    position:relative;
+    z-index:2;
+    padding:48px 22px 48px;
+  }
+
+  .mph-kicker{
+    color:var(--gold);
+    font-size:9px;
+    letter-spacing:.26em;
+    text-transform:uppercase;
+    margin-bottom:17px;
+  }
+
+  .mph-title{
+    margin:0;
+    font-family:"Cormorant Garamond",Georgia,serif;
+    font-size:72px;
+    line-height:.88;
+    font-weight:400;
+    color:#ead9b6;
+    text-transform:uppercase;
+  }
+
+  .mph-script{
+    margin-top:25px;
+    max-width:88%;
+    font-family:"Italianno",cursive;
+    font-size:35px;
+    line-height:1.08;
+    color:#f1e8e2;
+    text-shadow:0 2px 12px rgba(0,0,0,.62);
+  }
+  .mph-script span{display:block}
+  .mph-script .gold{color:#d9af68}
+
+  .mph-divider{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    width:74%;
+    margin-top:24px;
+  }
+  .mph-divider:before,.mph-divider:after{
+    content:"";
+    height:1px;
+    flex:1;
+    background:rgba(215,170,87,.72);
+  }
+  .mph-star{
+    color:var(--gold2);
+    font-size:22px;
+    line-height:1;
+  }
+
+  .mph-bridge{
+    margin-top:13px;
+    max-width:84%;
+    font-family:"Italianno",cursive;
+    font-size:39px;
+    line-height:1.02;
+    color:#d9af68;
+    text-shadow:0 2px 12px rgba(0,0,0,.5);
+  }
+
+  .posts-wrap{width:90vw;padding:60px 0 80px}
+  .posts-head h2{font-size:50px}
+  .post{padding:38px 0 42px}
+  .post h2{font-size:36px;line-height:1.08}
+  .post .quote{font-size:21px;line-height:1.5}
+}
+
 </style>
 </head>
 <body>
@@ -79,16 +218,34 @@ h1{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(62px,9vw,116px
   <nav><a href="index.html">Domů</a><a href="omne.html">O mně</a><a href="promena.html">Proměna</a><a class="active" href="blog.html">Blog</a></nav>
 </header>
 <main>
-<section class="hero">
- <div class="hero-inner">
-  <div class="kicker">Osobní příběhy · vhledy · inspirace</div>
-  <h1>Blog</h1>
-  <div class="hero-script">
-   <span>Někdy stačí pár řádků a všechno se uvnitř změní.</span>
-   <span>Začti se do textů, které nejsou psané hlavou, ale srdcem...</span>
+
+
+
+
+<section class="hero-visual" aria-label="Blog ORINAYA">
+  <img src="blog-hero-final.png" alt="ORINAYA Blog – Příběhy, vhledy, inspirace. Někdy stačí pár řádků a všechno se uvnitř změní. Začti se do textů, které nejsou psané hlavou, ale srdcem. Cesta, která nás spojuje.">
+  <div class="hero-seo">
+    <div>Příběhy · vhledy · inspirace</div>
+    <h1>Blog</h1>
+    <p>Někdy stačí pár řádků a všechno se uvnitř změní.</p>
+    <p>Začti se do textů, které nejsou psané hlavou, ale srdcem...</p>
+    <p>Cesta, která nás spojuje.</p>
   </div>
-  <div class="hero-line"></div><a class="scroll-note" href="#clanky">Začít číst</a>
- </div>
+</section>
+
+<section class="mobile-portrait-hero" aria-label="Blog ORINAYA">
+  <div class="mph-copy">
+    <div class="mph-kicker">Příběhy · vhledy · inspirace</div>
+    <h1 class="mph-title">Blog</h1>
+    <div class="mph-script">
+      <span>Někdy stačí pár řádků</span>
+      <span>a všechno se uvnitř změní.</span>
+      <span>Začti se do textů, které nejsou</span>
+      <span>psané hlavou, ale <span class="gold">srdcem...</span></span>
+    </div>
+    <div class="mph-divider" aria-hidden="true"><span class="mph-star">✦</span></div>
+    <div class="mph-bridge">Cesta, která nás spojuje.</div>
+  </div>
 </section>
 <section class="posts-wrap" id="clanky">
  <div class="posts-head"><h2>Texty</h2><p>19 příběhů a zastavení</p></div>
@@ -108,7 +265,7 @@ h1{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(62px,9vw,116px
 <article class="post">
   <div class="post-meta">17 · 9 min čtení</div>
   <h2><a href="clanek-17-procitnuti">Procitnutí</a></h2>
-  <p class="quote">„Není okamžik, kdy víme všechno. Je to chvíle, kdy už nedokážeme dál předstírat, že nevidíme.““</p>
+  <p class="quote">„Není okamžik, kdy víme všechno. Je to chvíle, kdy už nedokážeme dál předstírat, že nevidíme.“</p>
   <a class="read" href="clanek-17-procitnuti">Číst dál</a>
 </article>
 <article class="post">

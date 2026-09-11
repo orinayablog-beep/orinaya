@@ -974,54 +974,80 @@ async function createMessageImage(message){
 
   const bg = await loadImage("/vzkaz-karticka-bg.png");
 
-  /* Zachováme přesný poměr stran podkladového obrázku.
-     Nic se už nebude deformovat do široké kartičky. */
   const canvas = document.createElement("canvas");
   canvas.width = bg.naturalWidth;
   canvas.height = bg.naturalHeight;
   const ctx = canvas.getContext("2d");
 
   ctx.drawImage(bg,0,0,canvas.width,canvas.height);
-
   ctx.textAlign = "center";
 
-  /* Dynamický text patří do čistého prostoru mezi titulkem
-     "Vzkaz pro tebe" a obálku. */
-  const cx = canvas.width / 2;
-  const maxWidth = canvas.width * 0.68;
+  /* Pravý obsahový panel – zachováme text mimo obálku a vrátíme
+     rozložení podobné původní krásné kartičce. */
+  const panelCenterX = Math.round(canvas.width * 0.705);
+  const messageMaxWidth = Math.round(canvas.width * 0.40);
 
-  let fontSize = Math.round(canvas.width * 0.044);
-  const minFontSize = Math.round(canvas.width * 0.030);
-  let lineHeight = Math.round(fontSize * 1.25);
+  /* Titulek */
+  ctx.fillStyle = "#f3e8d3";
+  ctx.font = `400 ${Math.round(canvas.width * 0.038)}px "Cormorant Garamond", Georgia, serif`;
+  ctx.fillText("Vzkaz pro tebe", panelCenterX, Math.round(canvas.height * 0.18));
+
+  /* Ozdobná linka + hvězda pod titulkem */
+  const decoY = Math.round(canvas.height * 0.26);
+  const lineGap = Math.round(canvas.width * 0.018);
+  const lineLen = Math.round(canvas.width * 0.09);
+  ctx.strokeStyle = "rgba(215,170,87,.68)";
+  ctx.lineWidth = Math.max(1, Math.round(canvas.width * 0.0013));
+  ctx.beginPath();
+  ctx.moveTo(panelCenterX - lineGap - lineLen, decoY);
+  ctx.lineTo(panelCenterX - lineGap, decoY);
+  ctx.moveTo(panelCenterX + lineGap, decoY);
+  ctx.lineTo(panelCenterX + lineGap + lineLen, decoY);
+  ctx.stroke();
+  ctx.fillStyle = "#d7aa57";
+  ctx.font = `400 ${Math.round(canvas.width * 0.018)}px "Cormorant Garamond", Georgia, serif`;
+  ctx.fillText("✦", panelCenterX, decoY + Math.round(canvas.height * 0.01));
+
+  /* Dynamický text zprávy */
+  let fontSize = Math.round(canvas.width * 0.029);
+  const minFontSize = Math.round(canvas.width * 0.020);
+  let lineHeight = Math.round(fontSize * 1.28);
   let lines = [];
 
   while(fontSize >= minFontSize){
     ctx.font = `400 ${fontSize}px "Cormorant Garamond", Georgia, serif`;
-    lineHeight = Math.round(fontSize * 1.25);
-    lines = splitCanvasText(ctx,message.message,maxWidth);
+    lineHeight = Math.round(fontSize * 1.28);
+    lines = splitCanvasText(ctx, message.message, messageMaxWidth);
 
-    /* Hlídáme, aby text nesjel do obálky. */
-    if(lines.length * lineHeight <= canvas.height * 0.22) break;
+    const fitsHeight = lines.length * lineHeight <= canvas.height * 0.30;
+    const widestLine = Math.max(...lines.map(line => ctx.measureText(line).width), 0);
+    if(fitsHeight && widestLine <= messageMaxWidth) break;
     fontSize -= 2;
   }
 
   ctx.fillStyle = "#f5eef3";
   ctx.font = `400 ${fontSize}px "Cormorant Garamond", Georgia, serif`;
+  lineHeight = Math.round(fontSize * 1.28);
 
   const blockHeight = lines.length * lineHeight;
-  let y = Math.round(canvas.height * 0.38 - blockHeight / 2);
+  let y = Math.round(canvas.height * 0.43 - blockHeight / 2);
 
   for(const line of lines){
-    ctx.fillText(line,cx,y);
+    ctx.fillText(line, panelCenterX, y);
     y += lineHeight;
   }
 
-  /* Podpis je stále dynamický, ale zůstává nad obálkou. */
+  /* Podpis */
   const author = message.anonymous ? "Anonymně" : (message.name || "Anonymně");
-
+  const authorY = Math.max(Math.round(canvas.height * 0.68), y + Math.round(canvas.height * 0.04));
   ctx.fillStyle = "#d7aa57";
-  ctx.font = `400 ${Math.round(canvas.width * 0.034)}px "Italianno", cursive`;
-  ctx.fillText(author,cx,Math.round(canvas.height * 0.55));
+  ctx.font = `400 ${Math.round(canvas.width * 0.030)}px "Italianno", cursive`;
+  ctx.fillText(author, panelCenterX, authorY);
+
+  /* Značka */
+  ctx.fillStyle = "rgba(243,235,242,.68)";
+  ctx.font = `400 ${Math.round(canvas.width * 0.014)}px "Montserrat", Arial, sans-serif`;
+  ctx.fillText("ORINAYA", panelCenterX, Math.round(canvas.height * 0.84));
 
   return await new Promise(resolve => canvas.toBlob(resolve,"image/png",1));
 }

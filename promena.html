@@ -725,6 +725,62 @@ html.is-entering .orinaya-page-fade{
   }
 }
 
+
+/* ===== ORINAYA • HUDBA ===== */
+.music-toggle{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  z-index:9990;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:10px 14px;
+  border:1px solid rgba(215,170,87,.34);
+  border-radius:999px;
+  background:rgba(8,6,17,.78);
+  color:#ead9b8;
+  font:400 9px/1 "Montserrat",Arial,sans-serif;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  box-shadow:0 8px 28px rgba(0,0,0,.26);
+  cursor:pointer;
+  opacity:.80;
+  transition:opacity .2s ease,border-color .2s ease,transform .2s ease;
+}
+.music-toggle:hover{
+  opacity:1;
+  border-color:rgba(215,170,87,.58);
+  transform:translateY(-1px);
+}
+.music-toggle .music-icon{
+  width:18px;
+  height:18px;
+  display:grid;
+  place-items:center;
+  flex:0 0 auto;
+  border:1px solid rgba(215,170,87,.32);
+  border-radius:50%;
+  font-size:10px;
+  line-height:1;
+  color:#f1d79b;
+}
+.music-toggle.is-playing .music-icon{
+  box-shadow:0 0 12px rgba(215,170,87,.32);
+}
+@media(max-width:760px){
+  .music-toggle{
+    right:14px;
+    bottom:14px;
+    padding:9px 11px;
+    gap:7px;
+    font-size:8px;
+    background:rgba(8,6,17,.84);
+  }
+}
+
 </style>
 
 <!-- ORINAYA META IN-APP GUARD -->
@@ -765,6 +821,12 @@ html.is-entering .orinaya-page-fade{
 </style>
 </head>
 <body>
+
+<audio id="orinaya-music" src="./orinaya-piano.mp3" preload="metadata" loop></audio>
+<button class="music-toggle" id="music-toggle" type="button" aria-label="Pustit atmosféru" aria-pressed="false">
+  <span class="music-icon" aria-hidden="true">♪</span>
+  <span class="music-label">Pustit atmosféru</span>
+</button>
 <header id="top">
 <a class="brand" href="/">ORINAYA</a>
 <nav>
@@ -1040,6 +1102,152 @@ html.is-entering .orinaya-page-fade{
         : 'Průvodce se teď nepodařilo zpřístupnit.';
     }finally{
       button.disabled = false;
+    }
+  });
+})();
+</script>
+
+<script id="orinaya-music-controller">
+(function(){
+  const audio = document.getElementById('orinaya-music');
+  const button = document.getElementById('music-toggle');
+  if (!audio || !button || window.__orinayaMusicBound) return;
+  window.__orinayaMusicBound = true;
+
+  const label = button.querySelector('.music-label');
+  const KEY = 'orinayaMusicStateV1';
+  audio.volume = 0.18;
+  let wantsResume = false;
+
+  function readState(){
+    try { return JSON.parse(localStorage.getItem(KEY) || '{}'); }
+    catch(e){ return {}; }
+  }
+
+  function saveState(){
+    try{
+      localStorage.setItem(KEY, JSON.stringify({
+        playing: wantsResume,
+        time: Number.isFinite(audio.currentTime) ? audio.currentTime : 0,
+        updated: Date.now()
+      }));
+    }catch(e){}
+  }
+
+  function setButton(playing, resumeWanted){
+    button.classList.toggle('is-playing', playing);
+    button.setAttribute('aria-pressed', playing ? 'true' : 'false');
+
+    if (playing){
+      button.setAttribute('aria-label','Ztišit atmosféru');
+      if (label) label.textContent = 'Ztišit atmosféru';
+    }else if (resumeWanted){
+      button.setAttribute('aria-label','Pokračovat v atmosféře');
+      if (label) label.textContent = 'Pokračovat v atmosféře';
+    }else{
+      button.setAttribute('aria-label','Pustit atmosféru');
+      if (label) label.textContent = 'Pustit atmosféru';
+    }
+  }
+
+  function restoreTime(state){
+    const t = Number(state.time || 0);
+    if (!Number.isFinite(t) || t <= 0) return;
+
+    try{
+      if (Number.isFinite(audio.duration) && audio.duration > 0){
+        audio.currentTime = t % audio.duration;
+      }else{
+        audio.currentTime = t;
+      }
+    }catch(e){}
+  }
+
+  async function restorePlayback(state){
+    wantsResume = !!state.playing;
+    restoreTime(state);
+
+    if (!wantsResume){
+      setButton(false, false);
+      return;
+    }
+
+    try{
+      await audio.play();
+      setButton(true, false);
+    }catch(e){
+      /* Autoplay může prohlížeč zablokovat. Stav ale zachováme,
+         aby stačilo jediné klepnutí na "Pokračovat v atmosféře". */
+      setButton(false, true);
+    }
+
+    saveState();
+  }
+
+  const initialState = readState();
+  wantsResume = !!initialState.playing;
+
+  if (audio.readyState >= 1){
+    restorePlayback(initialState);
+  }else{
+    audio.addEventListener('loadedmetadata', function(){
+      restorePlayback(initialState);
+    }, {once:true});
+  }
+
+  button.addEventListener('click', async function(){
+    if (audio.paused){
+      wantsResume = true;
+      try{
+        await audio.play();
+        setButton(true, false);
+      }catch(e){
+        setButton(false, true);
+      }
+      saveState();
+    }else{
+      wantsResume = false;
+      audio.pause();
+      setButton(false, false);
+      saveState();
+    }
+  });
+
+  audio.addEventListener('timeupdate', function(){
+    if (wantsResume) saveState();
+  });
+
+  audio.addEventListener('play', function(){
+    wantsResume = true;
+    setButton(true, false);
+    saveState();
+  });
+
+  audio.addEventListener('pause', function(){
+    /* Při odchodu ze stránky nechceme přepsat záměr pokračovat.
+       Ruční pauzu řeší klik na tlačítko výše. */
+    saveState();
+  });
+
+  window.addEventListener('pagehide', saveState);
+  window.addEventListener('beforeunload', saveState);
+
+  document.addEventListener('visibilitychange', function(){
+    if (document.visibilityState === 'hidden') saveState();
+  });
+
+  /* Důležité pro Back/Forward cache:
+     po návratu tlačítkem Zpět znovu načteme uloženou pozici a pokračujeme. */
+  window.addEventListener('pageshow', function(){
+    const state = readState();
+    wantsResume = !!state.playing;
+
+    if (audio.readyState >= 1){
+      restorePlayback(state);
+    }else{
+      audio.addEventListener('loadedmetadata', function(){
+        restorePlayback(state);
+      }, {once:true});
     }
   });
 })();

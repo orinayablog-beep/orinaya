@@ -670,6 +670,12 @@ html.is-entering .orinaya-page-fade{opacity:1}
 </style>
 </head>
 <body>
+
+<audio id="orinaya-music" src="./orinaya-piano.mp3" preload="metadata" loop></audio>
+<button class="music-toggle" id="music-toggle" type="button" aria-label="Pustit atmosféru" aria-pressed="false">
+  <span class="music-icon" aria-hidden="true">♪</span>
+  <span class="music-label">Pustit atmosféru</span>
+</button>
 <header>
   <a class="brand" href="index.html">ORINAYA</a>
   <nav>
@@ -933,6 +939,152 @@ html.is-entering .orinaya-page-fade{opacity:1}
     shareWrap.appendChild(shareBtn);
     shareWrap.appendChild(copyBtn);
     readLink.insertAdjacentElement('afterend', shareWrap);
+  });
+})();
+</script>
+
+<script id="orinaya-music-controller">
+(function(){
+  const audio = document.getElementById('orinaya-music');
+  const button = document.getElementById('music-toggle');
+  if (!audio || !button || window.__orinayaMusicBound) return;
+  window.__orinayaMusicBound = true;
+
+  const label = button.querySelector('.music-label');
+  const KEY = 'orinayaMusicStateV1';
+  audio.volume = 0.18;
+  let wantsResume = false;
+
+  function readState(){
+    try { return JSON.parse(localStorage.getItem(KEY) || '{}'); }
+    catch(e){ return {}; }
+  }
+
+  function saveState(){
+    try{
+      localStorage.setItem(KEY, JSON.stringify({
+        playing: wantsResume,
+        time: Number.isFinite(audio.currentTime) ? audio.currentTime : 0,
+        updated: Date.now()
+      }));
+    }catch(e){}
+  }
+
+  function setButton(playing, resumeWanted){
+    button.classList.toggle('is-playing', playing);
+    button.setAttribute('aria-pressed', playing ? 'true' : 'false');
+
+    if (playing){
+      button.setAttribute('aria-label','Ztišit atmosféru');
+      if (label) label.textContent = 'Ztišit atmosféru';
+    }else if (resumeWanted){
+      button.setAttribute('aria-label','Pokračovat v atmosféře');
+      if (label) label.textContent = 'Pokračovat v atmosféře';
+    }else{
+      button.setAttribute('aria-label','Pustit atmosféru');
+      if (label) label.textContent = 'Pustit atmosféru';
+    }
+  }
+
+  function restoreTime(state){
+    const t = Number(state.time || 0);
+    if (!Number.isFinite(t) || t <= 0) return;
+
+    try{
+      if (Number.isFinite(audio.duration) && audio.duration > 0){
+        audio.currentTime = t % audio.duration;
+      }else{
+        audio.currentTime = t;
+      }
+    }catch(e){}
+  }
+
+  async function restorePlayback(state){
+    wantsResume = !!state.playing;
+    restoreTime(state);
+
+    if (!wantsResume){
+      setButton(false, false);
+      return;
+    }
+
+    try{
+      await audio.play();
+      setButton(true, false);
+    }catch(e){
+      /* Autoplay může prohlížeč zablokovat. Stav ale zachováme,
+         aby stačilo jediné klepnutí na "Pokračovat v atmosféře". */
+      setButton(false, true);
+    }
+
+    saveState();
+  }
+
+  const initialState = readState();
+  wantsResume = !!initialState.playing;
+
+  if (audio.readyState >= 1){
+    restorePlayback(initialState);
+  }else{
+    audio.addEventListener('loadedmetadata', function(){
+      restorePlayback(initialState);
+    }, {once:true});
+  }
+
+  button.addEventListener('click', async function(){
+    if (audio.paused){
+      wantsResume = true;
+      try{
+        await audio.play();
+        setButton(true, false);
+      }catch(e){
+        setButton(false, true);
+      }
+      saveState();
+    }else{
+      wantsResume = false;
+      audio.pause();
+      setButton(false, false);
+      saveState();
+    }
+  });
+
+  audio.addEventListener('timeupdate', function(){
+    if (wantsResume) saveState();
+  });
+
+  audio.addEventListener('play', function(){
+    wantsResume = true;
+    setButton(true, false);
+    saveState();
+  });
+
+  audio.addEventListener('pause', function(){
+    /* Při odchodu ze stránky nechceme přepsat záměr pokračovat.
+       Ruční pauzu řeší klik na tlačítko výše. */
+    saveState();
+  });
+
+  window.addEventListener('pagehide', saveState);
+  window.addEventListener('beforeunload', saveState);
+
+  document.addEventListener('visibilitychange', function(){
+    if (document.visibilityState === 'hidden') saveState();
+  });
+
+  /* Důležité pro Back/Forward cache:
+     po návratu tlačítkem Zpět znovu načteme uloženou pozici a pokračujeme. */
+  window.addEventListener('pageshow', function(){
+    const state = readState();
+    wantsResume = !!state.playing;
+
+    if (audio.readyState >= 1){
+      restorePlayback(state);
+    }else{
+      audio.addEventListener('loadedmetadata', function(){
+        restorePlayback(state);
+      }, {once:true});
+    }
   });
 })();
 </script>

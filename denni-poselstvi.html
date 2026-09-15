@@ -212,9 +212,10 @@ main{
 
 .intro-board{
   position:relative;
-  width:min(calc(100% + 24px),900px);
-  margin:0 auto;
-  left:50%;
+  width:min(900px,88vw);
+  margin-left:50%;
+  margin-right:0;
+  left:auto;
   transform:translateX(-50%);
   border-radius:24px;
   overflow:hidden;
@@ -425,7 +426,12 @@ footer{
     margin-top:2px;
   }
   .soul-mark{width:94px;height:94px;margin-bottom:24px}
-  .intro-board{border-radius:18px}
+  .intro-board{
+    width:min(calc(100% + 24px),900px);
+    margin-left:50%;
+    margin-right:0;
+    border-radius:18px;
+  }
   .image-shell{width:min(78vw,330px)}
   .card-image,.loading{border-radius:18px}
   .actions{gap:9px}

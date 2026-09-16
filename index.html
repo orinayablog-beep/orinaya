@@ -547,6 +547,30 @@ html.is-entering .orinaya-page-fade{opacity:1}
 }
 
 
+/* ===== KARTY SLUŽEB • SJEDNOCENÁ ZLATÁ LINKA ===== */
+.card .cta-link:after{
+  width:100%;
+  transform:none;
+  transform-origin:left center;
+  background:linear-gradient(90deg,var(--gold),rgba(215,170,87,.45));
+  box-shadow:0 0 8px rgba(215,170,87,.18);
+}
+.card .cta-link:hover:after{
+  width:100%;
+  transform:none;
+  background:linear-gradient(90deg,#f1d79b,#d7aa57);
+  box-shadow:0 0 10px rgba(215,170,87,.38);
+}
+@media(hover:none){
+  .card .cta-link:hover:after{
+    width:100%;
+    transform:none;
+    background:linear-gradient(90deg,var(--gold),rgba(215,170,87,.45));
+    box-shadow:0 0 8px rgba(215,170,87,.18);
+  }
+}
+
+
 
 /* ===== HERO TLAČÍTKA • TEXTOVÝ OVERLAY ===== */
 .hero .hero-label{

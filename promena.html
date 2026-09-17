@@ -820,14 +820,132 @@ html.is-entering .orinaya-page-fade{
   @media(min-width:700px){.orinaya-inapp-overlay{place-items:center}}
 </style>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-30D01JS6TE"></script>
-<script>
+
+<!-- ORINAYA • Google Consent Mode v2 + Google Analytics -->
+<style id="orinaya-cookie-consent-style">
+  .orinaya-cookie-banner[hidden],.orinaya-cookie-settings[hidden]{display:none!important}
+  .orinaya-cookie-banner{
+    position:fixed;left:0;right:0;bottom:0;z-index:100000;
+    padding:14px;
+    background:linear-gradient(180deg,rgba(8,6,17,.18),rgba(8,6,17,.88) 24%,rgba(8,6,17,.98));
+    font-family:"Montserrat",Arial,sans-serif;
+  }
+  .orinaya-cookie-card{
+    width:min(920px,calc(100vw - 28px));margin:0 auto;
+    padding:18px 20px;border:1px solid rgba(215,170,87,.34);border-radius:22px;
+    background:rgba(12,8,22,.97);box-shadow:0 20px 55px rgba(0,0,0,.46);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    display:flex;align-items:center;justify-content:space-between;gap:22px;
+  }
+  .orinaya-cookie-copy{max-width:610px}
+  .orinaya-cookie-title{margin:0 0 6px;color:#ead9b8;font-family:"Cormorant Garamond",Georgia,serif;font-size:24px;font-weight:400}
+  .orinaya-cookie-text{margin:0;color:#d8ced7;font-size:11px;line-height:1.65}
+  .orinaya-cookie-text a{color:#e2bd73;text-decoration:underline;text-underline-offset:3px}
+  .orinaya-cookie-actions{display:flex;gap:9px;flex-wrap:wrap;justify-content:flex-end;flex:0 0 auto}
+  .orinaya-cookie-btn,.orinaya-cookie-settings{
+    appearance:none;-webkit-appearance:none;border-radius:999px;cursor:pointer;
+    font-family:"Montserrat",Arial,sans-serif;font-weight:500;text-transform:uppercase;letter-spacing:.11em;
+  }
+  .orinaya-cookie-btn{padding:11px 15px;font-size:8px;border:1px solid rgba(215,170,87,.45);background:transparent;color:#ead9b8}
+  .orinaya-cookie-btn.accept{background:linear-gradient(135deg,#ecd18d,#d7aa57);border-color:transparent;color:#160d1b}
+  .orinaya-cookie-btn:hover{transform:translateY(-1px)}
+  .orinaya-cookie-settings{
+    position:fixed;left:14px;bottom:14px;z-index:9990;padding:8px 11px;
+    border:1px solid rgba(215,170,87,.28);background:rgba(8,6,17,.80);color:#bdaeae;font-size:7px;
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:.72
+  }
+  .orinaya-cookie-settings:hover{opacity:1;color:#ead9b8}
+  @media(max-width:720px){
+    .orinaya-cookie-banner{padding:10px}
+    .orinaya-cookie-card{display:block;padding:17px 17px 16px;border-radius:20px}
+    .orinaya-cookie-title{font-size:22px}
+    .orinaya-cookie-text{font-size:10px}
+    .orinaya-cookie-actions{margin-top:14px;justify-content:flex-start}
+    .orinaya-cookie-btn{padding:10px 13px}
+  }
+</style>
+<script id="orinaya-google-consent">
+(function(){
+  var GA_ID = 'G-30D01JS6TE';
+  var KEY = 'orinayaAnalyticsConsentV1';
+
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-30D01JS6TE');
+  window.gtag = window.gtag || function(){ dataLayer.push(arguments); };
+
+  // Consent Mode v2: analytika je ve výchozím stavu zamítnutá.
+  gtag('consent','default',{
+    analytics_storage:'denied',
+    ad_storage:'denied',
+    ad_user_data:'denied',
+    ad_personalization:'denied',
+    wait_for_update:500
+  });
+  gtag('set','ads_data_redaction',true);
+
+  var loaded = false;
+  function loadGoogleAnalytics(){
+    if(loaded || document.querySelector('script[data-orinaya-ga]')) return;
+    loaded = true;
+    gtag('js',new Date());
+    gtag('config',GA_ID);
+    var s=document.createElement('script');
+    s.async=true;
+    s.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(GA_ID);
+    s.setAttribute('data-orinaya-ga','1');
+    document.head.appendChild(s);
+  }
+
+  function removeAnalyticsCookies(){
+    try{
+      var host=location.hostname;
+      var domains=[''];
+      var parts=host.split('.');
+      for(var i=0;i<parts.length-1;i++) domains.push('.'+parts.slice(i).join('.'));
+      document.cookie.split(';').forEach(function(item){
+        var name=item.split('=')[0].trim();
+        if(!/^(_ga|_gid|_gat)/.test(name)) return;
+        domains.forEach(function(domain){
+          var d=domain ? '; domain='+domain : '';
+          document.cookie=name+'=; Max-Age=0; path=/; SameSite=Lax'+d;
+        });
+      });
+    }catch(e){}
+  }
+
+  function accept(){
+    gtag('consent','update',{
+      analytics_storage:'granted',
+      ad_storage:'denied',
+      ad_user_data:'denied',
+      ad_personalization:'denied'
+    });
+    loadGoogleAnalytics();
+  }
+
+  function reject(){
+    gtag('consent','update',{
+      analytics_storage:'denied',
+      ad_storage:'denied',
+      ad_user_data:'denied',
+      ad_personalization:'denied'
+    });
+    removeAnalyticsCookies();
+  }
+
+  function read(){ try{return localStorage.getItem(KEY);}catch(e){return null;} }
+  function write(v){ try{localStorage.setItem(KEY,v);}catch(e){} }
+
+  window.OrinayaCookieConsent={
+    accept:function(){write('accepted');accept();},
+    reject:function(){write('rejected');reject();},
+    state:read
+  };
+
+  if(read()==='accepted') accept();
+  else reject();
+})();
 </script>
+
 </head>
 <body>
 
@@ -1351,5 +1469,47 @@ html.is-entering .orinaya-page-fade{
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
+
+<!-- ORINAYA • Cookie consent -->
+<div class="orinaya-cookie-banner" id="orinayaCookieBanner" hidden role="dialog" aria-modal="false" aria-labelledby="orinayaCookieTitle">
+  <div class="orinaya-cookie-card">
+    <div class="orinaya-cookie-copy">
+      <div class="orinaya-cookie-title" id="orinayaCookieTitle">Cookies &amp; soukromí</div>
+      <p class="orinaya-cookie-text">Vercel Analytics používám pro základní anonymní statistiky bez cookies. Google Analytics spustím až po tvém souhlasu, abych viděla, co na webu funguje a co můžu zlepšit. <a href="/ochrana-osobnich-udaju.html">Více o soukromí</a>.</p>
+    </div>
+    <div class="orinaya-cookie-actions">
+      <button class="orinaya-cookie-btn" id="orinayaCookieReject" type="button">Odmítnout analytiku</button>
+      <button class="orinaya-cookie-btn accept" id="orinayaCookieAccept" type="button">Přijmout analytiku</button>
+    </div>
+  </div>
+</div>
+<button class="orinaya-cookie-settings" id="orinayaCookieSettings" type="button" hidden aria-label="Změnit nastavení cookies">Cookies</button>
+<script id="orinaya-cookie-ui">
+(function(){
+  var banner=document.getElementById('orinayaCookieBanner');
+  var settings=document.getElementById('orinayaCookieSettings');
+  var acceptBtn=document.getElementById('orinayaCookieAccept');
+  var rejectBtn=document.getElementById('orinayaCookieReject');
+  if(!banner || !settings || !window.OrinayaCookieConsent) return;
+
+  function state(){ return window.OrinayaCookieConsent.state(); }
+  function showBanner(){ banner.hidden=false; settings.hidden=true; }
+  function hideBanner(){ banner.hidden=true; settings.hidden=false; }
+
+  if(state()==='accepted' || state()==='rejected') hideBanner();
+  else showBanner();
+
+  acceptBtn.addEventListener('click',function(){
+    window.OrinayaCookieConsent.accept();
+    hideBanner();
+  });
+  rejectBtn.addEventListener('click',function(){
+    window.OrinayaCookieConsent.reject();
+    hideBanner();
+  });
+  settings.addEventListener('click',showBanner);
+})();
+</script>
+
 </body>
 </html>

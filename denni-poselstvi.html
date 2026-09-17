@@ -517,6 +517,15 @@ footer{
 .share-status:empty{display:none}
 
 </style>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-30D01JS6TE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-30D01JS6TE');
+</script>
 </head>
 
 <body>
@@ -764,7 +773,7 @@ function showResult(card,restore=false){
   const hint = document.getElementById("hint");
   hint.textContent = restore
     ? "Tahle karta tě dnes provází. Novou si budeš moct vytáhnout zase po půlnoci."
-    : "Polož si dnešní otázku a nech ji otevřenou. Nemusíš hledat odpověď ani kontrolovat, kdy přijde. Jen si všímej, co se během dne objeví.";
+    : "";
 
   setTimeout(() => {
     result.scrollIntoView({behavior:"smooth",block:"start"});
@@ -1261,5 +1270,11 @@ prepareDeck();
 })();
 </script>
 
+
+<!-- Vercel Web Analytics -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

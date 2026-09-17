@@ -763,6 +763,15 @@ html.is-entering .orinaya-page-fade{
   .orinaya-inapp-note{margin-top:12px!important;color:#a99dad!important;font-size:10px!important;min-height:16px}
   @media(min-width:700px){.orinaya-inapp-overlay{place-items:center}}
 </style>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-30D01JS6TE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-30D01JS6TE');
+</script>
 </head>
 
 <body>
@@ -1185,5 +1194,11 @@ Kdo má zůstat, zůstane. A kdo ne – ten nikdy zůstat neměl.</p>
   }
 })();
 </script>
+
+<!-- Vercel Web Analytics -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

@@ -36,6 +36,15 @@ footer{border-top:1px solid var(--line);padding:54px 22px 40px;text-align:center
 .music-toggle{position:fixed;right:22px;bottom:22px;z-index:9990;display:flex;align-items:center;gap:9px;padding:10px 14px;border:1px solid rgba(215,170,87,.34);border-radius:999px;background:rgba(8,6,17,.78);color:#ead9b8;font:400 9px/1 "Montserrat",Arial,sans-serif;letter-spacing:.13em;text-transform:uppercase;backdrop-filter:blur(12px);cursor:pointer}.music-icon{width:18px;height:18px;display:grid;place-items:center;border:1px solid rgba(215,170,87,.32);border-radius:50%}
 @media(max-width:760px){.service-grid,.contact-block{grid-template-columns:1fr}.service-hero{padding:52px 0 46px}.service-section{padding:50px 0}.service-nav{padding:22px 0}.price strong{font-size:30px}.music-toggle{right:14px;bottom:14px}}
 </style>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-30D01JS6TE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-30D01JS6TE');
+</script>
 </head><body>
 <audio id="orinaya-music" src="./orinaya-piano.mp3" preload="metadata" loop></audio>
 <button class="music-toggle" id="music-toggle" type="button" aria-label="Pustit atmosféru" aria-pressed="false">
@@ -175,4 +184,10 @@ footer{border-top:1px solid var(--line);padding:54px 22px 40px;text-align:center
   });
 })();
 </script>
+
+<!-- Vercel Web Analytics -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body></html>

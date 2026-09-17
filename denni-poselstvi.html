@@ -272,6 +272,7 @@ main{
   text-transform:uppercase;
   margin-bottom:20px;
 }
+.result-label:empty{display:none}
 
 /* zmenšená výsledná karta */
 .image-shell{
@@ -805,7 +806,7 @@ document.querySelectorAll(".hotspot").forEach(button => {
 flipBtn.addEventListener("click",() => {
   if(!selected) return;
 
-  resultLabel.textContent = "Otázka, kterou můžeš dnes nechat otevřenou";
+  resultLabel.textContent = "";
   showCard(selected,"otazka");
 
   flipBtn.hidden = true;

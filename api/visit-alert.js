@@ -7,7 +7,12 @@ module.exports = async function handler(req, res) {
   const chatId = process.env.TELEGRAM_CHAT_ID;
 
   if (!token || !chatId) {
-    return res.status(500).json({ ok: false, error: "Missing environment variables" });
+    console.error("Missing environment variables");
+
+    return res.status(500).json({
+      ok: false,
+      error: "Missing environment variables"
+    });
   }
 
   const path =
@@ -17,6 +22,7 @@ module.exports = async function handler(req, res) {
 
   function decodeHeader(value) {
     if (!value) return "Neznámé";
+
     try {
       return decodeURIComponent(value);
     } catch {
@@ -42,17 +48,43 @@ module.exports = async function handler(req, res) {
         },
         body: JSON.stringify({
           chat_id: chatId,
-          text
+          text: text
         })
       }
     );
 
     if (!response.ok) {
-      return res.status(502).json({ ok: false });
+      const telegramError = await response.text();
+
+      console.error(
+        "Telegram error:",
+        response.status,
+        telegramError
+      );
+
+      return res.status(502).json({
+        ok: false,
+        telegramStatus: response.status
+      });
     }
 
-    return res.status(200).json({ ok: true });
+    const telegramResponse = await response.json();
+
+    console.log(
+      "Telegram message sent:",
+      telegramResponse.ok
+    );
+
+    return res.status(200).json({
+      ok: true
+    });
+
   } catch (error) {
-    return res.status(500).json({ ok: false });
+    console.error("Visit alert error:", error);
+
+    return res.status(500).json({
+      ok: false,
+      error: "Internal server error"
+    });
   }
 };

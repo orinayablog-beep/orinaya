@@ -1753,6 +1753,34 @@ C 1461.3 563.5, 1482.7 536.2, 1504 527
   settings.addEventListener('click',showBanner);
 })();
 </script>
+<script>
+(function () {
+  function sendVisitAlert() {
+    if (localStorage.getItem('orinayaAnalyticsConsentV1') !== 'accepted') return;
 
+    const key = 'orinayaVisitAlert:' + location.pathname;
+    if (sessionStorage.getItem(key)) return;
+
+    sessionStorage.setItem(key, '1');
+
+    fetch('/api/visit-alert', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        path: location.pathname
+      }),
+      keepalive: true
+    }).catch(() => {});
+  }
+
+  sendVisitAlert();
+
+  document.addEventListener('click', function () {
+    setTimeout(sendVisitAlert, 150);
+  }, { passive: true });
+})();
+</script>
 </body>
 </html>

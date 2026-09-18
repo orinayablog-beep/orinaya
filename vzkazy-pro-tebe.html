@@ -785,8 +785,8 @@ footer{
 
       <div class="input-group">
         <label for="message">Tvůj vzkaz</label>
-        <textarea id="message" maxlength="500" required placeholder="Napiš svůj vzkaz…"></textarea>
-        <div class="counter"><span id="count">0</span> / 500</div>
+        <textarea id="message" maxlength="200" required placeholder="Napiš svůj vzkaz…"></textarea>
+        <div class="counter"><span id="count">0</span> / 200</div>
       </div>
 
       <div class="symbol-label">Můžeš přidat i malý symbol:</div>
@@ -1011,7 +1011,7 @@ document.querySelectorAll(".symbol-btn").forEach(btn => {
     const spacer = before && !/\s$/.test(before) ? " " : "";
     const next = before + spacer + symbol + after;
 
-    messageArea.value = next.slice(0,500);
+    messageArea.value = next.slice(0,200);
     count.textContent = messageArea.value.length;
 
     const pos = Math.min(
@@ -1633,6 +1633,5 @@ initResponsiveHero();
 })();
 </script>
 
-<script src="/visit-radar.js"></script>
 </body>
 </html>

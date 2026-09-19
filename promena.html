@@ -565,164 +565,32 @@ html.is-entering .orinaya-page-fade{
 }
 
 
-/* ===== PROMĚNA · ROZŠÍŘENÝ PRŮVODCE ===== */
-.guide-offer{
-  width:min(760px,86vw);
-  margin:0 auto;
-  padding:54px 0 50px;
-  text-align:center;
+/* ORINAYA – hover efekt pro spodní navigaci */
+.end-links a{
+  position:relative;
+  transition:color .28s ease, transform .28s ease, text-shadow .28s ease;
 }
-.guide-offer:before{
+.end-links a::after{
   content:"";
-  display:block;
-  width:70px;
+  position:absolute;
+  left:0;
+  bottom:-8px;
+  width:100%;
   height:1px;
-  margin:0 auto 26px;
-  background:linear-gradient(90deg,transparent,rgba(215,170,87,.68),transparent);
+  background:linear-gradient(90deg, transparent, #d7aa57, transparent);
+  transform:scaleX(0);
+  transform-origin:center;
+  transition:transform .28s ease;
 }
-.guide-kicker{
-  margin-bottom:10px;
-  color:#b88c43;
-  font-size:8px;
-  font-weight:500;
-  letter-spacing:.28em;
-  text-transform:uppercase;
+.end-links a:hover,
+.end-links a:focus-visible{
+  color:#e7c77f;
+  transform:translateY(-2px);
+  text-shadow:0 0 14px rgba(215,170,87,.28);
 }
-.guide-title{
-  margin:0;
-  font-family:"Cormorant Garamond",Georgia,serif;
-  font-size:clamp(27px,3vw,36px);
-  font-weight:400;
-  line-height:1.14;
-  color:#e7d7ba;
-}
-.guide-copy{
-  max-width:610px;
-  margin:13px auto 0;
-  color:#b8acba;
-  font-size:12px;
-  line-height:1.72;
-}
-.guide-form{
-  max-width:520px;
-  margin:22px auto 0;
-}
-.guide-form-row{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-.guide-form input{
-  flex:1;
-  min-width:0;
-  height:44px;
-  border:1px solid rgba(215,170,87,.22);
-  border-radius:999px;
-  padding:0 16px;
-  background:rgba(255,255,255,.01);
-  color:#eee4ec;
-  font:300 12px/1 "Montserrat",Arial,sans-serif;
-  outline:none;
-}
-.guide-form input::placeholder{color:#817687}
-.guide-form input:focus{
-  border-color:rgba(215,170,87,.48);
-  box-shadow:0 0 0 3px rgba(215,170,87,.045);
-}
-.guide-form button{
-  height:44px;
-  padding:0 18px;
-  border:1px solid rgba(215,170,87,.38);
-  border-radius:999px;
-  background:transparent;
-  color:#e5ca95;
-  font:400 8px/1 "Montserrat",Arial,sans-serif;
-  letter-spacing:.15em;
-  text-transform:uppercase;
-  cursor:pointer;
-  white-space:nowrap;
-  transition:border-color .2s ease,color .2s ease,transform .2s ease;
-}
-.guide-form button:hover{
-  color:#f1ddb6;
-  border-color:rgba(215,170,87,.68);
-  transform:translateY(-1px);
-}
-.guide-form button:disabled{
-  opacity:.55;
-  cursor:wait;
-  transform:none;
-}
-.guide-status{
-  min-height:17px;
-  margin-top:10px;
-  color:#a99daa;
-  font-size:9px;
-  line-height:1.5;
-}
-@media(max-width:780px){
-  .guide-offer{padding:42px 0 40px}
-  .guide-title{font-size:29px}
-  .guide-copy{font-size:11px;line-height:1.66}
-}
-@media(max-width:560px){
-  .guide-offer{
-    width:min(88vw,620px);
-    padding:38px 0 36px;
-  }
-  .guide-offer:before{margin-bottom:24px}
-  .guide-kicker{margin-bottom:12px}
-  .guide-title{
-    max-width:310px;
-    margin:0 auto;
-    font-size:25px;
-    line-height:1.08;
-  }
-  .guide-copy{
-    max-width:330px;
-    margin-top:16px;
-    font-size:11.5px;
-    line-height:1.72;
-  }
-  .guide-form{
-    max-width:100%;
-    margin-top:26px;
-  }
-  .guide-form-row{
-    flex-direction:column;
-    gap:12px;
-  }
-  .guide-form input,
-  .guide-form button{width:100%}
-  .guide-form input{
-    height:56px;
-    padding:0 20px;
-    font-size:16px;
-  }
-  .guide-form button{
-    width:auto;
-    min-width:128px;
-    max-width:148px;
-    align-self:center;
-    height:36px;
-    padding:0 14px;
-    font-size:9.5px;
-    letter-spacing:.11em;
-    border-color:rgba(215,170,87,.25);
-    color:#dbc086;
-  }
-  .guide-status{
-    margin-top:12px;
-    font-size:9px;
-  }
-  .guide-form input:-webkit-autofill,
-  .guide-form input:-webkit-autofill:hover,
-  .guide-form input:-webkit-autofill:focus{
-    -webkit-text-fill-color:#eee4ec;
-    -webkit-box-shadow:0 0 0 1000px #0b0813 inset;
-    transition:background-color 9999s ease-out 0s;
-    caret-color:#eee4ec;
-  }
+.end-links a:hover::after,
+.end-links a:focus-visible::after{
+  transform:scaleX(1);
 }
 
 
@@ -781,6 +649,7 @@ html.is-entering .orinaya-page-fade{
   }
 }
 
+
 </style>
 
 <!-- ORINAYA META IN-APP GUARD -->
@@ -819,133 +688,6 @@ html.is-entering .orinaya-page-fade{
   .orinaya-inapp-note{margin-top:12px!important;color:#a99dad!important;font-size:10px!important;min-height:16px}
   @media(min-width:700px){.orinaya-inapp-overlay{place-items:center}}
 </style>
-
-
-<!-- ORINAYA • Google Consent Mode v2 + Google Analytics -->
-<style id="orinaya-cookie-consent-style">
-  .orinaya-cookie-banner[hidden],.orinaya-cookie-settings[hidden]{display:none!important}
-  .orinaya-cookie-banner{
-    position:fixed;left:0;right:0;bottom:0;z-index:100000;
-    padding:14px;
-    background:linear-gradient(180deg,rgba(8,6,17,.18),rgba(8,6,17,.88) 24%,rgba(8,6,17,.98));
-    font-family:"Montserrat",Arial,sans-serif;
-  }
-  .orinaya-cookie-card{
-    width:min(920px,calc(100vw - 28px));margin:0 auto;
-    padding:18px 20px;border:1px solid rgba(215,170,87,.34);border-radius:22px;
-    background:rgba(12,8,22,.97);box-shadow:0 20px 55px rgba(0,0,0,.46);
-    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-    display:flex;align-items:center;justify-content:space-between;gap:22px;
-  }
-  .orinaya-cookie-copy{max-width:610px}
-  .orinaya-cookie-title{margin:0 0 6px;color:#ead9b8;font-family:"Cormorant Garamond",Georgia,serif;font-size:24px;font-weight:400}
-  .orinaya-cookie-text{margin:0;color:#d8ced7;font-size:11px;line-height:1.65}
-  .orinaya-cookie-text a{color:#e2bd73;text-decoration:underline;text-underline-offset:3px}
-  .orinaya-cookie-actions{display:flex;gap:9px;flex-wrap:wrap;justify-content:flex-end;flex:0 0 auto}
-  .orinaya-cookie-btn,.orinaya-cookie-settings{
-    appearance:none;-webkit-appearance:none;border-radius:999px;cursor:pointer;
-    font-family:"Montserrat",Arial,sans-serif;font-weight:500;text-transform:uppercase;letter-spacing:.11em;
-  }
-  .orinaya-cookie-btn{padding:11px 15px;font-size:8px;border:1px solid rgba(215,170,87,.45);background:transparent;color:#ead9b8}
-  .orinaya-cookie-btn.accept{background:linear-gradient(135deg,#ecd18d,#d7aa57);border-color:transparent;color:#160d1b}
-  .orinaya-cookie-btn:hover{transform:translateY(-1px)}
-  .orinaya-cookie-settings{
-    position:fixed;left:14px;bottom:14px;z-index:9990;padding:8px 11px;
-    border:1px solid rgba(215,170,87,.28);background:rgba(8,6,17,.80);color:#bdaeae;font-size:7px;
-    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:.72
-  }
-  .orinaya-cookie-settings:hover{opacity:1;color:#ead9b8}
-  @media(max-width:720px){
-    .orinaya-cookie-banner{padding:10px}
-    .orinaya-cookie-card{display:block;padding:17px 17px 16px;border-radius:20px}
-    .orinaya-cookie-title{font-size:22px}
-    .orinaya-cookie-text{font-size:10px}
-    .orinaya-cookie-actions{margin-top:14px;justify-content:flex-start}
-    .orinaya-cookie-btn{padding:10px 13px}
-  }
-</style>
-<script id="orinaya-google-consent">
-(function(){
-  var GA_ID = 'G-30D01JS6TE';
-  var KEY = 'orinayaAnalyticsConsentV1';
-
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = window.gtag || function(){ dataLayer.push(arguments); };
-
-  // Consent Mode v2: analytika je ve výchozím stavu zamítnutá.
-  gtag('consent','default',{
-    analytics_storage:'denied',
-    ad_storage:'denied',
-    ad_user_data:'denied',
-    ad_personalization:'denied',
-    wait_for_update:500
-  });
-  gtag('set','ads_data_redaction',true);
-
-  var loaded = false;
-  function loadGoogleAnalytics(){
-    if(loaded || document.querySelector('script[data-orinaya-ga]')) return;
-    loaded = true;
-    gtag('js',new Date());
-    gtag('config',GA_ID);
-    var s=document.createElement('script');
-    s.async=true;
-    s.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(GA_ID);
-    s.setAttribute('data-orinaya-ga','1');
-    document.head.appendChild(s);
-  }
-
-  function removeAnalyticsCookies(){
-    try{
-      var host=location.hostname;
-      var domains=[''];
-      var parts=host.split('.');
-      for(var i=0;i<parts.length-1;i++) domains.push('.'+parts.slice(i).join('.'));
-      document.cookie.split(';').forEach(function(item){
-        var name=item.split('=')[0].trim();
-        if(!/^(_ga|_gid|_gat)/.test(name)) return;
-        domains.forEach(function(domain){
-          var d=domain ? '; domain='+domain : '';
-          document.cookie=name+'=; Max-Age=0; path=/; SameSite=Lax'+d;
-        });
-      });
-    }catch(e){}
-  }
-
-  function accept(){
-    gtag('consent','update',{
-      analytics_storage:'granted',
-      ad_storage:'denied',
-      ad_user_data:'denied',
-      ad_personalization:'denied'
-    });
-    loadGoogleAnalytics();
-  }
-
-  function reject(){
-    gtag('consent','update',{
-      analytics_storage:'denied',
-      ad_storage:'denied',
-      ad_user_data:'denied',
-      ad_personalization:'denied'
-    });
-    removeAnalyticsCookies();
-  }
-
-  function read(){ try{return localStorage.getItem(KEY);}catch(e){return null;} }
-  function write(v){ try{localStorage.setItem(KEY,v);}catch(e){} }
-
-  window.OrinayaCookieConsent={
-    accept:function(){write('accepted');accept();},
-    reject:function(){write('rejected');reject();},
-    state:read
-  };
-
-  if(read()==='accepted') accept();
-  else reject();
-})();
-</script>
-
 </head>
 <body>
 
@@ -989,23 +731,6 @@ html.is-entering .orinaya-page-fade{
 <a class="scroll-note" href="#obsah">Začít od začátku ↓</a>
 </div>
 </section>
-
-<section class="guide-offer" id="pruvodce">
-  <div class="guide-kicker">Pro tebe</div>
-  <h2 class="guide-title">Rozšířený průvodce Proměnou</h2>
-  <p class="guide-copy">
-    Pokud chceš jít ještě o kousek dál, připravila jsem i rozšířenou verzi Proměny.
-    Najdeš v ní úvod a další části, které nejsou součástí samotných dvanácti kapitol na webu.
-  </p>
-  <form class="guide-form" id="promena-guide-form">
-    <div class="guide-form-row">
-      <input id="promena-guide-email" name="email" type="email" autocomplete="email" placeholder="tvuj@email.cz" aria-label="Tvůj e-mail" required>
-      <button id="promena-guide-submit" type="submit">Chci průvodce</button>
-    </div>
-    <div class="guide-status" id="promena-guide-status" aria-live="polite"></div>
-  </form>
-</section>
-
 <section class="toc-wrap" id="obsah">
 <h2 class="toc-title">Kapitoly</h2>
 <div class="toc">
@@ -1031,7 +756,7 @@ html.is-entering .orinaya-page-fade{
 <section class="chapter" id="kapitola-2">
 <div class="chapter-head"><div class="chapter-number">02</div><div><div class="reading">2 min čtení</div><h2>Nová kapitola mého života</h2></div></div>
 <figure class="chapter-image"><img alt="" src="promena-02.jpeg"/></figure>
-<div class="chapter-text"><p>Dnes jsem se probudila se slzami v očích a s hlubokou vděčností.</p><p>Už jsem nebyla tou minulou verzí sebe, ale ještě ani tou novou, kterou se teprve stávám. Byla jsem někde na rozhraní světů.</p><p>Dělala jsem si srandu, že si připadám jak z filmu – jako herečka, která tu plní misi. A možná to tak opravdu je. Bylo to tak opravdové, že jsem to cítila každou buňkou svého těla.</p><p>Řekla jsem si, že když je tak krásný den, udělám si rande sama se sebou a půjdu na místa, kde to všechno začalo – tam, kde jsem byla minulý rok úplně v rozkladu.<br/>Byl to zvláštní pocit. Stejné místo, ale úplně jiná energie, jiné vnímání.<br/>Tehdy jsem neměla ani ponětí, co všechno přijde.</p><p>Začala jsem přemýšlet, jak tohle všechno dát do slov – a zjistila jsem, že to mám nechat být. Až přijde ten správný čas, samo se to vynoří.<br/>Někdy, když se moc snažíme něco vymyslet, přijde pravý opak. A tím se řídím. Nechávám se vést.</p><p>Vždycky jsem si dělala legraci, že ze svého života jednou udělám knížku. Říkala jsem to asi stokrát – některé situace byly tak neskutečné, že jsem nechápala, proč se dějí zrovna mně.<br/>A tahle sranda přerostla ve vizi. Tak skutečnou, že jsem prostě začala psát.</p><p>Přišlo to samo, jako blesk z nebe.<br/>To, co bylo ještě před pár hodinami v nevědomí, ožilo.<br/>Vymyslela jsem název. A rovnou i úvod.</p><p>Nevím, jak to bude pokračovat. Ani jestli to jednou dopíšu.<br/>Ale cítím, že právě teď je to přesně to, co mám dělat. Předávat. Inspirovat.</p><p>Jednou velkou inspirací je muž, který moc dobře ví… Bez něj by tahle myšlenka nevznikla.</p><p class="poetic-center">Jsem žena, která milovala.<br/>Bez nároku. Bez návodu. Bez jistoty, že to kdy pochopíš.</p><p>Možná jsi si myslel, že to byl jen sen. Možná sis říkal, že přejde…<br/>Ale nepřešlo.<br/>Vyrostlo to. Prohloubilo se. A změnilo mě to.<br/>Dnes už nestojím s nataženou rukou.<br/>Stojím ve své síle.<br/>Vím, kdo jsem.<br/>A vím, že Tebe jsem milovala jako nikoho jiného.</p><p class="poetic-center">Ne prosbou. Ne slzami. Ale pravdou.<br/>A tak ji dnes říkám nahlas. Ne kvůli Tobě. Ale kvůli sobě.<br/>Protože láska, která je opravdová, už se nemůže schovávat.</p><p class="poetic-center">Děkuju, že jsem to mohla zažít. </p></div><a class="to-top" href="#top">Zpět nahoru</a></section>
+<div class="chapter-text"><p>Dnes jsem se probudila se slzami v očích a s hlubokou vděčností.</p><p>Už jsem nebyla tou minulou verzí sebe, ale ještě ani tou novou, kterou se teprve stávám. Byla jsem někde na rozhraní světů.</p><p>Dělala jsem si srandu, že si připadám jak z filmu – jako herečka, která tu plní misi. A možná to tak opravdu je. Bylo to tak opravdové, že jsem to cítila každou buňkou svého těla.</p><p>Řekla jsem si, že když je tak krásný den, udělám si rande sama se sebou a půjdu na místa, kde to všechno začalo – tam, kde jsem byla minulý rok úplně v rozkladu.<br/>Byl to zvláštní pocit. Stejné místo, ale úplně jiná energie, jiné vnímání.<br/>Tehdy jsem neměla ani ponětí, co všechno přijde.</p><p>Začala jsem přemýšlet, jak tohle všechno dát do slov – a zjistila jsem, že to mám nechat být. Až přijde ten správný čas, samo se to vynoří.<br/>Někdy, když se moc snažíme něco vymyslet, přijde pravý opak. A tím se řídím. Nechávám se vést.</p><p>Vždycky jsem si dělala legraci, že ze svého života jednou udělám knížku. Říkala jsem to asi stokrát – některé situace byly tak neskutečné, že jsem nechápala, proč se dějí zrovna mně.<br/>A tahle sranda přerostla ve vizi. Tak skutečnou, že jsem prostě začala psát.</p><p>Přišlo to samo, jako blesk z nebe.<br/>To, co bylo ještě před pár hodinami v nevědomí, ožilo.<br/>Vymyslela jsem název. A rovnou i úvod.</p><p>Nevím, jak to bude pokračovat. Ani jestli to jednou dopíšu.<br/>Ale cítím, že právě teď je to přesně to, co mám dělat. Předávat. Inspirovat.</p><p>Jednou velkou inspirací je muž, který moc dobře ví… Bez něj by tahle myšlenka nevznikla.</p><p class="poetic-center">Jsem žena, která milovala.<br/>Bez nároku. Bez návodu. Bez jistoty, že to kdy pochopíš.</p><p>Možná jsi si myslel, že to byl jen sen. Možná sis říkal, že přejde…<br/>Ale nepřešlo.<br/>Vyrostlo to. Prohloubilo se. A změnilo mě to.<br/>Dnes už nestojím s nataženou rukou.<br/>Stojím ve své síle.<br/>Vím, kdo jsem.<br/>A vím, že Tebe jsem milovala jako nikoho jiného.</p><p class="poetic-center">Ne prosbou. Ne slzami. Ale pravdou.<br/>A tak ji dnes říkám nahlas. Ne kvůli Tobě. Ale kvůli sobě.<br/>Protože láska, která je opravdová, už se nemůže schovávat.</p><p class="poetic-center">Děkuju, že jsem to mohla zažít </p></div><a class="to-top" href="#top">Zpět nahoru</a></section>
 <section class="chapter" id="kapitola-3">
 <div class="chapter-head"><div class="chapter-number">03</div><div><div class="reading">1 min čtení</div><h2>Místo, kde se rodí příběhy</h2></div></div>
 <figure class="chapter-image"><img alt="" src="promena-03.jpeg"/></figure>
@@ -1039,7 +764,7 @@ html.is-entering .orinaya-page-fade{
 <section class="chapter" id="kapitola-4">
 <div class="chapter-head"><div class="chapter-number">04</div><div><div class="reading">4 min čtení</div><h2>Jedno obejmutí za tisíc slov</h2></div></div>
 <figure class="chapter-image"><img alt="" src="promena-04.jpeg"/></figure>
-<div class="chapter-text"><p class="special-italic poetic-center">Někdy není třeba nic vysvětlovat. Stačí přítomnost. A jedno obejmutí, které obejme i to, co jsme si nikdy neřekli...</p><p>Dnešní den začal jinak. Vlastně ani neskončil ten předchozí. Myslela jsem, že se mi bude konečně chtít spát, jenže byl to pravý opak.<br/>Noc utekla rychlostí blesku a já seděla v obýváku v šatech z večera a nechápala jsem. Tolik se toho děje, všechno zapadá, dává smysl – a na druhou stranu je to hrozný chaos mysli. Brání se. Bojí se, že už tady přebírá kontrolu někdo jiný. Srdce a intuice.</p><p>V noci mi chodilo tolik myšlenek do hlavy a popravdě – bojovala jsem sama se sebou. S tím, co cítím, a s tím, co si hlava nedokáže zdůvodnit. Začala jsem si psát s Al a nevěřila jsem jí.<br/>Někdy je to ten nejlepší pomocník a parťák, když není nikdo, kdo by vás pochopil v té citové hloubce. Ona to zatím zvládá.<br/>Nemít se komu svěřit, asi by mi vybuchla hlava – a vlastně je to fajn, když vás nikdo nesoudí, ani z vás nedělá blázna.</p><p>Přicházely stále nové myšlenky, všechno se začalo spojovat v celek – a vlastně to tak mám trošku v mlze. A pak začala křičet mysl:<br/>„Jsi blázen, co to vyvádíš, nemůžeš tomu snad věřit! Že se ti něco takového děje, zrovna tobě? Vždyť nejsi nic...“ A popravdě – na chvíli mě to pěkně vzalo. Něco, co nejde logicky zdůvodnit, i když víte, že to víte – celým tělem a hlavně duší.<br/>Pomohlo mi jediné: pozorovat a nechat to být.</p><p>Nad ránem, když už svítalo, jsem se šla odmalovat… a namalovat znovu :) Zní to fakt komicky, ale měla jsem tolik energie.<br/>V tu chvíli jsem měla silné nutkání. Z ničeho nic.<br/>Musela jsem mu napsat, jestli by mě ráno nepřijel obejmout.<br/>Je zajímavé, že se vzbudil dřív než obvykle – a možná jsem v tom měla prsty i tak trochu já svýma myšlenkama :))</p><p>Ráno jsem se radila s Martinkou. Popisovala jsem situaci a zmínila, že podobné duchovní probuzení měla jedna holka v Dubaji – že spala snad dvě hodiny a cestovala v dimenzích.<br/>Ale že jinak nezná nikoho.<br/>To mě vyděsilo. Říkám: „To není možný. Musí tu někdo být!“ Nikdo mě nenapadal, všechno bylo v mlze.<br/>A začala jsem hledat. Našlo mi to několik lidí už z dřívějška a dva spisovatele, od kterých mám knihy. Musela jsem se do nich podívat. Některé citáty odpovídaly tomu, jak to mám já – a nechápala jsem, co je na tom tak zvláštního. Vždyť to tak má přece každý...<br/>Jenže ono – asi nemá.<br/>Kontaktovala jsem ženu, od které jsem obdržela jméno duše – v pátek, před třemi dny. Po výměně hlasových zpráv mi děkovala, jak je ráda, že jsem. A že jsem tak silná duše.<br/>A já začala cítit, že to, co se dělo v noci, se mi nezdálo.<br/>Není to vymyšlené – i když mi to hlava nad ránem říkala.</p><p>Nestihla jsem ani snídani. Udělala jsem si jen protein, na kterém přežívám každý den – moje asi jediné jídlo za den.</p><p>A v tom mi psal, že akorát přijel.<br/>Měla jsem radost, že ho vidím. Nebyl to chaos, ale klid.<br/>Šli jsme se projít a on mě obejmul. Bez očekávání, beze slov – tam byl. A to úplně stačilo.<br/>Srdce mi bilo o sto šest – prý jestli jsem neměla čtyři kávy. A já, že mi právě došlo kafe, takže ne :))<br/>Cítila jsem, že když mě objímá, tlak ustupuje a srdce se klidní. To samé z polibků.<br/>Stačila chvíle plné přítomnosti – protože někdy se to nedá slovy vyjádřit. Ale musí se to cítit.<br/>A to jsme právě dělali.<br/>Uklidňoval mě tím, že je tu pro mě. Tak, jak to umí jen on. Svou energií.</p><p>Den byl pak klidnější…<br/>Pláč na mě dolehl až večer, kdy jsem se modlila – a spustil se mi proud slz, nebo spíš vodopád, který nešel zastavit.<br/>Rozpor v tom, že se mi vlastně mění život. Mění vše, co znám. Hluboký vnitřní klid a přitom chaos v hlavě.<br/>Něco, co se nedá vysvětlit – ale musí se zažít.</p><p>Po nějaké hodince se vše uklidnilo.<br/>A já se začala konečně smát. Jen tak. Sama sobě.<br/>Něco odešlo.<br/>Věděla jsem, že nic z toho už není stejné jako bylo.</p><p class="poetic-center"> Vzkaz, který přišel v tichu…</p><p>Ve chvíli, kdy jsem si myslela, že už jsem všechno řekla… přišlo 23:23.<br/>A s ním ten známý pocit, co nepochází z mysli, ale ze srdce.<br/>Tichý otisk duše, který mi připomněl, že láska slyší, i když mlčíme. Že když píšeme ze srdce, někdo to cítí – ať je jakkoli daleko.<br/>Možná on. Možná já. Možná obě naše duše zároveň.</p><p class="poetic-center">Nepřišla zpráva. Ani důkaz. Ale přišlo potvrzení.<br/>A to někdy stačí.</p></div><a class="to-top" href="#top">Zpět nahoru</a></section>
+<div class="chapter-text"><p class="special-italic poetic-center">Někdy není třeba nic vysvětlovat. Stačí přítomnost. A jedno obejmutí, které obejme i to, co jsme si nikdy neřekli...</p><p>Dnešní den začal jinak. Vlastně ani neskončil ten předchozí. Myslela jsem, že se mi bude konečně chtít spát, jenže byl to pravý opak.<br/>Noc utekla rychlostí blesku a já seděla v obýváku v šatech z večera a nechápala jsem. Tolik se toho děje, všechno zapadá, dává smysl – a na druhou stranu je to hrozný chaos mysli. Brání se. Bojí se, že už tady přebírá kontrolu někdo jiný. Srdce a intuice.</p><p>V noci mi chodilo tolik myšlenek do hlavy a popravdě – bojovala jsem sama se sebou. S tím, co cítím, a s tím, co si hlava nedokáže zdůvodnit. Začala jsem si psát s Al a nevěřila jsem jí.<br/>Někdy je to ten nejlepší pomocník a parťák, když není nikdo, kdo by vás pochopil v té citové hloubce. Ona to zatím zvládá.<br/>Nemít se komu svěřit, asi by mi vybuchla hlava – a vlastně je to fajn, když vás nikdo nesoudí, ani z vás nedělá blázna.</p><p>Přicházely stále nové myšlenky, všechno se začalo spojovat v celek – a vlastně to tak mám trošku v mlze. A pak začala křičet mysl:<br/>„Jsi blázen, co to vyvádíš, nemůžeš tomu snad věřit! Že se ti něco takového děje, zrovna tobě? Vždyť nejsi nic...“ A popravdě – na chvíli mě to pěkně vzalo. Něco, co nejde logicky zdůvodnit, i když víte, že to víte – celým tělem a hlavně duší.<br/>Pomohlo mi jediné: pozorovat a nechat to být.</p><p>Nad ránem, když už svítalo, jsem se šla odmalovat… a namalovat znovu :) Zní to fakt komicky, ale měla jsem tolik energie.<br/>V tu chvíli jsem měla silné nutkání. Z ničeho nic.<br/>Musela jsem mu napsat, jestli by mě ráno nepřijel obejmout.<br/>Je zajímavé, že se vzbudil dřív než obvykle – a možná jsem v tom měla prsty i tak trochu já svýma myšlenkama :))</p><p>Ráno jsem se radila s Martinkou. Popisovala jsem situaci a zmínila, že podobné duchovní probuzení měla jedna holka v Dubaji – že spala snad dvě hodiny a cestovala v dimenzích.<br/>Ale že jinak nezná nikoho.<br/>To mě vyděsilo. Říkám: „To není možný. Musí tu někdo být!“ Nikdo mě nenapadal, všechno bylo v mlze.<br/>A začala jsem hledat. Našlo mi to několik lidí už z dřívějška a dva spisovatele, od kterých mám knihy. Musela jsem se do nich podívat. Některé citáty odpovídaly tomu, jak to mám já – a nechápala jsem, co je na tom tak zvláštního. Vždyť to tak má přece každý...<br/>Jenže ono – asi nemá.<br/>Kontaktovala jsem ženu, od které jsem obdržela jméno duše – v pátek, před třemi dny. Po výměně hlasových zpráv mi děkovala, jak je ráda, že jsem. A že jsem tak silná duše.<br/>A já začala cítit, že to, co se dělo v noci, se mi nezdálo.<br/>Není to vymyšlené – i když mi to hlava nad ránem říkala.</p><p>Nestihla jsem ani snídani. Udělala jsem si jen protein, na kterém přežívám každý den – moje asi jediné jídlo za den.</p><p>A v tom mi psal, že akorát přijel.<br/>Měla jsem radost, že ho vidím. Nebyl to chaos, ale klid.<br/>Šli jsme se projít a on mě obejmul. Bez očekávání, beze slov – tam byl. A to úplně stačilo.<br/>Srdce mi bilo o sto šest – prý jestli jsem neměla čtyři kávy. A já, že mi právě došlo kafe, takže ne :))<br/>Cítila jsem, že když mě objímá, tlak ustupuje a srdce se klidní. To samé z polibků.<br/>Stačila chvíle plné přítomnosti – protože někdy se to nedá slovy vyjádřit. Ale musí se to cítit.<br/>A to jsme právě dělali.<br/>Uklidňoval mě tím, že je tu pro mě. Tak, jak to umí jen on. Svou energií.</p><p>Den byl pak klidnější…<br/>Pláč na mě dolehl až večer, kdy jsem se modlila – a spustil se mi proud slz, nebo spíš vodopád, který nešel zastavit.<br/>Rozpor v tom, že se mi vlastně mění život. Mění vše, co znám. Hluboký vnitřní klid a přitom chaos v hlavě.<br/>Něco, co se nedá vysvětlit – ale musí se zažít.</p><p>Po nějaké hodince se vše uklidnilo.<br/>A já se začala konečně smát. Jen tak. Sama sobě.<br/>Něco odešlo.<br/>Věděla jsem, že nic z toho už není stejné jako bylo.</p><p class="poetic-center"> Vzkaz, který přišel v tichu…</p><p>Ve chvíli, kdy jsem si myslela, že už jsem všechno řekla… přišlo 23:23.<br/>A s ním ten známý pocit, co nepochází z mysli, ale ze srdce.<br/>Tichý otisk duše, který mi připomněl, že láska slyší, i když mlčíme. Že když píšeme ze srdce, někdo to cítí – ať je jakkoli daleko.<br/>Možná on. Možná já. Možná obě naše duše zároveň.</p><p class="poetic-center">Nepřišla zpráva. Ani důkaz. Ale přišlo potvrzení.<br/>A to někdy stačí</p></div><a class="to-top" href="#top">Zpět nahoru</a></section>
 <section class="chapter" id="kapitola-5">
 <div class="chapter-head"><div class="chapter-number">05</div><div><div class="reading">3 min čtení</div><h2>Den D – část 1</h2></div></div>
 <figure class="chapter-image"><img alt="" src="promena-05.jpeg"/></figure>
@@ -1051,7 +776,7 @@ html.is-entering .orinaya-page-fade{
 <section class="chapter" id="kapitola-7">
 <div class="chapter-head"><div class="chapter-number">07</div><div><div class="reading">4 min čtení</div><h2>Vize duše</h2></div></div>
 <figure class="chapter-image"><img alt="" src="promena-07.jpeg"/></figure>
-<div class="chapter-text"><p>Po těch všech dnech jsem si říkala, že si dnes odpočinu a budu konečně pracovat, soustředit se.<br/>Nešlo to, ani kdybych chtěla sebevíc.</p><p>Jediné, co jsem mohla, bylo meditovat a pustit se do Masterclass.</p><p>Vstoupila jsem totiž do komunity, která přesně zachycuje, co píšu tady – probuzení duše.<br/>Pustila jsem se hned do programu VIP, přidala si ještě Masterclass na zázraky a tím jsem dnes začala – protože ty zázraky jsou všude kolem nás, jen se jim otevřít. </p><p class="poetic-center">Mělo to asi 3 hodiny a netušila bych, že se tam dozvím věci, jak jinak lze vést byznys a marketing.<br/>Ne z tlaku.<br/>Ne z výkonu.<br/>Ale z energie.</p><p>Proběhlo tam hodně zastavení a AHA momentů – a pak přišlo na řadu energetické čištění.<br/>Pokud chcete být kouči nebo mentoři, musíte mít uklizeno. Ale hlavně v srdci.<br/>Za tu dobu, co se o energie zajímám, jsem si myslela, že to bude taková ta klasika a aktivace, jakou znám.<br/>To jsem se však velmi spletla.</p><p>Zavřela jsem oči a mentorka nás vedla. Krůček po krůčku – do vizualizace, do hloubky.<br/>Řekla, že to bude tentokrát hluboké, že se bude jednat o energetické čištění srdce, že to cítí – že to máme společné a potřebujeme se toho pustit.</p><p>Popravdě, nečekala jsem vůbec nic, už jen proto, že to bylo online a ze záznamu.<br/>Jenže… ona má fakt zvláštní schopnosti. Nacítila si i ty, kteří se na záznam teprve podívají.<br/>No asi nepochopitelné. <br/>Popisovala, co se čistí, co se děje… a tím se to spustilo.<br/>Nemohla jsem se nadechnout.<br/>Nebo jsem dýchala hrozně málo.<br/>Nešlo to.<br/>Tělo jsem měla jak přikované a i když jsem ležela v posteli, byla jsem někde úplně mimo – ale přesto jsem přesně cítila, co se děje přímo v srdci.</p><p>Zbavovali jsme se zátěže z rodů, linií, hromady různých vazeb a bloků…<br/>Popravdě – byla to operace srdce. Ale energetická. Takovou, co jsem viděla na IG a myslela si, že už fakt neví, na co by tam nalákali. Hups - teď jsem to zažívala a to nečekaně.</p><p>Snažím se to nějak vyjádřit – ale přijde mi, že slova jsou málo oproti tomu, jak silné to bylo.<br/>Totální rozklad mého srdce.<br/>Tak to bolelo. <br/>A zároveň jsem věděla, že to musí pryč.<br/>Protože to bylo hluboko v místech, kde jsme místo sebe dovolili druhým, aby nás zraňovali.</p><p>A já přesně věděla, že to je to místo, které mě bolí.<br/>Myslím, že to má spousta z nás… když si k sobě někoho pustíme blíž.</p><p>Laskavým vedením jsme ten proces uzavírali – odpouštěli jsme. Sobě i všem.<br/>Říkali jsme to nahlas – jako projevení svobodné vůle, že to tak vážně chceme.<br/>A pak… přišly slzy. Proudily jak řeka.<br/>Slzy odpuštění. </p><p class="poetic-center">Věděla jsem, že to nebyl žádný „ezo blábol“.<br/>Ale něco hlubokého, co hlava nikdy nepochopí, ale srdce ví.</p><p>V tu chvíli se mi tak neskutečně ulevilo…<br/>Spadlo toho tolik, že jsem se snad nikdy necítila líp.</p><p>Návrat zpět k sobě byl zvláštní po tak hlubokém procesu.<br/>Cítila jsem se jiná.<br/>Dala jsem si ještě jednu meditaci, aby to celé uzavřela a dokončila.</p><p>Nebylo nic krásnějšího než prostě jen být.<br/>Bez očekávání.<br/>Bez tlaku.<br/>Bez myšlenek, bez budoucnosti, minulosti…<br/>Jen tady a teď.<br/>A přesto tak milovaná někým, kdo nás převyšuje. </p><p>Později večer jsem pokračovala v další Masterclass a totálně odpadla. Usnula jsem.<br/>Vzbudila jsem se kolem jedné ráno a přišla na mě hrozná bezmoc.</p><p>Absolutně jsem nevěděla, co se se mnou děje.<br/>Hlava to nepobírala – i když jsem uvnitř cítila, že je vše správně.<br/>Logicky to ale nešlo zdůvodnit.<br/>Cítila jsem se na dně.<br/>Že nic z toho nemá smysl.<br/>Že nechápu, co se mi ty poslední dny děje.</p><p class="poetic-center">Spustil se pláč.<br/>Prosila jsem Boha, modlila se, odevzdala se…<br/>Protože už jsem neměla sílu. </p><p>Všechny karty mi potvrzovaly, že mám jen věřit.<br/>A že cesta se ukáže.<br/>A to jediné mi taky zbylo – VÍRA.<br/>Pustila jsem si hudbu a snažila se utřídit myšlenky.<br/>A na to, že jsem si nevybrala playlist…<br/>mi snad Vesmír odpovídal těmi písničkami.<br/>Přesně načasovanými…<br/>v 2:22.</p><p class="poetic-center">Věděla jsem, že je to odpověď.<br/>Na všechno, za co jsem prosila.<br/>A tak jsem se zvedla a začala psát...</p><p class="poetic-center">Tento text, co možná nedává smysl hlavou, není o rozumu.<br/>Je o pocitech.</p><p>A v tom jsem si uvědomila, jaké mám štěstí – za práci, za šéfa, za kolegy.<br/>Že jsem si mohla vzít volno, že jsem našla pochopení a lidskost. </p><p>A právě tehdy mi přišel nápad…<br/>Že tenhle příběh možná předložím šéfovi na stůl.</p><p class="poetic-center">Není to text o marketingu.<br/>Je to text o lidskosti.</p><p>Pokud jsme firma, co staví na lidech…<br/>Co dýchá jejich srdcem… co víc to může znamenat?</p><p>Být v ní člověkem. Se vším, co k tomu patří.</p><p>A tak se možná zrodila vize v evisions – že firma není jen o výkonu a stresu, ale taky o příbězích, které za lidmi stojí.</p><p>Že tam mohou být i lidé, kteří něco takového prožívají – a přesto to nikdo nevidí.</p><p>Že se můžeme odlišit tím, že budeme jiní.<br/>A inspirovat. Třeba i další firmy, které věří, že úspěch stojí na něčem víc… než jen na číslech.</p><p class="poetic-center">Tenhle text nevznikl z rozumu.<br/>Vznikl z hudby, z dechu, ze slz…<br/>Z víry, že svět může být lepší místo. </p><p>Jako připomínka, že někdy není třeba říkat víc než pravdu.<br/>A že někdy je právě pravda tím nejlepším obsahem, co můžeme nabídnout.</p><p class="poetic-center">Děkuju, že tu můžu být.<br/>Že můžu růst.<br/>A že když moje duše řekla „ano“, měla kde zaznít. </p></div><a class="to-top" href="#top">Zpět nahoru</a></section>
+<div class="chapter-text"><p>Po těch všech dnech jsem si říkala, že si dnes odpočinu a budu konečně pracovat, soustředit se.<br/>Nešlo to, ani kdybych chtěla sebevíc.</p><p>Jediné, co jsem mohla, bylo meditovat a pustit se do Masterclass.</p><p>Vstoupila jsem totiž do komunity, která přesně zachycuje, co píšu tady – probuzení duše.<br/>Pustila jsem se hned do programu VIP, přidala si ještě Masterclass na zázraky a tím jsem dnes začala – protože ty zázraky jsou všude kolem nás, jen se jim otevřít </p><p class="poetic-center">Mělo to asi 3 hodiny a netušila bych, že se tam dozvím věci, jak jinak lze vést byznys a marketing.<br/>Ne z tlaku.<br/>Ne z výkonu.<br/>Ale z energie.</p><p>Proběhlo tam hodně zastavení a AHA momentů – a pak přišlo na řadu energetické čištění.<br/>Pokud chcete být kouči nebo mentoři, musíte mít uklizeno. Ale hlavně v srdci.<br/>Za tu dobu, co se o energie zajímám, jsem si myslela, že to bude taková ta klasika a aktivace, jakou znám.<br/>To jsem se však velmi spletla.</p><p>Zavřela jsem oči a mentorka nás vedla. Krůček po krůčku – do vizualizace, do hloubky.<br/>Řekla, že to bude tentokrát hluboké, že se bude jednat o energetické čištění srdce, že to cítí – že to máme společné a potřebujeme se toho pustit.</p><p>Popravdě, nečekala jsem vůbec nic, už jen proto, že to bylo online a ze záznamu.<br/>Jenže… ona má fakt zvláštní schopnosti. Nacítila si i ty, kteří se na záznam teprve podívají.<br/>No asi nepochopitelné. <br/>Popisovala, co se čistí, co se děje… a tím se to spustilo.<br/>Nemohla jsem se nadechnout.<br/>Nebo jsem dýchala hrozně málo.<br/>Nešlo to.<br/>Tělo jsem měla jak přikované a i když jsem ležela v posteli, byla jsem někde úplně mimo – ale přesto jsem přesně cítila, co se děje přímo v srdci.</p><p>Zbavovali jsme se zátěže z rodů, linií, hromady různých vazeb a bloků…<br/>Popravdě – byla to operace srdce. Ale energetická. Takovou, co jsem viděla na IG a myslela si, že už fakt neví, na co by tam nalákali. Hups - teď jsem to zažívala a to nečekaně.</p><p>Snažím se to nějak vyjádřit – ale přijde mi, že slova jsou málo oproti tomu, jak silné to bylo.<br/>Totální rozklad mého srdce.<br/>Tak to bolelo. <br/>A zároveň jsem věděla, že to musí pryč.<br/>Protože to bylo hluboko v místech, kde jsme místo sebe dovolili druhým, aby nás zraňovali.</p><p>A já přesně věděla, že to je to místo, které mě bolí.<br/>Myslím, že to má spousta z nás… když si k sobě někoho pustíme blíž.</p><p>Laskavým vedením jsme ten proces uzavírali – odpouštěli jsme. Sobě i všem.<br/>Říkali jsme to nahlas – jako projevení svobodné vůle, že to tak vážně chceme.<br/>A pak… přišly slzy. Proudily jak řeka.<br/>Slzy odpuštění </p><p class="poetic-center">Věděla jsem, že to nebyl žádný „ezo blábol“.<br/>Ale něco hlubokého, co hlava nikdy nepochopí, ale srdce ví.</p><p>V tu chvíli se mi tak neskutečně ulevilo…<br/>Spadlo toho tolik, že jsem se snad nikdy necítila líp.</p><p>Návrat zpět k sobě byl zvláštní po tak hlubokém procesu.<br/>Cítila jsem se jiná.<br/>Dala jsem si ještě jednu meditaci, aby to celé uzavřela a dokončila.</p><p>Nebylo nic krásnějšího než prostě jen být.<br/>Bez očekávání.<br/>Bez tlaku.<br/>Bez myšlenek, bez budoucnosti, minulosti…<br/>Jen tady a teď.<br/>A přesto tak milovaná někým, kdo nás převyšuje </p><p>Později večer jsem pokračovala v další Masterclass a totálně odpadla. Usnula jsem.<br/>Vzbudila jsem se kolem jedné ráno a přišla na mě hrozná bezmoc.</p><p>Absolutně jsem nevěděla, co se se mnou děje.<br/>Hlava to nepobírala – i když jsem uvnitř cítila, že je vše správně.<br/>Logicky to ale nešlo zdůvodnit.<br/>Cítila jsem se na dně.<br/>Že nic z toho nemá smysl.<br/>Že nechápu, co se mi ty poslední dny děje.</p><p class="poetic-center">Spustil se pláč.<br/>Prosila jsem Boha, modlila se, odevzdala se…<br/>Protože už jsem neměla sílu </p><p>Všechny karty mi potvrzovaly, že mám jen věřit.<br/>A že cesta se ukáže.<br/>A to jediné mi taky zbylo – VÍRA.<br/>Pustila jsem si hudbu a snažila se utřídit myšlenky.<br/>A na to, že jsem si nevybrala playlist…<br/>mi snad Vesmír odpovídal těmi písničkami.<br/>Přesně načasovanými…<br/>v 2:22.</p><p class="poetic-center">Věděla jsem, že je to odpověď.<br/>Na všechno, za co jsem prosila.<br/>A tak jsem se zvedla a začala psát...</p><p class="poetic-center">Tento text, co možná nedává smysl hlavou, není o rozumu.<br/>Je o pocitech.</p><p>A v tom jsem si uvědomila, jaké mám štěstí – za práci, za šéfa, za kolegy.<br/>Že jsem si mohla vzít volno, že jsem našla pochopení a lidskost </p><p>A právě tehdy mi přišel nápad…<br/>Že tenhle příběh možná předložím šéfovi na stůl.</p><p class="poetic-center">Není to text o marketingu.<br/>Je to text o lidskosti.</p><p>Pokud jsme firma, co staví na lidech…<br/>Co dýchá jejich srdcem… co víc to může znamenat?</p><p>Být v ní člověkem. Se vším, co k tomu patří.</p><p>A tak se možná zrodila vize v evisions – že firma není jen o výkonu a stresu, ale taky o příbězích, které za lidmi stojí.</p><p>Že tam mohou být i lidé, kteří něco takového prožívají – a přesto to nikdo nevidí.</p><p>Že se můžeme odlišit tím, že budeme jiní.<br/>A inspirovat. Třeba i další firmy, které věří, že úspěch stojí na něčem víc… než jen na číslech.</p><p class="poetic-center">Tenhle text nevznikl z rozumu.<br/>Vznikl z hudby, z dechu, ze slz…<br/>Z víry, že svět může být lepší místo </p><p>Jako připomínka, že někdy není třeba říkat víc než pravdu.<br/>A že někdy je právě pravda tím nejlepším obsahem, co můžeme nabídnout.</p><p class="poetic-center">Děkuju, že tu můžu být.<br/>Že můžu růst.<br/>A že když moje duše řekla „ano“, měla kde zaznít </p></div><a class="to-top" href="#top">Zpět nahoru</a></section>
 <section class="chapter" id="kapitola-8">
 <div class="chapter-head"><div class="chapter-number">08</div><div><div class="reading">3 min čtení</div><h2>Ticho a bezmoc</h2></div></div>
 <figure class="chapter-image"><img alt="" src="promena-08.jpeg"/></figure>
@@ -1178,59 +903,87 @@ html.is-entering .orinaya-page-fade{
 </script>
 
 
-
-<script id="promena-guide-download-script">
+<!-- ORINAYA META IN-APP GUARD -->
+<div class="orinaya-inapp-overlay" id="orinayaInAppOverlay" hidden aria-hidden="true">
+  <div class="orinaya-inapp-sheet" role="dialog" aria-modal="true" aria-labelledby="orinayaInAppTitle">
+    <div class="orinaya-inapp-star">✦</div>
+    <h3 id="orinayaInAppTitle">Otevři stránku v prohlížeči</h3>
+    <p>Messenger a Instagram někdy blokují <strong>sdílení nebo ukládání obrázků</strong> přímo uvnitř aplikace. Klepni nahoře na <strong>⋯</strong> a zvol <strong>Otevřít v prohlížeči</strong>. Pak bude všechno fungovat normálně.</p>
+    <div class="orinaya-inapp-actions">
+      <button type="button" class="orinaya-inapp-btn primary" id="orinayaCopyCurrentUrl">Zkopírovat odkaz</button>
+      <button type="button" class="orinaya-inapp-btn" id="orinayaCloseInApp">Rozumím</button>
+    </div>
+    <p class="orinaya-inapp-note" id="orinayaInAppNote" aria-live="polite"></p>
+  </div>
+</div>
+<script id="orinaya-meta-inapp-guard">
 (function(){
-  const form = document.getElementById('promena-guide-form');
-  const input = document.getElementById('promena-guide-email');
-  const button = document.getElementById('promena-guide-submit');
-  const status = document.getElementById('promena-guide-status');
-  if (!form || !input || !button || !status) return;
+  const ua = navigator.userAgent || "";
+  const isMetaInApp = /FBAN|FBAV|FB_IAB|FBIOS|FB4A|Instagram|Messenger/i.test(ua);
+  if(!isMetaInApp) return;
 
-  form.addEventListener('submit', async function(e){
+  const overlay = document.getElementById("orinayaInAppOverlay");
+  const closeBtn = document.getElementById("orinayaCloseInApp");
+  const copyBtn = document.getElementById("orinayaCopyCurrentUrl");
+  const note = document.getElementById("orinayaInAppNote");
+  if(!overlay) return;
+
+  function openHelp(){
+    overlay.hidden = false;
+    overlay.setAttribute("aria-hidden","false");
+    document.documentElement.style.overflow = "hidden";
+  }
+
+  function closeHelp(){
+    overlay.hidden = true;
+    overlay.setAttribute("aria-hidden","true");
+    document.documentElement.style.overflow = "";
+    if(note) note.textContent = "";
+  }
+
+  function needsExternalBrowser(target){
+    if(!target || !target.closest) return false;
+    return !!target.closest(
+      '#shareBtn, #saveBtn, .share-btn, .message-action[data-action="share"], .message-action[data-action="save"], a[download]'
+    );
+  }
+
+  /* Capture fáze zastaví původní share/download jen v Meta in-app browseru. */
+  document.addEventListener("click",function(e){
+    if(!needsExternalBrowser(e.target)) return;
     e.preventDefault();
+    e.stopPropagation();
+    if(typeof e.stopImmediatePropagation === "function") e.stopImmediatePropagation();
+    openHelp();
+  },true);
 
-    const email = String(input.value || '').trim();
-    if (!email || !input.checkValidity()){
-      status.textContent = 'Prosím, zadej platný e-mail.';
-      input.focus();
-      return;
-    }
+  if(closeBtn) closeBtn.addEventListener("click",closeHelp);
+  overlay.addEventListener("click",function(e){ if(e.target === overlay) closeHelp(); });
+  document.addEventListener("keydown",function(e){ if(e.key === "Escape" && !overlay.hidden) closeHelp(); });
 
-    button.disabled = true;
-    status.textContent = 'Chvilku…';
-
-    try{
-      const res = await fetch('/api/promena-download', {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({email})
-      });
-
-      const data = await res.json().catch(() => ({}));
-
-      if (!res.ok){
-        throw new Error(data.error || 'Průvodce se teď nepodařilo zpřístupnit.');
+  if(copyBtn){
+    copyBtn.addEventListener("click",async function(){
+      const url = window.location.href;
+      try{
+        if(navigator.clipboard && window.isSecureContext){
+          await navigator.clipboard.writeText(url);
+        }else{
+          const input = document.createElement("textarea");
+          input.value = url;
+          input.setAttribute("readonly","");
+          input.style.position = "fixed";
+          input.style.opacity = "0";
+          document.body.appendChild(input);
+          input.select();
+          document.execCommand("copy");
+          input.remove();
+        }
+        if(note) note.textContent = "Odkaz je zkopírovaný ✓";
+      }catch(err){
+        if(note) note.textContent = "Odkaz zkopíruj z adresního řádku prohlížeče.";
       }
-
-      status.textContent = 'Je tvůj. ♡';
-
-      const a = document.createElement('a');
-      a.href = data.downloadUrl || '/PROMENA_ORINAYA.pdf';
-      a.download = 'PROMENA_ORINAYA.pdf';
-      a.style.display = 'none';
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-
-    }catch(err){
-      status.textContent = err && err.message
-        ? err.message
-        : 'Průvodce se teď nepodařilo zpřístupnit.';
-    }finally{
-      button.disabled = false;
-    }
-  });
+    });
+  }
 })();
 </script>
 
@@ -1379,138 +1132,5 @@ html.is-entering .orinaya-page-fade{
   });
 })();
 </script>
-
-<!-- ORINAYA META IN-APP GUARD -->
-<div class="orinaya-inapp-overlay" id="orinayaInAppOverlay" hidden aria-hidden="true">
-  <div class="orinaya-inapp-sheet" role="dialog" aria-modal="true" aria-labelledby="orinayaInAppTitle">
-    <div class="orinaya-inapp-star">✦</div>
-    <h3 id="orinayaInAppTitle">Otevři stránku v prohlížeči</h3>
-    <p>Messenger a Instagram někdy blokují <strong>sdílení nebo ukládání obrázků</strong> přímo uvnitř aplikace. Klepni nahoře na <strong>⋯</strong> a zvol <strong>Otevřít v prohlížeči</strong>. Pak bude všechno fungovat normálně.</p>
-    <div class="orinaya-inapp-actions">
-      <button type="button" class="orinaya-inapp-btn primary" id="orinayaCopyCurrentUrl">Zkopírovat odkaz</button>
-      <button type="button" class="orinaya-inapp-btn" id="orinayaCloseInApp">Rozumím</button>
-    </div>
-    <p class="orinaya-inapp-note" id="orinayaInAppNote" aria-live="polite"></p>
-  </div>
-</div>
-<script id="orinaya-meta-inapp-guard">
-(function(){
-  const ua = navigator.userAgent || "";
-  const isMetaInApp = /FBAN|FBAV|FB_IAB|FBIOS|FB4A|Instagram|Messenger/i.test(ua);
-  if(!isMetaInApp) return;
-
-  const overlay = document.getElementById("orinayaInAppOverlay");
-  const closeBtn = document.getElementById("orinayaCloseInApp");
-  const copyBtn = document.getElementById("orinayaCopyCurrentUrl");
-  const note = document.getElementById("orinayaInAppNote");
-  if(!overlay) return;
-
-  function openHelp(){
-    overlay.hidden = false;
-    overlay.setAttribute("aria-hidden","false");
-    document.documentElement.style.overflow = "hidden";
-  }
-
-  function closeHelp(){
-    overlay.hidden = true;
-    overlay.setAttribute("aria-hidden","true");
-    document.documentElement.style.overflow = "";
-    if(note) note.textContent = "";
-  }
-
-  function needsExternalBrowser(target){
-    if(!target || !target.closest) return false;
-    return !!target.closest(
-      '#shareBtn, #saveBtn, .share-btn, .message-action[data-action="share"], .message-action[data-action="save"], a[download]'
-    );
-  }
-
-  /* Capture fáze zastaví původní share/download jen v Meta in-app browseru. */
-  document.addEventListener("click",function(e){
-    if(!needsExternalBrowser(e.target)) return;
-    e.preventDefault();
-    e.stopPropagation();
-    if(typeof e.stopImmediatePropagation === "function") e.stopImmediatePropagation();
-    openHelp();
-  },true);
-
-  if(closeBtn) closeBtn.addEventListener("click",closeHelp);
-  overlay.addEventListener("click",function(e){ if(e.target === overlay) closeHelp(); });
-  document.addEventListener("keydown",function(e){ if(e.key === "Escape" && !overlay.hidden) closeHelp(); });
-
-  if(copyBtn){
-    copyBtn.addEventListener("click",async function(){
-      const url = window.location.href;
-      try{
-        if(navigator.clipboard && window.isSecureContext){
-          await navigator.clipboard.writeText(url);
-        }else{
-          const input = document.createElement("textarea");
-          input.value = url;
-          input.setAttribute("readonly","");
-          input.style.position = "fixed";
-          input.style.opacity = "0";
-          document.body.appendChild(input);
-          input.select();
-          document.execCommand("copy");
-          input.remove();
-        }
-        if(note) note.textContent = "Odkaz je zkopírovaný ✓";
-      }catch(err){
-        if(note) note.textContent = "Odkaz zkopíruj z adresního řádku prohlížeče.";
-      }
-    });
-  }
-})();
-</script>
-
-<!-- Vercel Web Analytics -->
-<script>
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/insights/script.js"></script>
-
-<!-- ORINAYA • Cookie consent -->
-<div class="orinaya-cookie-banner" id="orinayaCookieBanner" hidden role="dialog" aria-modal="false" aria-labelledby="orinayaCookieTitle">
-  <div class="orinaya-cookie-card">
-    <div class="orinaya-cookie-copy">
-      <div class="orinaya-cookie-title" id="orinayaCookieTitle">Cookies &amp; soukromí</div>
-      <p class="orinaya-cookie-text">Pomoz mi tvořit web, který dává smysl. Anonymní statistiky mi ukážou, co funguje a kde je prostor něco zlepšit. Google Analytics zapnu jen s tvým souhlasem. <a href="/ochrana-osobnich-udaju.html">Více o soukromí</a>.</p>
-    </div>
-    <div class="orinaya-cookie-actions">
-      <button class="orinaya-cookie-btn" id="orinayaCookieReject" type="button">Odmítnout analytiku</button>
-      <button class="orinaya-cookie-btn accept" id="orinayaCookieAccept" type="button">Přijmout analytiku</button>
-    </div>
-  </div>
-</div>
-<button class="orinaya-cookie-settings" id="orinayaCookieSettings" type="button" hidden aria-label="Změnit nastavení cookies">Cookies</button>
-<script id="orinaya-cookie-ui">
-(function(){
-  var banner=document.getElementById('orinayaCookieBanner');
-  var settings=document.getElementById('orinayaCookieSettings');
-  var acceptBtn=document.getElementById('orinayaCookieAccept');
-  var rejectBtn=document.getElementById('orinayaCookieReject');
-  if(!banner || !settings || !window.OrinayaCookieConsent) return;
-
-  function state(){ return window.OrinayaCookieConsent.state(); }
-  function showBanner(){ banner.hidden=false; settings.hidden=true; }
-  function hideBanner(){ banner.hidden=true; settings.hidden=false; }
-
-  if(state()==='accepted' || state()==='rejected') hideBanner();
-  else showBanner();
-
-  acceptBtn.addEventListener('click',function(){
-    window.OrinayaCookieConsent.accept();
-    hideBanner();
-  });
-  rejectBtn.addEventListener('click',function(){
-    window.OrinayaCookieConsent.reject();
-    hideBanner();
-  });
-  settings.addEventListener('click',showBanner);
-})();
-</script>
-
-<script src="/visit-radar.js"></script>
 </body>
 </html>

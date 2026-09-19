@@ -153,6 +153,42 @@ footer{border-top:1px solid var(--line);padding:50px 22px 40px;text-align:center
 })();
 </script>
 
+
+<style id="orinaya-meta-inapp-style">
+  .orinaya-inapp-overlay[hidden]{display:none!important}
+  .orinaya-inapp-overlay{
+    position:fixed;inset:0;z-index:99999;display:grid;place-items:end center;
+    padding:18px;background:rgba(5,3,10,.66);backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px)
+  }
+  .orinaya-inapp-sheet{
+    width:min(520px,100%);padding:26px 24px 22px;border-radius:26px;
+    border:1px solid rgba(215,170,87,.34);
+    background:linear-gradient(160deg,rgba(20,12,31,.98),rgba(9,6,17,.99));
+    box-shadow:0 24px 70px rgba(0,0,0,.55),0 0 34px rgba(215,170,87,.08);
+    color:#f3ebf2;text-align:center;font-family:"Montserrat",Arial,sans-serif
+  }
+  .orinaya-inapp-star{color:#d7aa57;font-size:22px;line-height:1;margin-bottom:10px}
+  .orinaya-inapp-sheet h3{
+    margin:0 0 12px;color:#ead9b8;font-family:"Cormorant Garamond",Georgia,serif;
+    font-size:30px;font-weight:400;line-height:1.08
+  }
+  .orinaya-inapp-sheet p{
+    margin:0 auto;color:#d8ced7;font-size:13px;line-height:1.75;max-width:430px
+  }
+  .orinaya-inapp-sheet strong{color:#f1d79b;font-weight:500}
+  .orinaya-inapp-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px}
+  .orinaya-inapp-btn{
+    border:1px solid rgba(215,170,87,.42);border-radius:999px;padding:11px 17px;
+    background:transparent;color:#ead9b8;font:500 10px/1 "Montserrat",Arial,sans-serif;
+    letter-spacing:.12em;text-transform:uppercase;cursor:pointer
+  }
+  .orinaya-inapp-btn.primary{
+    background:linear-gradient(135deg,#ecd18d,#d7aa57);color:#160d1b;border-color:transparent
+  }
+  .orinaya-inapp-note{margin-top:12px!important;color:#a99dad!important;font-size:10px!important;min-height:16px}
+  @media(min-width:700px){.orinaya-inapp-overlay{place-items:center}}
+</style>
 </head><body>
 <audio id="orinaya-music" src="./orinaya-piano.mp3" preload="metadata" loop></audio>
 <button class="music-toggle" id="music-toggle" type="button" aria-label="Pustit atmosféru" aria-pressed="false">
@@ -346,5 +382,88 @@ footer{border-top:1px solid var(--line);padding:50px 22px 40px;text-align:center
 })();
 </script>
 
-<script src="/visit-radar.js"></script>
+
+<!-- ORINAYA META IN-APP GUARD -->
+<div class="orinaya-inapp-overlay" id="orinayaInAppOverlay" hidden aria-hidden="true">
+  <div class="orinaya-inapp-sheet" role="dialog" aria-modal="true" aria-labelledby="orinayaInAppTitle">
+    <div class="orinaya-inapp-star">✦</div>
+    <h3 id="orinayaInAppTitle">Otevři stránku v prohlížeči</h3>
+    <p>Messenger a Instagram někdy blokují <strong>sdílení nebo ukládání obrázků</strong> přímo uvnitř aplikace. Klepni nahoře na <strong>⋯</strong> a zvol <strong>Otevřít v prohlížeči</strong>. Pak bude všechno fungovat normálně.</p>
+    <div class="orinaya-inapp-actions">
+      <button type="button" class="orinaya-inapp-btn primary" id="orinayaCopyCurrentUrl">Zkopírovat odkaz</button>
+      <button type="button" class="orinaya-inapp-btn" id="orinayaCloseInApp">Rozumím</button>
+    </div>
+    <p class="orinaya-inapp-note" id="orinayaInAppNote" aria-live="polite"></p>
+  </div>
+</div>
+<script id="orinaya-meta-inapp-guard">
+(function(){
+  const ua = navigator.userAgent || "";
+  const isMetaInApp = /FBAN|FBAV|FB_IAB|FBIOS|FB4A|Instagram|Messenger/i.test(ua);
+  if(!isMetaInApp) return;
+
+  const overlay = document.getElementById("orinayaInAppOverlay");
+  const closeBtn = document.getElementById("orinayaCloseInApp");
+  const copyBtn = document.getElementById("orinayaCopyCurrentUrl");
+  const note = document.getElementById("orinayaInAppNote");
+  if(!overlay) return;
+
+  function openHelp(){
+    overlay.hidden = false;
+    overlay.setAttribute("aria-hidden","false");
+    document.documentElement.style.overflow = "hidden";
+  }
+
+  function closeHelp(){
+    overlay.hidden = true;
+    overlay.setAttribute("aria-hidden","true");
+    document.documentElement.style.overflow = "";
+    if(note) note.textContent = "";
+  }
+
+  function needsExternalBrowser(target){
+    if(!target || !target.closest) return false;
+    return !!target.closest(
+      '#shareBtn, #saveBtn, .share-btn, .message-action[data-action="share"], .message-action[data-action="save"], a[download]'
+    );
+  }
+
+  /* Capture fáze zastaví původní share/download jen v Meta in-app browseru. */
+  document.addEventListener("click",function(e){
+    if(!needsExternalBrowser(e.target)) return;
+    e.preventDefault();
+    e.stopPropagation();
+    if(typeof e.stopImmediatePropagation === "function") e.stopImmediatePropagation();
+    openHelp();
+  },true);
+
+  if(closeBtn) closeBtn.addEventListener("click",closeHelp);
+  overlay.addEventListener("click",function(e){ if(e.target === overlay) closeHelp(); });
+  document.addEventListener("keydown",function(e){ if(e.key === "Escape" && !overlay.hidden) closeHelp(); });
+
+  if(copyBtn){
+    copyBtn.addEventListener("click",async function(){
+      const url = window.location.href;
+      try{
+        if(navigator.clipboard && window.isSecureContext){
+          await navigator.clipboard.writeText(url);
+        }else{
+          const input = document.createElement("textarea");
+          input.value = url;
+          input.setAttribute("readonly","");
+          input.style.position = "fixed";
+          input.style.opacity = "0";
+          document.body.appendChild(input);
+          input.select();
+          document.execCommand("copy");
+          input.remove();
+        }
+        if(note) note.textContent = "Odkaz je zkopírovaný ✓";
+      }catch(err){
+        if(note) note.textContent = "Odkaz zkopíruj z adresního řádku prohlížeče.";
+      }
+    });
+  }
+})();
+</script>
 </body></html>

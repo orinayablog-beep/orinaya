@@ -951,6 +951,35 @@ html.is-entering .orinaya-page-fade{opacity:1}
   }
 }
 
+
+/* ORINAYA – hover pro footer odkazy */
+.socials a{
+  position:relative;
+  transition:color .25s ease,text-shadow .25s ease,transform .25s ease;
+}
+.socials a:after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-7px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#d7aa57,transparent);
+  transform:scaleX(0);
+  transform-origin:center;
+  transition:transform .25s ease;
+}
+.socials a:hover,
+.socials a:focus-visible{
+  color:#f1d79b;
+  text-shadow:0 0 12px rgba(215,170,87,.34);
+  transform:translateY(-1px);
+}
+.socials a:hover:after,
+.socials a:focus-visible:after{
+  transform:scaleX(1);
+}
+
 </style>
 
 <!-- ORINAYA META IN-APP GUARD -->

@@ -562,6 +562,40 @@ footer{
   align-self:start !important;
 }
 
+
+/* ORINAYA – aktivní footer odkazy + jemná spirála */
+.socials a{
+  position:relative;
+  transition:color .25s ease,text-shadow .25s ease,transform .25s ease;
+}
+.socials a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-7px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#d7aa57,transparent);
+  transform:scaleX(0);
+  transition:transform .25s ease;
+}
+.socials a:hover,
+.socials a:focus-visible{
+  color:#f1d79b;
+  text-shadow:0 0 12px rgba(215,170,87,.34);
+  transform:translateY(-1px);
+}
+.socials a:hover::after,
+.socials a:focus-visible::after{transform:scaleX(1)}
+.footer-spiral{
+  width:54px;
+  height:54px;
+  margin:26px auto 2px;
+  opacity:.58;
+  filter:drop-shadow(0 0 8px rgba(215,170,87,.16));
+}
+.footer-spiral svg{display:block;width:100%;height:100%}
+
 </style>
 
 <!-- ORINAYA META IN-APP GUARD -->
@@ -849,6 +883,14 @@ footer{
   <div class="socials">
     <a href="https://www.instagram.com/orinaya.energy" target="_blank" rel="noopener">Instagram</a>
     <a href="https://www.facebook.com/share/1EFY1Sjqfv/" target="_blank" rel="noopener">Facebook</a>
+  </div>
+
+  <div class="footer-spiral" aria-hidden="true">
+    <svg viewBox="0 0 64 64" fill="none">
+      <path d="M32 8c13.25 0 24 10.75 24 24S45.25 56 32 56 8 45.25 8 32c0-10.49 8.51-19 19-19 8.28 0 15 6.72 15 15 0 6.63-5.37 12-12 12-5.3 0-9.6-4.3-9.6-9.6 0-4.24 3.44-7.68 7.68-7.68 3.39 0 6.14 2.75 6.14 6.14"
+        stroke="#d7aa57" stroke-width="1.15" stroke-linecap="round"/>
+      <circle cx="34.2" cy="28.9" r="1.6" fill="#f1d79b"/>
+    </svg>
   </div>
   <div class="copy">© 2026 ORINAYA</div>
 </footer>

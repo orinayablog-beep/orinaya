@@ -565,32 +565,164 @@ html.is-entering .orinaya-page-fade{
 }
 
 
-/* ORINAYA – hover efekt pro spodní navigaci */
-.end-links a{
-  position:relative;
-  transition:color .28s ease, transform .28s ease, text-shadow .28s ease;
+/* ===== PROMĚNA · ROZŠÍŘENÝ PRŮVODCE ===== */
+.guide-offer{
+  width:min(760px,86vw);
+  margin:0 auto;
+  padding:54px 0 50px;
+  text-align:center;
 }
-.end-links a::after{
+.guide-offer:before{
   content:"";
-  position:absolute;
-  left:0;
-  bottom:-8px;
-  width:100%;
+  display:block;
+  width:70px;
   height:1px;
-  background:linear-gradient(90deg, transparent, #d7aa57, transparent);
-  transform:scaleX(0);
-  transform-origin:center;
-  transition:transform .28s ease;
+  margin:0 auto 26px;
+  background:linear-gradient(90deg,transparent,rgba(215,170,87,.68),transparent);
 }
-.end-links a:hover,
-.end-links a:focus-visible{
-  color:#e7c77f;
-  transform:translateY(-2px);
-  text-shadow:0 0 14px rgba(215,170,87,.28);
+.guide-kicker{
+  margin-bottom:10px;
+  color:#b88c43;
+  font-size:8px;
+  font-weight:500;
+  letter-spacing:.28em;
+  text-transform:uppercase;
 }
-.end-links a:hover::after,
-.end-links a:focus-visible::after{
-  transform:scaleX(1);
+.guide-title{
+  margin:0;
+  font-family:"Cormorant Garamond",Georgia,serif;
+  font-size:clamp(27px,3vw,36px);
+  font-weight:400;
+  line-height:1.14;
+  color:#e7d7ba;
+}
+.guide-copy{
+  max-width:610px;
+  margin:13px auto 0;
+  color:#b8acba;
+  font-size:12px;
+  line-height:1.72;
+}
+.guide-form{
+  max-width:520px;
+  margin:22px auto 0;
+}
+.guide-form-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.guide-form input{
+  flex:1;
+  min-width:0;
+  height:44px;
+  border:1px solid rgba(215,170,87,.22);
+  border-radius:999px;
+  padding:0 16px;
+  background:rgba(255,255,255,.01);
+  color:#eee4ec;
+  font:300 12px/1 "Montserrat",Arial,sans-serif;
+  outline:none;
+}
+.guide-form input::placeholder{color:#817687}
+.guide-form input:focus{
+  border-color:rgba(215,170,87,.48);
+  box-shadow:0 0 0 3px rgba(215,170,87,.045);
+}
+.guide-form button{
+  height:44px;
+  padding:0 18px;
+  border:1px solid rgba(215,170,87,.38);
+  border-radius:999px;
+  background:transparent;
+  color:#e5ca95;
+  font:400 8px/1 "Montserrat",Arial,sans-serif;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  cursor:pointer;
+  white-space:nowrap;
+  transition:border-color .2s ease,color .2s ease,transform .2s ease;
+}
+.guide-form button:hover{
+  color:#f1ddb6;
+  border-color:rgba(215,170,87,.68);
+  transform:translateY(-1px);
+}
+.guide-form button:disabled{
+  opacity:.55;
+  cursor:wait;
+  transform:none;
+}
+.guide-status{
+  min-height:17px;
+  margin-top:10px;
+  color:#a99daa;
+  font-size:9px;
+  line-height:1.5;
+}
+@media(max-width:780px){
+  .guide-offer{padding:42px 0 40px}
+  .guide-title{font-size:29px}
+  .guide-copy{font-size:11px;line-height:1.66}
+}
+@media(max-width:560px){
+  .guide-offer{
+    width:min(88vw,620px);
+    padding:38px 0 36px;
+  }
+  .guide-offer:before{margin-bottom:24px}
+  .guide-kicker{margin-bottom:12px}
+  .guide-title{
+    max-width:310px;
+    margin:0 auto;
+    font-size:25px;
+    line-height:1.08;
+  }
+  .guide-copy{
+    max-width:330px;
+    margin-top:16px;
+    font-size:11.5px;
+    line-height:1.72;
+  }
+  .guide-form{
+    max-width:100%;
+    margin-top:26px;
+  }
+  .guide-form-row{
+    flex-direction:column;
+    gap:12px;
+  }
+  .guide-form input,
+  .guide-form button{width:100%}
+  .guide-form input{
+    height:56px;
+    padding:0 20px;
+    font-size:16px;
+  }
+  .guide-form button{
+    width:auto;
+    min-width:128px;
+    max-width:148px;
+    align-self:center;
+    height:36px;
+    padding:0 14px;
+    font-size:9.5px;
+    letter-spacing:.11em;
+    border-color:rgba(215,170,87,.25);
+    color:#dbc086;
+  }
+  .guide-status{
+    margin-top:12px;
+    font-size:9px;
+  }
+  .guide-form input:-webkit-autofill,
+  .guide-form input:-webkit-autofill:hover,
+  .guide-form input:-webkit-autofill:focus{
+    -webkit-text-fill-color:#eee4ec;
+    -webkit-box-shadow:0 0 0 1000px #0b0813 inset;
+    transition:background-color 9999s ease-out 0s;
+    caret-color:#eee4ec;
+  }
 }
 
 
@@ -649,6 +781,33 @@ html.is-entering .orinaya-page-fade{
   }
 }
 
+
+
+/* ORINAYA – hover spodní navigace */
+.end-links a{
+  position:relative;
+  transition:color .28s ease, transform .28s ease, text-shadow .28s ease;
+}
+.end-links a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-8px;
+  width:100%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#d7aa57,transparent);
+  transform:scaleX(0);
+  transform-origin:center;
+  transition:transform .28s ease;
+}
+.end-links a:hover,
+.end-links a:focus-visible{
+  color:#e7c77f;
+  transform:translateY(-2px);
+  text-shadow:0 0 14px rgba(215,170,87,.28);
+}
+.end-links a:hover::after,
+.end-links a:focus-visible::after{transform:scaleX(1)}
 
 </style>
 
@@ -731,6 +890,23 @@ html.is-entering .orinaya-page-fade{
 <a class="scroll-note" href="#obsah">Začít od začátku ↓</a>
 </div>
 </section>
+
+<section class="guide-offer" id="pruvodce">
+  <div class="guide-kicker">Pro tebe</div>
+  <h2 class="guide-title">Rozšířený průvodce Proměnou</h2>
+  <p class="guide-copy">
+    Pokud chceš jít ještě o kousek dál, připravila jsem i rozšířenou verzi Proměny.<br>
+    Najdeš v ní úvod a další části, které nejsou součástí samotných dvanácti kapitol na webu.
+  </p>
+  <form class="guide-form" id="promena-guide-form">
+    <div class="guide-form-row">
+      <input id="promena-guide-email" name="email" type="email" autocomplete="email" placeholder="tvuj@email.cz" aria-label="Tvůj e-mail" required>
+      <button id="promena-guide-submit" type="submit">Chci průvodce</button>
+    </div>
+    <div class="guide-status" id="promena-guide-status" aria-live="polite"></div>
+  </form>
+</section>
+
 <section class="toc-wrap" id="obsah">
 <h2 class="toc-title">Kapitoly</h2>
 <div class="toc">
@@ -902,6 +1078,62 @@ html.is-entering .orinaya-page-fade{
 })();
 </script>
 
+
+
+<script id="promena-guide-download-script">
+(function(){
+  const form = document.getElementById('promena-guide-form');
+  const input = document.getElementById('promena-guide-email');
+  const button = document.getElementById('promena-guide-submit');
+  const status = document.getElementById('promena-guide-status');
+  if (!form || !input || !button || !status) return;
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+
+    const email = String(input.value || '').trim();
+    if (!email || !input.checkValidity()){
+      status.textContent = 'Prosím, zadej platný e-mail.';
+      input.focus();
+      return;
+    }
+
+    button.disabled = true;
+    status.textContent = 'Chvilku…';
+
+    try{
+      const res = await fetch('/api/promena-download', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({email})
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok){
+        throw new Error(data.error || 'Průvodce se teď nepodařilo zpřístupnit.');
+      }
+
+      status.textContent = 'Je tvůj. ♡';
+
+      const a = document.createElement('a');
+      a.href = data.downloadUrl || '/PROMENA_ORINAYA.pdf';
+      a.download = 'PROMENA_ORINAYA.pdf';
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+
+    }catch(err){
+      status.textContent = err && err.message
+        ? err.message
+        : 'Průvodce se teď nepodařilo zpřístupnit.';
+    }finally{
+      button.disabled = false;
+    }
+  });
+})();
+</script>
 
 <!-- ORINAYA META IN-APP GUARD -->
 <div class="orinaya-inapp-overlay" id="orinayaInAppOverlay" hidden aria-hidden="true">

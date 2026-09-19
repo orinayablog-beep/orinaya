@@ -331,7 +331,7 @@ textarea,input[type=text]{
 }
 textarea{
   min-height:138px;
-  resize:none;
+  resize:vertical;
   line-height:1.75;
   font-family:"Montserrat",Arial,sans-serif;
   font-size:15px;
@@ -511,7 +511,23 @@ footer{
 }
 .footer-logo{font-family:"Cormorant Garamond",Georgia,serif;font-size:34px;letter-spacing:.17em;color:#e7d3aa}
 .socials{display:flex;justify-content:center;gap:26px;flex-wrap:wrap;margin-top:22px}
-.socials a{color:#c5b9c6;font-size:10px;letter-spacing:.13em;text-transform:uppercase}
+.socials a{
+  position:relative;display:inline-block;padding-bottom:7px;
+  color:#c5b9c6;font-size:10px;letter-spacing:.13em;text-transform:uppercase;
+  transition:color .22s ease,text-shadow .22s ease,transform .22s ease;
+}
+.socials a::after{
+  content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(215,170,87,.45));
+  box-shadow:0 0 8px rgba(215,170,87,.18);
+  transform:scaleX(.82);transform-origin:left center;
+  transition:transform .22s ease,background .22s ease,box-shadow .22s ease;
+}
+@media(hover:hover) and (pointer:fine){
+  .socials a:hover{color:#f1d79b;text-shadow:0 0 10px rgba(215,170,87,.26);transform:translateY(-1px)}
+  .socials a:hover::after{transform:scaleX(1);background:linear-gradient(90deg,#f1d79b,#d7aa57);box-shadow:0 0 10px rgba(215,170,87,.38)}
+}
+.socials a:focus-visible{color:#f1d79b;outline:1px solid var(--gold);outline-offset:5px}
 .copy{margin-top:28px;color:#948797;font-size:9px;letter-spacing:.16em}
 
 .music-toggle{
@@ -551,43 +567,6 @@ footer{
 @media(prefers-reduced-motion:reduce){
   .hero-spark{animation:none;opacity:.45}
 }
-
-/* ORINAYA: pevný fix výšky jednotlivých vzkazů na desktopu */
-.grid{
-  align-items:start !important;
-}
-.grid > .message{
-  height:auto !important;
-  min-height:0 !important;
-  align-self:start !important;
-}
-
-
-/* ORINAYA – aktivní footer odkazy + jemná spirála */
-.socials a{
-  position:relative;
-  transition:color .25s ease,text-shadow .25s ease,transform .25s ease;
-}
-.socials a::after{
-  content:"";
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:-7px;
-  height:1px;
-  background:linear-gradient(90deg,transparent,#d7aa57,transparent);
-  transform:scaleX(0);
-  transition:transform .25s ease;
-}
-.socials a:hover,
-.socials a:focus-visible{
-  color:#f1d79b;
-  text-shadow:0 0 12px rgba(215,170,87,.34);
-  transform:translateY(-1px);
-}
-.socials a:hover::after,
-.socials a:focus-visible::after{transform:scaleX(1)}
-
 </style>
 
 <!-- ORINAYA META IN-APP GUARD -->
@@ -872,11 +851,12 @@ footer{
 </main>
 
 <footer>
+  <div class="footer-logo">ORINAYA</div>
   <div class="socials">
     <a href="https://www.instagram.com/orinaya.energy" target="_blank" rel="noopener">Instagram</a>
     <a href="https://www.facebook.com/share/1EFY1Sjqfv/" target="_blank" rel="noopener">Facebook</a>
   </div>
-<div class="copy">© 2026 ORINAYA</div>
+  <div class="copy">© 2026 ORINAYA</div>
 </footer>
 
 <script>
@@ -1669,5 +1649,6 @@ initResponsiveHero();
 })();
 </script>
 
+<script src="/visit-radar.js"></script>
 </body>
 </html>

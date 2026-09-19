@@ -572,6 +572,46 @@ html.is-entering .orinaya-page-fade{opacity:1}
 
 
 
+/* ===== PATIČKA • HOVER VŠECH ČTYŘ ODKAZŮ ===== */
+footer .socials a{
+  position:relative;
+  display:inline-block;
+  padding-bottom:7px;
+  transition:color .22s ease,text-shadow .22s ease,transform .22s ease;
+}
+footer .socials a::after{
+  content:"";
+  position:absolute;
+  left:0;bottom:0;
+  width:100%;height:1px;
+  background:linear-gradient(90deg,#d7aa57,rgba(215,170,87,.45));
+  box-shadow:0 0 8px rgba(215,170,87,.18);
+  transform:scaleX(.82);
+  transform-origin:left center;
+  transition:transform .22s ease,background .22s ease,box-shadow .22s ease;
+}
+@media (hover:hover) and (pointer:fine){
+  footer .socials a:hover{
+    color:#f1d79b;
+    text-shadow:0 0 10px rgba(215,170,87,.26);
+    transform:translateY(-1px);
+  }
+  footer .socials a:hover::after{
+    transform:scaleX(1);
+    background:linear-gradient(90deg,#f1d79b,#d7aa57);
+    box-shadow:0 0 10px rgba(215,170,87,.38);
+  }
+}
+footer .socials a:focus-visible{
+  color:#f1d79b;
+  outline:2px solid rgba(215,170,87,.65);
+  outline-offset:5px;
+}
+footer .socials a:focus-visible::after{transform:scaleX(1)}
+@media (prefers-reduced-motion:reduce){
+  footer .socials a,footer .socials a::after{transition:none}
+}
+
 /* ===== HERO TLAČÍTKA • TEXTOVÝ OVERLAY ===== */
 .hero .hero-label{
   display:flex !important;
@@ -951,35 +991,6 @@ html.is-entering .orinaya-page-fade{opacity:1}
   }
 }
 
-
-/* ORINAYA – hover pro footer odkazy */
-.socials a{
-  position:relative;
-  transition:color .25s ease,text-shadow .25s ease,transform .25s ease;
-}
-.socials a:after{
-  content:"";
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:-7px;
-  height:1px;
-  background:linear-gradient(90deg,transparent,#d7aa57,transparent);
-  transform:scaleX(0);
-  transform-origin:center;
-  transition:transform .25s ease;
-}
-.socials a:hover,
-.socials a:focus-visible{
-  color:#f1d79b;
-  text-shadow:0 0 12px rgba(215,170,87,.34);
-  transform:translateY(-1px);
-}
-.socials a:hover:after,
-.socials a:focus-visible:after{
-  transform:scaleX(1);
-}
-
 </style>
 
 <!-- ORINAYA META IN-APP GUARD -->
@@ -1247,7 +1258,7 @@ C 1461.3 563.5, 1482.7 536.2, 1504 527
 <section class="section intro">
   <div class="kicker">ORINAYA • PRAHA</div>
   <h2 class="brand-line">Prostor pro návrat k sobě, vlastní cestě a životu, který je opravdu tvůj.</h2>
-  <p class="lead">Access Bars, Access Facelift, osobní příběhy a inspirace.</p>
+  <p class="lead">Access Bars, Access Facelift, Miracle Essence Touch, osobní příběhy a inspirace.</p>
   <a class="cta-link" href="#terapie">Prozkoumat služby</a>
 </section>
 
@@ -1333,6 +1344,7 @@ C 1461.3 563.5, 1482.7 536.2, 1504 527
 </section>
 
 <footer>
+  <div class="footer-logo">ORINAYA</div>
   <div class="socials">
     <a href="https://www.instagram.com/orinaya.energy" target="_blank" rel="noopener">Instagram</a>
     <a href="https://www.facebook.com/share/1EFY1Sjqfv/" target="_blank" rel="noopener">Facebook</a>

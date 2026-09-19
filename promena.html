@@ -781,34 +781,6 @@ html.is-entering .orinaya-page-fade{
   }
 }
 
-
-
-/* ORINAYA – hover spodní navigace */
-.end-links a{
-  position:relative;
-  transition:color .28s ease, transform .28s ease, text-shadow .28s ease;
-}
-.end-links a::after{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:-8px;
-  width:100%;
-  height:1px;
-  background:linear-gradient(90deg,transparent,#d7aa57,transparent);
-  transform:scaleX(0);
-  transform-origin:center;
-  transition:transform .28s ease;
-}
-.end-links a:hover,
-.end-links a:focus-visible{
-  color:#e7c77f;
-  transform:translateY(-2px);
-  text-shadow:0 0 14px rgba(215,170,87,.28);
-}
-.end-links a:hover::after,
-.end-links a:focus-visible::after{transform:scaleX(1)}
-
 </style>
 
 <!-- ORINAYA META IN-APP GUARD -->
@@ -895,7 +867,7 @@ html.is-entering .orinaya-page-fade{
   <div class="guide-kicker">Pro tebe</div>
   <h2 class="guide-title">Rozšířený průvodce Proměnou</h2>
   <p class="guide-copy">
-    Pokud chceš jít ještě o kousek dál, připravila jsem i rozšířenou verzi Proměny.<br>
+    Pokud chceš jít ještě o kousek dál, připravila jsem i rozšířenou verzi Proměny.
     Najdeš v ní úvod a další části, které nejsou součástí samotných dvanácti kapitol na webu.
   </p>
   <form class="guide-form" id="promena-guide-form">
@@ -1135,90 +1107,6 @@ html.is-entering .orinaya-page-fade{
 })();
 </script>
 
-<!-- ORINAYA META IN-APP GUARD -->
-<div class="orinaya-inapp-overlay" id="orinayaInAppOverlay" hidden aria-hidden="true">
-  <div class="orinaya-inapp-sheet" role="dialog" aria-modal="true" aria-labelledby="orinayaInAppTitle">
-    <div class="orinaya-inapp-star">✦</div>
-    <h3 id="orinayaInAppTitle">Otevři stránku v prohlížeči</h3>
-    <p>Messenger a Instagram někdy blokují <strong>sdílení nebo ukládání obrázků</strong> přímo uvnitř aplikace. Klepni nahoře na <strong>⋯</strong> a zvol <strong>Otevřít v prohlížeči</strong>. Pak bude všechno fungovat normálně.</p>
-    <div class="orinaya-inapp-actions">
-      <button type="button" class="orinaya-inapp-btn primary" id="orinayaCopyCurrentUrl">Zkopírovat odkaz</button>
-      <button type="button" class="orinaya-inapp-btn" id="orinayaCloseInApp">Rozumím</button>
-    </div>
-    <p class="orinaya-inapp-note" id="orinayaInAppNote" aria-live="polite"></p>
-  </div>
-</div>
-<script id="orinaya-meta-inapp-guard">
-(function(){
-  const ua = navigator.userAgent || "";
-  const isMetaInApp = /FBAN|FBAV|FB_IAB|FBIOS|FB4A|Instagram|Messenger/i.test(ua);
-  if(!isMetaInApp) return;
-
-  const overlay = document.getElementById("orinayaInAppOverlay");
-  const closeBtn = document.getElementById("orinayaCloseInApp");
-  const copyBtn = document.getElementById("orinayaCopyCurrentUrl");
-  const note = document.getElementById("orinayaInAppNote");
-  if(!overlay) return;
-
-  function openHelp(){
-    overlay.hidden = false;
-    overlay.setAttribute("aria-hidden","false");
-    document.documentElement.style.overflow = "hidden";
-  }
-
-  function closeHelp(){
-    overlay.hidden = true;
-    overlay.setAttribute("aria-hidden","true");
-    document.documentElement.style.overflow = "";
-    if(note) note.textContent = "";
-  }
-
-  function needsExternalBrowser(target){
-    if(!target || !target.closest) return false;
-    return !!target.closest(
-      '#shareBtn, #saveBtn, .share-btn, .message-action[data-action="share"], .message-action[data-action="save"], a[download]'
-    );
-  }
-
-  /* Capture fáze zastaví původní share/download jen v Meta in-app browseru. */
-  document.addEventListener("click",function(e){
-    if(!needsExternalBrowser(e.target)) return;
-    e.preventDefault();
-    e.stopPropagation();
-    if(typeof e.stopImmediatePropagation === "function") e.stopImmediatePropagation();
-    openHelp();
-  },true);
-
-  if(closeBtn) closeBtn.addEventListener("click",closeHelp);
-  overlay.addEventListener("click",function(e){ if(e.target === overlay) closeHelp(); });
-  document.addEventListener("keydown",function(e){ if(e.key === "Escape" && !overlay.hidden) closeHelp(); });
-
-  if(copyBtn){
-    copyBtn.addEventListener("click",async function(){
-      const url = window.location.href;
-      try{
-        if(navigator.clipboard && window.isSecureContext){
-          await navigator.clipboard.writeText(url);
-        }else{
-          const input = document.createElement("textarea");
-          input.value = url;
-          input.setAttribute("readonly","");
-          input.style.position = "fixed";
-          input.style.opacity = "0";
-          document.body.appendChild(input);
-          input.select();
-          document.execCommand("copy");
-          input.remove();
-        }
-        if(note) note.textContent = "Odkaz je zkopírovaný ✓";
-      }catch(err){
-        if(note) note.textContent = "Odkaz zkopíruj z adresního řádku prohlížeče.";
-      }
-    });
-  }
-})();
-</script>
-
 <script id="orinaya-music-controller">
 (function(){
   const audio = document.getElementById('orinaya-music');
@@ -1362,6 +1250,90 @@ html.is-entering .orinaya-page-fade{
       }, {once:true});
     }
   });
+})();
+</script>
+
+<!-- ORINAYA META IN-APP GUARD -->
+<div class="orinaya-inapp-overlay" id="orinayaInAppOverlay" hidden aria-hidden="true">
+  <div class="orinaya-inapp-sheet" role="dialog" aria-modal="true" aria-labelledby="orinayaInAppTitle">
+    <div class="orinaya-inapp-star">✦</div>
+    <h3 id="orinayaInAppTitle">Otevři stránku v prohlížeči</h3>
+    <p>Messenger a Instagram někdy blokují <strong>sdílení nebo ukládání obrázků</strong> přímo uvnitř aplikace. Klepni nahoře na <strong>⋯</strong> a zvol <strong>Otevřít v prohlížeči</strong>. Pak bude všechno fungovat normálně.</p>
+    <div class="orinaya-inapp-actions">
+      <button type="button" class="orinaya-inapp-btn primary" id="orinayaCopyCurrentUrl">Zkopírovat odkaz</button>
+      <button type="button" class="orinaya-inapp-btn" id="orinayaCloseInApp">Rozumím</button>
+    </div>
+    <p class="orinaya-inapp-note" id="orinayaInAppNote" aria-live="polite"></p>
+  </div>
+</div>
+<script id="orinaya-meta-inapp-guard">
+(function(){
+  const ua = navigator.userAgent || "";
+  const isMetaInApp = /FBAN|FBAV|FB_IAB|FBIOS|FB4A|Instagram|Messenger/i.test(ua);
+  if(!isMetaInApp) return;
+
+  const overlay = document.getElementById("orinayaInAppOverlay");
+  const closeBtn = document.getElementById("orinayaCloseInApp");
+  const copyBtn = document.getElementById("orinayaCopyCurrentUrl");
+  const note = document.getElementById("orinayaInAppNote");
+  if(!overlay) return;
+
+  function openHelp(){
+    overlay.hidden = false;
+    overlay.setAttribute("aria-hidden","false");
+    document.documentElement.style.overflow = "hidden";
+  }
+
+  function closeHelp(){
+    overlay.hidden = true;
+    overlay.setAttribute("aria-hidden","true");
+    document.documentElement.style.overflow = "";
+    if(note) note.textContent = "";
+  }
+
+  function needsExternalBrowser(target){
+    if(!target || !target.closest) return false;
+    return !!target.closest(
+      '#shareBtn, #saveBtn, .share-btn, .message-action[data-action="share"], .message-action[data-action="save"], a[download]'
+    );
+  }
+
+  /* Capture fáze zastaví původní share/download jen v Meta in-app browseru. */
+  document.addEventListener("click",function(e){
+    if(!needsExternalBrowser(e.target)) return;
+    e.preventDefault();
+    e.stopPropagation();
+    if(typeof e.stopImmediatePropagation === "function") e.stopImmediatePropagation();
+    openHelp();
+  },true);
+
+  if(closeBtn) closeBtn.addEventListener("click",closeHelp);
+  overlay.addEventListener("click",function(e){ if(e.target === overlay) closeHelp(); });
+  document.addEventListener("keydown",function(e){ if(e.key === "Escape" && !overlay.hidden) closeHelp(); });
+
+  if(copyBtn){
+    copyBtn.addEventListener("click",async function(){
+      const url = window.location.href;
+      try{
+        if(navigator.clipboard && window.isSecureContext){
+          await navigator.clipboard.writeText(url);
+        }else{
+          const input = document.createElement("textarea");
+          input.value = url;
+          input.setAttribute("readonly","");
+          input.style.position = "fixed";
+          input.style.opacity = "0";
+          document.body.appendChild(input);
+          input.select();
+          document.execCommand("copy");
+          input.remove();
+        }
+        if(note) note.textContent = "Odkaz je zkopírovaný ✓";
+      }catch(err){
+        if(note) note.textContent = "Odkaz zkopíruj z adresního řádku prohlížeče.";
+      }
+    });
+  }
 })();
 </script>
 </body>

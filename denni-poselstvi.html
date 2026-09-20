@@ -783,6 +783,7 @@ footer{
       <a class="btn" id="saveBtn" href="#" download>Uložit kartu</a>
     </div>
     <div class="share-status" id="shareStatus" aria-live="polite"></div>
+    <p class="hint" id="hint" aria-live="polite"></p>
 
   </section>
 </main>
@@ -912,9 +913,7 @@ function showResult(card,restore=false){
   saveBtn.download = `${selected}_sdileni.png`;
 
   const hint = document.getElementById("hint");
-  hint.textContent = restore
-    ? "Tahle karta tě dnes provází. Novou si budeš moct vytáhnout zase po půlnoci."
-    : "";
+  hint.textContent = "Tahle karta tě dnes provází. Novou si budeš moct vytáhnout zase po půlnoci.";
 
   setTimeout(() => {
     result.scrollIntoView({behavior:"smooth",block:"start"});

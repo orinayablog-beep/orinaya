@@ -416,6 +416,34 @@ nav a.active{color:#ead9b8}
   background:linear-gradient(90deg,var(--gold),rgba(215,170,87,.35));
 }
 
+/* ===== ČÍST DÁL • STEJNÝ ZLATÝ HOVER ===== */
+.read{
+  transition:color .22s ease,text-shadow .22s ease,transform .22s ease;
+}
+.read:after{
+  transform:scaleX(.82);
+  transform-origin:left center;
+  transition:transform .22s ease,background .22s ease,box-shadow .22s ease;
+}
+.read:hover,.read:focus-visible{
+  color:#f1d79b;
+  text-shadow:0 0 10px rgba(215,170,87,.26);
+  transform:translateY(-1px);
+}
+.read:hover:after,.read:focus-visible:after{
+  transform:scaleX(1);
+  background:linear-gradient(90deg,#f1d79b,#d7aa57);
+  box-shadow:0 0 10px rgba(215,170,87,.38);
+}
+@media(hover:none){
+  .read:hover{color:#ead9b8;text-shadow:none;transform:none}
+  .read:hover:after{
+    transform:scaleX(.82);
+    background:linear-gradient(90deg,var(--gold),rgba(215,170,87,.35));
+    box-shadow:none;
+  }
+}
+
 /* ===== SDÍLENÍ ČLÁNKŮ ===== */
 .post-share{
   display:flex;

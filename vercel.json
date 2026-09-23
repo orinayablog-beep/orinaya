@@ -1,1 +1,310 @@
-{"cleanUrls":true}
+{
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/post/den-kdy-to-všechno-začalo",
+      "destination": "/promena#kapitola-1",
+      "permanent": false
+    },
+    {
+      "source": "/post/den-kdy-to-vsechno-zacalo",
+      "destination": "/promena#kapitola-1",
+      "permanent": false
+    },
+    {
+      "source": "/post/nová-kapitola-mého-života",
+      "destination": "/promena#kapitola-2",
+      "permanent": false
+    },
+    {
+      "source": "/post/nova-kapitola-meho-zivota",
+      "destination": "/promena#kapitola-2",
+      "permanent": false
+    },
+    {
+      "source": "/post/místo-kde-se-rodí-příběhy",
+      "destination": "/promena#kapitola-3",
+      "permanent": false
+    },
+    {
+      "source": "/post/misto-kde-se-rodi-pribehy",
+      "destination": "/promena#kapitola-3",
+      "permanent": false
+    },
+    {
+      "source": "/post/jedno-obejmutí-za-tisíc-slov",
+      "destination": "/promena#kapitola-4",
+      "permanent": false
+    },
+    {
+      "source": "/post/jedno-obejmuti-za-tisic-slov",
+      "destination": "/promena#kapitola-4",
+      "permanent": false
+    },
+    {
+      "source": "/post/den-d-část-1",
+      "destination": "/promena#kapitola-5",
+      "permanent": false
+    },
+    {
+      "source": "/post/den-d-cast-1",
+      "destination": "/promena#kapitola-5",
+      "permanent": false
+    },
+    {
+      "source": "/post/den-d-část-2",
+      "destination": "/promena#kapitola-6",
+      "permanent": false
+    },
+    {
+      "source": "/post/den-d-cast-2",
+      "destination": "/promena#kapitola-6",
+      "permanent": false
+    },
+    {
+      "source": "/post/vize-duše",
+      "destination": "/promena#kapitola-7",
+      "permanent": false
+    },
+    {
+      "source": "/post/vize-duse",
+      "destination": "/promena#kapitola-7",
+      "permanent": false
+    },
+    {
+      "source": "/post/ticho-a-bezmoc",
+      "destination": "/promena#kapitola-8",
+      "permanent": false
+    },
+    {
+      "source": "/post/nádech-a-výdech",
+      "destination": "/promena#kapitola-9",
+      "permanent": false
+    },
+    {
+      "source": "/post/nadech-a-vydech",
+      "destination": "/promena#kapitola-9",
+      "permanent": false
+    },
+    {
+      "source": "/post/den-kdy-jsem-se-poprvé-nadechla",
+      "destination": "/promena#kapitola-10",
+      "permanent": false
+    },
+    {
+      "source": "/post/den-kdy-jsem-se-poprve-nadechla",
+      "destination": "/promena#kapitola-10",
+      "permanent": false
+    },
+    {
+      "source": "/post/na-cestě",
+      "destination": "/promena#kapitola-11",
+      "permanent": false
+    },
+    {
+      "source": "/post/na-ceste",
+      "destination": "/promena#kapitola-11",
+      "permanent": false
+    },
+    {
+      "source": "/post/návrat-k-sobě",
+      "destination": "/promena#kapitola-12",
+      "permanent": false
+    },
+    {
+      "source": "/post/navrat-k-sobe",
+      "destination": "/promena#kapitola-12",
+      "permanent": false
+    },
+    {
+      "source": "/post/ticho-v-hlavě",
+      "destination": "/clanek-19-ticho-v-hlave",
+      "permanent": false
+    },
+    {
+      "source": "/post/ticho-v-hlave",
+      "destination": "/clanek-19-ticho-v-hlave",
+      "permanent": false
+    },
+    {
+      "source": "/post/nová-identita",
+      "destination": "/clanek-18-nova-identita",
+      "permanent": false
+    },
+    {
+      "source": "/post/nova-identita",
+      "destination": "/clanek-18-nova-identita",
+      "permanent": false
+    },
+    {
+      "source": "/post/procitnutí",
+      "destination": "/clanek-17-procitnuti",
+      "permanent": false
+    },
+    {
+      "source": "/post/procitnuti",
+      "destination": "/clanek-17-procitnuti",
+      "permanent": false
+    },
+    {
+      "source": "/post/mezi-světy-a-možná-o-kousek-dál",
+      "destination": "/clanek-16-mezi-svety-a-mozna-o-kousek-dal",
+      "permanent": false
+    },
+    {
+      "source": "/post/mezi-svety-a-mozna-o-kousek-dal",
+      "destination": "/clanek-16-mezi-svety-a-mozna-o-kousek-dal",
+      "permanent": false
+    },
+    {
+      "source": "/post/když-už-není-cesta-zpět",
+      "destination": "/clanek-15-kdyz-uz-neni-cesta-zpet",
+      "permanent": false
+    },
+    {
+      "source": "/post/kdyz-uz-neni-cesta-zpet",
+      "destination": "/clanek-15-kdyz-uz-neni-cesta-zpet",
+      "permanent": false
+    },
+    {
+      "source": "/post/odevzdání-když-tělo-přestane-bojovat",
+      "destination": "/clanek-14-odevzdani-kdyz-telo-prestane-bojovat",
+      "permanent": false
+    },
+    {
+      "source": "/post/odevzdani-kdyz-telo-prestane-bojovat",
+      "destination": "/clanek-14-odevzdani-kdyz-telo-prestane-bojovat",
+      "permanent": false
+    },
+    {
+      "source": "/post/ne-soulad-mysli-těla-a-duše",
+      "destination": "/clanek-13-ne-soulad-mysli-tela-a-duse",
+      "permanent": false
+    },
+    {
+      "source": "/post/ne-soulad-mysli-tela-a-duse",
+      "destination": "/clanek-13-ne-soulad-mysli-tela-a-duse",
+      "permanent": false
+    },
+    {
+      "source": "/post/rok-který-mě-přepsal",
+      "destination": "/clanek-12-rok-ktery-me-prepsal",
+      "permanent": false
+    },
+    {
+      "source": "/post/rok-ktery-me-prepsal",
+      "destination": "/clanek-12-rok-ktery-me-prepsal",
+      "permanent": false
+    },
+    {
+      "source": "/post/kdo-jsem-když-se-nikdo-nedívá",
+      "destination": "/clanek-11-kdo-jsem-kdyz-se-nikdo-nediva",
+      "permanent": false
+    },
+    {
+      "source": "/post/kdo-jsem-kdyz-se-nikdo-nediva",
+      "destination": "/clanek-11-kdo-jsem-kdyz-se-nikdo-nediva",
+      "permanent": false
+    },
+    {
+      "source": "/post/manifestace-v-praxi-jak-se-bali-stalo-mým-důkazem",
+      "destination": "/clanek-10-manifestace-v-praxi-jak-se-bali-stalo-mym-dukazem",
+      "permanent": false
+    },
+    {
+      "source": "/post/manifestace-v-praxi-jak-se-bali-stalo-mym-dukazem",
+      "destination": "/clanek-10-manifestace-v-praxi-jak-se-bali-stalo-mym-dukazem",
+      "permanent": false
+    },
+    {
+      "source": "/post/kroky-do-neznáma",
+      "destination": "/clanek-09-kroky-do-neznama",
+      "permanent": false
+    },
+    {
+      "source": "/post/kroky-do-neznama",
+      "destination": "/clanek-09-kroky-do-neznama",
+      "permanent": false
+    },
+    {
+      "source": "/post/sen-který-se-rozpadl",
+      "destination": "/clanek-08-sen-ktery-se-rozpadl",
+      "permanent": false
+    },
+    {
+      "source": "/post/sen-ktery-se-rozpadl",
+      "destination": "/clanek-08-sen-ktery-se-rozpadl",
+      "permanent": false
+    },
+    {
+      "source": "/post/volno-není-luxus-je-to-návrat-k-sobě",
+      "destination": "/clanek-07-volno-neni-luxus-je-to-navrat-k-sobe",
+      "permanent": false
+    },
+    {
+      "source": "/post/volno-neni-luxus-je-to-navrat-k-sobe",
+      "destination": "/clanek-07-volno-neni-luxus-je-to-navrat-k-sobe",
+      "permanent": false
+    },
+    {
+      "source": "/post/souvislosti-které-se-spojují-v-jeden-obraz",
+      "destination": "/clanek-06-souvislosti-ktere-se-spojuji-v-jeden-obraz",
+      "permanent": false
+    },
+    {
+      "source": "/post/souvislosti-ktere-se-spojuji-v-jeden-obraz",
+      "destination": "/clanek-06-souvislosti-ktere-se-spojuji-v-jeden-obraz",
+      "permanent": false
+    },
+    {
+      "source": "/post/vztahy-a-závislosti",
+      "destination": "/clanek-05-vztahy-a-zavislosti",
+      "permanent": false
+    },
+    {
+      "source": "/post/vztahy-a-zavislosti",
+      "destination": "/clanek-05-vztahy-a-zavislosti",
+      "permanent": false
+    },
+    {
+      "source": "/post/spiritualita-vs-náboženství",
+      "destination": "/clanek-04-spiritualita-vs-nabozenstvi",
+      "permanent": false
+    },
+    {
+      "source": "/post/spiritualita-vs-nabozenstvi",
+      "destination": "/clanek-04-spiritualita-vs-nabozenstvi",
+      "permanent": false
+    },
+    {
+      "source": "/post/a-přitom-stačí-tak-málo-věř-si",
+      "destination": "/clanek-03-a-pritom-staci-tak-malo-ver-si",
+      "permanent": false
+    },
+    {
+      "source": "/post/a-pritom-staci-tak-malo-ver-si",
+      "destination": "/clanek-03-a-pritom-staci-tak-malo-ver-si",
+      "permanent": false
+    },
+    {
+      "source": "/post/když-se-na-chvíli-zastavím",
+      "destination": "/clanek-02-kdyz-se-na-chvili-zastavim",
+      "permanent": false
+    },
+    {
+      "source": "/post/kdyz-se-na-chvili-zastavim",
+      "destination": "/clanek-02-kdyz-se-na-chvili-zastavim",
+      "permanent": false
+    },
+    {
+      "source": "/post/očekávání-nejsou-láska",
+      "destination": "/clanek-01-ocekavani-nejsou-laska",
+      "permanent": false
+    },
+    {
+      "source": "/post/ocekavani-nejsou-laska",
+      "destination": "/clanek-01-ocekavani-nejsou-laska",
+      "permanent": false
+    }
+  ]
+}

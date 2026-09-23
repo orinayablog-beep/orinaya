@@ -2,6 +2,16 @@
   "cleanUrls": true,
   "redirects": [
     {
+      "source": "/post/ticho-v-hlav%C4%9B",
+      "destination": "/clanek-19-ticho-v-hlave",
+      "permanent": false
+    },
+    {
+      "source": "/post/den-kdy-to-v%C5%A1echno-za%C4%8Dalo",
+      "destination": "/promena#kapitola-1",
+      "permanent": false
+    },
+    {
       "source": "/post/den-kdy-to-všechno-začalo",
       "destination": "/promena#kapitola-1",
       "permanent": false

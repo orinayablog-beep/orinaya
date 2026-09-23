@@ -2,6 +2,146 @@
   "cleanUrls": true,
   "redirects": [
     {
+      "source": "/post/nov%C3%A1-kapitola-m%C3%A9ho-%C5%BEivota",
+      "destination": "/promena#kapitola-2",
+      "permanent": false
+    },
+    {
+      "source": "/post/m%C3%ADsto-kde-se-rod%C3%AD-p%C5%99%C3%ADb%C4%9Bhy",
+      "destination": "/promena#kapitola-3",
+      "permanent": false
+    },
+    {
+      "source": "/post/jedno-obejmut%C3%AD-za-tis%C3%ADc-slov",
+      "destination": "/promena#kapitola-4",
+      "permanent": false
+    },
+    {
+      "source": "/post/den-d-%C4%8D%C3%A1st-1",
+      "destination": "/promena#kapitola-5",
+      "permanent": false
+    },
+    {
+      "source": "/post/den-d-%C4%8D%C3%A1st-2",
+      "destination": "/promena#kapitola-6",
+      "permanent": false
+    },
+    {
+      "source": "/post/vize-du%C5%A1e",
+      "destination": "/promena#kapitola-7",
+      "permanent": false
+    },
+    {
+      "source": "/post/n%C3%A1dech-a-v%C3%BDdech",
+      "destination": "/promena#kapitola-9",
+      "permanent": false
+    },
+    {
+      "source": "/post/den-kdy-jsem-se-poprv%C3%A9-nadechla",
+      "destination": "/promena#kapitola-10",
+      "permanent": false
+    },
+    {
+      "source": "/post/na-cest%C4%9B",
+      "destination": "/promena#kapitola-11",
+      "permanent": false
+    },
+    {
+      "source": "/post/n%C3%A1vrat-k-sob%C4%9B",
+      "destination": "/promena#kapitola-12",
+      "permanent": false
+    },
+    {
+      "source": "/post/nov%C3%A1-identita",
+      "destination": "/clanek-18-nova-identita",
+      "permanent": false
+    },
+    {
+      "source": "/post/procitnut%C3%AD",
+      "destination": "/clanek-17-procitnuti",
+      "permanent": false
+    },
+    {
+      "source": "/post/mezi-sv%C4%9Bty-a-mo%C5%BEn%C3%A1-o-kousek-d%C3%A1l",
+      "destination": "/clanek-16-mezi-svety-a-mozna-o-kousek-dal",
+      "permanent": false
+    },
+    {
+      "source": "/post/kdy%C5%BE-u%C5%BE-nen%C3%AD-cesta-zp%C4%9Bt",
+      "destination": "/clanek-15-kdyz-uz-neni-cesta-zpet",
+      "permanent": false
+    },
+    {
+      "source": "/post/odevzd%C3%A1n%C3%AD-kdy%C5%BE-t%C4%9Blo-p%C5%99estane-bojovat",
+      "destination": "/clanek-14-odevzdani-kdyz-telo-prestane-bojovat",
+      "permanent": false
+    },
+    {
+      "source": "/post/ne-soulad-mysli-t%C4%9Bla-a-du%C5%A1e",
+      "destination": "/clanek-13-ne-soulad-mysli-tela-a-duse",
+      "permanent": false
+    },
+    {
+      "source": "/post/rok-kter%C3%BD-m%C4%9B-p%C5%99epsal",
+      "destination": "/clanek-12-rok-ktery-me-prepsal",
+      "permanent": false
+    },
+    {
+      "source": "/post/kdo-jsem-kdy%C5%BE-se-nikdo-ned%C3%ADv%C3%A1",
+      "destination": "/clanek-11-kdo-jsem-kdyz-se-nikdo-nediva",
+      "permanent": false
+    },
+    {
+      "source": "/post/manifestace-v-praxi-jak-se-bali-stalo-m%C3%BDm-d%C5%AFkazem",
+      "destination": "/clanek-10-manifestace-v-praxi-jak-se-bali-stalo-mym-dukazem",
+      "permanent": false
+    },
+    {
+      "source": "/post/kroky-do-nezn%C3%A1ma",
+      "destination": "/clanek-09-kroky-do-neznama",
+      "permanent": false
+    },
+    {
+      "source": "/post/sen-kter%C3%BD-se-rozpadl",
+      "destination": "/clanek-08-sen-ktery-se-rozpadl",
+      "permanent": false
+    },
+    {
+      "source": "/post/volno-nen%C3%AD-luxus-je-to-n%C3%A1vrat-k-sob%C4%9B",
+      "destination": "/clanek-07-volno-neni-luxus-je-to-navrat-k-sobe",
+      "permanent": false
+    },
+    {
+      "source": "/post/souvislosti-kter%C3%A9-se-spojuj%C3%AD-v-jeden-obraz",
+      "destination": "/clanek-06-souvislosti-ktere-se-spojuji-v-jeden-obraz",
+      "permanent": false
+    },
+    {
+      "source": "/post/vztahy-a-z%C3%A1vislosti",
+      "destination": "/clanek-05-vztahy-a-zavislosti",
+      "permanent": false
+    },
+    {
+      "source": "/post/spiritualita-vs-n%C3%A1bo%C5%BEenstv%C3%AD",
+      "destination": "/clanek-04-spiritualita-vs-nabozenstvi",
+      "permanent": false
+    },
+    {
+      "source": "/post/a-p%C5%99itom-sta%C4%8D%C3%AD-tak-m%C3%A1lo-v%C4%9B%C5%99-si",
+      "destination": "/clanek-03-a-pritom-staci-tak-malo-ver-si",
+      "permanent": false
+    },
+    {
+      "source": "/post/kdy%C5%BE-se-na-chv%C3%ADli-zastav%C3%ADm",
+      "destination": "/clanek-02-kdyz-se-na-chvili-zastavim",
+      "permanent": false
+    },
+    {
+      "source": "/post/o%C4%8Dek%C3%A1v%C3%A1n%C3%AD-nejsou-l%C3%A1ska",
+      "destination": "/clanek-01-ocekavani-nejsou-laska",
+      "permanent": false
+    },
+    {
       "source": "/post/ticho-v-hlav%C4%9B",
       "destination": "/clanek-19-ticho-v-hlave",
       "permanent": false

@@ -1,0 +1,13 @@
+# ORINAYA: veřejné stránky přístupné vyhledávačům včetně AI vyhledávání.
+User-agent: *
+Allow: /
+
+# ChatGPT Search: vyhledávání a citace veřejného webu.
+User-agent: OAI-SearchBot
+Allow: /
+
+# Trénování modelů OpenAI je oddělené od dohledatelnosti v ChatGPT Search.
+User-agent: GPTBot
+Disallow: /
+
+Sitemap: https://www.orinaya.blog/sitemap.xml

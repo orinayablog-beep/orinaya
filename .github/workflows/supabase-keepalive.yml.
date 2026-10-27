@@ -1,0 +1,34 @@
+name: Keep Orinaya Supabase active
+
+on:
+  schedule:
+    # UTC: four real database reads per day, away from the top of the hour.
+    - cron: "17 2,8,14,20 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  database-activity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Query public messages endpoint (real Supabase database read)
+        env:
+          CHECK_URL: https://www.orinaya.blog/api/messages
+        run: |
+          node --input-type=module <<'NODE'
+          const endpoint = new URL(process.env.CHECK_URL);
+          endpoint.searchParams.set("limit", "1");
+          endpoint.searchParams.set("offset", "0");
+          endpoint.searchParams.set("check", Date.now().toString());
+          const response = await fetch(endpoint, {
+            headers: { "Cache-Control": "no-cache", "Accept": "application/json" },
+            signal: AbortSignal.timeout(20000),
+          });
+          if (!response.ok) throw new Error(`Messages endpoint returned HTTP ${response.status}`);
+          const body = await response.json();
+          if (!Array.isArray(body.messages)) throw new Error("Missing messages array: database may not be reachable");
+          console.log("Orinaya database successfully queried.");
+          NODE
